@@ -1,0 +1,116 @@
+@import "//fonts.googleapis.com/css?family=Droid+Sans:regular,bold";
+
+/* Variables */
+:root {
+    --black: #1B1B1B;
+    --gray: #777;
+    --light-gray: #BFBFBF;
+
+    --yellow: #FFDD3A;
+    --orange: #FFA03C;
+    --red: #E45B5B;
+    --pink: #E678DC;
+    --blue: #6B96D5;
+    --turquoise: #3CC0DC;
+    --green: #40D26E;
+    --lemon: #CFF417;
+}
+
+body {
+    background: var(--black);
+    font-family: 'Droid Sans', Helvetica, sans-serif;
+    margin: 0;
+}
+
+/* Main header */
+.main-header {
+    padding: 1rem;
+    box-sizing: border-box;
+    color: var(--gray);
+    background: var(--black);
+
+    & a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    & h1 {
+        font-size: .9rem;
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        white-space: nowrap;
+
+        & strong {
+            color: white;
+        }
+        
+    }
+}
+
+/* Main content */
+.main-content {
+    padding: 0;
+    display: grid;
+    grid-auto-columns: minmax(max-content, 1fr);
+    /* min-height: calc(100vh - 3rem); */
+
+    & article {
+        grid-row: 1;
+        background: white;
+        margin-right: 1px;
+        margin-bottom: 1px;
+        padding-bottom: 1rem;
+        background: var(--background);
+        color: var(--foreground);
+    }
+
+    & h1 {
+        font-size: .9em;
+        margin: 0;
+        padding: .5rem 1rem;
+        background: color(black a(.1));
+        text-transform: uppercase;
+        background: var(--shadow);
+    }
+
+    & a {
+        color: inherit;
+
+        &:hover {
+            background: var(--foreground);
+            color: var(--background);
+        }
+    }
+
+    & h2 {
+        font-size: 0.9rem;
+        line-height: 1em;
+        padding: .5rem 1rem;
+        margin: 1rem 0 0;
+    }
+
+    & ul {
+        font-size: 0.8rem;
+        line-height: 1em;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & li a {
+            text-decoration: none;
+            display: block;
+            padding: .25rem 1rem;
+        }
+    }
+
+    @media (min-width: 750px) {
+        &.ly-horizontal {
+            flex-wrap: nowrap;
+        }
+    }
+}

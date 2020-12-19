@@ -1,0 +1,88 @@
+---
+title: PHP version upgrades
+description: Comparative of different versions of PHP
+author: Álvaro Gómez
+twitter: "@eusonlito"
+image: image.png
+---
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>{{ title }}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="{{ author }}">
+        <meta name="title" content="{{ title }}">
+        <meta name="description" content="{{ description }}">
+
+        <meta property="og:title" content="{{ title }}">
+        <meta property="og:description" content="{{ description }}">
+        <meta property="og:image" content="{{ image | url }}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="{{ twitter }}">
+        <meta name="twitter:creator" content="{{ twitter }}">
+        <meta name="twitter:title" content="{{ title }}">
+        <meta name="twitter:description" content="{{ description }}">
+        <meta name="twitter:image" content="{{ image | url }}">
+
+        <link rel="stylesheet" href="styles.css" type="text/css" media="screen">
+    </head>
+
+    <body>
+        <header class="main-header">
+            <h1>
+                <strong><a href="https://php.net/" title="Go to PHP site">PHP</a></strong>
+                PHP Versions Reference
+            </h1>
+        </header>
+
+        <main class="main-content ly-horizontal">
+            {% for id, version in versions %}
+                <article id="{{ id }}" style="--foreground: {{ version.theme.foreground }}; --background: {{ version.theme.background }}; --shadow: {{ version.theme.shadow }};">
+                    <h1>{{ version.title }}</h1>
+
+                    <h2>Added</h2>
+
+                    <ul>
+                    {% for item in version.added %}
+                    <li>
+                        <a href="{{ item.url }}">
+                            {{ item.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    </ul>
+
+                    <h2>Deprecated</h2>
+
+                    <ul>
+                    {% for item in version.deprecated %}
+                    <li>
+                        <a href="{{ item.url }}">
+                            {{ item.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    </ul>
+
+                    <h2>Removed</h2>
+
+                    <ul>
+                    {% for item in version.removed %}
+                    <li>
+                        <a href="{{ item.url }}">
+                            {{ item.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                </article>
+            {% endfor %}
+        </main>
+    </body>
+</html>
