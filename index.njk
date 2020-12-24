@@ -4,6 +4,77 @@ description: Comparative of different versions of PHP
 author: Álvaro Gómez
 twitter: "@eusonlito"
 image: image.png
+versions:
+  php5.0:
+    title: "5.0"
+    foreground: black
+    background: white
+    shadow: #ddd
+  php5.1: 
+    title: 5.1
+    foreground: black
+    background: white
+    shadow: #ddd
+  php5.2: 
+    title: 5.2
+    foreground: black
+    background: white
+    shadow: #ddd
+  php5.3: 
+    title: 5.3
+    foreground: black
+    background: white
+    shadow: #ddd
+  php5.4: 
+    title: 5.4
+    foreground: black
+    background: white
+    shadow: #ddd
+  php5.5: 
+    title: 5.5
+    foreground: black
+    background: white
+    shadow: #ddd
+  php5.6: 
+    title: 5.6
+    foreground: black
+    background: white
+    shadow: #ddd
+  php7.0: 
+    title: "7.0"
+    foreground: black
+    background: white
+    shadow: #ddd
+  php7.1: 
+    title: 7.1
+    foreground: black
+    background: white
+    shadow: #ddd
+  php7.2: 
+    title: 7.2
+    foreground: black
+    background: white
+    shadow: #ddd
+  php7.3: 
+    title: 7.3
+    foreground: black
+    background: white
+    shadow: #ddd
+  php7.4:
+    title: 7.4
+    foreground: black
+    background: white
+    shadow: #ddd
+  php8.0:
+    title: "8.0"
+    foreground: black
+    background: white
+    shadow: #ddd
+types:
+  - openssl
+  - new-methods
+  - extensions-other
+  - global-constants
 ---
 <!DOCTYPE html>
 
@@ -42,45 +113,29 @@ image: image.png
         </header>
 
         <main class="main-content ly-horizontal">
+            {{ versions }}
             {% for id, version in versions %}
-                <article id="{{ id }}" style="--foreground: {{ version.theme.foreground }}; --background: {{ version.theme.background }}; --shadow: {{ version.theme.shadow }};">
+                <article id="{{ id }}" style="--foreground: {{ version.foreground }}; --background: {{ version.background }}; --shadow: {{ version.shadow }};">
                     <h1>{{ version.title }}</h1>
 
-                    <h2>Added</h2>
+                    {% for type in types %}
+                        {% set pages = search.pages([type, id]) %}
 
-                    <ul>
-                    {% for item in version.added %}
-                    <li>
-                        <a href="{{ item.url }}">
-                            {{ item.title }}
-                        </a>
-                    </li>
+                        {% if pages.length %}
+                        <h2>{{ type }}</h2>
+
+                        <ul>
+                        {% for page in pages %}
+                        <li>
+                            <a href="{{ page.data.url | url }}">
+                                {{ page.data.title }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
                     {% endfor %}
-                    </ul>
-
-                    <h2>Deprecated</h2>
-
-                    <ul>
-                    {% for item in version.deprecated %}
-                    <li>
-                        <a href="{{ item.url }}">
-                            {{ item.title }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                    </ul>
-
-                    <h2>Removed</h2>
-
-                    <ul>
-                    {% for item in version.removed %}
-                    <li>
-                        <a href="{{ item.url }}">
-                            {{ item.title }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                    </ul>
+                    
                 </article>
             {% endfor %}
         </main>
