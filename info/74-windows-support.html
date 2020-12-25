@@ -1,0 +1,73 @@
+---
+title: Windows Support
+version: "7.4"
+tags:
+ - "7.4"
+ - windows-support
+---
+<div id="migration74.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration74.windows-support.configure">
+  <h3 class="title"><strong class="command">configure</strong> flags</h3>
+  <p class="para">
+   <strong class="command">configure</strong> now regards additional <code class="literal">CFLAGS</code> and <code class="literal">LDFLAGS</code> set as environment
+   variables.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.other">
+  <h3 class="title">CTRL handling</h3>
+  <p class="para">
+   CTRL+C and CTRL+BREAK on console can be caught by setting a handler function
+   with <span class="function"><a href="https://www.php.net/manual/en/function.sapi-windows-set-ctrl-handler.php" class="function">sapi_windows_set_ctrl_handler()</a></span>.
+  </p>
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.proc-open.php" class="function">proc_open()</a></span> on Windows can be passed a
+   "create_process_group" option. It is required if the child
+   process is supposed to handle CTRL events.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.opcache">
+  <h3 class="title">OPcache</h3>
+  <p class="para">
+   OPcache now supports an arbitrary number of separate caches per user via the
+   the INI directive <code class="literal">opcache.cache_id</code>.
+   All processes with the same cache ID and user share an OPcache instance.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.stat">
+  <h3 class="title">stat</h3>
+  <p class="para">
+   The stat implementation has been refactored.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     An inode number is delivered and is based on the NTFS file index.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The device number is now based on the volume serial number.
+    </span>
+   </li>
+  </ul><p class="para">
+   Note that both values are derived from the system and provided as-is on 64-bit
+   systems. On 32-bit systems, these values might overflow the 32-bit integer in
+   PHP, so they're fake.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.sqlite3">
+  <h3 class="title">libsqlite3</h3>
+  <p class="para">
+   libsqlite3 is no longer compiled statically into <var class="filename">php_sqlite3.dll</var>
+   and <var class="filename">php_pdo_sqlite.dll</var>, but rather available as <var class="filename">libsqlite3.dll</var>.
+   Refer to the installation instructions for <a href="https://www.php.net/manual/en/sqlite3.installation.php" class="link">SQLite3</a> and
+   <a href="https://www.php.net/manual/en/ref.pdo-sqlite.php#ref.pdo-sqlite.installation" class="link">PDO_SQLITE</a>, respectively.
+  </p>
+ </div>
+
+</div>

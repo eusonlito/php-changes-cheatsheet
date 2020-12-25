@@ -1,0 +1,23 @@
+@import "styles/php.css";
+
+/* Main header */
+.main-header {
+    padding: 1em;
+    margin: 1em auto;
+    max-width: 40rem;
+    border-bottom: solid 2px;
+
+    & h1 {
+      margin: 0;
+    }
+}
+
+.info-main {
+  padding: 1em;
+  margin: auto;
+  max-width: 40rem;
+
+  & .title {
+    margin: 0;
+  }
+}

@@ -1,0 +1,32 @@
+---
+title: Changes in SAPI Modules
+version: "7.0"
+tags:
+ - "7.0"
+ - sapi-changes
+---
+<div id="migration70.sapi-changes" class="sect1">
+ <h2 class="title">Changes in SAPI Modules</h2>
+
+ <div class="sect2" id="migration70.sapi-changes.fpm">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.fpm.php" class="link">FPM</a></h3>
+
+  <div class="sect3" id="migration70.sapi-changes.fpm.listen">
+   <h4 class="title">
+    Unqualified <a href="https://www.php.net/manual/en/install.fpm.configuration.php#listen" class="link">listen</a> ports now listen on both
+    IPv4 and IPv6
+   </h4>
+
+   <p class="para">
+    In PHP 5, a <a href="https://www.php.net/manual/en/install.fpm.configuration.php#listen" class="link">listen</a> directive with only a
+    port number would listen on all interfaces, but only on IPv4. PHP 7 will
+    now accept requests made via both IPv4 and IPv6.
+   </p>
+
+   <p class="para">
+    This does not affect directives which include specific IP addresses; these
+    will continue to only listen on that address and protocol.
+   </p>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,617 @@
+---
+title: Backward incompatible changes
+version: "7.1"
+tags:
+ - "7.1"
+ - incompatible
+---
+<div id="migration71.incompatible" class="sect1">
+ <h2 class="title">Backward incompatible changes</h2>
+
+ <div class="sect2" id="migration71.incompatible.too-few-arguments-exception">
+  <h3 class="title">Throw on passing too few function arguments</h3>
+
+  <p class="para">
+   Previously, a warning would be emitted for invoking user-defined functions
+   with too few arguments. Now, this warning has been promoted to an Error
+   exception. This change only applies to user-defined functions, not internal
+   functions. For example:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">){}<br></span><span style="color: #0000BB">test</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output
+something similar to:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Fatal error: Uncaught ArgumentCountError: Too few arguments to function test(), 0 passed in %s on line %d and exactly 1 expected in %s:%d
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.forbid-dynamic-calls-to-scope-introspection-functions">
+  <h3 class="title">Forbid dynamic calls to scope introspection functions</h3>
+
+  <p class="para">
+   Dynamic calls for certain functions have been forbidden (in the form of
+   <code class="literal">$func()</code> or <code class="literal">array_map('extract', ...)</code>,
+   etc). These functions either inspect or modify another scope, and present
+   with them ambiguous and unreliable behavior. The functions are as follows:
+  </p>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.assert.php" class="function">assert()</a></span> - with a string as the first argument
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.compact.php" class="function">compact()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.extract.php" class="function">extract()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.func-get-args.php" class="function">func_get_args()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.func-get-arg.php" class="function">func_get_arg()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.func-num-args.php" class="function">func_num_args()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.get-defined-vars.php" class="function">get_defined_vars()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-parse-str.php" class="function">mb_parse_str()</a></span> - with one arg
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.parse-str.php" class="function">parse_str()</a></span> - with one arg
+    </span>
+   </li>
+  </ul><div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">(function () {<br>    </span><span style="color: #0000BB">$func </span><span style="color: #007700">= </span><span style="color: #DD0000">'func_num_args'</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">$func</span><span style="color: #007700">();<br>})();</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: Cannot call func_num_args() dynamically in %s on line %d
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.invalid-class-names">
+  <h3 class="title">Invalid class, interface, and trait names</h3>
+
+  <p class="para">
+   The following names cannot be used to name classes, interfaces, or traits:
+  </p>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><span class="type"><span class="type void">void</span></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="type"><a href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.incompatible.numerical-strings-scientific-notation">
+  <h3 class="title">Numerical string conversions now respect scientific notation</h3>
+
+  <p class="para">
+   Integer operations and conversions on numerical strings now respect
+   scientific notation. This also includes the <code class="literal">(int)</code> cast
+   operation, and the following functions: <span class="function"><a href="https://www.php.net/manual/en/function.intval.php" class="function">intval()</a></span> (where
+   the base is 10), <span class="function"><a href="https://www.php.net/manual/en/function.settype.php" class="function">settype()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.decbin.php" class="function">decbin()</a></span>,
+   <span class="function"><a href="https://www.php.net/manual/en/function.decoct.php" class="function">decoct()</a></span>, and <span class="function"><a href="https://www.php.net/manual/en/function.dechex.php" class="function">dechex()</a></span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.fixes-to-mt_rand-algorithm">
+  <h3 class="title">Fixes to <span class="function"><a href="https://www.php.net/manual/en/function.mt-rand.php" class="function">mt_rand()</a></span> algorithm</h3>
+
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.mt-rand.php" class="function">mt_rand()</a></span> will now default to using the fixed version of
+   the Mersenne Twister algorithm. If deterministic output from
+   <span class="function"><a href="https://www.php.net/manual/en/function.mt-srand.php" class="function">mt_srand()</a></span> was relied upon, then the
+   <strong><code>MT_RAND_PHP</code></strong> with the ability to preserve the old
+   (incorrect) implementation via an additional optional second parameter to
+   <span class="function"><a href="https://www.php.net/manual/en/function.mt-srand.php" class="function">mt_srand()</a></span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.rand-srand-aliases">
+  <h3 class="title">
+   <span class="function"><a href="https://www.php.net/manual/en/function.rand.php" class="function">rand()</a></span> aliased to <span class="function"><a href="https://www.php.net/manual/en/function.mt-rand.php" class="function">mt_rand()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.srand.php" class="function">srand()</a></span> aliased to <span class="function"><a href="https://www.php.net/manual/en/function.mt-srand.php" class="function">mt_srand()</a></span>
+  </h3>
+
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.rand.php" class="function">rand()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.srand.php" class="function">srand()</a></span> have now been made
+   aliases to <span class="function"><a href="https://www.php.net/manual/en/function.mt-rand.php" class="function">mt_rand()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.mt-srand.php" class="function">mt_srand()</a></span>,
+   respectively. This means that the output for the following functions have
+   changed: <span class="function"><a href="https://www.php.net/manual/en/function.rand.php" class="function">rand()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.shuffle.php" class="function">shuffle()</a></span>,
+   <span class="function"><a href="https://www.php.net/manual/en/function.str-shuffle.php" class="function">str_shuffle()</a></span>, and <span class="function"><a href="https://www.php.net/manual/en/function.array-rand.php" class="function">array_rand()</a></span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.delete-control-character-in-identifiers">
+  <h3 class="title">Disallow the ASCII delete control character in identifiers</h3>
+
+  <p class="para">
+   The ASCII delete control character (<code class="literal">0x7F</code>) can no longer
+   be used in identifiers that are not quoted.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.error_log-syslog">
+  <h3 class="title">
+   <code class="parameter">error_log</code> changes with <code class="literal">syslog</code>
+   value
+  </h3>
+
+  <p class="para">
+   If the <code class="parameter">error_log</code> ini setting is set to
+   <code class="literal">syslog</code>, the PHP error levels are mapped to the syslog
+   error levels. This brings finer differentiation in the error logs in
+   contrary to the previous approach where all the errors are logged with the
+   notice level only.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.dont-call-destructors">
+  <h3 class="title">Do not call destructors on incomplete objects</h3>
+
+  <p class="para">
+   Destructors are now never called for objects that throw an exception during
+   the execution of their constructor. In previous versions this behavior
+   depended on whether the object was referenced outside the constructor (e.g.
+   by an exception backtrace).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.call_user_func-with-ref-args">
+  <h3 class="title">
+   <span class="function"><a href="https://www.php.net/manual/en/function.call-user-func.php" class="function">call_user_func()</a></span> handling of reference arguments
+  </h3>
+
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.call-user-func.php" class="function">call_user_func()</a></span> will now always generate a warning
+   upon calls to functions that expect references as arguments. Previously
+   this depended on whether the call was fully qualified.
+  </p>
+  <p class="para">
+   Additionally, <span class="function"><a href="https://www.php.net/manual/en/function.call-user-func.php" class="function">call_user_func()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.call-user-func-array.php" class="function">call_user_func_array()</a></span> will no longer abort the function
+   call in this case. The "expected reference" warning will be emitted, but the
+   call will proceed as usual.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.empty-string-index-operator">
+  <h3 class="title">
+   The empty index operator is not supported for strings anymore
+  </h3>
+
+  <p class="para">
+   Applying the empty index operator to a string (e.g. <code class="literal">$str[] = $x</code>)
+   throws a fatal error instead of converting silently to array.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.empty-string-modifcation-by-character">
+  <h3 class="title">Assignment via string index access on an empty string</h3>
+  <p class="para">
+   String modification by character on an empty string now works like for non-empty
+   strings, i.e. writing to an out of range offset pads the string with spaces,
+   where non-integer types are converted to integer, and only the first character of
+   the assigned string is used. Formerly, empty strings where silently treated like
+   an empty array.
+   </p><div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$a </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">] = </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <p class="para">Output of the above example in PHP 7.0:</p>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [10]=&gt;
+  string(3) "foo"
+}
+</pre></div>
+    </div>
+    <p class="para">Output of the above example in PHP 7.1:</p>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(11) "          f"
+</pre></div>
+    </div>
+   </div>
+  
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.removed-ini-directives">
+  <h3 class="title">Removed ini directives</h3>
+
+  <p class="para">
+   The following ini directives have been removed:
+  </p>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.entropy_file</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.entropy_length</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.hash_function</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.hash_bits_per_character</code>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.incompatible.array-order">
+  <h3 class="title">
+   Array ordering when elements are automatically created during by reference
+   assignments has changed
+  </h3>
+
+  <p class="para">
+   The order of the elements in an array has changed when those elements have
+   been automatically created by referencing them in a by reference
+   assignment. For example:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$array </span><span style="color: #007700">= [];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">Output of the above example in PHP 7.0:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(2) {
+  ["a"]=&gt;
+  &amp;int(1)
+  ["b"]=&gt;
+  &amp;int(1)
+}
+</pre></div>
+   </div>
+   <p class="para">Output of the above example in PHP 7.1:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(2) {
+  ["b"]=&gt;
+  &amp;int(1)
+  ["a"]=&gt;
+  &amp;int(1)
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.sort-order">
+  <h3 class="title">Sort order of equal elements</h3>
+  <p class="para">
+   The internal sorting algorithm has been improved, what may result in
+   different sort order of elements, which compare as equal, than before.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   </p><p class="para">
+    Don't rely on the order of elements which compare as equal; it might change
+    anytime.
+   </p>
+  </blockquote>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.e-recoverable">
+  <h3 class="title">Error message for E_RECOVERABLE errors</h3>
+  <p class="para">
+   The error message for E_RECOVERABLE errors has been changed from "Catchable
+   fatal error" to "Recoverable fatal error".
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.unserialize">
+  <h3 class="title">$options parameter of unserialize()</h3>
+  <p class="para">
+   The <code class="literal">allowed_classes</code> element of the $options parameter of
+   <span class="function"><a href="https://www.php.net/manual/en/function.unserialize.php" class="function">unserialize()</a></span> is now strictly typed, i.e. if anything
+   other than an <span class="type">array</span> or a <span class="type">bool</span> is given,
+   unserialize() returns <strong><code>false</code></strong> and issues an <strong><code>E_WARNING</code></strong>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.datetime-microseconds">
+  <h3 class="title">DateTime constructor incorporates microseconds</h3>
+  <p class="para">
+   <a href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> and <a href="https://www.php.net/manual/en/class.datetimeimmutable.php" class="classname">DateTimeImmutable</a>
+   now properly incorporate microseconds when constructed from the current time,
+   either explicitly or with a relative string (e.g. <code class="literal">"first day of next
+   month"</code>). This means that naive comparisons of two newly created
+   instances will now more likely return <strong><code>false</code></strong> instead of <strong><code>true</code></strong>:
+   </p><div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">() == new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.fatal-errors-to-error-exceptions">
+  <h3 class="title">Fatal errors to <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exceptions conversions</h3>
+  <p class="para">
+   In the Date extension, invalid serialization data for
+   <a href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> or <a href="https://www.php.net/manual/en/class.dateperiod.php" class="classname">DatePeriod</a> classes,
+   or timezone initialization failure from serialized data, will now throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception from the
+   <span class="methodname"><strong>__wakeup()</strong></span> or <span class="methodname"><strong>__set_state()</strong></span>
+   methods, instead of resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the DBA extension, data modification functions (such as
+   <span class="function"><a href="https://www.php.net/manual/en/function.dba-insert.php" class="function">dba_insert()</a></span>) will now throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of triggering a catchable
+   fatal error if the key does not contain exactly two elements.
+  </p>
+
+  <p class="para">
+   In the DOM extension, invalid schema or RelaxNG validation contexts will now
+   throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a
+   fatal error. Similarly, attempting to register a node class that does not
+   extend the appropriate base class, or attempting to read an invalid property
+   or write to a readonly property, will also now throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception.
+  </p>
+
+  <p class="para">
+   In the IMAP extension, email addresses longer than 16385 bytes will throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the Intl extension, failing to call the parent constructor in a class
+   extending <a href="https://www.php.net/manual/en/class.collator.php" class="classname">Collator</a> before invoking the parent methods
+   will now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> instead of resulting in a
+   recoverable fatal error. Also, cloning a
+   <a href="https://www.php.net/manual/en/class.transliterator.php" class="classname">Transliterator</a> object will now throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception on failure to clone the internal
+   transliterator instead of resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the LDAP extension, providing an unknown modification type to
+   <span class="function"><strong>ldap_batch_modify()</strong></span> will now throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the mbstring extension, the <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg.php" class="function">mb_ereg()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.mb-eregi.php" class="function">mb_eregi()</a></span> functions will now throw a
+   <a href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a> exception if an invalid PHP expression is
+   provided and the 'e' option is used.
+  </p>
+
+  <p class="para">
+   In the Mcrypt extension, the <span class="function"><a href="https://www.php.net/manual/en/function.mcrypt-encrypt.php" class="function">mcrypt_encrypt()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.mcrypt-decrypt.php" class="function">mcrypt_decrypt()</a></span> will now throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal error
+   if mcrypt cannot be initialized.
+  </p>
+
+  <p class="para">
+   In the mysqli extension, attempting to read an invalid property or write to
+   a readonly property will now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception
+   instead of resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the Reflection extension, failing to retrieve a reflection object or
+   retrieve an object property will now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a>
+   exception instead of resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the Session extension, custom session handlers that do not return strings
+   for session IDs will now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception
+   instead of resulting in a fatal error when a function is called that must
+   generate a session ID.
+  </p>
+
+  <p class="para">
+   In the SimpleXML extension, creating an unnamed or duplicate attribute will
+   now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in
+   a fatal error.
+  </p>
+
+  <p class="para">
+   In the SPL extension, attempting to clone an
+   <strong class="classname">SplDirectory</strong> object will now throw an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal
+   error. Similarly, calling <span class="methodname"><a href="https://www.php.net/manual/en/arrayiterator.append.php" class="methodname">ArrayIterator::append()</a></span> when
+   iterating over an object will also now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a>
+   exception.
+  </p>
+
+  <p class="para">
+   In the standard extension, the <span class="function"><a href="https://www.php.net/manual/en/function.assert.php" class="function">assert()</a></span> function, when
+   provided with a string argument as its first parameter, will now throw a
+   <a href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a> exception instead of resulting in a
+   catchable fatal error if the PHP code is invalid. Similarly, calling
+   <span class="function"><a href="https://www.php.net/manual/en/function.forward-static-call.php" class="function">forward_static_call()</a></span> outside of a class scope will now
+   throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception.
+  </p>
+
+  <p class="para">
+   In the Tidy extension, creating a <a href="https://www.php.net/manual/en/class.tidynode.php" class="classname">tidyNode</a> manually
+   will now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of
+   resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the WDDX extension, a circular reference when serializing will now throw
+   an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal
+   error.
+  </p>
+
+  <p class="para">
+   In the XML-RPC extension, a circular reference when serializing will now
+   throw an instance of <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of
+   resulting in a fatal error.
+  </p>
+
+  <p class="para">
+   In the Zip extension, the <span class="methodname"><a href="https://www.php.net/manual/en/ziparchive.addglob.php" class="methodname">ZipArchive::addGlob()</a></span>
+   method will now throw an <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of
+   resulting in a fatal error if glob support is not available.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.lexical-names">
+  <h3 class="title">Lexically bound variables cannot reuse names</h3>
+
+  <p class="para">
+   Variables bound to a <a href="https://www.php.net/manual/en/functions.anonymous.php" class="link">closure</a> via
+   the <code class="literal">use</code> construct cannot use the same name as any
+   <a href="https://www.php.net/manual/en/language.variables.predefined.php" class="link">superglobals</a>, <var class="varname">$this</var>, or any parameter. For
+   example, all of these function definition will result in a fatal error:
+
+   </p><div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">) {};<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$this</span><span style="color: #007700">) {};<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= function (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) {};</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.long2ip">
+  <h3 class="title">long2ip() parameter type change</h3>
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.long2ip.php" class="function">long2ip()</a></span> now expects an <span class="type">int</span> instead of a
+   <span class="type">string</span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.json">
+  <h3 class="title">JSON encoding and decoding</h3>
+  <p class="para">
+   The <code class="parameter">serialize_precision</code> ini setting now controls the
+   serialization precision when encoding doubles.
+  </p>
+  <p class="para">
+   Decoding an empty key now results in an empty property name, rather than 
+   <code class="literal">_empty_</code> as a property name.
+
+   </p><div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">json_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">([</span><span style="color: #DD0000">'' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">])));</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output
+something similar to:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(stdClass)#1 (1) {
+  [""]=&gt;
+  int(1)
+}
+</pre></div>
+   </div>
+  </div>
+  
+  <p class="para">
+   When supplying the <strong><code>JSON_UNESCAPED_UNICODE</code></strong> flag to
+   <span class="function"><a href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span>, the sequences U+2028 and U+2029 are now
+   escaped.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.mbstring">
+  <h3 class="title">
+   Changes to <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg.php" class="function">mb_ereg()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.mb-eregi.php" class="function">mb_eregi()</a></span>
+   parameter semantics
+  </h3>
+  <p class="para">
+   The third parameter to the <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg.php" class="function">mb_ereg()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.mb-eregi.php" class="function">mb_eregi()</a></span> functions (<code class="parameter">regs</code>) will now be
+   set to an empty array if nothing was matched. Formerly, the parameter would
+   not have been modified.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.openssl">
+  <h3 class="title">Drop support for the sslv2 stream</h3>
+  <p class="para">
+   The sslv2 stream has now been dropped in OpenSSL.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.incompatible.typed-returns-compile-time">
+  <h3 class="title">Forbid "return;" for typed returns already at compile-time</h3>
+  <p class="para">
+   Return statements without argument in functions which declare a return type
+   now trigger <strong><code>E_COMPILE_ERROR</code></strong> (unless the return type is
+   declared as <span class="type"><span class="type void">void</span></span>), even if the return statement would never be
+   reached.
+  </p>
+ </div>
+
+</div>

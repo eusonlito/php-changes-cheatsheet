@@ -1,0 +1,72 @@
+---
+title: Deprecated features in PHP 5.5.x
+version: "5.5"
+tags:
+ - "5.5"
+ - deprecated
+---
+<div id="migration55.deprecated" class="sect1">
+  <h2 class="title">Deprecated features in PHP 5.5.x</h2>
+
+  <div class="sect2" id="migration55.deprecated.mysql">
+   <h3 class="title"><a href="https://www.php.net/manual/en/book.mysql.php" class="link">ext/mysql</a> deprecation</h3>
+
+   <p class="para">
+    The <a href="https://www.php.net/manual/en/book.mysql.php" class="link">original MySQL extension</a> is now
+    deprecated, and will generate <strong><code>E_DEPRECATED</code></strong> errors
+    when connecting to a database. Instead, use the
+    <a href="https://www.php.net/manual/en/book.mysqli.php" class="link">MySQLi</a> or
+    <a href="https://www.php.net/manual/en/ref.pdo-mysql.php" class="link">PDO_MySQL</a> extensions.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.deprecated.preg-replace-e">
+   <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.preg-replace.php" class="function">preg_replace()</a></span> <code class="literal">/e</code> modifier</h3>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.preg-replace.php" class="function">preg_replace()</a></span> <code class="literal">/e</code> modifier is
+    now deprecated. Instead, use the
+    <span class="function"><a href="https://www.php.net/manual/en/function.preg-replace-callback.php" class="function">preg_replace_callback()</a></span> function.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.deprecated.intl">
+   <h3 class="title"><a href="https://www.php.net/manual/en/book.intl.php" class="link">intl</a> deprecations</h3>
+
+   <p class="para">
+    <span class="methodname"><a href="https://www.php.net/manual/en/intldateformatter.settimezoneid.php" class="methodname">IntlDateFormatter::setTimeZoneID()</a></span> and
+    <span class="function"><a href="https://www.php.net/manual/en/intldateformatter.settimezoneid.php" class="function">datefmt_set_timezone_id()</a></span> are now deprecated. Instead,
+    use the <span class="methodname"><a href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="methodname">IntlDateFormatter::setTimeZone()</a></span> method and
+    <span class="function"><a href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="function">datefmt_set_timezone()</a></span> function, respectively.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.deprecated.mcrypt">
+   <h3 class="title"><a href="https://www.php.net/manual/en/book.mcrypt.php" class="link">mcrypt</a> deprecations</h3>
+
+   <p class="simpara">
+    The following functions have been deprecated:
+   </p>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.mcrypt-cbc.php" class="function">mcrypt_cbc()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.mcrypt-cfb.php" class="function">mcrypt_cfb()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.mcrypt-ecb.php" class="function">mcrypt_ecb()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.mcrypt-ofb.php" class="function">mcrypt_ofb()</a></span>
+     </span>
+    </li>
+   </ul></div>
+ </div>

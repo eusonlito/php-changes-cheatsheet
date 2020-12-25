@@ -1,0 +1,78 @@
+---
+title: New features
+version: "5.4"
+tags:
+ - "5.4"
+ - new-features
+---
+<div id="migration54.new-features" class="section">
+  <h2 class="title">New features</h2>
+  <p class="simpara">
+   PHP 5.4.0 offers a wide range of new features:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Support for <a href="https://www.php.net/manual/en/language.oop5.traits.php" class="link">traits</a> has been added.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Short array syntax has been added, e.g. <code class="literal">$a = [1, 2, 3, 4];</code> or
+     <code class="literal">$a = ['one' =&gt; 1, 'two' =&gt; 2, 'three' =&gt; 3, 'four' =&gt; 4];</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Function array dereferencing has been added, e.g. <code class="literal">foo()[0]</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/functions.anonymous.php" class="link">Closures</a> now support <code class="literal">$this</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">&lt;?=</code> is now always available, regardless of the
+     <a href="https://www.php.net/manual/en/ini.core.php#ini.short-open-tag" class="link">short_open_tag</a> <var class="filename">php.ini</var> option.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Class member access on instantiation has been added,
+     e.g. <code class="literal">(new Foo)-&gt;bar()</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">Class::{expr}()</code> syntax is now supported.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Binary number format has been added, e.g. <code class="literal">0b001001101</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Improved parse error messages and improved incompatible arguments warnings.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The session extension can now track the <a href="https://www.php.net/manual/en/session.upload-progress.php" class="link">upload progress</a> of files.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Built-in development <a href="https://www.php.net/manual/en/features.commandline.webserver.php" class="link">web server in CLI mode</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The GD extension now supports reading and writing of WebP images via
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagecreatefromwebp.php" class="function">imagecreatefromwebp()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.imagewebp.php" class="function">imagewebp()</a></span>,
+     respectively.
+    </span>
+   </li>
+  </ul></div>

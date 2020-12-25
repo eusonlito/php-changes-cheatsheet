@@ -1,0 +1,39 @@
+---
+title: Changes in SAPI modules
+version: "5.3"
+tags:
+ - "5.3"
+ - sapi
+---
+<div id="migration53.sapi" class="section">
+  <h2 class="title">Changes in SAPI modules</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     A new SAPI module named litespeed is now available.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     FastCGI support in the CGI SAPI is now always enabled and can not be
+     disabled. See <code class="literal">sapi/cgi/CHANGES</code> for more details.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     A new CGI SAPI option, <code class="literal">-T</code>, can be used to measure
+     repeated execution time of a script.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     CGI/FastCGI now has support for .htaccess-style user-defined <var class="filename">php.ini</var>
+     files.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <span class="function"><a href="https://www.php.net/manual/en/function.dl.php" class="function">dl()</a></span> function is now disabled by default, and is now
+     available only under the CLI, CGI, and embed SAPIs.
+    </span>
+   </li>
+  </ul></div>

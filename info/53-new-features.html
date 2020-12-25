@@ -1,0 +1,131 @@
+---
+title: New features
+version: "5.3"
+tags:
+ - "5.3"
+ - new-features
+---
+<div id="migration53.new-features" class="section">
+  <h2 class="title">New features</h2>
+  <p class="simpara">
+   PHP 5.3.0 offers a wide range of new features:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Support for <a href="https://www.php.net/manual/en/language.namespaces.php" class="link">namespaces</a> has been 
+     added.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Support for <a href="https://www.php.net/manual/en/language.oop5.late-static-bindings.php" class="link">Late Static
+     Bindings</a> has been added.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Support for <a href="https://www.php.net/manual/en/control-structures.goto.php" class="link">jump labels</a>
+     (limited goto) has been added.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Support for native <a href="https://www.php.net/manual/en/functions.anonymous.php" class="link">Closures</a> 
+     (Lambda/Anonymous functions) has been added.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     There are two new magic methods,
+     <a href="https://www.php.net/manual/en/language.oop5.overloading.php#object.callstatic" class="link">__callStatic()</a> and 
+     <a href="https://www.php.net/manual/en/language.oop5.magic.php#object.invoke" class="link">__invoke()</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.nowdoc" class="link">Nowdoc</a> syntax is
+     now supported, similar to
+     <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc" class="link">Heredoc</a> syntax,
+     but with single quotes.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     It is now possible to use
+     <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc" class="link">Heredoc</a>s to
+     initialize static variables and class properties/constants.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc" class="link">Heredoc</a>s may
+     now be declared using double quotes, complementing the
+     <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.nowdoc" class="link">Nowdoc</a> syntax.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/language.constants.syntax.php" class="link">Constants</a> can now be
+     declared outside a class using the <code class="literal">const</code> keyword.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <a href="https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary" class="link">ternary</a>
+     operator now has a shorthand form: <code class="literal">?:</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The HTTP stream wrapper now considers all status codes from 200 to 399 to
+     be successful.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Dynamic access to static methods is now possible:
+    </span>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br>   public static </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">123</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #DD0000">"C"</span><span style="color: #007700">;<br>echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">::</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <p class="para">The above example will output:</p>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+123
+</pre></div>
+     </div>
+    </div>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/language.exceptions.php" class="link">Exceptions</a> can now be nested:
+    </span>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyCustomException </span><span style="color: #007700">extends </span><span style="color: #0000BB">Exception </span><span style="color: #007700">{}<br><br>try {<br>    throw new </span><span style="color: #0000BB">MyCustomException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Exceptional"</span><span style="color: #007700">, </span><span style="color: #0000BB">112</span><span style="color: #007700">);<br>} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">/* Note the use of the third parameter to pass $e<br>     * into the RuntimeException. */<br>    </span><span style="color: #007700">throw new </span><span style="color: #0000BB">RuntimeException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Rethrowing"</span><span style="color: #007700">, </span><span style="color: #0000BB">911</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     A <a href="https://www.php.net/manual/en/features.gc.php" class="link">garbage collector</a> for circular
+     references has been added, and is enabled by default.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <span class="function"><a href="https://www.php.net/manual/en/function.mail.php" class="function">mail()</a></span> function now supports logging of sent email
+     via the <a href="https://www.php.net/manual/en/mail.configuration.php#ini.mail.log" class="link">mail.log</a> configuration
+     directive. (Note: This only applies to email sent through this function.)
+    </span>
+   </li>
+  </ul></div>

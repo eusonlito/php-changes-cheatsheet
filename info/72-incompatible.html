@@ -1,0 +1,330 @@
+---
+title: Backward incompatible changes
+version: "7.2"
+tags:
+ - "7.2"
+ - incompatible
+---
+<div id="migration72.incompatible" class="sect1">
+ <h2 class="title">Backward incompatible changes</h2>
+
+ <div class="sect2" id="migration72.incompatible.number_format-no-neg-zero">
+  <h3 class="title">Prevent <span class="function"><a href="https://www.php.net/manual/en/function.number-format.php" class="function">number_format()</a></span> from returning negative zero</h3>
+
+  <p class="para">
+   Previously, it was possible for the <span class="function"><a href="https://www.php.net/manual/en/function.number-format.php" class="function">number_format()</a></span>
+   function to return <code class="literal">-0</code>. Whilst this is perfectly valid
+   according to the IEEE 754 floating point specification, this oddity was not
+   desirable for displaying formatted numbers in a human-readable form.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">number_format</span><span style="color: #007700">(-</span><span style="color: #0000BB">0.01</span><span style="color: #007700">)); </span><span style="color: #FF8000">// now outputs string(1) "0" instead of string(2) "-0"</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.object-array-casts">
+  <h3 class="title">Convert numeric keys in object and array casts</h3>
+
+  <p class="para">
+   Numeric keys are now better handled when casting arrays to objects and
+   objects to arrays (either from explicit casting or by
+   <span class="function"><a href="https://www.php.net/manual/en/function.settype.php" class="function">settype()</a></span>).
+  </p>
+
+  <p class="para">
+   This means that integer (or stringy integer) keys from arrays being casted
+   to objects are now accessible:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">// array to object<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= (object)</span><span style="color: #0000BB">$arr</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br>    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">,<br>    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'0'</span><span style="color: #007700">}, </span><span style="color: #FF8000">// now accessible<br>    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(stdClass)#1 (1) {
+  ["0"]=&gt;    // string key now, rather than integer key
+  int(1)
+}
+int(1)
+int(1)
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   And integer (or stringy integer) keys from objects being casted to arrays
+   are now accessible:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">// object to array<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new class {<br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    }<br>};<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= (array)</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br>    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">,<br>    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">], </span><span style="color: #FF8000">// now accessible<br>    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">] </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [0]=&gt;    // integer key now, rather than string key
+  int(1)
+}
+int(1)
+int(1)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.no-null-to-get_class">
+  <h3 class="title">Disallow passing <strong><code>null</code></strong> to <span class="function"><a href="https://www.php.net/manual/en/function.get-class.php" class="function">get_class()</a></span></h3>
+
+  <p class="para">
+   Previously, passing <strong><code>null</code></strong> to the <span class="function"><a href="https://www.php.net/manual/en/function.get-class.php" class="function">get_class()</a></span> function
+   would output the name of the enclosing class. This behaviour has now been
+   removed, where an <strong><code>E_WARNING</code></strong> will be output instead. To
+   achieve the same behaviour as before, the argument should simply be omitted.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.warn-on-non-countable-types">
+  <h3 class="title">Warn when counting non-countable types</h3>
+
+  <p class="para">
+   An <strong><code>E_WARNING</code></strong> will now be emitted when attempting to
+   <span class="function"><a href="https://www.php.net/manual/en/function.count.php" class="function">count()</a></span> non-countable types (this includes the
+   <span class="function"><a href="https://www.php.net/manual/en/function.sizeof.php" class="function">sizeof()</a></span> alias function).
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>var_dump</span><span style="color: #007700">(<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">), </span><span style="color: #FF8000">// NULL is not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">), </span><span style="color: #FF8000">// integers are not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">), </span><span style="color: #FF8000">// strings are not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdclass</span><span style="color: #007700">), </span><span style="color: #FF8000">// objects not implementing the Countable interface are not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">]) </span><span style="color: #FF8000">// arrays are countable<br></span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+int(0)
+int(1)
+int(1)
+int(1)
+int(2)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.hash-ext-to-objects">
+  <h3 class="title">Move ext/hash from resources to objects</h3>
+
+  <p class="para">
+   As part of the long-term migration away from resources, the <a href="https://www.php.net/manual/en/book.hash.php" class="link">Hash</a>
+   extension has been updated to use objects instead of resources. The change should be
+   seamless for PHP developers, except for where
+   <span class="function"><a href="https://www.php.net/manual/en/function.is-resource.php" class="function">is_resource()</a></span> checks have been made (which will need
+   updating to <span class="function"><a href="https://www.php.net/manual/en/function.is-object.php" class="function">is_object()</a></span> instead).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.ssl-tls-defaults">
+  <h3 class="title">Improve SSL/TLS defaults</h3>
+
+  <p class="para">
+   The following changes to the defaults have been made:
+  </p>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <code class="literal">tls://</code> now defaults to TLSv1.0 or TLSv1.1 or TLSv1.2
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">ssl://</code> an alias of <code class="literal">tls://</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">STREAM_CRYPTO_METHOD_TLS_*</code> constants default to TLSv1.0
+     or TLSv1.1 + TLSv1.2, instead of TLSv1.0 only
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.incompatible.gettype-on-closed-resource">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.gettype.php" class="function">gettype()</a></span> return value on closed resources</h3>
+
+  <p class="para">
+   Previously, using <span class="function"><a href="https://www.php.net/manual/en/function.gettype.php" class="function">gettype()</a></span> on a closed resource would
+   return a string of <code class="literal">"unknown type"</code>. Now, a string of
+   <code class="literal">"resource (closed)"</code> will be returned.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.is_object-on-incomplete_class">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.is-object.php" class="function">is_object()</a></span> and <strong class="classname">__PHP_Incomplete_Class</strong></h3>
+
+  <p class="para">
+   Previously, using <span class="function"><a href="https://www.php.net/manual/en/function.is-object.php" class="function">is_object()</a></span> on the
+   <strong class="classname">__PHP_Incomplete_Class</strong> class would return <strong><code>false</code></strong>.
+   Now, <strong><code>true</code></strong> will be returned.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.undefined-constants">
+  <h3 class="title">Promote the error level of undefined constants</h3>
+
+  <p class="para">
+   Unqualified references to undefined constants will now generate an
+   <strong><code>E_WARNING</code></strong> (instead of an <strong><code>E_NOTICE</code></strong>).
+   In the next major version of PHP, they will generate
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exceptions.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.windows-support">
+  <h3 class="title">Windows support</h3>
+
+  <p class="para">
+   The officially supported, minimum Windows versions are now Windows 7/Server
+   2008 R2.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.trait-properties">
+  <h3 class="title">Checks on default property values of traits</h3>
+
+  <p class="para">
+   Compatibility checks upon default trait property values will no longer
+   perform casting.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.object-reserved-word">
+  <h3 class="title"><code class="literal">object</code> for class names</h3>
+
+  <p class="para">
+   The <code class="literal">object</code> name was previously soft-reserved in PHP 7.0.
+   This is now hard-reserved, prohibiting it from being used as a class, trait,
+   or interface name.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.netware-support">
+  <h3 class="title">NetWare support</h3>
+
+  <p class="para">
+   Support for NetWare has now been removed.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.array-unique">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.array-unique.php" class="function">array_unique()</a></span> with <strong><code>SORT_STRING</code></strong></h3>
+
+  <p class="para">
+   While <span class="function"><a href="https://www.php.net/manual/en/function.array-unique.php" class="function">array_unique()</a></span> with <strong><code>SORT_STRING</code></strong>
+   formerly copied the array and removed non-unique elements (without packing
+   the array afterwards), now a new array is built by adding the
+   unique elements. This can result in different numeric indexes.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.bcmod-and-floats">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.bcmod.php" class="function">bcmod()</a></span> changes with floats</h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.bcmod.php" class="function">bcmod()</a></span> function no longer truncates fractional
+   numbers to integers. As such, its behavior now follows
+   <span class="function"><a href="https://www.php.net/manual/en/function.fmod.php" class="function">fmod()</a></span>, rather than the <code class="literal">%</code> operator.
+   For example <code class="literal">bcmod('4', '3.5')</code> now returns
+   <code class="literal">0.5</code> instead of <code class="literal">1</code>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.hash-functions">
+  <h3 class="title">Hashing functions and non-cryptographic hashes</h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.hash-hmac.php" class="function">hash_hmac()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.hash-hmac-file.php" class="function">hash_hmac_file()</a></span>,
+   <span class="function"><a href="https://www.php.net/manual/en/function.hash-pbkdf2.php" class="function">hash_pbkdf2()</a></span>, and <span class="function"><a href="https://www.php.net/manual/en/function.hash-init.php" class="function">hash_init()</a></span> (with
+   <strong><code>HASH_HMAC</code></strong>) functions no longer accept non-cryptographic
+   hashes.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.json_decode-changes">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.json-decode.php" class="function">json_decode()</a></span> function options</h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.json-decode.php" class="function">json_decode()</a></span> function option,
+   <strong><code>JSON_OBJECT_AS_ARRAY</code></strong>, is now used if the second
+   parameter (assoc) is <strong><code>null</code></strong>. Previously,
+   <strong><code>JSON_OBJECT_AS_ARRAY</code></strong> was always ignored.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.rand-mt_rand-output">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.rand.php" class="function">rand()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.mt-rand.php" class="function">mt_rand()</a></span> output</h3>
+
+  <p class="para">
+   Sequences generated by <span class="function"><a href="https://www.php.net/manual/en/function.rand.php" class="function">rand()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.mt-rand.php" class="function">mt_rand()</a></span> for a specific seed may differ from PHP 7.1 on
+   64-bit machines (due to the fixing of a modulo bias bug in the
+   implementation).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.sqlsafe_mode-ini-setting">
+  <h3 class="title">Removal of <a href="https://www.php.net/manual/en/ini.core.php#ini.sql.safe-mode" class="link"><code class="parameter">sql.safe_mode</code></a> ini setting</h3>
+
+  <p class="para">
+   The <code class="parameter">sql.safe_mode</code> ini setting has now been removed.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.date_parse_from_format">
+  <h3 class="title">Changes to <span class="function"><a href="https://www.php.net/manual/en/function.date-parse.php" class="function">date_parse()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.date-parse-from-format.php" class="function">date_parse_from_format()</a></span></h3>
+
+  <p class="para">
+   The <code class="literal">zone</code> element of the array returned by <span class="function"><a href="https://www.php.net/manual/en/function.date-parse.php" class="function">date_parse()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.date-parse-from-format.php" class="function">date_parse_from_format()</a></span> represents seconds instead of
+   minutes now, and its sign is inverted. For instance <code class="literal">-120</code>
+   is now <code class="literal">7200</code>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.cookie-decode">
+  <h3 class="title">Incoming Cookies</h3>
+
+  <p class="para">
+   As of PHP 7.2.34, the <em class="emphasis">names</em> of incoming cookies are no
+   longer url-decoded for security reasons.
+  </p>
+ </div>
+
+</div>

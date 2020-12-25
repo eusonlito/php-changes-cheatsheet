@@ -1,0 +1,175 @@
+---
+title: Deprecated features in PHP 7.2.x
+version: "7.2"
+tags:
+ - "7.2"
+ - deprecated
+---
+<div id="migration72.deprecated" class="sect1">
+ <h2 class="title">Deprecated features in PHP 7.2.x</h2>
+
+ <div class="sect2" id="migration72.deprecated.unquoted-strings">
+  <h3 class="title">Unquoted strings</h3>
+
+  <p class="para">
+   Unquoted strings that are non-existent global constants are taken to be
+   strings of themselves. This behaviour used to emit an
+   <strong><code>E_NOTICE</code></strong>, but will now emit an
+   <strong><code>E_WARNING</code></strong>. In the next major version of PHP, an
+   <a href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception will be thrown instead.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">NONEXISTENT</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* Output:<br>Warning: Use of undefined constant NONEXISTENT - assumed 'NONEXISTENT' (this will throw an Error in a future version of PHP) in %s on line %d<br>string(11) "NONEXISTENT"<br>*/</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.png2wbmp-jpeg2wbmp">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.png2wbmp.php" class="function">png2wbmp()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.jpeg2wbmp.php" class="function">jpeg2wbmp()</a></span></h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.png2wbmp.php" class="function">png2wbmp()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.jpeg2wbmp.php" class="function">jpeg2wbmp()</a></span>
+   functions from the GD extension have now been deprecated and will be removed
+   in the next major version of PHP.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.INTL_IDNA_VARIANT_2003-variant">
+  <h3 class="title"><strong><code>INTL_IDNA_VARIANT_2003</code></strong> variant</h3>
+
+  <p class="para">
+   The Intl extension has deprecated the
+   <strong><code>INTL_IDNA_VARIANT_2003</code></strong> variant, which is currently
+   being used as the default for <span class="function"><a href="https://www.php.net/manual/en/function.idn-to-ascii.php" class="function">idn_to_ascii()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.idn-to-utf8.php" class="function">idn_to_utf8()</a></span>. PHP 7.4 will see these defaults changed to
+   <strong><code>INTL_IDNA_VARIANT_UTS46</code></strong>, and the next major version of
+   PHP will remove <strong><code>INTL_IDNA_VARIANT_2003</code></strong> altogether.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.__autoload-method">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.autoload.php" class="function">__autoload()</a></span> method</h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.autoload.php" class="function">__autoload()</a></span> method has been deprecated because it is
+   inferior to <span class="function"><a href="https://www.php.net/manual/en/function.spl-autoload-register.php" class="function">spl_autoload_register()</a></span> (due to it not being
+   able to chain autoloaders), and there is no interoperability between the two
+   autoloading styles.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.track_errors-and-php_errormsg">
+  <h3 class="title"><code class="parameter">track_errors</code> ini setting and <code class="literal">$php_errormsg</code> variable</h3>
+
+  <p class="para">
+   When the <code class="parameter">track_errors</code> ini setting is enabled, a
+   <code class="literal">$php_errormsg</code> variable is created in the local scope when
+   a non-fatal error occurs. Given that the preferred way of retrieving such
+   error information is by using <span class="function"><a href="https://www.php.net/manual/en/function.error-get-last.php" class="function">error_get_last()</a></span>, this
+   feature has been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.create_function-function">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.create-function.php" class="function">create_function()</a></span> function</h3>
+
+  <p class="para">
+   Given the security issues of this function (being a thin wrapper around
+   <span class="function"><a href="https://www.php.net/manual/en/function.eval.php" class="function">eval()</a></span>), this dated function has now been deprecated.
+   The preferred alternative is to use <a href="https://www.php.net/manual/en/functions.anonymous.php" class="link">anonymous functions</a>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.mbstringfunc_overload-ini-setting">
+  <h3 class="title"><code class="parameter">mbstring.func_overload</code> ini setting</h3>
+
+  <p class="para">
+   Given the interoperability problems of string-based functions being used in
+   environments with this setting enabled, it has now been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.unset-cast">
+  <h3 class="title"><code class="literal">(unset)</code> cast</h3>
+
+  <p class="para">
+   Casting any expression to this type will always result in <strong><code>null</code></strong>, and so
+   this superfluous casting type has now been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.parse_str-no-second-arg">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.parse-str.php" class="function">parse_str()</a></span> without a second argument</h3>
+
+  <p class="para">
+   Without the second argument to <span class="function"><a href="https://www.php.net/manual/en/function.parse-str.php" class="function">parse_str()</a></span>, the query
+   string parameters would populate the local symbol table.
+   Given the security implications of this, using
+   <span class="function"><a href="https://www.php.net/manual/en/function.parse-str.php" class="function">parse_str()</a></span> without a second argument has now been
+   deprecated. The function should always be used with two arguments, as the
+   second argument causes the query string to be parsed into an array.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.gmp_random-function">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.gmp-random.php" class="function">gmp_random()</a></span> function</h3>
+
+  <p class="para">
+   This function generates a random number based upon a range that is
+   calculated by an unexposed, platform-specific limb size. Because of this,
+   the function has now been deprecated. The preferred way of generating a
+   random number using the GMP extension is by
+   <span class="function"><a href="https://www.php.net/manual/en/function.gmp-random-bits.php" class="function">gmp_random_bits()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.gmp-random-range.php" class="function">gmp_random_range()</a></span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.each-function">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.each.php" class="function">each()</a></span> function</h3>
+
+  <p class="para">
+   This function is far slower at iteration than a normal
+   <code class="literal">foreach</code>, and causes implementation issues for some
+   language changes. It has therefore been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.assert-string-arg">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.assert.php" class="function">assert()</a></span> with a string argument</h3>
+
+  <p class="para">
+   Using <span class="function"><a href="https://www.php.net/manual/en/function.assert.php" class="function">assert()</a></span> with a string argument required the string
+   to be <span class="function"><a href="https://www.php.net/manual/en/function.eval.php" class="function">eval()</a></span>'ed. Given the potential for remote code
+   execution, using <span class="function"><a href="https://www.php.net/manual/en/function.assert.php" class="function">assert()</a></span> with a string argument has now
+   been deprecated in favour of using boolean expressions.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.errcontext-arg-of-error-handlers">
+  <h3 class="title"><code class="literal">$errcontext</code> argument of error handlers</h3>
+
+  <p class="para">
+   The <code class="literal">$errcontext</code> argument contains all local variables of
+   the error site. Given its rare usage, and the problems it causes with
+   internal optimisations, it has now been deprecated.
+   Instead, a debugger should be used to retrieve
+   information on local variables at the error site.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.read_exif_data-function">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.read-exif-data.php" class="function">read_exif_data()</a></span> function</h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.read-exif-data.php" class="function">read_exif_data()</a></span> alias has been deprecated.
+   The <span class="function"><a href="https://www.php.net/manual/en/function.exif-read-data.php" class="function">exif_read_data()</a></span> function should be used instead.
+  </p>
+ </div>
+
+</div>

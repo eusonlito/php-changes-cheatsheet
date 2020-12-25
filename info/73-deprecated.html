@@ -1,0 +1,173 @@
+---
+title: Deprecated Features
+version: "7.3"
+tags:
+ - "7.3"
+ - deprecated
+---
+<div id="migration73.deprecated" class="sect1">
+ <h2 class="title">Deprecated Features</h2>
+
+ <div class="sect2" id="migration73.deprecated.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration73.deprecated.core.ci-constant">
+   <h4 class="title">Case-Insensitive Constants</h4>
+
+   <p class="para">
+    The declaration of case-insensitive constants has been deprecated. Passing
+    <strong><code>true</code></strong> as the third argument to <span class="function"><a href="https://www.php.net/manual/en/function.define.php" class="function">define()</a></span> will now generate a
+    deprecation warning. The use of case-insensitive constants with a case that
+    differs from the declaration is also deprecated.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.deprecated.core.assert">
+   <h4 class="title">Namespaced assert()</h4>
+
+   <p class="para">
+    Declaring a function called <code class="literal">assert()</code> inside a namespace is
+    deprecated. The <span class="function"><a href="https://www.php.net/manual/en/function.assert.php" class="function">assert()</a></span> function is subject to special
+    handling by the engine, which may lead to inconsistent behavior when defining
+    a namespaced function with the same name.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.deprecated.core.string-search">
+   <h4 class="title">Searching Strings for non-string Needle</h4>
+
+   <p class="para">
+    Passing a non-string needle to string search functions is deprecated. In the
+    future the needle will be interpreted as a string instead of an ASCII
+    codepoint. Depending on the intended behavior, you should either explicitly
+    cast the needle to string or perform an explicit call to
+    <span class="function"><a href="https://www.php.net/manual/en/function.chr.php" class="function">chr()</a></span>. The following functions are affected:
+    </p><ul class="itemizedlist"><li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.strpos.php" class="function">strpos()</a></span></span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.strrpos.php" class="function">strrpos()</a></span></span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.stripos.php" class="function">stripos()</a></span></span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.strripos.php" class="function">strripos()</a></span></span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.strstr.php" class="function">strstr()</a></span></span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.strchr.php" class="function">strchr()</a></span></span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.strrchr.php" class="function">strrchr()</a></span></span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="function"><a href="https://www.php.net/manual/en/function.stristr.php" class="function">stristr()</a></span></span>
+     </li>
+    </ul></div>
+
+  <div class="sect3" id="migration73.deprecated.core.strip-tags-streaming">
+   <h4 class="title">Strip-Tags Streaming</h4>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.fgetss.php" class="function">fgetss()</a></span> function and the <a href="https://www.php.net/manual/en/filters.string.php" class="link">string.strip_tags stream filter</a> have been
+    deprecated. This also affects the
+    <span class="methodname"><a href="https://www.php.net/manual/en/splfileobject.fgetss.php" class="methodname">SplFileObject::fgetss()</a></span>
+    method and <span class="function"><a href="https://www.php.net/manual/en/function.gzgetss.php" class="function">gzgetss()</a></span> function.
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration73.deprecated.filter">
+  <h3 class="title">Data Filtering</h3>
+
+  <p class="para">
+   The explicit usage of the constants
+   <strong><code>FILTER_FLAG_SCHEME_REQUIRED</code></strong> and
+   <strong><code>FILTER_FLAG_HOST_REQUIRED</code></strong> is now deprecated; both are
+   implied for <strong><code>FILTER_VALIDATE_URL</code></strong> anyway.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.deprecated.image">
+  <h3 class="title">Image Processing and GD</h3>
+
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.image2wbmp.php" class="function">image2wbmp()</a></span> has been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.deprecated.intl">
+  <h3 class="title">Internationalization Functions</h3>
+
+  <p class="para">
+   Usage of the <strong><code>Normalizer::NONE</code></strong> form throws a deprecation
+   warning, if PHP is linked with ICU ≥ 56.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.deprecated.mbstring">
+  <h3 class="title">Multibyte String</h3>
+
+  <p class="para">
+   The following undocumented <code class="literal">mbereg_*()</code> aliases have been
+   deprecated. Use the corresponding <code class="literal">mb_ereg_*()</code> variants
+   instead.
+   </p><ul class="itemizedlist"><li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbregex_encoding()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mberegi()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_replace()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mberegi_replace()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbsplit()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_match()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_search()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_search_pos()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_search_regs()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_search_init()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_search_getregs()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_search_getpos()</strong></span></span> 
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="function"><strong>mbereg_search_setpos()</strong></span></span> 
+    </li>
+   </ul></div>
+
+ <div class="sect2" id="migration73.deprecated.pdo-odbc">
+  <h3 class="title">ODBC and DB2 Functions (PDO_ODBC)</h3>
+
+  <p class="para">
+   The <a href="https://www.php.net/manual/en/ref.pdo-odbc.php#ini.pdo-odbc.db2-instance-name" class="link">pdo_odbc.db2_instance_name</a>
+   ini setting has been formally deprecated. It is deprecated in the
+   documentation as of PHP 5.1.1.
+  </p>
+ </div>
+
+</div>

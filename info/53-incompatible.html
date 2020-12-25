@@ -1,0 +1,141 @@
+---
+title: Backward Incompatible Changes
+version: "5.3"
+tags:
+ - "5.3"
+ - incompatible
+---
+<div id="migration53.incompatible" class="section">
+  <h2 class="title">Backward Incompatible Changes</h2>
+  <p class="simpara">
+   Although most existing PHP 5 code should work without changes, please take
+   note of some backward incompatible changes:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     The newer internal parameter parsing API has been applied across all the
+     extensions bundled with PHP 5.3.x. This parameter parsing API causes
+     functions to return <strong><code>null</code></strong> when passed incompatible parameters. There are
+     some exceptions to this rule, such as the <span class="function"><a href="https://www.php.net/manual/en/function.get-class.php" class="function">get_class()</a></span>
+     function, which will continue to return <strong><code>false</code></strong> on error.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.clearstatcache.php" class="function">clearstatcache()</a></span> no longer clears the realpath cache by
+     default.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.realpath.php" class="function">realpath()</a></span> is now fully platform-independent.
+     Consequence of this is that invalid relative paths such as
+     <code class="literal">__FILE__ . "/../x"</code> do not work anymore.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <span class="function"><a href="https://www.php.net/manual/en/function.call-user-func.php" class="function">call_user_func()</a></span> family of functions now propagate
+     <code class="literal">$this</code> even if the callee is a parent class.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The array functions <span class="function"><a href="https://www.php.net/manual/en/function.natsort.php" class="function">natsort()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.natcasesort.php" class="function">natcasesort()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.usort.php" class="function">usort()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.uasort.php" class="function">uasort()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.uksort.php" class="function">uksort()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.array-flip.php" class="function">array_flip()</a></span>, and <span class="function"><a href="https://www.php.net/manual/en/function.array-unique.php" class="function">array_unique()</a></span> no
+     longer accept objects passed as arguments. To apply these functions to an
+     object, cast the object to an array first.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The behaviour of functions with by-reference parameters called by value has
+     changed. Where previously the function would accept the by-value argument,
+     a fatal error is now emitted. Any previous code passing constants or 
+     literals to functions expecting references, will need altering to assign 
+     the value to a variable before calling the function.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The new mysqlnd library necessitates the use of MySQL 4.1's newer 41-byte
+     password format. Continued use of the old 16-byte passwords will cause
+     <span class="function"><a href="https://www.php.net/manual/en/function.mysql-connect.php" class="function">mysql_connect()</a></span> and similar functions to emit the error,
+     <code class="literal">"mysqlnd cannot connect to MySQL 4.1+ using old
+     authentication."</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The new mysqlnd library does not read mysql configuration files 
+     (my.cnf/my.ini), as the older libmysqlclient library does.  If your code relies on 
+     settings in the configuration file, you can load it explicitly with the 
+     <span class="function"><a href="https://www.php.net/manual/en/mysqli.options.php" class="function">mysqli_options()</a></span> function. Note that this means the 
+     PDO specific constants <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_FILE</code></strong> 
+     and <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</code></strong> are not defined 
+     if MySQL support in PDO is compiled with mysqlnd.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The trailing / has been removed from the <a href="https://www.php.net/manual/en/class.splfileinfo.php" class="classname">SplFileInfo</a>
+     class and other related directory classes.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <a href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> magic
+     method can no longer accept arguments.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The magic methods 
+     <a href="https://www.php.net/manual/en/language.oop5.overloading.php#object.get" class="link">__get()</a>, 
+     <a href="https://www.php.net/manual/en/language.oop5.overloading.php#object.set" class="link">__set()</a>, 
+     <a href="https://www.php.net/manual/en/language.oop5.overloading.php#object.isset" class="link">__isset()</a>, 
+     <a href="https://www.php.net/manual/en/language.oop5.overloading.php#object.unset" class="link">__unset()</a>, and
+     <a href="https://www.php.net/manual/en/language.oop5.overloading.php#object.call" class="link">__call()</a> must always
+     be public and can no longer be static. Method signatures are now enforced.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <a href="https://www.php.net/manual/en/language.oop5.overloading.php#object.call" class="link">__call()</a>
+     magic method is now invoked on access to private and protected methods.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.func-get-arg.php" class="function">func_get_arg()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.func-get-args.php" class="function">func_get_args()</a></span> and
+     <span class="function"><a href="https://www.php.net/manual/en/function.func-num-args.php" class="function">func_num_args()</a></span> can no longer be called from the
+     outermost scope of a file that has been included by calling
+     <span class="function"><a href="https://www.php.net/manual/en/function.include.php" class="function">include</a></span> or <span class="function"><a href="https://www.php.net/manual/en/function.require.php" class="function">require</a></span> from within
+     a function in the calling file.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     An emulation layer for the MHASH extension to wrap around the Hash extension 
+     have been added. However not all the algorithms are covered, notable the 
+     s2k hashing algorithm. This means that s2k hashing is no longer available 
+     as of PHP 5.3.0.
+    </span>
+   </li>
+  </ul><p class="simpara">
+   The following keywords are now reserved and may not be used in function,
+   class, etc. names.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/control-structures.goto.php" class="link">goto</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/language.namespaces.php" class="link">namespace</a>
+    </span>
+   </li>
+  </ul></div>

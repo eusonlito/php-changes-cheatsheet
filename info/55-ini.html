@@ -1,0 +1,32 @@
+---
+title: Changes to INI file handling
+version: "5.5"
+tags:
+ - "5.5"
+ - ini
+---
+<div id="migration55.ini" class="sect1">
+  <h2 class="title">Changes to INI file handling</h2>
+
+  <div class="sect2" id="migrations55.ini.intl">
+   <h3 class="title"><a href="https://www.php.net/manual/en/book.intl.php" class="link">Intl</a></h3>
+
+   <p class="para">
+    The <code class="literal">intl.use_exceptions</code> configuration directive has
+    been added, which controls the behaviour of intl when global errors occur
+    in conjunction with the already extant <code class="literal">intl.error_level</code>
+    configuration directive.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.ini.mysqlnd">
+   <h3 class="title"><a href="https://www.php.net/manual/en/book.mysqlnd.php" class="link">MySQLnd</a></h3>
+
+   <p class="para">
+    The <a href="https://www.php.net/manual/en/mysqlnd.config.php#ini.mysqlnd.sha256-server-public-key" class="link">mysqlnd.sha256_server_public_key</a>
+    configuration directive has been added to allow
+    <a href="https://www.php.net/manual/en/book.mysqli.php" class="link">mysqli</a> to use the new MySQL
+    authentication protocol.
+   </p>
+  </div>
+ </div>

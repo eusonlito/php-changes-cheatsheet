@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>{{ title }}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="{{ author }}">
+        <meta name="title" content="{{ title }}">
+        <meta name="description" content="{{ description }}">
+
+        <meta property="og:title" content="{{ title }}">
+        <meta property="og:description" content="{{ description }}">
+        <meta property="og:image" content="{{ image | url }}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="{{ twitter }}">
+        <meta name="twitter:creator" content="{{ twitter }}">
+        <meta name="twitter:title" content="{{ title }}">
+        <meta name="twitter:description" content="{{ description }}">
+        <meta name="twitter:image" content="{{ image | url }}">
+
+        <link rel="stylesheet" href="{{ css | url }}" type="text/css" media="screen">
+    </head>
+
+    <body>
+        {{ content | safe }}
+    </body>
+</html>

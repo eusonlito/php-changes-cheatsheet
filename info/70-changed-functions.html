@@ -1,0 +1,82 @@
+---
+title: Changed functions
+version: "7.0"
+tags:
+ - "7.0"
+ - changed-functions
+---
+<div id="migration70.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration70.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+  
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.debug-zval-dump.php" class="function">debug_zval_dump()</a></span> now prints "int" instead of "long",
+     and "float" instead of "double"
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.dirname.php" class="function">dirname()</a></span> now optionally takes a second parameter,
+     <code class="parameter">depth</code>, to get the name of the directory
+     <code class="parameter">depth</code> levels up from the current directory.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.getrusage.php" class="function">getrusage()</a></span> is now supported on Windows.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mktime.php" class="function">mktime()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.gmmktime.php" class="function">gmmktime()</a></span> functions
+     no longer accept <code class="parameter">is_dst</code> parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.preg-replace.php" class="function">preg_replace()</a></span> function no longer supports
+     "\e" (<strong><code>PREG_REPLACE_EVAL</code></strong>). <span class="function"><a href="https://www.php.net/manual/en/function.preg-replace-callback.php" class="function">preg_replace_callback()</a></span>
+     should be used instead.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.setlocale.php" class="function">setlocale()</a></span> function no longer accepts <code class="parameter">category</code>
+     passed as string. <strong><code>LC_*</code></strong> constants must be used instead.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.exec.php" class="function">exec()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.system.php" class="function">system()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.passthru.php" class="function">passthru()</a></span>
+     functions have NULL byte protection now.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.shmop-open.php" class="function">shmop_open()</a></span> now returns a resource instead of an int,
+     which has to be passed to <span class="function"><a href="https://www.php.net/manual/en/function.shmop-size.php" class="function">shmop_size()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.shmop-write.php" class="function">shmop_write()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.shmop-read.php" class="function">shmop_read()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.shmop-close.php" class="function">shmop_close()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.shmop-delete.php" class="function">shmop_delete()</a></span>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.substr.php" class="function">substr()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.iconv-substr.php" class="function">iconv_substr()</a></span> now return an empty string,
+     if string is equal to start characters long.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.xml-parser-free.php" class="function">xml_parser_free()</a></span> is no longer sufficient to free the
+     parser resource, if it references an object and this object references that
+     parser resource. In this case it is necessary to additionally unset the $parser.
+    </span>
+   </li>
+  </ul></div>
+
+
+</div>

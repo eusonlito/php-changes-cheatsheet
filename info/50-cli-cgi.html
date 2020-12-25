@@ -1,0 +1,33 @@
+---
+title: CLI and CGI
+version: "5.0"
+tags:
+ - "5.0"
+ - cli-cgi
+---
+<div id="migration5.cli-cgi" class="section">
+   <h2 class="title">CLI and CGI</h2>
+   <p class="para">
+    In PHP 5 there were some changes in CLI and CGI filenames. In PHP 5, the
+    CGI version was renamed to <var class="filename">php-cgi.exe</var> (previously
+    <var class="filename">php.exe</var>) and the CLI version now sits in the main
+    directory (previously <var class="filename">cli/php.exe</var>).
+   </p>
+   <p class="para">
+    In PHP 5 it was also introduced a new mode:
+    <var class="filename">php-win.exe</var>. This is equal to the CLI version, except
+    that php-win doesn't output anything and thus provides no console (no "dos
+    box" appears on the screen). This behavior is similar to php-gtk.
+   </p>
+   <p class="para">
+    In PHP 5, the CLI version will always populate the global 
+    <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.argv.php" class="classname">$argv</a></var> and <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.argc.php" class="classname">$argc</a></var> variables regardless
+    of any <var class="filename">php.ini</var> directive setting.  Even having  
+    <a href="https://www.php.net/manual/en/ini.core.php#ini.register-argc-argv" class="link">register_argc_argv</a> set to
+    <code class="literal">off</code> will have no affect in CLI.
+   </p>
+   <p class="para">
+    See also the <a href="https://www.php.net/manual/en/features.commandline.php" class="link">command line 
+    reference</a>.
+   </p>
+  </div>

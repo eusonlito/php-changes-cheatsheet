@@ -1,0 +1,580 @@
+---
+title: New functions
+version: "7.2"
+tags:
+ - "7.2"
+ - new-functions
+---
+<div id="migration72.new-functions" class="sect1">
+ <h2 class="title">New functions</h2>
+
+ <div class="sect2" id="migration72.new-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-isatty.php" class="function">stream_isatty()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sapi-windows-vt100-support.php" class="function">sapi_windows_vt100_support()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.spl">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.spl.php" class="link">SPL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.spl-object-id.php" class="function">spl_object_id()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.dom">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.dom.php" class="link">DOM</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/domnodelist.count.php" class="methodname">DomNodeList::count()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/domnamednodemap.count.php" class="methodname">DOMNamedNodeMap::count()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.ftp">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.ftp.php" class="link">FTP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.ftp-append.php" class="function">ftp_append()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.image">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.image.php" class="link">GD</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagesetclip.php" class="function">imagesetclip()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagegetclip.php" class="function">imagegetclip()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imageopenpolygon.php" class="function">imageopenpolygon()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imageresolution.php" class="function">imageresolution()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagecreatefrombmp.php" class="function">imagecreatefrombmp()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagebmp.php" class="function">imagebmp()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.hash">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.hash.php" class="link">Hash</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.hash-hmac-algos.php" class="function">hash_hmac_algos()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.ldap">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.ldap-parse-exop.php" class="function">ldap_parse_exop()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.ldap-exop.php" class="function">ldap_exop()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.ldap-exop-passwd.php" class="function">ldap_exop_passwd()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.ldap-exop-whoami.php" class="function">ldap_exop_whoami()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.mbstring">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.mbstring.php" class="link">Multibyte String</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-chr.php" class="function">mb_chr()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-ord.php" class="function">mb_ord()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-scrub.php" class="function">mb_scrub()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.oci8">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.oci8.php" class="link">Oracle OCI8</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.oci-register-taf-callback.php" class="function">oci_register_taf_callback()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.oci-unregister-taf-callback.php" class="function">oci_unregister_taf_callback()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.sockets">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.sockets.php" class="link">Sockets</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.socket-addrinfo-lookup.php" class="function">socket_addrinfo_lookup()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.socket-addrinfo-connect.php" class="function">socket_addrinfo_connect()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.socket-addrinfo-bind.php" class="function">socket_addrinfo_bind()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.socket-addrinfo-explain.php" class="function">socket_addrinfo_explain()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.sodium">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.sodium.php" class="link">Sodium</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-add.php" class="function">sodium_add()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-bin2hex.php" class="function">sodium_bin2hex()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-compare.php" class="function">sodium_compare()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-decrypt.php" class="function">sodium_crypto_aead_aes256gcm_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-encrypt.php" class="function">sodium_crypto_aead_aes256gcm_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-is-available.php" class="function">sodium_crypto_aead_aes256gcm_is_available()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-keygen.php" class="function">sodium_crypto_aead_aes256gcm_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-decrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-encrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-ietf-decrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_ietf_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-ietf-encrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_ietf_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-ietf-keygen.php" class="function">sodium_crypto_aead_chacha20poly1305_ietf_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-keygen.php" class="function">sodium_crypto_aead_chacha20poly1305_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-auth-keygen.php" class="function">sodium_crypto_auth_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-auth-verify.php" class="function">sodium_crypto_auth_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-auth.php" class="function">sodium_crypto_auth()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-keypair-from-secretkey-and-publickey.php" class="function">sodium_crypto_box_keypair_from_secretkey_and_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-keypair.php" class="function">sodium_crypto_box_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-open.php" class="function">sodium_crypto_box_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-publickey-from-secretkey.php" class="function">sodium_crypto_box_publickey_from_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-publickey.php" class="function">sodium_crypto_box_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-seal-open.php" class="function">sodium_crypto_box_seal_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-seal.php" class="function">sodium_crypto_box_seal()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-secretkey.php" class="function">sodium_crypto_box_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box-seed-keypair.php" class="function">sodium_crypto_box_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-box.php" class="function">sodium_crypto_box()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-generichash-final.php" class="function">sodium_crypto_generichash_final()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-generichash-init.php" class="function">sodium_crypto_generichash_init()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-generichash-keygen.php" class="function">sodium_crypto_generichash_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-generichash-update.php" class="function">sodium_crypto_generichash_update()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-generichash.php" class="function">sodium_crypto_generichash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kdf-derive-from-key.php" class="function">sodium_crypto_kdf_derive_from_key()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kdf-keygen.php" class="function">sodium_crypto_kdf_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kx-client-session-keys.php" class="function">sodium_crypto_kx_client_session_keys()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kx-keypair.php" class="function">sodium_crypto_kx_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kx-publickey.php" class="function">sodium_crypto_kx_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kx-secretkey.php" class="function">sodium_crypto_kx_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kx-seed-keypair.php" class="function">sodium_crypto_kx_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-kx-server-session-keys.php" class="function">sodium_crypto_kx_server_session_keys()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-scryptsalsa208sha256-str-verify.php" class="function">sodium_crypto_pwhash_scryptsalsa208sha256_str_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-scryptsalsa208sha256-str.php" class="function">sodium_crypto_pwhash_scryptsalsa208sha256_str()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-scryptsalsa208sha256.php" class="function">sodium_crypto_pwhash_scryptsalsa208sha256()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-str-verify.php" class="function">sodium_crypto_pwhash_str_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-str.php" class="function">sodium_crypto_pwhash_str()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-pwhash.php" class="function">sodium_crypto_pwhash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-scalarmult-base.php" class="function">sodium_crypto_scalarmult_base()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-scalarmult.php" class="function">sodium_crypto_scalarmult()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-secretbox-keygen.php" class="function">sodium_crypto_secretbox_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-secretbox-open.php" class="function">sodium_crypto_secretbox_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-secretbox.php" class="function">sodium_crypto_secretbox()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-shorthash-keygen.php" class="function">sodium_crypto_shorthash_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-shorthash.php" class="function">sodium_crypto_shorthash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-detached.php" class="function">sodium_crypto_sign_detached()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-ed25519-pk-to-curve25519.php" class="function">sodium_crypto_sign_ed25519_pk_to_curve25519()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-ed25519-sk-to-curve25519.php" class="function">sodium_crypto_sign_ed25519_sk_to_curve25519()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-keypair-from-secretkey-and-publickey.php" class="function">sodium_crypto_sign_keypair_from_secretkey_and_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-keypair.php" class="function">sodium_crypto_sign_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-open.php" class="function">sodium_crypto_sign_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-publickey-from-secretkey.php" class="function">sodium_crypto_sign_publickey_from_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-publickey.php" class="function">sodium_crypto_sign_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-secretkey.php" class="function">sodium_crypto_sign_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-seed-keypair.php" class="function">sodium_crypto_sign_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign-verify-detached.php" class="function">sodium_crypto_sign_verify_detached()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-sign.php" class="function">sodium_crypto_sign()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-stream-keygen.php" class="function">sodium_crypto_stream_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-stream-xor.php" class="function">sodium_crypto_stream_xor()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-crypto-stream.php" class="function">sodium_crypto_stream()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-hex2bin.php" class="function">sodium_hex2bin()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-increment.php" class="function">sodium_increment()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-memcmp.php" class="function">sodium_memcmp()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-memzero.php" class="function">sodium_memzero()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-pad.php" class="function">sodium_pad()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sodium-unpad.php" class="function">sodium_unpad()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.zip">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.zip.php" class="link">ZIP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/ziparchive.count.php" class="methodname">ZipArchive::count()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/ziparchive.setencryptionname.php" class="methodname">ZipArchive::setEncryptionName()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/ziparchive.setencryptionindex.php" class="methodname">ZipArchive::setEncryptionIndex()</a></span>
+    </span>
+   </li>
+  </ul></div>
+</div>

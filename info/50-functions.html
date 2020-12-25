@@ -1,0 +1,500 @@
+---
+title: New Functions
+version: "5.0"
+tags:
+ - "5.0"
+ - functions
+---
+<div id="migration5.functions" class="section">
+   <h2 class="title">New Functions</h2>
+   <p class="para">
+    In PHP 5 there are some new functions. Here is the list of them:
+   </p>
+   <p class="para"><a href="https://www.php.net/manual/en/ref.array.php" class="link">Arrays</a>:</p>
+    <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-combine.php" class="function">array_combine()</a></span> - Creates an array by using one array
+      for keys and another for its values
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-diff-uassoc.php" class="function">array_diff_uassoc()</a></span> - Computes the difference of
+      arrays with additional index check which is performed by a user supplied
+      callback function
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-udiff.php" class="function">array_udiff()</a></span> - Computes the difference of arrays by
+      using a callback function for data comparison
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-udiff-assoc.php" class="function">array_udiff_assoc()</a></span> - Computes the difference of
+      arrays with additional index check. The data is compared by using a
+      callback function
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-udiff-uassoc.php" class="function">array_udiff_uassoc()</a></span> - Computes the difference of
+      arrays with additional index check. The data is compared by using a
+      callback function. The index check is done by a callback function also
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-walk-recursive.php" class="function">array_walk_recursive()</a></span> - Apply a user function
+      recursively to every member of an array
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-uintersect-assoc.php" class="function">array_uintersect_assoc()</a></span> - Computes the intersection of
+      arrays with additional index check. The data is compared by using a
+      callback function
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-uintersect-uassoc.php" class="function">array_uintersect_uassoc()</a></span> - Computes the intersection of
+      arrays with additional index check. Both the data and the indexes are compared
+      by using separate callback functions
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-uintersect.php" class="function">array_uintersect()</a></span> - Computes the intersection of arrays.
+      The data is compared by using a callback function
+     </span>
+    </li>
+   </ul><p class="para"><a href="https://www.php.net/manual/en/ref.ibase.php" class="link">InterBase</a>:</p>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-affected-rows.php" class="function">ibase_affected_rows()</a></span> - Return the number of rows
+      that were affected by the previous query
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-backup.php" class="function">ibase_backup()</a></span> - Initiates a backup task in the
+      service manager and returns immediately
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-commit-ret.php" class="function">ibase_commit_ret()</a></span> - Commit a transaction without
+      closing it
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-db-info.php" class="function">ibase_db_info()</a></span> - Request statistics about a
+      database
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-drop-db.php" class="function">ibase_drop_db()</a></span> - Drops a database
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-errcode.php" class="function">ibase_errcode()</a></span> - Return an error code
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-free-event-handler.php" class="function">ibase_free_event_handler()</a></span> - Cancels a registered
+      event handler
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-gen-id.php" class="function">ibase_gen_id()</a></span> - Increments the named generator and
+      returns its new value
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-maintain-db.php" class="function">ibase_maintain_db()</a></span> - Execute a maintenance command
+      on the database server
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-name-result.php" class="function">ibase_name_result()</a></span> - Assigns a name to a result set
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-num-params.php" class="function">ibase_num_params()</a></span> - Return the number of parameters
+      in a prepared query
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-param-info.php" class="function">ibase_param_info()</a></span> - Return information about a
+      parameter in a prepared query
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-restore.php" class="function">ibase_restore()</a></span> - Initiates a restore task in the
+      service manager and returns immediately
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-rollback-ret.php" class="function">ibase_rollback_ret()</a></span> - Rollback transaction and
+      retain the transaction context
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-server-info.php" class="function">ibase_server_info()</a></span> - Request statistics about a
+      database server
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-service-attach.php" class="function">ibase_service_attach()</a></span> - Connect to the service manager
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-service-detach.php" class="function">ibase_service_detach()</a></span> - Disconnect from the
+      service manager 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-set-event-handler.php" class="function">ibase_set_event_handler()</a></span> - Register a callback
+      function to be called when events are posted
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ibase-wait-event.php" class="function">ibase_wait_event()</a></span> - Wait for an event to be posted
+      by the database
+     </span>
+    </li>
+   </ul><p class="para"><a href="https://www.php.net/manual/en/ref.iconv.php" class="link">iconv</a>:</p>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.iconv-mime-decode.php" class="function">iconv_mime_decode()</a></span> - Decodes a MIME header field
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.iconv-mime-decode-headers.php" class="function">iconv_mime_decode_headers()</a></span> - Decodes multiple MIME
+      header fields at once
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.iconv-mime-encode.php" class="function">iconv_mime_encode()</a></span> - Composes a MIME header field
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.iconv-strlen.php" class="function">iconv_strlen()</a></span> - Returns the character count of
+      string
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.iconv-strpos.php" class="function">iconv_strpos()</a></span> - Finds position of first occurrence
+      of a needle within a haystack
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.iconv-strrpos.php" class="function">iconv_strrpos()</a></span> - Finds the last occurrence of a
+      needle within a haystack
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.iconv-substr.php" class="function">iconv_substr()</a></span> - Cut out part of a string
+     </span>
+    </li>
+   </ul><p class="para"><a href="https://www.php.net/manual/en/ref.stream.php" class="link">Streams</a>:</p>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-copy-to-stream.php" class="function">stream_copy_to_stream()</a></span> - Copies data from one stream
+      to another
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-get-line.php" class="function">stream_get_line()</a></span> - Gets line from stream resource up
+      to a given delimiter
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-accept.php" class="function">stream_socket_accept()</a></span> - Accept a connection on a
+      socket created by <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-server.php" class="function">stream_socket_server()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-client.php" class="function">stream_socket_client()</a></span> - Open Internet or Unix domain
+      socket connection
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-get-name.php" class="function">stream_socket_get_name()</a></span> - Retrieve the name of the
+      local or remote sockets
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-recvfrom.php" class="function">stream_socket_recvfrom()</a></span> - Receives data from a
+      socket, connected or not
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-sendto.php" class="function">stream_socket_sendto()</a></span> - Sends a message to a socket,
+      whether it is connected or not
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-server.php" class="function">stream_socket_server()</a></span> - Create an Internet or Unix
+      domain server socket
+     </span>
+    </li>
+   </ul><p class="para"><a href="https://www.php.net/manual/en/ref.datetime.php" class="link">Date and time related</a>:</p>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.idate.php" class="function">idate()</a></span> - Format a local time/date as integer
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.date-sunset.php" class="function">date_sunset()</a></span> - Time of sunset for a given day and
+      location
+    </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.date-sunrise.php" class="function">date_sunrise()</a></span> - Time of sunrise for a given day and
+      location
+    </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.time-nanosleep.php" class="function">time_nanosleep()</a></span> - Delay for a number of seconds and
+      nanoseconds
+    </span>
+    </li>
+   </ul><p class="para"><a href="https://www.php.net/manual/en/ref.strings.php" class="link">Strings</a>:</p>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.str-split.php" class="function">str_split()</a></span> - Convert a string to an array
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.strpbrk.php" class="function">strpbrk()</a></span> - Search a string for any of a set of
+      characters
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.substr-compare.php" class="function">substr_compare()</a></span> - Binary safe optionally case
+      insensitive comparison of two strings from an offset, up to length
+      characters
+     </span>
+    </li>
+   </ul><p class="para">Other:</p>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.convert-uudecode.php" class="function">convert_uudecode()</a></span> - decode a uuencoded string
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.convert-uuencode.php" class="function">convert_uuencode()</a></span> - uuencode a string
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.curl-copy-handle.php" class="function">curl_copy_handle()</a></span> - Copy a cURL handle
+      along with all of its preferences
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.dba-key-split.php" class="function">dba_key_split()</a></span> - Splits a key in string
+      representation into array representation
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.dbase-get-header-info.php" class="function">dbase_get_header_info()</a></span> - Get the header info of a
+      dBase database
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.dbx-fetch-row.php" class="function">dbx_fetch_row()</a></span> - Fetches rows from a query-result
+      that had the <strong><code>DBX_RESULT_UNBUFFERED</code></strong> flag set
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.fbsql-set-password.php" class="function">fbsql_set_password()</a></span> - Change the password for a
+      given user 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.file-put-contents.php" class="function">file_put_contents()</a></span> - Write a string to a file
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ftp-alloc.php" class="function">ftp_alloc()</a></span> - Allocates space for a file to be
+      uploaded
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.get-declared-interfaces.php" class="function">get_declared_interfaces()</a></span> - Returns an array of all
+      declared interfaces
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.get-headers.php" class="function">get_headers()</a></span> - Fetches all the headers sent by the
+      server in response to a HTTP request
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.headers-list.php" class="function">headers_list()</a></span> - Returns a list of response headers
+      sent (or ready to send)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.http-build-query.php" class="function">http_build_query()</a></span> - Generate URL-encoded query string
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.image-type-to-extension.php" class="function">image_type_to_extension()</a></span> - Get file extension for
+      image-type returned by <span class="function"><a href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.exif-read-data.php" class="function">exif_read_data()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.exif-thumbnail.php" class="function">exif_thumbnail()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.exif-imagetype.php" class="function">exif_imagetype()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.imagefilter.php" class="function">imagefilter()</a></span> - Applies a filter to an image using
+      custom arguments
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.imap-getacl.php" class="function">imap_getacl()</a></span> - Gets the ACL for a given mailbox
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-sasl-bind.php" class="function">ldap_sasl_bind()</a></span> - Bind to LDAP directory using SASL
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.mb-list-encodings.php" class="function">mb_list_encodings()</a></span> - Returns an array of all
+      supported encodings
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.pcntl-getpriority.php" class="function">pcntl_getpriority()</a></span> - Get the priority of any
+      process
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.pcntl-wait.php" class="function">pcntl_wait()</a></span> - Waits on or returns the status of a
+      forked child as defined by the <code class="literal">waitpid()</code> system call
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.pg-version.php" class="function">pg_version()</a></span> - Returns an array with client, protocol
+      and server version (when available)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>php_check_syntax()</strong></span> - Check the syntax of the
+      specified file
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.php-strip-whitespace.php" class="function">php_strip_whitespace()</a></span> - Return source with stripped
+      comments and whitespace
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.proc-nice.php" class="function">proc_nice()</a></span> - Change the priority of the current
+      process
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.pspell-config-data-dir.php" class="function">pspell_config_data_dir()</a></span> - Change location of
+      language data files
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.pspell-config-dict-dir.php" class="function">pspell_config_dict_dir()</a></span> - Change location of the
+      main word list
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.setrawcookie.php" class="function">setrawcookie()</a></span> - Send a cookie without URL-encoding
+      the value
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.scandir.php" class="function">scandir()</a></span> - List files and directories inside the
+      specified path
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.snmp-read-mib.php" class="function">snmp_read_mib()</a></span> - Reads and parses a MIB file into
+      the active MIB tree
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sqlite_fetch_column_types()</strong></span> - Return an array of
+      column types from a particular table
+     </span>
+    </li>
+   </ul><blockquote class="note"><p><strong class="note">Note</strong>: 
+    </p><p class="para">
+     The <a href="https://www.php.net/manual/en/ref.tidy.php" class="link">Tidy</a> extension has also changed its
+     API completely.
+    </p>
+   </blockquote>
+  </div>

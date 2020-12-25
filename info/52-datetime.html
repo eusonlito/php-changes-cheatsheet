@@ -1,0 +1,44 @@
+---
+title: Changes in PHP datetime   support
+version: "5.2"
+tags:
+ - "5.2"
+ - datetime
+---
+<div id="migration52.datetime" class="section">
+  <h2 class="title">Changes in PHP <a href="https://www.php.net/manual/en/ref.datetime.php" class="link">datetime</a>
+   support</h2>
+
+  <p class="para">
+   Since PHP 5.1.0, there has been an extension named <code class="literal">date</code>
+   in the PHP core. This is the new implementation of PHP's datetime support.
+   Although it will attempt to guess your system's timezone setting, you
+   should set the timezone manually. You can do this in any of three ways:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     in your <var class="filename">php.ini</var> using the
+     <a href="https://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone" class="link">date.timezone</a> INI directive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     on your system using the <var class="varname">TZ</var> environmental variable
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     from your script using the convenience function 
+     <span class="function"><a href="https://www.php.net/manual/en/function.date-default-timezone-set.php" class="function">date_default_timezone_set()</a></span>
+    </span>
+   </li>
+  </ul><p class="para">
+   All supported <a href="https://www.php.net/manual/en/timezones.php" class="link">timezones</a> are listed
+   in the PHP Manual.
+  </p>
+  <p class="para">
+   With the advent of PHP 5.2.x, there are <span class="type">object</span> representations of the
+   date and timezone, named <code class="literal">DateTime</code> and <code class="literal">DateTimeZone</code> respectively.
+   The methods map to existing procedural date functions.
+  </p>
+ </div>

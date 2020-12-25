@@ -1,0 +1,119 @@
+---
+title: Changed functions
+version: "5.6"
+tags:
+ - "5.6"
+ - changed-functions
+---
+<div id="migration56.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration56.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.crypt.php" class="function">crypt()</a></span> will now raise an
+     <strong><code>E_NOTICE</code></strong> error if the <code class="parameter">salt</code>
+     parameter is omitted.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.substr-compare.php" class="function">substr_compare()</a></span> will now accept <code class="literal">0</code>
+     for its <code class="parameter">length</code> parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.unserialize.php" class="function">unserialize()</a></span> will now fail if passed serialised data
+     that has been manipulated to attempt to instantiate an object without
+     calling its constructor.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.curl">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.curl.php" class="link">cURL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Uploads using the <code class="literal">@file</code> syntax are now only supported
+     if the <strong><code>CURLOPT_SAFE_UPLOAD</code></strong> option is set to
+     <strong><code>false</code></strong>. <a href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a> should be used instead.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.mcrypt">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.mcrypt.php" class="link">Mcrypt</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     The <code class="parameter">source</code> parameter of
+     <span class="function"><a href="https://www.php.net/manual/en/function.mcrypt-create-iv.php" class="function">mcrypt_create_iv()</a></span> now defaults to
+     <strong><code>MCRYPT_DEV_URANDOM</code></strong> instead of
+     <strong><code>MCRYPT_DEV_RANDOM</code></strong>.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.openssl">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-enable-crypto.php" class="function">stream_socket_enable_crypto()</a></span> now allows the
+     <code class="parameter">crypto_type</code> parameter to be optional if the
+     stream's SSL context includes the new <code class="parameter">crypto_type</code>
+     option.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.pgsql">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.pgsql.php" class="link">PostgreSQL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-insert.php" class="function">pg_insert()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.pg-select.php" class="function">pg_select()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-update.php" class="function">pg_update()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.pg-delete.php" class="function">pg_delete()</a></span> are no
+     longer experimental.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-send-execute.php" class="function">pg_send_execute()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-send-prepare.php" class="function">pg_send_prepare()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.pg-send-query.php" class="function">pg_send_query()</a></span>
+     and <span class="function"><a href="https://www.php.net/manual/en/function.pg-send-query-params.php" class="function">pg_send_query_params()</a></span> will no longer block until
+     query write completion if the underlying socket stream for the database
+     connection is set to non-blocking mode.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.reflection">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.reflection.php" class="link">Reflection</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/reflectionclass.newinstancewithoutconstructor.php" class="methodname">ReflectionClass::newInstanceWithoutConstructor()</a></span>
+     now allows non-final internal classes to be
+     instantiated.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.xmlreader">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.xmlreader.php" class="link">XMLReader</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/xmlreader.getattributens.php" class="methodname">XMLReader::getAttributeNs()</a></span> and
+     <span class="methodname"><a href="https://www.php.net/manual/en/xmlreader.getattributeno.php" class="methodname">XMLReader::getAttributeNo()</a></span> now return <strong><code>null</code></strong> if
+     the attribute could not be found, like
+     <span class="methodname"><a href="https://www.php.net/manual/en/xmlreader.getattribute.php" class="methodname">XMLReader::getAttribute()</a></span>.
+    </span>
+   </li>
+  </ul></div>
+</div>

@@ -1,0 +1,317 @@
+---
+title: New features
+version: "7.1"
+tags:
+ - "7.1"
+ - new-features
+---
+<div id="migration71.new-features" class="sect1">
+ <h2 class="title">New features</h2>
+
+ <div class="sect2" id="migration71.new-features.nullable-types">
+  <h3 class="title">Nullable types</h3>
+
+  <p class="para">
+   Type declarations for parameters and return values can now be marked as
+   nullable by prefixing the type name with a question mark. This signifies
+   that as well as the specified type, <strong><code>null</code></strong> can be passed as an argument, or
+   returned as a value, respectively.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #007700">function </span><span style="color: #0000BB">testReturn</span><span style="color: #007700">(): ?</span><span style="color: #0000BB">string<br></span><span style="color: #007700">{<br>    return </span><span style="color: #DD0000">'elePHPant'</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">testReturn</span><span style="color: #007700">());<br><br>function </span><span style="color: #0000BB">testReturn</span><span style="color: #007700">(): ?</span><span style="color: #0000BB">string<br></span><span style="color: #007700">{<br>    return </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">testReturn</span><span style="color: #007700">());<br><br>function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">string $name</span><span style="color: #007700">)<br>{<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br>}<br><br></span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #DD0000">'elePHPant'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br></span><span style="color: #0000BB">test</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(10) "elePHPant"
+NULL
+string(10) "elePHPant"
+NULL
+Uncaught Error: Too few arguments to function test(), 0 passed in...
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.void-functions">
+  <h3 class="title">Void functions</h3>
+
+  <p class="para">
+   A <span class="type"><span class="type void">void</span></span> return type has been introduced. Functions declared with
+   void as their return type must either omit their return statement altogether,
+   or use an empty return statement. <strong><code>null</code></strong> is not a valid return value for a
+   void function.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">swap</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$left</span><span style="color: #007700">, &amp;</span><span style="color: #0000BB">$right</span><span style="color: #007700">): </span><span style="color: #0000BB">void<br></span><span style="color: #007700">{<br>    if (</span><span style="color: #0000BB">$left </span><span style="color: #007700">=== </span><span style="color: #0000BB">$right</span><span style="color: #007700">) {<br>        return;<br>    }<br><br>    </span><span style="color: #0000BB">$tmp </span><span style="color: #007700">= </span><span style="color: #0000BB">$left</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">$left </span><span style="color: #007700">= </span><span style="color: #0000BB">$right</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">$right </span><span style="color: #007700">= </span><span style="color: #0000BB">$tmp</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">swap</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">), </span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+null
+int(2)
+int(1)
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   Attempting to use a void function's return value simply evaluates to
+   <strong><code>null</code></strong>, with no warnings emitted. The reason for this is because warnings
+   would implicate the use of generic higher order functions.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.symmetric-array-destructuring">
+  <h3 class="title">Symmetric array destructuring</h3>
+
+  <p class="para">
+   The shorthand array syntax (<code class="literal">[]</code>) may now be used to
+   destructure arrays for assignments (including within
+   <code class="literal">foreach</code>), as an alternative to the existing
+   <span class="function"><a href="https://www.php.net/manual/en/function.list.php" class="function">list()</a></span> syntax, which is still supported.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$data </span><span style="color: #007700">= [<br>    [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'Tom'</span><span style="color: #007700">],<br>    [</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">'Fred'</span><span style="color: #007700">],<br>];<br><br></span><span style="color: #FF8000">// list() style<br></span><span style="color: #007700">list(</span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #0000BB">$name1</span><span style="color: #007700">) = </span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br><br></span><span style="color: #FF8000">// [] style<br></span><span style="color: #007700">[</span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #0000BB">$name1</span><span style="color: #007700">] = </span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br><br></span><span style="color: #FF8000">// list() style<br></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$data </span><span style="color: #007700">as list(</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$name</span><span style="color: #007700">)) {<br>    </span><span style="color: #FF8000">// logic here with $id and $name<br></span><span style="color: #007700">}<br><br></span><span style="color: #FF8000">// [] style<br></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$data </span><span style="color: #007700">as [</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$name</span><span style="color: #007700">]) {<br>    </span><span style="color: #FF8000">// logic here with $id and $name<br></span><span style="color: #007700">}</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.class-constant-visibility">
+  <h3 class="title">Class constant visibility</h3>
+
+  <p class="para">
+   Support for specifying the visibility of class constants has been added.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">ConstDemo<br></span><span style="color: #007700">{<br>    const </span><span style="color: #0000BB">PUBLIC_CONST_A </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    public const </span><span style="color: #0000BB">PUBLIC_CONST_B </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br>    protected const </span><span style="color: #0000BB">PROTECTED_CONST </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br>    private const </span><span style="color: #0000BB">PRIVATE_CONST </span><span style="color: #007700">= </span><span style="color: #0000BB">4</span><span style="color: #007700">;<br>}</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.iterable-pseudo-type">
+  <h3 class="title"><span class="type"><a href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span> pseudo-type</h3>
+
+  <p class="para">
+   A new pseudo-type (similar to <span class="type"><a href="https://www.php.net/manual/en/language.types.callable.php" class="type callable">callable</a></span>) called
+   <span class="type"><a href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span> has been introduced. It may be used in parameter
+   and return types, where it accepts either arrays or objects that implement
+   the <a href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a> interface. With respect to subtyping,
+   parameter types of child classes may broaden a parent's declaration of <span class="type">array</span> 
+   or <a href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a> to <span class="type"><a href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span>. With return types,
+   child classes may narrow a parent's return type of <span class="type"><a href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span> to
+   <span class="type">array</span> or an object that implements <a href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a>.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">iterator</span><span style="color: #007700">(</span><span style="color: #0000BB">iterable $iter</span><span style="color: #007700">)<br>{<br>    foreach (</span><span style="color: #0000BB">$iter </span><span style="color: #007700">as </span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br>        </span><span style="color: #FF8000">//<br>    </span><span style="color: #007700">}<br>}</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.mulit-catch-exception-handling">
+  <h3 class="title">Multi catch exception handling</h3>
+
+  <p class="para">
+   Multiple exceptions per catch block may now be specified using the pipe
+   character (<code class="literal">|</code>). This is useful for when different
+   exceptions from different class hierarchies are handled the same.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">try {<br>    </span><span style="color: #FF8000">// some code<br></span><span style="color: #007700">} catch (</span><span style="color: #0000BB">FirstException </span><span style="color: #007700">| </span><span style="color: #0000BB">SecondException $e</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// handle first and second exceptions<br></span><span style="color: #007700">}</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.support-for-keys-in-list">
+  <h3 class="title">Support for keys in <span class="function"><a href="https://www.php.net/manual/en/function.list.php" class="function">list()</a></span></h3>
+
+  <p class="para">
+   You can now specify keys in <span class="function"><a href="https://www.php.net/manual/en/function.list.php" class="function">list()</a></span>, or its new shorthand
+   <code class="literal">[]</code> syntax. This enables destructuring of arrays with
+   non-integer or non-sequential keys.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$data </span><span style="color: #007700">= [<br>    [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Tom'</span><span style="color: #007700">],<br>    [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Fred'</span><span style="color: #007700">],<br>];<br><br></span><span style="color: #FF8000">// list() style<br></span><span style="color: #007700">list(</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$name1</span><span style="color: #007700">) = </span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br><br></span><span style="color: #FF8000">// [] style<br></span><span style="color: #007700">[</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$name1</span><span style="color: #007700">] = </span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br><br></span><span style="color: #FF8000">// list() style<br></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$data </span><span style="color: #007700">as list(</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$name</span><span style="color: #007700">)) {<br>    </span><span style="color: #FF8000">// logic here with $id and $name<br></span><span style="color: #007700">}<br><br></span><span style="color: #FF8000">// [] style<br></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$data </span><span style="color: #007700">as [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$name</span><span style="color: #007700">]) {<br>    </span><span style="color: #FF8000">// logic here with $id and $name<br></span><span style="color: #007700">}</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.support-for-negative-string-offsets">
+  <h3 class="title">Support for negative string offsets</h3>
+
+  <p class="para">
+   Support for negative string offsets has been added to the
+   <a href="https://www.php.net/manual/en/book.strings.php" class="link">string manipulation functions</a>
+   accepting offsets, as well as to
+   <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.substr" class="link">string indexing</a> with
+   <code class="literal">[]</code> or <code class="literal">{}</code>. In such cases, a negative
+   offset is interpreted as being an offset from the end of the string.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">[-</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #DD0000">"aabbcc"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">, -</span><span style="color: #0000BB">3</span><span style="color: #007700">));</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string (1) "e"
+int(3)
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   Negative string and array offsets are now also supported in the simple
+   variable parsing syntax inside of strings.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$string </span><span style="color: #007700">= </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br>echo </span><span style="color: #DD0000">"The last character of '</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">' is '</span><span style="color: #0000BB">$string</span><span style="color: #007700">[-</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">'.\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+The last character of 'bar' is 'r'.
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.support-for-aead-in-ext-openssl">
+  <h3 class="title">Support for AEAD in ext/openssl</h3>
+
+  <p class="para">
+   Support for AEAD (modes GCM and CCM) have been added by extending the
+   <span class="function"><a href="https://www.php.net/manual/en/function.openssl-encrypt.php" class="function">openssl_encrypt()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.openssl-decrypt.php" class="function">openssl_decrypt()</a></span> functions with additional parameters.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.convert-callables-to-closures">
+  <h3 class="title">Convert callables to <a href="https://www.php.net/manual/en/class.closure.php" class="classname">Closure</a>s with <span class="methodname"><a href="https://www.php.net/manual/en/closure.fromcallable.php" class="methodname">Closure::fromCallable()</a></span></h3>
+
+  <p class="para">
+   A new static method has been introduced to the <a href="https://www.php.net/manual/en/class.closure.php" class="classname">Closure</a>
+   class to allow for <span class="type"><a href="https://www.php.net/manual/en/language.types.callable.php" class="type callable">callable</a></span>s to be easily converted into
+   <a href="https://www.php.net/manual/en/class.closure.php" class="classname">Closure</a> objects.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Test<br></span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">exposeFunction</span><span style="color: #007700">()<br>    {<br>        return </span><span style="color: #0000BB">Closure</span><span style="color: #007700">::</span><span style="color: #0000BB">fromCallable</span><span style="color: #007700">([</span><span style="color: #0000BB">$this</span><span style="color: #007700">, </span><span style="color: #DD0000">'privateFunction'</span><span style="color: #007700">]);<br>    }<br><br>    private function </span><span style="color: #0000BB">privateFunction</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">);<br>    }<br>}<br><br></span><span style="color: #0000BB">$privFunc </span><span style="color: #007700">= (new </span><span style="color: #0000BB">Test</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">exposeFunction</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$privFunc</span><span style="color: #007700">(</span><span style="color: #DD0000">'some value'</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(10) "some value"
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.asynchronous-signal-handling">
+  <h3 class="title">Asynchronous signal handling</h3>
+
+  <p class="para">
+   A new function called <span class="function"><a href="https://www.php.net/manual/en/function.pcntl-async-signals.php" class="function">pcntl_async_signals()</a></span> has been
+   introduced to enable asynchronous signal handling without using ticks (which
+   introduce a lot of overhead).
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>pcntl_async_signals</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">); </span><span style="color: #FF8000">// turn on async signals<br><br></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">,  function(</span><span style="color: #0000BB">$sig</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"SIGHUP\n"</span><span style="color: #007700">;<br>});<br><br></span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(), </span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+SIGHUP
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.http2-server-push-support-in-ext-curl">
+  <h3 class="title">HTTP/2 server push support in ext/curl</h3>
+
+  <p class="para">
+   Support for server push has been added to the CURL extension (requires
+   version 7.46 and above). This can be leveraged through the
+   <span class="function"><a href="https://www.php.net/manual/en/function.curl-multi-setopt.php" class="function">curl_multi_setopt()</a></span> function with the new
+   <strong><code>CURLMOPT_PUSHFUNCTION</code></strong> constant. The constants
+   <strong><code>CURL_PUSH_OK</code></strong> and <strong><code>CURL_PUSH_DENY</code></strong> have also been
+   added so that the execution of the server push callback can either be
+   approved or denied.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.new-features.stream-context-options">
+  <h3 class="title">Stream Context Options</h3>
+
+  <p class="para">
+   The <a href="https://www.php.net/manual/en/context.socket.php#context.socket.tcp_nodelay" class="link">tcp_nodelay</a> stream
+   context option has been added.
+  </p>
+ </div>
+
+</div>

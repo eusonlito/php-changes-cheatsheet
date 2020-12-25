@@ -1,0 +1,332 @@
+---
+title: New Features
+version: "7.3"
+tags:
+ - "7.3"
+ - new-features
+---
+<div id="migration73.new-features" class="sect1">
+ <h2 class="title">New Features</h2>
+
+ <div class="sect2" id="migration73.new-features.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration73.new-features.core.heredoc">
+   <h4 class="title">More Flexible Heredoc and Nowdoc Syntax</h4>
+
+   <p class="para">
+    The closing marker for doc strings is no longer required to be followed by a
+    semicolon or newline. Additionally the closing marker may be indented, in
+    which case the indentation will be stripped from all lines in the doc string.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.destruct-reference">
+   <h4 class="title">Array Destructuring supports Reference Assignments</h4>
+
+   <p class="para">
+    Array destructuring now supports reference assignments using the syntax
+    <code class="literal">[&amp;$a, [$b, &amp;$c]] = $d</code>. The same is also supported
+    for <span class="function"><a href="https://www.php.net/manual/en/function.list.php" class="function">list()</a></span>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.instanceof-literals">
+   <h4 class="title">Instanceof Operator accepts Literals</h4>
+
+   <p class="para">
+    <code class="literal">instanceof</code> now allows literals as the first operand, in
+    which case the result is always <strong><code>false</code></strong>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.compileerror">
+   <h4 class="title">CompileError Exception instead of some Compilation Errors</h4>
+
+   <p class="para">
+    A new <a href="https://www.php.net/manual/en/class.compileerror.php" class="classname">CompileError</a> exception has been added, from
+    which <a href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a> inherits. A small number of
+    compilation errors will now throw a <a href="https://www.php.net/manual/en/class.compileerror.php" class="classname">CompileError</a>
+    instead of generating a fatal error. Currently this only affects compilation
+    errors that may be thrown by <span class="function"><a href="https://www.php.net/manual/en/function.token-get-all.php" class="function">token_get_all()</a></span> in
+    <strong><code>TOKEN_PARSE</code></strong> mode, but more errors may be converted in
+    the future.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.trailing-commas">
+   <h4 class="title">Trailing Commas are allowed in Calls</h4>
+
+   <p class="para">
+    Trailing commas in function and method calls are now allowed.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.argon2id">
+   <h4 class="title">Argon2id Support</h4>
+
+   <p class="para">
+    The <strong class="option configure">--with-password-argon2[=dir]</strong> configure
+    argument now provides support for both Argon2i and Argon2id hashes in the
+    <span class="function"><a href="https://www.php.net/manual/en/function.password-hash.php" class="function">password_hash()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.password-verify.php" class="function">password_verify()</a></span>,
+    <span class="function"><a href="https://www.php.net/manual/en/function.password-get-info.php" class="function">password_get_info()</a></span>, and
+    <span class="function"><a href="https://www.php.net/manual/en/function.password-needs-rehash.php" class="function">password_needs_rehash()</a></span> functions. Passwords may be hashed
+    and verified using the <strong><code>PASSWORD_ARGON2ID</code></strong> constant.
+    Support for both Argon2i and Argon2id in the <span class="function"><strong>password_*()</strong></span>
+    functions now requires PHP be linked against libargon2 reference library ≥
+    20161029.
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration73.new-features.fpm">
+  <h3 class="title">FastCGI Process Manager</h3>
+
+  <p class="para">
+   New options have been added to customize the FPM logging:
+   </p><dl><dt>
+<code class="literal">log_limit</code></dt>
+
+     <dd>
+
+      <span class="simpara">
+       This global option can be used for setting the log limit for the logged
+       line which allows to log messages longer than 1024 characters without
+       wrapping. It also fixes various wrapping issues.
+      </span>
+     </dd>
+
+    
+    
+     <dt>
+<code class="literal">log_buffering</code></dt>
+
+     <dd>
+
+      <span class="simpara">
+       This global option allows an experimental logging without extra buffering.
+      </span>
+     </dd>
+
+    
+    
+     <dt>
+<code class="literal">decorate_workers_output</code></dt>
+
+     <dd>
+
+      <span class="simpara">
+       This pool option allows to disable the output decoration for workers
+       output when <code class="literal">catch_workers_output</code> is enabled.
+      </span>
+     </dd>
+
+    
+   </dl></div>
+
+ <div class="sect2" id="migration73.new-features.bc">
+  <h3 class="title">BC Math Functions</h3>
+
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.bcscale.php" class="function">bcscale()</a></span> can now also be used as getter to retrieve the
+   current scale in use.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.new-features.ldap">
+  <h3 class="title">Lightweight Directory Access Protocol</h3>
+
+  <p class="para">
+   Full support for LDAP Controls has been added to the <a href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a> querying functions and
+   <span class="function"><a href="https://www.php.net/manual/en/function.ldap-parse-result.php" class="function">ldap_parse_result()</a></span>:
+   </p><ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      A <code class="literal">$serverctrls</code> parameter to send controls to the
+      server in <span class="function"><a href="https://www.php.net/manual/en/function.ldap-add.php" class="function">ldap_add()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-mod-replace.php" class="function">ldap_mod_replace()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.ldap-mod-add.php" class="function">ldap_mod_add()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-mod-del.php" class="function">ldap_mod_del()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.ldap-rename.php" class="function">ldap_rename()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-compare.php" class="function">ldap_compare()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.ldap-delete.php" class="function">ldap_delete()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-modify-batch.php" class="function">ldap_modify_batch()</a></span>,
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-search.php" class="function">ldap_search()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.ldap-list.php" class="function">ldap_list()</a></span> and
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-read.php" class="function">ldap_read()</a></span> has been added.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      The out parameter <code class="literal">$serverctrls</code> to get controls from the server in
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-parse-result.php" class="function">ldap_parse_result()</a></span> has been added.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Support for <strong><code>LDAP_OPT_SERVER_CONTROLS</code></strong> and
+      <strong><code>LDAP_OPT_CLIENT_CONTROLS</code></strong> in
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-get-option.php" class="function">ldap_get_option()</a></span> and
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-set-option.php" class="function">ldap_set_option()</a></span> has been fixed.
+     </span>
+    </li>
+   </ul></div>
+
+ <div class="sect2" id="migration73.new-features.mbstring">
+  <h3 class="title">Multibyte String Functions</h3>
+
+  <div class="sect3" id="migration73.new-features.mbstring.case-mapping-folding">
+   <h4 class="title">Full Case-Mapping and Case-Folding Support</h4>
+
+   <p class="para">
+    Support for full case-mapping and case-folding has been added. Unlike simple
+    case-mapping, full case-mapping may change the length of the string. For
+    example:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>mb_strtoupper</span><span style="color: #007700">(</span><span style="color: #DD0000">"Straße"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// Produces STRAßE on PHP 7.2<br>// Produces STRASSE on PHP 7.3<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    The different casing mapping and folding modes are available through
+    <span class="function"><a href="https://www.php.net/manual/en/function.mb-convert-case.php" class="function">mb_convert_case()</a></span>:
+    <ul class="itemizedlist"><li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_LOWER</code></strong> (used by <span class="function"><a href="https://www.php.net/manual/en/function.mb-strtolower.php" class="function">mb_strtolower()</a></span>)
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_UPPER</code></strong> (used by <span class="function"><a href="https://www.php.net/manual/en/function.mb-strtoupper.php" class="function">mb_strtoupper()</a></span>)
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_TITLE</code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_FOLD</code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_LOWER_SIMPLE</code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_UPPER_SIMPLE</code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_TITLE_SIMPLE</code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>MB_CASE_FOLD_SIMPLE</code></strong> (used by case-insensitive operations)
+      </span>
+     </li> 
+    </ul>
+    Only unconditional, language agnostic full case-mapping is performed.
+   
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.case-insensitive-ops">
+   <h4 class="title">Case-Insensitive String Operations use Case-Folding</h4>
+
+   <p class="para">
+    Case-insensitive string operations now use case-folding instead of case-
+    mapping during comparisons. This means that more characters will be
+    considered (case insensitively) equal now.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.mb-case-title">
+   <h4 class="title">MB_CASE_TITLE performs Title-Case Conversion</h4>
+
+   <p class="para">
+    <span class="function"><a href="https://www.php.net/manual/en/function.mb-convert-case.php" class="function">mb_convert_case()</a></span> with <strong><code>MB_CASE_TITLE</code></strong>
+    now performs title-case conversion based on the Cased and CaseIgnorable
+    derived Unicode properties. In particular this also improves handling of
+    quotes and apostrophes.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.ucd11">
+   <h4 class="title">Unicode 11 Support</h4>
+
+   <p class="para">
+    The <a href="https://www.php.net/manual/en/book.mbstring.php" class="link">Multibyte String</a> data tables have
+    been updated for Unicode 11.
+   </p> 
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.long-strings">
+   <h4 class="title">Long String Support</h4>
+
+   <p class="para">
+    The <a href="https://www.php.net/manual/en/ref.mbstring.php" class="link">Multibyte String Functions</a> now
+    correctly support strings larger than 2GB.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.performance">
+   <h4 class="title">Performance Improvements</h4>
+
+   <p class="para">
+    Performance of the <a href="https://www.php.net/manual/en/book.mbstring.php" class="link">Multibyte String</a>
+    extension has been significantly improved across the board. The largest
+    improvements are in case conversion functions.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.named-captures">
+   <h4 class="title">Named Captures Support</h4>
+
+   <p class="para">
+    The <code class="literal">mb_ereg_*</code> functions now support named captures.
+    Matching functions like <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg.php" class="function">mb_ereg()</a></span> will now return named
+    captures both using their group number and their name, similar to PCRE:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>mb_ereg</span><span style="color: #007700">(</span><span style="color: #DD0000">'(?&lt;word&gt;\w+)'</span><span style="color: #007700">, </span><span style="color: #DD0000">'国'</span><span style="color: #007700">, </span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// =&gt; [0 =&gt; "国", 1 =&gt; "国", "word" =&gt; "国"];<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Additionally, <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg-replace.php" class="function">mb_ereg_replace()</a></span> now supports the
+    <code class="code">\k&lt;&gt;</code> and <code class="code">\k''</code> notations to reference named
+    captures in the replacement string:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>mb_ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'\s*(?&lt;word&gt;\w+)\s*'</span><span style="color: #007700">, </span><span style="color: #DD0000">"_\k&lt;word&gt;_\k'word'_"</span><span style="color: #007700">, </span><span style="color: #DD0000">' foo '</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// =&gt; "_foo_foo_"<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <code class="code">\k&lt;&gt;</code> and <code class="code">\k''</code> can also be used for numbered
+    references, which also works with group numbers greater than 9.
+   
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration73.new-features.realine">
+  <h3 class="title">Readline</h3>
+
+  <p class="para">
+   Support for the <code class="literal">completion_append_character</code> and
+   <code class="literal">completion_suppress_append</code> options has been added to
+   <span class="function"><a href="https://www.php.net/manual/en/function.readline-info.php" class="function">readline_info()</a></span>. These options are only available if PHP
+   is linked against libreadline (rather than libedit).
+  </p>
+ </div>
+
+</div>

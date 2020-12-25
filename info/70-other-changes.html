@@ -1,0 +1,52 @@
+---
+title: Other Changes
+version: "7.0"
+tags:
+ - "7.0"
+ - other-changes
+---
+<div id="migration70.other-changes" class="sect1">
+ <h2 class="title">Other Changes</h2>
+
+ <div class="sect2" id="migration70.other-changes.loosening-reserved-words">
+  <h3 class="title">Loosening Reserved Word Restrictions</h3>
+
+  <p class="para">
+   Globally reserved words as property, constant, and method names within classes,
+   interfaces, and traits are now allowed. This reduces the surface of BC breaks
+   when new keywords are introduced and avoids naming restrictions on APIs.
+  </p>
+
+  <p class="para">
+   This is particularly useful when creating internal DSLs with fluent interfaces:
+  </p>
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// 'new', 'private', and 'for' were previously unusable<br></span><span style="color: #0000BB">Project</span><span style="color: #007700">::new(</span><span style="color: #DD0000">'Project Name'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">for</span><span style="color: #007700">(</span><span style="color: #DD0000">'purpose here'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">with</span><span style="color: #007700">(</span><span style="color: #DD0000">'username here'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   The only limitation is that the <code class="literal">class</code> keyword still
+   cannot be used as a constant name, otherwise it would conflict with the
+   class name resolution syntax (<code class="literal">ClassName::class</code>).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration70.other-changes.remove-date-timezone-warning">
+  <h3 class="title">Removal of date.timezone Warning</h3>
+
+  <p class="para">
+   Previously, a warning was emitted if the
+   <code class="systemitem systemitem">date.timezone</code> INI setting had not
+   been set prior to using any date- or time-based functions. Now, this warning
+   has been removed (with
+   <code class="systemitem systemitem">date.timezone</code> still defaulting to
+   UTC).
+  </p>
+ </div>
+</div>

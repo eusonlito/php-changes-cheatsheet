@@ -1,0 +1,181 @@
+---
+title: Backward Incompatible Changes
+version: "5.0"
+tags:
+ - "5.0"
+ - incompatible
+---
+<div id="migration5.incompatible" class="section">
+   <h2 class="title">Backward Incompatible Changes</h2>
+   <p class="para">
+    Although most existing PHP 4 code should work without changes, you should
+    pay attention to the following backward incompatible changes:
+   </p>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      There are some <a href="https://www.php.net/manual/en/reserved.keywords.php" class="link">new reserved
+      keywords</a>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.strrpos.php" class="function">strrpos()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.strripos.php" class="function">strripos()</a></span> now use
+      the entire string as a needle.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Illegal use of string offsets causes <strong><code>E_ERROR</code></strong> instead
+      of <strong><code>E_WARNING</code></strong>. An example illegal use is: 
+      <code class="literal">$str = 'abc'; unset($str[0]);</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.array-merge.php" class="function">array_merge()</a></span> was changed to accept only arrays. If a
+      non-array variable is passed, a <strong><code>E_WARNING</code></strong> will be
+      thrown for every such parameter. Be careful because your code may start
+      emitting <strong><code>E_WARNING</code></strong> out of the blue.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <strong><code>PATH_TRANSLATED</code></strong> server variable is no longer set implicitly under
+      Apache2 SAPI in contrast to the situation in PHP 4, where it is set to
+      the same value as the <strong><code>SCRIPT_FILENAME</code></strong> server variable when it is not
+      populated by Apache. This change was made to comply with the <a href="https://www.php.net/manual/en/http://www.faqs.org/rfcs/rfc3875" class="link external">» CGI/1.1 specification</a>. Please refer to <a href="https://www.php.net/manual/en/https://bugs.php.net/23610" class="link external">» bug #23610</a> for further information,
+      and see also the <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.server.php" class="classname">$_SERVER['PATH_TRANSLATED']</a></var>
+      description in the manual. This issue 
+      also affects PHP versions &gt;= 4.3.2.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      The <strong><code>T_ML_COMMENT</code></strong> constant is no longer defined by
+      the <a href="https://www.php.net/manual/en/ref.tokenizer.php" class="link">Tokenizer</a> extension. If
+      error_reporting is set to <strong><code>E_ALL</code></strong>, PHP will
+      generate a notice. Although the <strong><code>T_ML_COMMENT</code></strong> was
+      never used at all, it was defined in PHP 4. In both PHP 4 and PHP 5
+      // and /* */ are resolved as the <strong><code>T_COMMENT</code></strong>
+      constant. However the PHPDoc style comments <code class="literal">/** */</code>, which starting PHP
+      5 are parsed by PHP, are recognized as <strong><code>T_DOC_COMMENT</code></strong>. 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.server.php" class="classname">$_SERVER</a></var> should be populated with <var class="varname">argc</var> and
+      <var class="varname">argv</var> if
+      <a href="https://www.php.net/manual/en/ini.core.php#ini.variables-order" class="link">variables_order</a> includes "S".
+      If you have specifically configured your system to not create
+      <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.server.php" class="classname">$_SERVER</a></var>, then of course it shouldn't be there.
+      The change was to always make <var class="varname">argc</var>
+      and <var class="varname">argv</var> available in the CLI version regardless of the
+      <a href="https://www.php.net/manual/en/ini.core.php#ini.variables-order" class="link">variables_order</a> setting.
+      As in, the CLI version will now always populate the global
+      <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.argc.php" class="classname">$argc</a></var> and <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.argv.php" class="classname">$argv</a></var> variables.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      An object with no properties is no longer considered "empty".
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      In some cases classes must be declared before use. It only happens if
+      some of the new features of PHP 5 (such as <a href="https://www.php.net/manual/en/language.oop5.interfaces.php" class="link">interfaces</a>) are used.
+      Otherwise the behaviour is the old.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.get-class.php" class="function">get_class()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.get-parent-class.php" class="function">get_parent_class()</a></span>
+      and <span class="function"><a href="https://www.php.net/manual/en/function.get-class-methods.php" class="function">get_class_methods()</a></span> now return the name of the
+      classes/methods as they were declared (case-sensitive) which may lead to
+      problems in older scripts that rely on the previous behaviour (the
+      class/method name was always returned lowercased). A possible solution
+      is to search for those functions in all your scripts and use
+      <span class="function"><a href="https://www.php.net/manual/en/function.strtolower.php" class="function">strtolower()</a></span>.
+     </span>
+     <span class="simpara">
+      This case sensitivity change also applies to the 
+      <a href="https://www.php.net/manual/en/language.constants.predefined.php" class="link">magical predefined 
+      constants</a> <strong><code>__CLASS__</code></strong>, 
+      <strong><code>__METHOD__</code></strong>, and <strong><code>__FUNCTION__</code></strong>.
+      The values are returned exactly as they're declared (case-sensitive).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ip2long.php" class="function">ip2long()</a></span> now returns <strong><code>false</code></strong> when an invalid IP
+      address is passed as argument to the function, and no longer
+      <code class="literal">-1</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      If there are functions defined in the included file, they can be used in the
+      main file independent if they are before <span class="function"><a href="https://www.php.net/manual/en/function.return.php" class="function">return</a></span> or after.
+      If the file is included twice, PHP 5 issues fatal error because functions
+      were already declared, while PHP 4 doesn't complain about it.
+      It is recommended to use <span class="function"><a href="https://www.php.net/manual/en/function.include-once.php" class="function">include_once</a></span> instead of
+      checking if the file was already included and conditionally return inside
+      the included file.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.include-once.php" class="function">include_once</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.require-once.php" class="function">require_once</a></span>
+      first normalize the path of included file on Windows so that including
+      A.php and a.php include the file just once.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Passing an array to a function by value no longer resets the
+      array's internal pointer for array accesses made within the
+      function. In other words, in PHP 4 when you passed an array to a
+      function, its internal pointer inside the function would be
+      reset, while in PHP 5, when you pass an array to a function, its
+      array pointer within the function will be wherever it was when
+      the array was passed to the function.
+     </span>
+    </li>
+   </ul><p class="para">
+    </p><div class="example" id="example-6099">
+     <p><strong>Example #1 <span class="function"><a href="https://www.php.net/manual/en/function.strrpos.php" class="function">strrpos()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.strripos.php" class="function">strripos()</a></span> now
+      use the entire string as a needle</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DEF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//int(3)<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DAF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//bool(false)<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+   <p class="para">
+    </p><div class="example" id="example-6100">
+     <p><strong>Example #2 An object with no properties is no longer considered "empty"</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">test </span><span style="color: #007700">{ }<br></span><span style="color: #0000BB">$t </span><span style="color: #007700">= new </span><span style="color: #0000BB">test</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$t</span><span style="color: #007700">)); </span><span style="color: #FF8000">// echo bool(false)<br><br></span><span style="color: #007700">if (</span><span style="color: #0000BB">$t</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// Will be executed<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+   <p class="para">
+    </p><div class="example" id="example-6101">
+     <p><strong>Example #3 In some cases classes must be declared before used</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">//works with no errors:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">a</span><span style="color: #007700">();<br>class </span><span style="color: #0000BB">a </span><span style="color: #007700">{<br>}<br><br><br></span><span style="color: #FF8000">//throws an error:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">b</span><span style="color: #007700">();<br><br>interface </span><span style="color: #0000BB">c</span><span style="color: #007700">{<br>}<br>class </span><span style="color: #0000BB">b </span><span style="color: #007700">implements </span><span style="color: #0000BB">c </span><span style="color: #007700">{<br>} <br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+  </div>

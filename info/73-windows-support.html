@@ -1,0 +1,28 @@
+---
+title: Windows Support
+version: "7.3"
+tags:
+ - "7.3"
+ - windows-support
+---
+<div id="migration73.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration73.windows-support.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration73.windows-support.core.file-descriptors">
+   <h4 class="title">More POSIX Conforming File Deletion</h4>
+
+   <p class="para">
+    File descriptors are opened in shared read/write/delete mode by default.
+    This effectively maps the <abbr class="abbrev">POSIX</abbr> semantics and allows to
+    delete files with handles in use. It is not 100% same, some platform
+    differences still persist. After the deletion, the filename entry is
+    blocked, until all the opened handles to it are closed.
+   </p>
+  </div>
+
+ </div>
+
+</div>

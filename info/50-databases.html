@@ -1,0 +1,36 @@
+---
+title: Databases
+version: "5.0"
+tags:
+ - "5.0"
+ - databases
+---
+<div id="migration5.databases" class="section">
+   <h2 class="title">Databases</h2>
+   <p class="para">
+    There were some changes in PHP 5 regarding databases (MySQL and SQLite).
+   </p>
+   <p class="para">
+    In PHP 5 the MySQL client libraries are not bundled, because of license
+    and maintenance problems. MySQL is supported with the only
+    change being that MySQL support is no longer enabled by 
+    <em class="emphasis">default</em> in PHP 5.  This essentially means that
+    PHP doesn't include the <strong class="option configure">--with-mysql</strong>
+    option in the <a href="https://www.php.net/manual/en/configuration.php" class="link">configure</a> line so 
+    that you must now manually do this when compiling PHP. Windows users will 
+    need to edit <var class="filename">php.ini</var> and enable the <var class="filename">php_mysql.dll</var>
+    DLL as in PHP 4 no such DLL existed, it was simply built into your Windows
+    PHP binaries.
+   </p>
+   <p class="para">
+    There is also a new extension, <a href="https://www.php.net/manual/en/ref.mysqli.php" class="link">MySQLi (Improved
+     MySQL)</a>, which is designed to work with MySQL 4.1 and above.
+   </p>
+   <p class="para">
+    Since PHP 5, the SQLite extension is
+    built-in PHP. SQLite is an embeddable SQL database engine and is not a
+    client library used to connect to a big database server (like MySQL or
+    PostgreSQL). The SQLite library reads and writes directly to and from the
+    database files on disk.
+   </p>
+  </div>

@@ -1,0 +1,269 @@
+---
+title: Deprecated Features
+version: "7.4"
+tags:
+ - "7.4"
+ - deprecated
+---
+<div id="migration74.deprecated" class="sect1">
+ <h2 class="title">Deprecated Features</h2>
+
+ <div class="sect2" id="migration74.deprecated.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration74.deprecated.core.nested-ternary">
+   <h4 class="title">Nested ternary operators without explicit parentheses</h4>
+
+   <p class="para">
+    Nested ternary operations must explicitly use parentheses
+    to dictate the order of the operations.  Previously, when used
+    without parentheses, the left-associativity would not result
+    in the expected behaviour in most cases.
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated<br></span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3</span><span style="color: #007700">) ? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">; </span><span style="color: #FF8000">// ok<br></span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: (</span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// ok<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+   <p class="para">
+    Parentheses are <em class="emphasis">not</em> required when nesting into the middle operand,
+    as this is always unambiguous and not affected by associativity:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+1 ? 2 ? 3 : 4 : 5 // ok</span>
+</code></div>
+     </div>
+
+    </div>
+   
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.array-string-access-curly-brace">
+   <h4 class="title">Array and string offset access using curly braces</h4>
+
+   <p class="para">
+    The array and string offset access syntax using curly braces is
+    deprecated. Use <code class="literal">$var[$idx]</code> instead of
+    <code class="literal">$var{$idx}</code>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.real">
+   <h4 class="title">(real) cast and <span class="function"><a href="https://www.php.net/manual/en/function.is-real.php" class="function">is_real()</a></span> function</h4>
+
+   <p class="para">
+    The <code class="literal">(real)</code> cast is deprecated,
+    use <code class="literal">(float)</code> instead.
+   </p>
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.is-real.php" class="function">is_real()</a></span> function is also deprecated,
+    use <span class="function"><a href="https://www.php.net/manual/en/function.is-float.php" class="function">is_float()</a></span> instead.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.unbind-this">
+   <h4 class="title">Unbinding <code class="literal">$this</code> when <code class="literal">$this</code> is used</h4>
+
+   <p class="para">
+    Unbinding <code class="literal">$this</code> of a non-static closure
+    that uses <code class="literal">$this</code> is deprecated.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.parent">
+   <h4 class="title"><code class="literal">parent</code> keyword without parent class</h4>
+
+   <p class="para">
+    Using <code class="literal">parent</code> inside a class without a parent
+    is deprecated, and will throw a compile-time error in the future.
+    Currently an error will only be generated if/when the parent is
+    accessed at run-time.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.allow-url-include">
+   <h4 class="title">allow_url_include INI option</h4>
+
+   <p class="para">
+    The <a href="https://www.php.net/manual/en/filesystem.configuration.php#ini.allow-url-include" class="link">allow_url_include</a>
+    ini directive is deprecated. Enabling it will generate
+    a deprecation notice at startup.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.invalid-base-characters">
+   <h4 class="title">Invalid characters in base conversion functions</h4>
+
+   <p class="para">
+    Passing invalid characters to <span class="function"><a href="https://www.php.net/manual/en/function.base-convert.php" class="function">base_convert()</a></span>,
+    <span class="function"><a href="https://www.php.net/manual/en/function.bindec.php" class="function">bindec()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.octdec.php" class="function">octdec()</a></span> and
+    <span class="function"><a href="https://www.php.net/manual/en/function.hexdec.php" class="function">hexdec()</a></span> will now generate a deprecation notice.
+    The result will still be computed as if the invalid characters did not exist.
+    Leading and trailing whitespace, as well as prefixes of type 0x (depending on base)
+    continue to be allowed.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.array-key-exists-objects">
+   <h4 class="title">Using <span class="function"><a href="https://www.php.net/manual/en/function.array-key-exists.php" class="function">array_key_exists()</a></span> on objects</h4>
+
+   <p class="para">
+    Using <span class="function"><a href="https://www.php.net/manual/en/function.array-key-exists.php" class="function">array_key_exists()</a></span> on objects is deprecated.
+    Instead either <span class="function"><a href="https://www.php.net/manual/en/function.isset.php" class="function">isset()</a></span> or <span class="function"><a href="https://www.php.net/manual/en/function.property-exists.php" class="function">property_exists()</a></span>
+    should be used.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.magic-quotes-functions">
+   <h4 class="title">Magic quotes functions</h4>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.get-magic-quotes-gpc.php" class="function">get_magic_quotes_gpc()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.get-magic-quotes-runtime.php" class="function">get_magic_quotes_runtime()</a></span>
+    functions are deprecated. They always return <strong><code>false</code></strong>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.hebrevc">
+   <h4 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.hebrevc.php" class="function">hebrevc()</a></span> function</h4>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.hebrevc.php" class="function">hebrevc()</a></span> function is deprecated.
+    It can be replaced with <code class="literal">nl2br(hebrev($str))</code> or,
+    preferably, the use of Unicode RTL support.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.convert-cyr-string">
+   <h4 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.convert-cyr-string.php" class="function">convert_cyr_string()</a></span> function</h4>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.convert-cyr-string.php" class="function">convert_cyr_string()</a></span> function is deprecated.
+    It can be replaced by one of <span class="function"><strong>mb_convert_string()</strong></span>,
+    <span class="function"><a href="https://www.php.net/manual/en/function.iconv.php" class="function">iconv()</a></span> or <a href="https://www.php.net/manual/en/class.uconverter.php" class="classname">UConverter</a>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.money-format">
+   <h4 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.money-format.php" class="function">money_format()</a></span> function</h4>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.money-format.php" class="function">money_format()</a></span> function is deprecated.
+    It can be replaced by the intl <a href="https://www.php.net/manual/en/class.numberformatter.php" class="classname">NumberFormatter</a> functionality.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.ezmlm-hash">
+   <h4 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.ezmlm-hash.php" class="function">ezmlm_hash()</a></span> function</h4>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.ezmlm-hash.php" class="function">ezmlm_hash()</a></span> function is deprecated.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.restore-include-path">
+   <h4 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.restore-include-path.php" class="function">restore_include_path()</a></span> function</h4>
+
+   <p class="para">
+    The <span class="function"><a href="https://www.php.net/manual/en/function.restore-include-path.php" class="function">restore_include_path()</a></span> function is deprecated.
+    It can be replaced by <code class="literal">ini_restore('include_path')</code>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration74.deprecated.core.implode-reverse-parameters">
+   <h4 class="title">Implode with historical parameter order</h4>
+
+   <p class="para">
+    Passing parameters to <span class="function"><a href="https://www.php.net/manual/en/function.implode.php" class="function">implode()</a></span> in reverse order
+    is deprecated, use <code class="literal">implode($glue, $parts)</code>
+    instead of <code class="literal">implode($parts, $glue)</code>.
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration74.deprecated.com">
+  <h3 class="title">COM</h3>
+
+  <p class="para">
+   Importing type libraries with case-insensitive constant
+   registering has been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.deprecated.filter">
+  <h3 class="title">Filter</h3>
+
+  <p class="para">
+   <strong><code>FILTER_SANITIZE_MAGIC_QUOTES</code></strong> is deprecated,
+   use <strong><code>FILTER_SANITIZE_ADD_SLASHES</code></strong> instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.deprecated.mbstring">
+  <h3 class="title">Multibyte String</h3>
+
+  <p class="para">
+   Passing a non-string pattern to <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg-replace.php" class="function">mb_ereg_replace()</a></span>
+   is deprecated. Currently, non-string patterns are interpreted as
+   ASCII codepoints. In PHP 8, the pattern will be interpreted as a
+   string instead.
+  </p>
+  <p class="para">
+   Passing the encoding as 3rd parameter to <span class="function"><a href="https://www.php.net/manual/en/function.mb-strrpos.php" class="function">mb_strrpos()</a></span>
+   is deprecated. Instead pass a 0 offset, and encoding as 4th parameter.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.deprecated.ldap">
+  <h3 class="title">Lightweight Directory Access Protocol</h3>
+
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.ldap-control-paged-result-response.php" class="function">ldap_control_paged_result_response()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.ldap-control-paged-result.php" class="function">ldap_control_paged_result()</a></span> are deprecated.
+   Pagination controls can be sent along with
+   <span class="function"><a href="https://www.php.net/manual/en/function.ldap-search.php" class="function">ldap_search()</a></span> instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.deprecated.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <p class="para">
+   Calls to <span class="methodname"><a href="https://www.php.net/manual/en/reflectiontype.tostring.php" class="methodname">ReflectionType::__toString()</a></span> now generate
+   a deprecation notice. This method has been deprecated in favor of
+   <span class="methodname"><a href="https://www.php.net/manual/en/reflectionnamedtype.getname.php" class="methodname">ReflectionNamedType::getName()</a></span> in the documentation
+   since PHP 7.1, but did not throw a deprecation notice for technical reasons.
+  </p>
+  <p class="para">
+   The <code class="literal">export()</code> methods on all <a href="https://www.php.net/manual/en/class.reflection.php" class="classname">Reflection</a>
+   classes are deprecated. Construct a <a href="https://www.php.net/manual/en/class.reflection.php" class="classname">Reflection</a> object and
+   convert it to string instead:
+   </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// ReflectionClass::export(Foo::class, false) is:<br></span><span style="color: #007700">echo new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// $str = ReflectionClass::export(Foo::class, true) is:<br></span><span style="color: #0000BB">$str </span><span style="color: #007700">= (string) new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+  
+ </div>
+
+ <div class="sect2" id="migration74.deprecated.socket">
+  <h3 class="title">Socket</h3>
+
+  <p class="para">
+   The <strong><code>AI_IDN_ALLOW_UNASSIGNED</code></strong> and
+   <strong><code>AI_IDN_USE_STD3_ASCII_RULES</code></strong> flags for
+   <span class="function"><a href="https://www.php.net/manual/en/function.socket-addrinfo-lookup.php" class="function">socket_addrinfo_lookup()</a></span> are deprecated,
+   due to an upstream deprecation in glibc.
+  </p>
+ </div>
+
+</div>

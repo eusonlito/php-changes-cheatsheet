@@ -4,140 +4,64 @@ description: Comparative of different versions of PHP
 author: Álvaro Gómez
 twitter: "@eusonlito"
 image: image.png
+layout: layouts/base.njk
+css: styles.css
+
 versions:
-  php5.0:
-    title: "5.0"
-    foreground: black
-    background: white
-    shadow: #ddd
-  php5.1: 
-    title: 5.1
-    foreground: black
-    background: white
-    shadow: #ddd
-  php5.2: 
-    title: 5.2
-    foreground: black
-    background: white
-    shadow: #ddd
-  php5.3: 
-    title: 5.3
-    foreground: black
-    background: white
-    shadow: #ddd
-  php5.4: 
-    title: 5.4
-    foreground: black
-    background: white
-    shadow: #ddd
-  php5.5: 
-    title: 5.5
-    foreground: black
-    background: white
-    shadow: #ddd
-  php5.6: 
-    title: 5.6
-    foreground: black
-    background: white
-    shadow: #ddd
-  php7.0: 
-    title: "7.0"
-    foreground: black
-    background: white
-    shadow: #ddd
-  php7.1: 
-    title: 7.1
-    foreground: black
-    background: white
-    shadow: #ddd
-  php7.2: 
-    title: 7.2
-    foreground: black
-    background: white
-    shadow: #ddd
-  php7.3: 
-    title: 7.3
-    foreground: black
-    background: white
-    shadow: #ddd
-  php7.4:
-    title: 7.4
-    foreground: black
-    background: white
-    shadow: #ddd
-  php8.0:
-    title: "8.0"
-    foreground: black
-    background: white
-    shadow: #ddd
+  - title: "5.0"
+    color: "#FFDD3A"
+  - title: "5.1"
+    color: "#FFA03C"
+  - title: "5.2"
+    color: "#E45B5B"
+  - title: "5.3"
+    color: "#E678DC"
+  - title: "5.4"
+    color: "#6B96D5"
+  - title: "5.5"
+    color: "#3CC0DC"
+  - title: "5.6"
+    color: "#40D26E"
+  - title: "7.0"
+    color: "#CFF417"
+  - title: "7.1"
+    color: "#FFDD3A"
+  - title: "7.2"
+    color: "#FFA03C"
+  - title: "7.3"
+    color: "#E45B5B"
+  - title: "7.4"
+    color: "#E678DC"
+  - title: "8.0"
+    color: "#6B96D5"
 types:
   - openssl
   - new-methods
   - extensions-other
   - global-constants
 ---
-<!DOCTYPE html>
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
+<header class="main-header">
+    <h1>
+        <strong><a href="https://php.net/" title="Go to PHP site">PHP</a></strong>
+        PHP Versions Reference
+    </h1>
+</header>
 
-        <title>{{ title }}</title>
+<main class="main-content ly-horizontal">
+    {% for version in versions | reverse %}
+        <article id="{{ id }}" style="--color: {{ version.color }};">
+            <h1>{{ version.title }}</h1>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta name="author" content="{{ author }}">
-        <meta name="title" content="{{ title }}">
-        <meta name="description" content="{{ description }}">
-
-        <meta property="og:title" content="{{ title }}">
-        <meta property="og:description" content="{{ description }}">
-        <meta property="og:image" content="{{ image | url }}">
-
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="{{ twitter }}">
-        <meta name="twitter:creator" content="{{ twitter }}">
-        <meta name="twitter:title" content="{{ title }}">
-        <meta name="twitter:description" content="{{ description }}">
-        <meta name="twitter:image" content="{{ image | url }}">
-
-        <link rel="stylesheet" href="styles.css" type="text/css" media="screen">
-    </head>
-
-    <body>
-        <header class="main-header">
-            <h1>
-                <strong><a href="https://php.net/" title="Go to PHP site">PHP</a></strong>
-                PHP Versions Reference
-            </h1>
-        </header>
-
-        <main class="main-content ly-horizontal">
-            {{ versions }}
-            {% for id, version in versions %}
-                <article id="{{ id }}" style="--foreground: {{ version.foreground }}; --background: {{ version.background }}; --shadow: {{ version.shadow }};">
-                    <h1>{{ version.title }}</h1>
-
-                    {% for type in types %}
-                        {% set pages = search.pages([type, id]) %}
-
-                        {% if pages.length %}
-                        <h2>{{ type }}</h2>
-
-                        <ul>
-                        {% for page in pages %}
-                        <li>
-                            <a href="{{ page.data.url | url }}">
-                                {{ page.data.title }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                        </ul>
-                        {% endif %}
-                    {% endfor %}
-                    
-                </article>
+            <ul>
+            {% for page in search.pages(version.title) %}
+              <li>
+                  <a href="{{ page.data.url | url }}">
+                      {{ page.data.title }}
+                  </a>
+              </li>
             {% endfor %}
-        </main>
-    </body>
-</html>
+            </ul>
+        </article>
+    {% endfor %}
+</main>

@@ -1,0 +1,358 @@
+---
+title: New features
+version: "5.6"
+tags:
+ - "5.6"
+ - new-features
+---
+<div id="migration56.new-features" class="sect1">
+ <h2 class="title">New features</h2>
+
+ <div class="sect2" id="migration56.new-features.const-scalar-exprs">
+  <h3 class="title">Constant expressions</h3>
+
+  <p class="para">
+   It is now possible to provide a scalar expression involving numeric and
+   string literals and/or constants in contexts where PHP previously expected
+   a static value, such as constant and property declarations and default
+   function arguments.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">const </span><span style="color: #0000BB">ONE </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>const </span><span style="color: #0000BB">TWO </span><span style="color: #007700">= </span><span style="color: #0000BB">ONE </span><span style="color: #007700">* </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br><br>class </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br>    const </span><span style="color: #0000BB">THREE </span><span style="color: #007700">= </span><span style="color: #0000BB">TWO </span><span style="color: #007700">+ </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    const </span><span style="color: #0000BB">ONE_THIRD </span><span style="color: #007700">= </span><span style="color: #0000BB">ONE </span><span style="color: #007700">/ </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">THREE</span><span style="color: #007700">;<br>    const </span><span style="color: #0000BB">SENTENCE </span><span style="color: #007700">= </span><span style="color: #DD0000">'The value of THREE is '</span><span style="color: #007700">.</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">THREE</span><span style="color: #007700">;<br><br>    public function </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">ONE </span><span style="color: #007700">+ </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">THREE</span><span style="color: #007700">) {<br>        return </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br>    }<br>}<br><br>echo (new </span><span style="color: #0000BB">C</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">f</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>echo </span><span style="color: #0000BB">C</span><span style="color: #007700">::</span><span style="color: #0000BB">SENTENCE</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+4
+The value of THREE is 3
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   It is also now possible to define a constant <span class="type">array</span> using the
+   <code class="literal">const</code> keyword:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">const </span><span style="color: #0000BB">ARR </span><span style="color: #007700">= [</span><span style="color: #DD0000">'a'</span><span style="color: #007700">, </span><span style="color: #DD0000">'b'</span><span style="color: #007700">];<br><br>echo </span><span style="color: #0000BB">ARR</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+a
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.variadics">
+  <h3 class="title">Variadic functions via <code class="literal">...</code></h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list" class="link">Variadic functions</a> can
+   now be implemented using the <code class="literal">...</code> operator, instead of
+   relying on <span class="function"><a href="https://www.php.net/manual/en/function.func-get-args.php" class="function">func_get_args()</a></span>.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">, </span><span style="color: #0000BB">$opt </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$params</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// $params is an array containing the remaining arguments.<br>    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">'$req: %d; $opt: %d; number of params: %d'</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">,<br>           </span><span style="color: #0000BB">$req</span><span style="color: #007700">, </span><span style="color: #0000BB">$opt</span><span style="color: #007700">, </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$params</span><span style="color: #007700">));<br>}<br><br></span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br></span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br></span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">);<br></span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">);<br></span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+$req: 1; $opt: 0; number of params: 0
+$req: 1; $opt: 2; number of params: 0
+$req: 1; $opt: 2; number of params: 1
+$req: 1; $opt: 2; number of params: 2
+$req: 1; $opt: 2; number of params: 3
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.splat">
+  <h3 class="title">Argument unpacking via <code class="literal">...</code></h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/language.types.array.php" class="link">Arrays</a> and
+   <span class="interfacename"><a href="https://www.php.net/manual/en/class.traversable.php" class="interfacename">Traversable</a></span> objects can be unpacked into
+   argument lists when calling functions by using the <code class="literal">...</code>
+   operator. This is also known as the splat operator in other languages,
+   including Ruby.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$c</span><span style="color: #007700">) {<br>    return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b </span><span style="color: #007700">+ </span><span style="color: #0000BB">$c</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">$operators </span><span style="color: #007700">= [</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];<br>echo </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$operators</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+6
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.exponentiation">
+  <h3 class="title">Exponentiation via <code class="literal">**</code></h3>
+
+  <p class="para">
+   A right associative <code class="literal">**</code> operator has been added to
+   support exponentiation, along with a <code class="literal">**=</code> shorthand
+   assignment operator.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"2 ** 3 ==      %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">** </span><span style="color: #0000BB">3</span><span style="color: #007700">);<br></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"2 ** 3 ** 2 == %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">** </span><span style="color: #0000BB">3 </span><span style="color: #007700">** </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">**= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"a ==           %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  <p class="para">The above example will output:</p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+2 ** 3 ==      8
+2 ** 3 ** 2 == 512
+a ==           8
+</pre></div>
+  </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.use">
+  <h3 class="title"><code class="literal">use function</code> and <code class="literal">use const</code></h3>
+
+  <p class="para">
+   The
+   <a href="https://www.php.net/manual/en/language.namespaces.importing.php" class="link"><code class="literal">use</code></a> 
+   operator has been extended to support importing functions and constants in
+   addition to classes. This is achieved via the
+   <code class="literal">use function</code> and <code class="literal">use const</code>
+   constructs, respectively.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">namespace </span><span style="color: #0000BB">Name</span><span style="color: #007700">\</span><span style="color: #0000BB">Space </span><span style="color: #007700">{<br>    const </span><span style="color: #0000BB">FOO </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br>    function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { echo </span><span style="color: #0000BB">__FUNCTION__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">; }<br>}<br><br>namespace {<br>    use const </span><span style="color: #0000BB">Name</span><span style="color: #007700">\</span><span style="color: #0000BB">Space</span><span style="color: #007700">\</span><span style="color: #0000BB">FOO</span><span style="color: #007700">;<br>    use function </span><span style="color: #0000BB">Name</span><span style="color: #007700">\</span><span style="color: #0000BB">Space</span><span style="color: #007700">\</span><span style="color: #0000BB">f</span><span style="color: #007700">;<br><br>    echo </span><span style="color: #0000BB">FOO</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">f</span><span style="color: #007700">();<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+42
+Name\Space\f
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.phpdbg">
+  <h3 class="title">phpdbg</h3>
+
+  <p class="para">
+   PHP now includes an interactive debugger called phpdbg implemented as a
+   SAPI module. For more information, please visit the
+   <a href="https://www.php.net/manual/en/book.phpdbg.php" class="link">phpdbg documentation</a>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.default-encoding">
+  <h3 class="title">Default character encoding</h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/ini.core.php#ini.default-charset" class="link">default_charset</a> is now used as
+   the default character set for the <span class="function"><a href="https://www.php.net/manual/en/function.htmlentities.php" class="function">htmlentities()</a></span>,
+   <span class="function"><a href="https://www.php.net/manual/en/function.html-entity-decode.php" class="function">html_entity_decode()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.htmlspecialchars.php" class="function">htmlspecialchars()</a></span> functions. Note that if the (now
+   deprecated) iconv and mbstring encoding settings are set, they will take
+   precedence over default_charset for iconv and mbstring functions,
+   respectively.
+  </p>
+
+  <p class="para">
+   The default value for this setting is <code class="literal">UTF-8</code>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.reusable-input">
+  <h3 class="title"><a href="https://www.php.net/manual/en/wrappers.php.php#wrappers.php.input" class="link"><code class="literal">php://input</code></a> is reusable</h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/wrappers.php.php#wrappers.php.input" class="link"><code class="literal">php://input</code></a>
+   may now be reopened and read as many times as required. This work has also
+   resulted in a major reduction in the amount of memory required to deal
+   with POST data.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.large-file">
+  <h3 class="title">Large file uploads</h3>
+
+  <p class="para">
+   Files larger than 2 gigabytes in size are now accepted.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.gmp">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.gmp.php" class="link">GMP</a> supports operator overloading</h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/book.gmp.php" class="link">GMP</a> objects now support operator
+   overloading and casting to scalar types. This allows for more expressive
+   code using GMP:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$a </span><span style="color: #007700">= </span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #0000BB">17</span><span style="color: #007700">);<br><br>if (</span><span style="color: #0000BB">version_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">, </span><span style="color: #DD0000">'5.6'</span><span style="color: #007700">, </span><span style="color: #DD0000">'&lt;'</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #0000BB">gmp_intval</span><span style="color: #007700">(</span><span style="color: #0000BB">gmp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">)), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br>    echo </span><span style="color: #0000BB">gmp_intval</span><span style="color: #007700">(</span><span style="color: #0000BB">gmp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">17</span><span style="color: #007700">)), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br>    echo </span><span style="color: #0000BB">gmp_intval</span><span style="color: #007700">(</span><span style="color: #0000BB">gmp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">)), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br>} else {<br>    echo </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br>    echo </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">17</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br>    echo </span><span style="color: #0000BB">42 </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+59
+59
+59
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.hash-equals">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.hash-equals.php" class="function">hash_equals()</a></span> for timing attack safe string comparison</h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.hash-equals.php" class="function">hash_equals()</a></span> function has been added to compare
+   two strings in constant time. This should be used to mitigate timing
+   attacks; for instance, when testing <span class="function"><a href="https://www.php.net/manual/en/function.crypt.php" class="function">crypt()</a></span> password
+   hashes (assuming that you are unable to use
+   <span class="function"><a href="https://www.php.net/manual/en/function.password-hash.php" class="function">password_hash()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.password-verify.php" class="function">password_verify()</a></span>, which aren't susceptible to timing
+   attacks).
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$expected  </span><span style="color: #007700">= </span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'12345'</span><span style="color: #007700">, </span><span style="color: #DD0000">'$2a$07$usesomesillystringforsalt$'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$correct   </span><span style="color: #007700">= </span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'12345'</span><span style="color: #007700">, </span><span style="color: #DD0000">'$2a$07$usesomesillystringforsalt$'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$incorrect </span><span style="color: #007700">= </span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'1234'</span><span style="color: #007700">,  </span><span style="color: #DD0000">'$2a$07$usesomesillystringforsalt$'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">hash_equals</span><span style="color: #007700">(</span><span style="color: #0000BB">$expected</span><span style="color: #007700">, </span><span style="color: #0000BB">$correct</span><span style="color: #007700">));<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">hash_equals</span><span style="color: #007700">(</span><span style="color: #0000BB">$expected</span><span style="color: #007700">, </span><span style="color: #0000BB">$incorrect</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.debuginfo">
+  <h3 class="title"><code class="literal">__debugInfo()</code></h3>
+
+  <p class="para">
+   The <a href="https://www.php.net/manual/en/language.oop5.magic.php#language.oop5.magic.debuginfo" class="link">__debugInfo()</a>
+   magic method has been added to allow objects to change the properties and
+   values that are shown when the object is output using
+   <span class="function"><a href="https://www.php.net/manual/en/function.var-dump.php" class="function">var_dump()</a></span>.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br>    private </span><span style="color: #0000BB">$prop</span><span style="color: #007700">;<br><br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop </span><span style="color: #007700">= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br>    }<br><br>    public function </span><span style="color: #0000BB">__debugInfo</span><span style="color: #007700">() {<br>        return [<br>            </span><span style="color: #DD0000">'propSquared' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop </span><span style="color: #007700">** </span><span style="color: #0000BB">2</span><span style="color: #007700">,<br>        ];<br>    }<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new </span><span style="color: #0000BB">C</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(C)#1 (1) {
+  ["propSquared"]=&gt;
+  int(1764)
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.gost">
+  <h3 class="title">gost-crypto hash algorithm</h3>
+
+  <p class="para">
+   The <code class="literal">gost-crypto</code> hash algorithm has been added. This
+   implements the GOST hash function using the CryptoPro S-box tables as
+   specified by
+   <a href="https://www.php.net/manual/en/http://www.faqs.org/rfcs/rfc4357" class="link external">» RFC 4357, section 11.2</a>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.openssl">
+  <h3 class="title">SSL/TLS improvements</h3>
+
+  <p class="para">
+   A wide range of improvements have been made to the SSL/TLS support in PHP
+   5.6. These include
+   <a href="https://www.php.net/manual/en/migration56.incompatible.php#migration56.incompatible.peer-verification" class="link">enabling peer verification by default</a>,
+   supporting certificate fingerprint matching, mitigating against TLS
+   renegotiation attacks, and many new
+   <a href="https://www.php.net/manual/en/context.ssl.php" class="link">SSL context options</a> to allow more fine
+   grained control over protocol and verification settings when using
+   encrypted streams.
+  </p>
+
+  <p class="para">
+   These changes are described in more detail in the
+   <a href="https://www.php.net/manual/en/migration56.openssl.php" class="link">OpenSSL changes in PHP 5.6.x</a>
+   section of this migration guide.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.new-features.postgresql">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.pgsql.php" class="link">pgsql</a> async support</h3>
+
+  <p class="para">
+   The <a href="https://www.php.net/manual/en/book.pgsql.php" class="link">pgsql</a> extension now supports
+   asynchronous connections and queries, thereby enabling non-blocking
+   behaviour when interacting with PostgreSQL databases. Asynchronous
+   connections may be established via the
+   <strong><code>PGSQL_CONNECT_ASYNC</code></strong> constant, and the new
+   <span class="function"><a href="https://www.php.net/manual/en/function.pg-connect-poll.php" class="function">pg_connect_poll()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.pg-socket.php" class="function">pg_socket()</a></span>,
+   <span class="function"><a href="https://www.php.net/manual/en/function.pg-consume-input.php" class="function">pg_consume_input()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.pg-flush.php" class="function">pg_flush()</a></span>
+   functions may be used to handle asynchronous connections and queries.
+  </p>
+ </div>
+</div>

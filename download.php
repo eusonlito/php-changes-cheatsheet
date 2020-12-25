@@ -84,8 +84,9 @@ function nodeToHtml(DOMDocument $dom, DOMElement $node, string $name): string
     $frontmatter = [
       "---",
       "title: {$data['title']}",
+      "version: \"{$data['version']}\"",
       "tags:",
-      " - php{$data['version']}",
+      " - \"{$data['version']}\"",
       " - {$data['type']}",
       "---",
     ];
@@ -164,7 +165,7 @@ function css(): void
 
 define('REMOTE', 'https://www.php.net/manual/en/');
 define('CACHE', __DIR__.'/.cache');
-define('HTML', __DIR__.'/html');
+define('HTML', __DIR__.'/info');
 
 $dom = dom(file_get_contents(REMOTE.'appendices.php'));
 $pages = [];
@@ -190,6 +191,7 @@ foreach (xpathQuery($dom, '//div[@id="appendices"]/ul/li') as $index) {
             continue;
         }
 
+        nodeToHtml($page, $contents, $id);
         // $pages = pageIndex($pages, nodeToHtml($page, $contents, $id), $page);
     }
 }

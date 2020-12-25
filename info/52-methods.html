@@ -1,0 +1,191 @@
+---
+title: New Methods
+version: "5.2"
+tags:
+ - "5.2"
+ - methods
+---
+<div id="migration52.methods" class="section">
+  <h2 class="title">New Methods</h2>
+  <p class="para">
+   New methods were introduced in 5.2.0:
+  </p>
+
+  <p class="para"><a href="https://www.php.net/manual/en/book.dom.php" class="link">dom</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/domdocument.registernodeclass.php" class="function">DOMDocument::registerNodeClass()</a></span>
+     - Register extended class used to create base node type
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/domelement.setidattribute.php" class="function">DOMElement::setIDAttribute()</a></span>
+     - Declares the attribute specified by name to be of type ID
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/domelement.setidattributenode.php" class="function">DOMElement::setIDAttributeNode()</a></span>
+     - Declares the attribute specified by node to be of type ID
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/domelement.setidattributens.php" class="function">DOMElement::setIDAttributeNS()</a></span>
+     - Declares the attribute specified by local name and namespace URI to be
+     of type ID
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/domnode.c14n.php" class="methodname">DOMNode::C14N()</a></span>([bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
+     - Canonicalize nodes to a string
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/domnode.c14nfile.php" class="methodname">DOMNode::C14NFile()</a></span>(string uri [, bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
+     - Canonicalize nodes to a file
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/domnode.getnodepath.php" class="methodname">DOMNode::getNodePath()</a></span>()
+     - Gets an <code class="literal">xpath</code> for a node
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.soap.php" class="link">soap</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/soapserver.setobject.php" class="methodname">SoapServer::setObject()</a></span>(object obj)
+     - Sets object which will handle SOAP requests
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.spl.php" class="link">spl</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/arrayobject.asort.php" class="methodname">ArrayObject::asort()</a></span>(void)
+     - Sort the entries by values
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/arrayobject.ksort.php" class="methodname">ArrayObject::ksort()</a></span>(void)
+     - Sort the entries by key
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/arrayobject.natcasesort.php" class="methodname">ArrayObject::natcasesort()</a></span>(void)
+     - Sort the entries by key using case insensitive
+     "natural order" algorithm.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/arrayobject.natsort.php" class="methodname">ArrayObject::natsort()</a></span>(void)
+     - Sort the entries by values using "natural order" algorithm.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/arrayobject.uasort.php" class="methodname">ArrayObject::uasort()</a></span>(callback cmp_function)
+     - Sort the entries by values using a user defined function
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/arrayobject.uksort.php" class="methodname">ArrayObject::uksort()</a></span>(callback cmp_function)
+     - Sort the entries by key using a user defined function.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     ArrayIterator <span class="methodname"><a href="https://www.php.net/manual/en/appenditerator.getarrayiterator.php" class="methodname">AppendIterator::getArrayIterator()</a></span>()
+     - Get access to inner <code class="literal">ArrayIterator</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/appenditerator.getiteratorindex.php" class="methodname">AppendIterator::getIteratorIndex()</a></span>()
+     - Get index of iterator
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     bool <span class="methodname"><a href="https://www.php.net/manual/en/cachingiterator.getcache.php" class="methodname">CachingIterator::getCache()</a></span>()
+     - Return the cache
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int <span class="methodname"><a href="https://www.php.net/manual/en/cachingiterator.getflags.php" class="methodname">CachingIterator::getFlags()</a></span>()
+     - Return the internal flags
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     bool <span class="methodname"><a href="https://www.php.net/manual/en/cachingiterator.offsetexists.php" class="methodname">CachingIterator::offsetExists()</a></span>(mixed index)
+     - Returns <strong><code>true</code></strong> if the requested index exists
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     string <span class="methodname"><a href="https://www.php.net/manual/en/cachingiterator.offsetget.php" class="methodname">CachingIterator::offsetGet()</a></span>(mixed index)
+     - Return the internal cache if used
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void <span class="methodname"><a href="https://www.php.net/manual/en/cachingiterator.offsetset.php" class="methodname">CachingIterator::offsetSet()</a></span>(mixed index, mixed newval)
+     - Set given index in cache
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void <span class="methodname"><a href="https://www.php.net/manual/en/cachingiterator.offsetunset.php" class="methodname">CachingIterator::offsetUnset()</a></span>(mixed index)
+     - Unset given index in cache
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void <span class="methodname"><a href="https://www.php.net/manual/en/cachingiterator.setflags.php" class="methodname">CachingIterator::setFlags()</a></span>()
+     - Set the internal flags
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     array("delimiter" =&gt;, "enclosure" =&gt;) <span class="methodname"><a href="https://www.php.net/manual/en/splfileobject.getcsvcontrol.php" class="methodname">SplFileObject::getCsvControl()</a></span>(void)
+     - Get the delimiter and enclosure character used in <span class="function"><a href="https://www.php.net/manual/en/function.fgetcsv.php" class="function">fgetcsv()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void <span class="methodname"><a href="https://www.php.net/manual/en/splfileobject.setcsvcontrol.php" class="methodname">SplFileObject::setCsvControl()</a></span>([string delimiter = ',' [, string enclosure = '"']])
+     - Set the delimiter and enclosure character used in <span class="function"><a href="https://www.php.net/manual/en/function.fgetcsv.php" class="function">fgetcsv()</a></span>
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.tidy.php" class="link">Tidy</a></p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     tidyNode <span class="methodname"><a href="https://www.php.net/manual/en/tidynode.getparent.php" class="methodname">tidyNode::getParent()</a></span>()
+     - Returns the parent node of the current node (Added in PHP 5.2.2)
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/book.xmlreader.php" class="link">XMLReader</a></p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     boolean <span class="function"><a href="https://www.php.net/manual/en/xmlreader.setschema.php" class="function">XMLReader::setSchema()</a></span>
+     - Use W3C XSD schema to validate the document as it is processed. Activation is
+     only possible before the first <span class="function"><a href="https://www.php.net/manual/en/xmlreader.read.php" class="function">XMLReader::read()</a></span>
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.zip.php" class="link">zip</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/ziparchive.addemptydir.php" class="methodname">ZipArchive::addEmptyDir()</a></span>()
+     - Creates an empty directory in the archive
+    </span>
+   </li>
+  </ul></div>

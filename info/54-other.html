@@ -1,0 +1,78 @@
+---
+title: Other changes
+version: "5.4"
+tags:
+ - "5.4"
+ - other
+---
+<div id="migration54.other" class="section">
+  <h2 class="title">Other changes</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>E_ALL</code></strong> now includes <strong><code>E_STRICT</code></strong> level
+     errors in the <a href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-reporting" class="link">error_reporting</a> configuration directive.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/book.snmp.php" class="link">SNMP</a> now has an OOP API.
+    </span>
+    <span class="simpara">
+      Functions now return <strong><code>false</code></strong> on every error condition including SNMP-related
+      (no such instance, end of MIB, etc). Thus, in particular, breaks previous behavior
+      of get/walk functions returning an empty string on SNMP-related errors.
+    </span>
+    <span class="simpara">
+      Multi OID get/getnext/set queries are now supported.
+    </span>
+    <span class="simpara">
+     Dropped UCD-SNMP compatibility code, consider upgrading to net-snmp v5.3+, Net-SNMP v5.4+ is
+     required for Windows version.
+    </span>
+    <span class="simpara">
+     In sake of adding support for IPv6 DNS name resolution of
+     remote SNMP agent (peer) is done by extension now, not by Net-SNMP library anymore.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a> now supports AES.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/features.commandline.php" class="link">CLI SAPI</a> doesn't terminate any
+     more on fatal errors when using interactive mode with readline support.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/language.variables.superglobals.php" class="link">$_SERVER['REQUEST_TIME_FLOAT']</a>
+     has been added to include microsecond precision.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added new hash algorithms: fnv132, fnv164, joaat
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Chained string offsets - e.g. $a[0][0] where $a is a string - now work.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Arrays cast from <span class="type"><a href="https://www.php.net/manual/en/class.simplexmlelement.php" class="type SimpleXMLElement">SimpleXMLElement</a></span> now <em class="emphasis">always</em> contain all nodes instead of
+     just the first matching node. All <span class="type"><a href="https://www.php.net/manual/en/class.simplexmlelement.php" class="type SimpleXMLElement">SimpleXMLElement</a></span> children are now <em class="emphasis">always</em>
+     printed when using <span class="function"><a href="https://www.php.net/manual/en/function.var-dump.php" class="function">var_dump()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.var-export.php" class="function">var_export()</a></span> and
+     <span class="function"><a href="https://www.php.net/manual/en/function.print-r.php" class="function">print_r()</a></span>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     It's now possible to enforce the class' <a href="https://www.php.net/manual/en/language.oop5.decon.php" class="link">__construct</a> arguments in an abstract
+     constructor in the base class.
+    </span>
+   </li>
+  </ul></div>

@@ -3,17 +3,6 @@
 /* Variables */
 :root {
     --black: #1B1B1B;
-    --gray: #777;
-    --light-gray: #BFBFBF;
-
-    --yellow: #FFDD3A;
-    --orange: #FFA03C;
-    --red: #E45B5B;
-    --pink: #E678DC;
-    --blue: #6B96D5;
-    --turquoise: #3CC0DC;
-    --green: #40D26E;
-    --lemon: #CFF417;
 }
 
 body {
@@ -57,33 +46,30 @@ body {
     padding: 0;
     display: grid;
     grid-auto-columns: minmax(max-content, 1fr);
-    /* min-height: calc(100vh - 3rem); */
 
     & article {
         grid-row: 1;
-        background: white;
         margin-right: 1px;
         margin-bottom: 1px;
         padding-bottom: 1rem;
-        background: var(--background);
-        color: var(--foreground);
+        background: var(--color);
+        color: var(--black);
     }
 
     & h1 {
         font-size: .9em;
         margin: 0;
         padding: .5rem 1rem;
-        background: color(black a(.1));
         text-transform: uppercase;
-        background: var(--shadow);
+        background-color: #0002;
     }
 
     & a {
         color: inherit;
 
         &:hover {
-            background: var(--foreground);
-            color: var(--background);
+            background: var(--black);
+            color: var(--color);
         }
     }
 

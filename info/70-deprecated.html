@@ -1,0 +1,103 @@
+---
+title: Deprecated features in PHP 7.0.x
+version: "7.0"
+tags:
+ - "7.0"
+ - deprecated
+---
+<div id="migration70.deprecated" class="sect1">
+ <h2 class="title">Deprecated features in PHP 7.0.x</h2>
+
+
+ 
+
+ <div class="sect2" id="migration70.deprecated.php4-constructors">
+  <h3 class="title">PHP 4 style constructors</h3>
+
+  <p class="para">
+   PHP 4 style constructors (methods that have the same name as the class they
+   are defined in) are deprecated, and will be removed in the future. PHP 7
+   will emit <strong><code>E_DEPRECATED</code></strong> if a PHP 4 constructor is the
+   only constructor defined within a class. Classes that implement a
+   <span class="function"><strong>__construct()</strong></span> method are unaffected.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">'I am the constructor'</span><span style="color: #007700">;<br>    }<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Deprecated: Methods with the same name as their class will not be constructors in a future version of PHP; foo has a deprecated constructor in example.php on line 3
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.static-calls">
+  <h3 class="title">Static calls to non-static methods</h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/language.oop5.static.php" class="link">Static</a> calls to methods that
+   are not declared <strong class="command">static</strong> are deprecated, and may be
+   removed in the future.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">bar</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">'I am not static!'</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Deprecated: Non-static method foo::bar() should not be called statically in - on line 8
+I am not static!
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.pwshash-salt-option">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.password-hash.php" class="function">password_hash()</a></span> salt option</h3>
+
+  <p class="para">
+   The salt option for the <span class="function"><a href="https://www.php.net/manual/en/function.password-hash.php" class="function">password_hash()</a></span> function has been
+   deprecated to prevent developers from generating their own (usually insecure)
+   salts. The function itself generates a cryptographically secure salt when no
+   salt is provided by the developer - therefore custom salt generation should not
+   be needed.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.capture-session-meta">
+  <h3 class="title"><code class="literal">capture_session_meta</code> SSL context option</h3>
+
+  <p class="para">
+   The <code class="literal">capture_session_meta</code> SSL context option has been
+   deprecated. SSL metadata is now available through the
+   <span class="function"><a href="https://www.php.net/manual/en/function.stream-get-meta-data.php" class="function">stream_get_meta_data()</a></span> function.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.ldap">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a> deprecations</h3>
+   <p class="simpara">
+    The following function has been deprecated:
+   </p>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="https://www.php.net/manual/en/function.ldap-sort.php" class="function">ldap_sort()</a></span>
+     </span>
+    </li>
+   </ul></div>
+</div>

@@ -1,0 +1,289 @@
+---
+title: Backward Incompatible Changes
+version: "7.3"
+tags:
+ - "7.3"
+ - incompatible
+---
+<div id="migration73.incompatible" class="sect1">
+ <h2 class="title">Backward Incompatible Changes</h2>
+
+ <div class="sect2" id="migration73.incompatible.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration73.incompatible.core.heredoc-nowdoc">
+   <h4 class="title">Heredoc/Nowdoc Ending Label Interpretation</h4>
+
+   <p class="para">
+    Due to the introduction of <a href="https://www.php.net/manual/en/migration73.new-features.php#migration73.new-features.core.heredoc" class="link">flexible heredoc/nowdoc
+    syntax</a>, doc strings that contain the ending label inside their body
+    may cause syntax errors or change in interpretation. For example in:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$str </span><span style="color: #007700">= &lt;&lt;&lt;FOO<br></span><span style="color: #DD0000">abcdefg<br></span><span style="color: #007700">   FOO<br></span><span style="color: #0000BB">FOO</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    the indented occurrence of <code class="literal">FOO</code> did not previously have any
+    special meaning. Now it will be interpreted as the end of the heredoc string
+    and the following <code class="literal">FOO;</code> will cause a syntax error. This issue can
+    always be resolved by choosing an ending label that does not occur within the
+    contents of the string.
+   
+  </div>
+
+  <div class="sect3" id="migration73.incompatible.core.continue-targeting-switch">
+   <h4 class="title">Continue Targeting Switch issues Warning</h4>
+
+   <p class="para">
+    <code class="literal">continue</code> statements targeting <code class="literal">switch</code>
+    control flow structures will now generate a warning. In PHP such
+    <code class="literal">continue</code> statements are equivalent to
+    <code class="literal">break</code>, while they behave as <code class="literal">continue 2</code>
+    in other languages.
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">while (</span><span style="color: #0000BB">$foo</span><span style="color: #007700">) {<br>    switch (</span><span style="color: #0000BB">$bar</span><span style="color: #007700">) {<br>      case </span><span style="color: #DD0000">"baz"</span><span style="color: #007700">:<br>         continue;<br>         </span><span style="color: #FF8000">// Warning: "continue" targeting switch is equivalent to<br>         //          "break". Did you mean to use "continue 2"?<br>   </span><span style="color: #007700">}<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+  </div>
+
+  <div class="sect3" id="migration73.incompatible.core.arrayaccess">
+   <h4 class="title">Strict Interpretation of Integer String Keys on ArrayAccess</h4>
+
+   <p class="para">
+    Array accesses of type <code class="literal">$obj["123"]</code>, where
+    <code class="literal">$obj</code> implements <a href="https://www.php.net/manual/en/class.arrayaccess.php" class="classname">ArrayAccess</a> and
+    <code class="literal">"123"</code> is an integer <span class="type">string</span> literal will no
+    longer result in an implicit conversion to integer, i.e.,
+    <code class="literal">$obj-&gt;offsetGet("123")</code> will be called instead of
+    <code class="literal">$obj-&gt;offsetGet(123)</code>. This matches existing behavior for
+    non-literals. The behavior of arrays is not affected in any way, they
+    continue to implicitly convert integral string keys to integers.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.incompatible.core.static-properties">
+   <h4 class="title">Static Properties no longer separated by Reference Assignment</h4>
+
+   <p class="para">
+    In PHP, static properties are shared between inheriting classes, unless the
+    static property is explicitly overridden in a child class. However, due to an
+    implementation artifact it was possible to separate the static properties by
+    assigning a reference. This loophole has been fixed.
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{<br>    public static </span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>}<br>class </span><span style="color: #0000BB">Test2 </span><span style="color: #007700">extends </span><span style="color: #0000BB">Test </span><span style="color: #007700">{ }<br><br></span><span style="color: #0000BB">Test2</span><span style="color: #007700">::</span><span style="color: #0000BB">$x </span><span style="color: #007700">= &amp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Test</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">, </span><span style="color: #0000BB">Test2</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// Previously: int(0), int(1)<br>// Now:        int(1), int(1)<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+  </div>
+
+  <div class="sect3" id="migration73.incompatible.core.reference-unwrapping">
+   <h4 class="title">References returned by Array and Property Accesses are immediately unwrapped</h4>
+
+   <p class="para">
+    References returned by array and property accesses are now unwrapped as part
+    of the access. This means that it is no longer possible to modify the
+    reference between the access and the use of the accessed value:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$ref </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] + (</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] = </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br></span><span style="color: #FF8000">// Previously: int(4), Now: int(3)<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    This makes the behavior of references and non-references consistent. Please
+    note that reading and writing a value inside a single expression remains
+    undefined behavior and may change again in the future.
+   
+  </div>
+
+  <div class="sect3" id="migration73.incompatible.core.traversable-unpacking">
+   <h4 class="title">Argument Unpacking of Traversables with non-Integer Keys no longer supported</h4>
+
+   <p class="para">
+    Argument unpacking stopped working with <a href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a>s
+    with non-integer keys. The following code worked in PHP 5.6-7.2 by accident.
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">$args</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">);<br>}<br>function </span><span style="color: #0000BB">gen</span><span style="color: #007700">() {<br>    yield </span><span style="color: #0000BB">1.23 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">123</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">gen</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+  </div>
+
+  <div class="sect3" id="migration73.incompatible.core.misc">
+   <h4 class="title">Miscellaneous</h4>
+
+   <p class="para">
+    The <var class="filename">ext_skel</var> utility has been completely redesigned with
+    new options and some old options removed. This is now written in PHP and has
+    no external dependencies.
+   </p>
+
+   <p class="para">
+    Support for BeOS has been dropped.
+   </p>
+
+   <p class="para">
+    Exceptions thrown due to automatic conversion of warnings into exceptions in
+    <code class="literal">EH_THROW</code> mode (e.g. some <a href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a>
+    exceptions) no longer populate <span class="function"><a href="https://www.php.net/manual/en/function.error-get-last.php" class="function">error_get_last()</a></span> state. As
+    such, they now work the same way as manually thrown exceptions.
+   </p>
+
+   <p class="para">
+    <a href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a> now reports wrong types as
+    <code class="literal">int</code> and <code class="literal">bool</code> instead of
+    <code class="literal">integer</code> and <code class="literal">boolean</code>, respectively.
+   </p>
+
+   <p class="para">
+    Undefined variables passed to <span class="function"><a href="https://www.php.net/manual/en/function.compact.php" class="function">compact()</a></span> will now be
+    reported as a notice.
+   </p>
+
+   <p class="para">
+    <span class="function"><a href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span> and related functions now report the mime
+    type of BMP images as <code class="literal">image/bmp</code> instead of
+    <code class="literal">image/x-ms-bmp</code>, since the former has been registered with
+    the IANA (see <a href="https://www.php.net/manual/en/http://www.faqs.org/rfcs/rfc7903" class="link external">» RFC 7903</a>).
+   </p>
+
+   <p class="para">
+    <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-get-name.php" class="function">stream_socket_get_name()</a></span> will now return IPv6 addresses
+    wrapped in brackets. For example <code class="literal">"[::1]:1337"</code> will be
+    returned instead of <code class="literal">"::1:1337"</code>.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.bc">
+  <h3 class="title">BCMath Arbitrary Precision Mathematics</h3>
+
+  <p class="para">
+   All warnings thrown by <a href="https://www.php.net/manual/en/ref.bc.php" class="link">BCMath functions</a> are
+   now using PHP's error handling. Formerly some warnings have directly been
+   written to stderr.
+  </p>
+
+  <p class="para">
+   <span class="function"><a href="https://www.php.net/manual/en/function.bcmul.php" class="function">bcmul()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.bcpow.php" class="function">bcpow()</a></span> now return numbers
+   with the requested scale. Formerly, the returned numbers may have omitted
+   trailing decimal zeroes.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.imap">
+  <h3 class="title">IMAP, POP3 and NNTP</h3>
+
+  <p class="para">
+   <strong class="command">rsh</strong>/<strong class="command">ssh</strong> logins are disabled by default.
+   Use <a href="https://www.php.net/manual/en/imap.configuration.php#ini.imap.enable-insecure-rsh" class="link">imap.enable_insecure_rsh</a> if you
+   want to enable them. Note that the IMAP library does not filter mailbox names
+   before passing them to the <strong class="command">rsh</strong>/<strong class="command">ssh</strong>
+   command, thus passing untrusted data to this function with
+   <strong class="command">rsh</strong>/<strong class="command">ssh</strong> enabled is insecure.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.mbstring">
+  <h3 class="title">Multibyte String</h3>
+
+  <p class="para">
+    Due to added support for named captures, <code class="literal">mb_ereg_*()</code>
+    patterns using named captures will behave differently. In particular named
+    captures will be part of matches and <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg-replace.php" class="function">mb_ereg_replace()</a></span>
+    will interpret additional syntax. See <a href="https://www.php.net/manual/en/migration73.new-features.php#migration73.new-features.mbstring.named-captures" class="link">Named
+    Captures</a> for more information.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.mysqli">
+  <h3 class="title">MySQL Improved Extension</h3>
+
+  <p class="para">
+   Prepared statements now properly report the fractional seconds for
+   <code class="literal">DATETIME</code>, <code class="literal">TIME</code> and
+   <code class="literal">TIMESTAMP</code> columns with decimals specifier (e.g.
+   <code class="literal">TIMESTAMP(6)</code> when using microseconds). Formerly, the
+   fractional seconds part was simply omitted from the returned values.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.pdo-mysql">
+  <h3 class="title">MySQL Functions (PDO_MYSQL)</h3>
+
+  <p class="para">
+   Prepared statements now properly report the fractional seconds for
+   <code class="literal">DATETIME</code>, <code class="literal">TIME</code> and
+   <code class="literal">TIMESTAMP</code> columns with decimals specifier (e.g.
+   <code class="literal">TIMESTAMP(6)</code> when using microseconds). Formerly, the
+   fractional seconds part was simply omitted from the returned values. Please
+   note that this only affects the usage of <a href="https://www.php.net/manual/en/ref.pdo-mysql.php" class="link">PDO_MYSQL</a> with emulated prepares turned off
+   (e.g. using the native preparation functionality). Statements using
+   connections having <strong><code>PDO::ATTR_EMULATE_PREPARES</code></strong>=<strong><code>true</code></strong>
+   (which is the default) were not affected by the bug fixed and have already
+   been getting the proper fractional seconds values from the engine.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/book.reflection.php" class="link">Reflection</a> export to string now uses
+   <code class="literal">int</code> and <code class="literal">bool</code> instead of
+   <code class="literal">integer</code> and <code class="literal">boolean</code>, respectively.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.spl">
+  <h3 class="title">Standard PHP Library (SPL)</h3>
+
+  <p class="para">
+   If an <a href="https://www.php.net/manual/en/book.spl.php" class="link">SPL</a> autoloader throws an exception,
+   following autoloaders will not be executed. Previously all autoloaders were
+   executed and exceptions were chained.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.simplexml">
+  <h3 class="title">SimpleXML</h3>
+
+  <p class="para">
+   Mathematic operations involving <a href="https://www.php.net/manual/en/book.simplexml.php" class="link">SimpleXML</a> objects will now treat the text as
+   an <span class="type">int</span> or <span class="type">float</span>, whichever is more appropriate.
+   Previously values were treated as <span class="type">int</span>s unconditionally.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.incompatible.cookie-decode">
+  <h3 class="title">Incoming Cookies</h3>
+
+  <p class="para">
+   As of PHP 7.3.23, the <em class="emphasis">names</em> of incoming cookies are no
+   longer url-decoded for security reasons.
+  </p>
+ </div>
+
+</div>

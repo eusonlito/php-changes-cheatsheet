@@ -1,0 +1,145 @@
+---
+title: Changed functions
+version: "7.1"
+tags:
+ - "7.1"
+ - changed-functions
+---
+<div id="migration71.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration71.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+  
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.getopt.php" class="function">getopt()</a></span> has an optional third parameter that exposes
+     the index of the next element in the argument vector list to be processed.
+     This is done via a by-ref parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.getenv.php" class="function">getenv()</a></span> no longer requires its parameter. If the
+     parameter is omitted, then the current environment variables will be
+     returned as an associative array.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.get-headers.php" class="function">get_headers()</a></span> now has an additional parameter to enable
+     for the passing of custom stream contexts.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.output-reset-rewrite-vars.php" class="function">output_reset_rewrite_vars()</a></span> no longer resets session
+     URL rewrite variables.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.parse-url.php" class="function">parse_url()</a></span> is now more restrictive and supports
+     RFC3986.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> now accepts an optional third parameter to
+     specify the offset to begin unpacking from.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.filesystem">
+  <h3 class="title">File System</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.file-get-contents.php" class="function">file_get_contents()</a></span> now accepts a negative seek offset
+     if the stream is seekable.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.tempnam.php" class="function">tempnam()</a></span> now emits a notice when falling back to the
+     system's temp directory.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.json">
+  <h3 class="title">JSON</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span> now accepts a new option,
+     <strong><code>JSON_UNESCAPED_LINE_TERMINATORS</code></strong>, to disable the
+     escaping of U+2028 and U+2029 characters when
+     <strong><code>JSON_UNESCAPED_UNICODE</code></strong> is supplied.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.mbstring">
+  <h3 class="title">Multibyte String</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg.php" class="function">mb_ereg()</a></span> now rejects illegal byte sequences.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg-replace.php" class="function">mb_ereg_replace()</a></span> now rejects illegal byte sequences.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.pdo">
+  <h3 class="title">PDO</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/pdo.lastinsertid.php" class="methodname">PDO::lastInsertId()</a></span> for PostgreSQL will now trigger an error
+     when <code class="literal">nextval</code> has not been called for the current
+     session (the postgres connection).
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.pgsql">
+  <h3 class="title">PostgreSQL</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-last-notice.php" class="function">pg_last_notice()</a></span> now accepts an optional parameter to
+     specify an operation. This can be done with one of the following new
+     constants: <strong><code>PGSQL_NOTICE_LAST</code></strong>,
+     <strong><code>PGSQL_NOTICE_ALL</code></strong>, or
+     <strong><code>PGSQL_NOTICE_CLEAR</code></strong>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-fetch-all.php" class="function">pg_fetch_all()</a></span> now accepts an optional second parameter
+     to specify the result type (similar to the third parameter of
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-fetch-array.php" class="function">pg_fetch_array()</a></span>).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-select.php" class="function">pg_select()</a></span> now accepts an optional fourth parameter to
+     specify the result type (similar to the third parameter of
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-fetch-array.php" class="function">pg_fetch_array()</a></span>).
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.session">
+  <h3 class="title">Session</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.session-start.php" class="function">session_start()</a></span> now returns <strong><code>false</code></strong> and no longer
+     initializes <var class="varname"><a href="https://www.php.net/manual/en/reserved.variables.session.php" class="classname">$_SESSION</a></var> when it failed to start the
+     session.
+    </span>
+   </li>
+  </ul></div>
+</div>

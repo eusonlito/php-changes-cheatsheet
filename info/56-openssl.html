@@ -1,0 +1,435 @@
+---
+title: OpenSSL changes in PHP 5.6.x
+version: "5.6"
+tags:
+ - "5.6"
+ - openssl
+---
+<div id="migration56.openssl" class="sect1">
+ <h2 class="title">OpenSSL changes in PHP 5.6.x</h2>
+
+ <div class="sect2" id="migration56.openssl.peer-verification">
+  <h3 class="title">Stream wrappers now verify peer certificates and host names by default when using SSL/TLS</h3>
+
+  
+   <p class="para">
+    All encrypted client streams now enable peer verification by default. By
+    default, this will use OpenSSL's default CA bundle to verify the peer
+    certificate. In most cases, no changes will need to be made to communicate
+    with servers with valid SSL certificates, as distributors generally
+    configure OpenSSL to use known good CA bundles.
+   </p>
+   
+   <p class="para">
+    The default CA bundle may be overridden on a global basis by setting
+    either the openssl.cafile or openssl.capath configuration setting, or on a
+    per request basis by using the
+    <a href="https://www.php.net/manual/en/context.ssl.php#context.ssl.cafile" class="link"><code class="parameter">cafile</code></a> or
+    <a href="https://www.php.net/manual/en/context.ssl.php#context.ssl.capath" class="link"><code class="parameter">capath</code></a>
+    context options.
+   </p>
+
+   <p class="para">
+    While not recommended in general, it is possible to disable peer
+    certificate verification for a request by setting the
+    <a href="https://www.php.net/manual/en/context.ssl.php#context.ssl.verify-peer" class="link"><code class="parameter">verify_peer</code></a>
+    context option to <strong><code>false</code></strong>, and to disable peer name validation by setting
+    the <a href="https://www.php.net/manual/en/context.ssl.php#context.ssl.verify-peer-name" class="link"><code class="parameter">verify_peer_name</code></a>
+    context option to <strong><code>false</code></strong>.
+   </p>
+
+ </div>
+
+ <div class="sect2" id="migration56.openssl.fingerprint">
+  <h3 class="title">Certificate fingerprints</h3>
+
+  <p class="para">
+   Support has been added for extracting and verifying certificate
+   fingerprints. <span class="function"><a href="https://www.php.net/manual/en/function.openssl-x509-fingerprint.php" class="function">openssl_x509_fingerprint()</a></span> has been added
+   to extract a fingerprint from an X.509 certificate, and two
+   <a href="https://www.php.net/manual/en/context.ssl.php" class="link">SSL stream context</a> options have been
+   added: <code class="literal">capture_peer_cert</code> to capture the peer's X.509
+   certificate, and <code class="literal">peer_fingerprint</code> to assert that the
+   peer's certificate should match the given fingerprint.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.openssl.ciphers">
+  <h3 class="title">Default ciphers updated</h3>
+
+  <p class="para">
+   The default ciphers used by PHP have been updated to a more secure list
+   based on the
+   <a href="https://www.php.net/manual/en/https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Ciphersuite" class="link external">» Mozilla cipher recommendations</a>,
+   with two additional exclusions: anonymous Diffie-Hellman ciphers, and RC4.
+  </p>
+
+  <p class="para">
+   This list can be accessed via the new
+   <strong><code>OPENSSL_DEFAULT_STREAM_CIPHERS</code></strong> constant, and can be
+   overridden (as in previous PHP versions) by setting the
+   <a href="https://www.php.net/manual/en/context.ssl.php#context.ssl.ciphers" class="link"><code class="parameter">ciphers</code></a>
+   context option.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.openssl.tls-compression">
+  <h3 class="title">Compression disabled by default</h3>
+
+  <p class="para">
+   SSL/TLS compression has been disabled by default to mitigate the CRIME
+   attack. PHP 5.4.13 added a
+   <a href="https://www.php.net/manual/en/context.ssl.php#context.ssl.disable-compression" class="link"><code class="parameter">disable_compression</code></a>
+   context option to allow compression to be disabled: this is now set to
+   <strong><code>true</code></strong> (that is, compression is disabled) by default.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.openssl.honor-cipher-order">
+  <h3 class="title">Allow servers to prefer their cipher order</h3>
+
+  <p class="para">
+   The <code class="parameter">honor_cipher_order</code> SSL context option has been
+   added to allow encrypted stream servers to mitigate BEAST vulnerabilities
+   by preferring the server's ciphers to the client's.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.openssl.metadata">
+  <h3 class="title">Access the negotiated protocol and cipher</h3>
+
+  <p class="para">
+   The protocol and cipher that were negotiated for an encrypted stream can
+   now be accessed via <span class="function"><a href="https://www.php.net/manual/en/function.stream-get-meta-data.php" class="function">stream_get_meta_data()</a></span> or
+   <span class="function"><a href="https://www.php.net/manual/en/function.stream-context-get-options.php" class="function">stream_context_get_options()</a></span> when the
+   <code class="parameter">capture_session_meta</code> SSL context option is set to
+   <strong><code>true</code></strong>.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br>    </span><span style="color: #DD0000">'capture_session_meta' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">TRUE<br></span><span style="color: #007700">]]);<br> <br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">FALSE</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$meta </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_get_options</span><span style="color: #007700">(</span><span style="color: #0000BB">$ctx</span><span style="color: #007700">)[</span><span style="color: #DD0000">'ssl'</span><span style="color: #007700">][</span><span style="color: #DD0000">'session_meta'</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$meta</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(4) {
+  ["protocol"]=&gt;
+  string(5) "TLSv1"
+  ["cipher_name"]=&gt;
+  string(20) "ECDHE-RSA-AES128-SHA"
+  ["cipher_bits"]=&gt;
+  int(128)
+  ["cipher_version"]=&gt;
+  string(11) "TLSv1/SSLv3"
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.openssl.forward-secrecy">
+  <h3 class="title">New options for perfect forward secrecy in encrypted stream servers</h3>
+
+  <p class="para">
+   Encrypted client streams already support perfect forward secrecy, as it is
+   generally controlled by the server. PHP encrypted server streams using
+   certificates capable of perfect forward secrecy do not need to take any
+   additional action to enable PFS; however a number of new SSL context options
+   have been added to allow more control over PFS and deal with any
+   compatibility issues that may arise. 
+  </p>
+
+  <dl><dt>
+<code class="parameter">ecdh_curve</code></dt>
+
+    <dd>
+
+     <p class="para">
+      This option allows the selection of a specific curve for use with ECDH
+      ciphers. If not specified, <code class="literal">prime256v1</code> will be used.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">dh_param</code></dt>
+
+    <dd>
+
+     <p class="para">
+      A path to a file containing parametrs for Diffie-Hellman key exchange,
+      such as that created by the following command:
+     </p>
+     <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">openssl dhparam -out /path/to/my/certs/dh-2048.pem 2048</pre>
+</div>
+     </div>
+
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">single_dh_use</code></dt>
+
+    <dd>
+
+     <p class="para">
+      If set to <strong><code>true</code></strong>, a new key pair will be created when using
+      Diffie-Hellman parameters, thereby improving forward secrecy.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">single_ecdh_use</code></dt>
+
+    <dd>
+
+     <p class="para">
+      If set to <strong><code>true</code></strong>, a new key pair will always be generated when ECDH
+      cipher suites are negotiated. This improves forward secrecy.
+     </p>
+    </dd>
+
+   
+  </dl></div>
+
+ <div class="sect2" id="migration56.openssl.crypto-method">
+  <h3 class="title">SSL/TLS version selection</h3>
+
+  <p class="para">
+   It is now possible to select specific versions of SSL and TLS via the
+   <code class="parameter">crypto_method</code> SSL context option or by specifying a
+   specific transport when creating a stream wrapper (for example, by calling
+   <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-client.php" class="function">stream_socket_client()</a></span> or
+   <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-server.php" class="function">stream_socket_server()</a></span>).
+  </p>
+
+  <p class="para">
+   The <code class="parameter">crypto_method</code> SSL context option accepts a
+   bitmask enumerating the protocols that are permitted, as does the
+   <code class="parameter">crypto_type</code> of
+   <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-enable-crypto.php" class="function">stream_socket_enable_crypto()</a></span>.
+   
+  </p>
+
+  <table class="segmentedlist"><caption><strong>Selected protocol versions and corresponding options</strong></caption>
+   <thead><tr><th>Protocol(s)</th>
+   <th>Client flag</th>
+   <th>Server flag</th>
+   <th>Transport</th>
+   </tr></thead><tbody><tr class="seglistitem"><td class="seg">Any TLS or SSL version</td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_ANY_CLIENT</code></strong></td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_ANY_SERVER</code></strong></td>
+    <td class="seg"><code class="literal">ssl://</code></td>
+   </tr><tr class="seglistitem"><td class="seg">Any TLS version</td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLS_CLIENT</code></strong></td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLS_SERVER</code></strong></td>
+    <td class="seg"><code class="literal">tls://</code></td>
+   </tr><tr class="seglistitem"><td class="seg">TLS 1.0</td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT</code></strong></td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_SERVER</code></strong></td>
+    <td class="seg"><code class="literal">tlsv1.0://</code></td>
+   </tr><tr class="seglistitem"><td class="seg">TLS 1.1</td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT</code></strong></td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_SERVER</code></strong></td>
+    <td class="seg"><code class="literal">tlsv1.1://</code></td>
+   </tr><tr class="seglistitem"><td class="seg">TLS 1.2</td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</code></strong></td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_SERVER</code></strong></td>
+    <td class="seg"><code class="literal">tlsv1.2://</code></td>
+   </tr><tr class="seglistitem"><td class="seg">SSL 3</td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_SSLv3_CLIENT</code></strong></td>
+    <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_SSLv3_SERVER</code></strong></td>
+    <td class="seg"><code class="literal">sslv3://</code></td>
+   </tr></tbody></table><div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">// Requiring TLS 1.0 or better when using file_get_contents():<br></span><span style="color: #0000BB">$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([<br>    </span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br>        </span><span style="color: #DD0000">'crypto_method' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLS_CLIENT</span><span style="color: #007700">,<br>    ],<br>]);<br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// Requiring TLS 1.1 or 1.2:<br></span><span style="color: #0000BB">$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([<br>    </span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br>        </span><span style="color: #DD0000">'crypto_method' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT </span><span style="color: #007700">|<br>                           </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</span><span style="color: #007700">,<br>    ],<br>]);<br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// Connecting using the tlsv1.2:// stream socket transport.<br></span><span style="color: #0000BB">$sock </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">'tlsv1.2://google.com:443/'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.openssl.default-certificate-paths">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.openssl-get-cert-locations.php" class="function">openssl_get_cert_locations()</a></span> added</h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.openssl-get-cert-locations.php" class="function">openssl_get_cert_locations()</a></span> function has been
+   added: it returns the default locations PHP will search when looking for
+   CA bundles.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_get_cert_locations</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(8) {
+  ["default_cert_file"]=&gt;
+  string(21) "/etc/pki/tls/cert.pem"
+  ["default_cert_file_env"]=&gt;
+  string(13) "SSL_CERT_FILE"
+  ["default_cert_dir"]=&gt;
+  string(18) "/etc/pki/tls/certs"
+  ["default_cert_dir_env"]=&gt;
+  string(12) "SSL_CERT_DIR"
+  ["default_private_dir"]=&gt;
+  string(20) "/etc/pki/tls/private"
+  ["default_default_cert_area"]=&gt;
+  string(12) "/etc/pki/tls"
+  ["ini_cafile"]=&gt;
+  string(0) ""
+  ["ini_capath"]=&gt;
+  string(0) ""
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.openssl.spki">
+  <h3 class="title">SPKI support</h3>
+
+  <p class="para">
+   Support has been added for generating, extracting and verifying signed
+   public key and challenges (SPKAC). <span class="function"><a href="https://www.php.net/manual/en/function.openssl-spki-new.php" class="function">openssl_spki_new()</a></span>,
+   <span class="function"><a href="https://www.php.net/manual/en/function.openssl-spki-verify.php" class="function">openssl_spki_verify()</a></span>,
+   <span class="function"><a href="https://www.php.net/manual/en/function.openssl-spki-export-challenge.php" class="function">openssl_spki_export_challenge()</a></span>, and
+   <span class="function"><a href="https://www.php.net/manual/en/function.openssl-spki-export.php" class="function">openssl_spki_export()</a></span> have been added to create, verify
+   export PEM public key and associated challenge from SPKAC's generated from
+   a <code class="literal">KeyGen</code> HTML5 element.
+  </p>
+
+  <dl><dt>
+<code class="parameter">openssl_spki_new</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Generates a new SPKAC using private key, challenge string and hashing
+      algorithm.
+     </p>
+
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <p class="para">The above example will output:</p>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+SPKAC=MIIBXjCByDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA3L0IfUijj7+A8CPC8EmhcdNoe5fUAog7OrBdhn7EkxFButUp40P7+LiYiygYG1TmoI/a5EgsLU3s9twEz3hmgY9mYIqb/rb+SF8qlD/K6KVyUORC7Wlz1Df4L8O3DuRGzx6/+3jIW6cPBpfgH1sVuYS1vDBsP/gMMIxwTsKJ4P0CAwEAARYkYjViMzYxMTktNjY5YS00ZDljLWEyYzctMGZjNGFhMjVlMmE2MA0GCSqGSIb3DQEBAwUAA4GBAF7hu0ifzmjonhAak2FhhBRsKFDzXdKIkrWxVNe8e0bZzMrWOxFM/rqBgeH3/gtOUDRS5Fnzyq425UsTYbjfiKzxGeCYCQJb1KJ2V5Ij/mIJHZr53WYEXHQTNMGR8RPm7IxwVXVSHIgAfXsXZ9IXNbFbcaLRiSTr9/N4U+MXUWL7
+</pre></div>
+      </div>
+     </div>
+    </dd>
+
+   
+
+   
+    <dt>
+<code class="parameter">openssl_spki_verify</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Verifies provided SPKAC.
+     </p>
+
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_spki_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </dd>
+
+   
+
+   
+    <dt>
+<code class="parameter">openssl_spki_export_challenge</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Exports associated challenge from provided SPKAC.
+     </p>
+
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$challenge </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_export_challenge</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">):<br>echo </span><span style="color: #0000BB">$challenge</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <p class="para">The above example will output:</p>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+challenge string
+</pre></div>
+      </div>
+     </div>
+    </dd>
+
+   
+
+   
+    <dt>
+<code class="parameter">openssl_spki_export</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Exports the PEM formatted RSA public key from SPKAC.
+     </p>
+
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br>echo </span><span style="color: #0000BB">openssl_spki_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <p class="para">The above example will output:</p>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcvQh9SKOPv4DwI8LwSaFx02h7
+l9QCiDs6sF2GfsSTEUG61SnjQ/v4uJiLKBgbVOagj9rkSCwtTez23ATPeGaBj2Zg
+ipv+tv5IXyqUP8ropXJQ5ELtbXPUN/gvw7cO5EbPHr/7eMhbpw8Gl+AfWxW5hLW8
+MGw/+AwwjHBOwong/QIDAQAB
+-----END PUBLIC KEY-----
+</pre></div>
+      </div>
+     </div>
+    </dd>
+
+   
+  </dl></div>
+</div>

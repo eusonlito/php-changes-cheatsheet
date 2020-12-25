@@ -1,0 +1,92 @@
+---
+title: Extensions
+version: "5.1"
+tags:
+ - "5.1"
+ - extensions
+---
+<div id="migration51.extensions" class="section">
+  <h2 class="title">Extensions</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <p class="para">
+     <a href="https://www.php.net/manual/en/migration51.extensions.php#migration51.extensions-gone" class="link">Extensions that are gone
+      from the PHP core</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a href="https://www.php.net/manual/en/migration51.extensions.php#migration51.extensions-constants" class="link">Class constants in new
+      PHP 5.1.x extensions</a>
+    </p>
+   </li>
+  </ul><div class="section" id="migration51.extensions-gone">
+   <h2 class="title">Extensions that are gone from the PHP core</h2>
+   <p class="para">
+    One of the first things you're likely to notice when you download PHP 5.1.x
+    is that several of the older extensions have disappeared. Those extensions
+    that are still actively maintained are available in the PHP Extension
+    Community Library (PECL), at
+    <a href="https://www.php.net/manual/en/https://pecl.php.net/" class="link external">» https://pecl.php.net/</a>.
+   </p>
+   <table class="doctable table"><caption><strong>Removed extensions</strong></caption>
+    
+     <thead><tr><th>Extension</th>
+       <th>Alternative/Status</th>
+      </tr></thead><tbody class="tbody"><tr><td>ext/cpdf</td>
+       <td>pecl/pdflib</td>
+      </tr><tr><td><a href="https://www.php.net/manual/en/ref.dbx.php" class="link">ext/dbx</a></td>
+       <td>pecl/dbx</td>
+      </tr><tr><td><a href="https://www.php.net/manual/en/ref.dio.php" class="link">ext/dio</a></td>
+       <td>pecl/dio</td>
+      </tr><tr><td>ext/fam</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td><a href="https://www.php.net/manual/en/ref.ingres.php" class="link">ext/ingres_ii</a></td>
+       <td>pecl/ingres</td>
+      </tr><tr><td>ext/ircg</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/mcve</td>
+       <td>pecl/mcve</td>
+      </tr><tr><td>ext/mnogosearch</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/oracle</td>
+       <td>
+        <a href="https://www.php.net/manual/en/ref.oci8.php" class="link">ext/oci8</a> or
+        <a href="https://www.php.net/manual/en/ref.pdo-oci.php" class="link">ext/pdo_oci</a>
+       </td>
+      </tr><tr><td>ext/ovrimos</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/pfpro</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/w32api</td>
+       <td><a href="https://www.php.net/manual/en/https://pecl.php.net/package/ffi" class="link external">» pecl/ffi</a></td>
+      </tr><tr><td>ext/yp</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/activescript</td>
+       <td>
+        <a href="https://www.php.net/manual/en/https://pecl.php.net/package/activescript" class="link external">» pecl/activescript</a>
+       </td>
+      </tr></tbody></table><p class="para">
+    Modules in PECL that are not actively maintained (i.e. have not been
+    supported for some time, have no active maintainer working on them
+    currently, and do not have any PECL package releases), are still available
+    in SVN at <a href="https://www.php.net/manual/en/https://svn.php.net/viewvc/pecl" class="link external">» https://svn.php.net/viewvc/pecl</a>.
+    However, unreleased PHP modules are by their nature unsupported, and your
+    mileage may vary when attempting to install or use them.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.extensions-constants">
+   <h2 class="title">Class constants in new PHP 5.1.x extensions</h2>
+   <p class="para">
+    The Zend Engine 2.1 API allows extension developers to declare class
+    constants in object oriented extensions. New extensions written for PHP
+    5.1.x, including <a href="https://www.php.net/manual/en/ref.spl.php" class="link">SPL</a>,
+    <a href="https://www.php.net/manual/en/intro.pdo.php" class="link">PDO</a>,
+    <a href="https://www.php.net/manual/en/book.xmlreader.php" class="link">XMLReader</a> and
+    <a href="https://www.php.net/manual/en/ref.datetime.php" class="link">date</a>, have their constants in
+    the format <strong><code>PDO::CLASS_CONSTANT</code></strong> rather than in the C
+    format <strong><code>PDO_CLASS_CONSTANT</code></strong> in order to minimise
+    pollution of the global namespace in PHP.
+   </p>
+  </div>
+ </div>

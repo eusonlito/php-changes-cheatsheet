@@ -1,0 +1,107 @@
+---
+title: Other changes
+version: "7.2"
+tags:
+ - "7.2"
+ - other-changes
+---
+<div id="migration72.other-changes" class="sect1">
+ <h2 class="title">Other changes</h2>
+
+ <div class="sect2" id="migration72.other-changes.utf8_-functions-to-ext-standard">
+  <h3 class="title">Moving of <span class="function"><a href="https://www.php.net/manual/en/function.utf8-encode.php" class="function">utf8_encode()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.utf8-decode.php" class="function">utf8_decode()</a></span></h3>
+
+  <p class="para">
+   The <span class="function"><a href="https://www.php.net/manual/en/function.utf8-encode.php" class="function">utf8_encode()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.utf8-decode.php" class="function">utf8_decode()</a></span>
+   functions have now been moved to the standard extension as string functions, whereas before 
+   the <a href="https://www.php.net/manual/en/book.xml.php" class="link">XML</a> extension was required for them to be available.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.other-changes.mail">
+  <h3 class="title">Changes to <span class="function"><a href="https://www.php.net/manual/en/function.mail.php" class="function">mail()</a></span> and <span class="function"><strong>mb_sendmail()</strong></span></h3>
+
+  <p class="para">
+   The $additional_headers parameter of <span class="function"><a href="https://www.php.net/manual/en/function.mail.php" class="function">mail()</a></span> and
+   <span class="function"><strong>mb_sendmail()</strong></span> now also accepts an <span class="type">array</span>
+   instead of a <span class="type">string</span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.other-changes.lmdb-support">
+  <h3 class="title">LMDB support</h3>
+
+  <p class="para">
+   The <a href="https://www.php.net/manual/en/book.dba.php" class="link">DBA</a> extension now has support for LMDB.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.other-changes.build-system">
+  <h3 class="title">Changes to the PHP build system</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Unix: Autoconf 2.64 or greater is now required to build PHP.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Unix: <code class="literal">--with-pdo-oci</code> configure argument no longer needs 
+     the version number of the Oracle Instant Client.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Unix: <code class="literal">--enable-gd-native-ttf</code> configure argument has been 
+     removed. This was not used since PHP 5.5.0.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Windows: <code class="literal">--with-config-profile</code> configure argument has been 
+     added. This can be used to save specific configures, much like the magical 
+     <var class="filename">config.nice.bat</var> file.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.other-changes.image">
+  <h3 class="title">Changes to <a href="https://www.php.net/manual/en/book.image.php" class="link">GD</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imageantialias.php" class="function">imageantialias()</a></span> is now also available if compiled with
+     a system libgd.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagegd.php" class="function">imagegd()</a></span> stores truecolor images as real truecolor
+     images. Formerly, they have been converted to palette.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.other-changes.mcrypt">
+  <h3 class="title">Moving <a href="https://www.php.net/manual/en/book.mcrypt.php" class="link">MCrypt</a> to PECL</h3>
+
+  <p class="para">
+   The <a href="https://www.php.net/manual/en/book.mcrypt.php" class="link">MCrypt</a> extension has now been moved
+   out of the core to PECL. Given the mcrypt library has not seen any updates
+   since 2007, its usage is highly discouraged. Instead, either the
+   <a href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a> or <a href="https://www.php.net/manual/en/book.sodium.php" class="link">Sodium</a>
+   extension should be used.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.other-changes.session-module-name">
+  <h3 class="title"><span class="function"><a href="https://www.php.net/manual/en/function.session-module-name.php" class="function">session_module_name()</a></span></h3>
+
+  <p class="para">
+   Passing <code class="literal">"user"</code> to <span class="function"><a href="https://www.php.net/manual/en/function.session-module-name.php" class="function">session_module_name()</a></span>
+   now raises an error of level <strong><code>E_RECOVERABLE_ERROR</code></strong>. Formerly,
+   this has been silently ignored.
+  </p>
+ </div>
+
+</div>

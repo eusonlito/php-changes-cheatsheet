@@ -1,0 +1,103 @@
+---
+title: Deprecated features in PHP 5.6.x
+version: "5.6"
+tags:
+ - "5.6"
+ - deprecated
+---
+<div id="migration56.deprecated" class="sect1">
+ <h2 class="title">Deprecated features in PHP 5.6.x</h2>
+
+ <div class="sect2" id="migration56.deprecated.incompatible-context">
+  <h3 class="title">Calls from incompatible context</h3>
+
+  <p class="para">
+   Methods called from an incompatible context are now deprecated, and will
+   generate <strong><code>E_DEPRECATED</code></strong> errors when invoked instead of
+   <strong><code>E_STRICT</code></strong>. Support for these calls will be removed in
+   a future version of PHP.
+  </p>
+
+  <p class="para">
+   An example of such a call is:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">); }<br>}<br><br>class </span><span style="color: #0000BB">B </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { </span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">f</span><span style="color: #007700">(); }<br>}<br><br>(new </span><span style="color: #0000BB">B</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">f</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Deprecated: Non-static method A::f() should not be called statically, assuming $this from incompatible context in - on line 7
+B
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration56.deprecated.raw-post-data">
+  <h3 class="title"><var class="varname">$HTTP_RAW_POST_DATA</var> and <a href="https://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data" class="link">always_populate_raw_post_data</a></h3>
+
+  <p class="para">
+   <a href="https://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data" class="link">always_populate_raw_post_data</a>
+   will now generate an <strong><code>E_DEPRECATED</code></strong> error when
+   <var class="varname">$HTTP_RAW_POST_DATA</var> is populated.
+   New code should use
+   <a href="https://www.php.net/manual/en/wrappers.php.php#wrappers.php.input" class="link"><code class="literal">php://input</code></a>
+   instead of <var class="varname">$HTTP_RAW_POST_DATA</var>, which will be removed
+   in a future release. You can opt in for the new behaviour (in which
+   <var class="varname">$HTTP_RAW_POST_DATA</var> is never defined hence no
+   <strong><code>E_DEPRECATED</code></strong> error will be generated) by setting
+   <a href="https://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data" class="link">always_populate_raw_post_data</a>
+   to <code class="literal">-1</code>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.deprecated.iconv-mbstring-encoding">
+  <h3 class="title"><a href="https://www.php.net/manual/en/book.iconv.php" class="link">iconv</a> and <a href="https://www.php.net/manual/en/book.mbstring.php" class="link">mbstring</a> encoding settings</h3>
+
+  <p class="para">
+   The <a href="https://www.php.net/manual/en/book.iconv.php" class="link">iconv</a> and
+   <a href="https://www.php.net/manual/en/book.mbstring.php" class="link">mbstring</a> configuration options related
+   to encoding have been deprecated in favour of
+   <a href="https://www.php.net/manual/en/ini.core.php#ini.default-charset" class="link"><code class="parameter">default_charset</code></a>.
+   The deprecated options are:
+  </p>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/iconv.configuration.php#ini.iconv.input-encoding" class="link"><code class="parameter">iconv.input_encoding</code></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/iconv.configuration.php#ini.iconv.output-encoding" class="link"><code class="parameter">iconv.output_encoding</code></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/iconv.configuration.php#ini.iconv.internal-encoding" class="link"><code class="parameter">iconv.internal_encoding</code></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/mbstring.configuration.php#ini.mbstring.http-input" class="link"><code class="parameter">mbstring.http_input</code></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/mbstring.configuration.php#ini.mbstring.http-output" class="link"><code class="parameter">mbstring.http_output</code></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/mbstring.configuration.php#ini.mbstring.internal-encoding" class="link"><code class="parameter">mbstring.internal_encoding</code></a>
+    </span>
+   </li>
+  </ul></div>
+</div>

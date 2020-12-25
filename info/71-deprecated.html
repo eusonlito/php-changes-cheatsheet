@@ -1,0 +1,30 @@
+---
+title: Deprecated features in PHP 7.1.x
+version: "7.1"
+tags:
+ - "7.1"
+ - deprecated
+---
+<div id="migration71.deprecated" class="sect1">
+ <h2 class="title">Deprecated features in PHP 7.1.x</h2>
+
+ <div class="sect2" id="migration71.deprecated.ext-mcrypt">
+  <h3 class="title">ext/mcrypt</h3>
+
+  <p class="para">
+   The mcrypt extension has been abandonware for nearly a decade now, and was
+   also fairly complex to use. It has therefore been deprecated in favour of
+   OpenSSL, where it will be removed from the core and into PECL in PHP 7.2.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.deprecated.eval-option-for-mb-ereg-replace">
+  <h3 class="title">Eval option for <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg-replace.php" class="function">mb_ereg_replace()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.mb-eregi-replace.php" class="function">mb_eregi_replace()</a></span></h3>
+
+  <p class="para">
+   The <code class="literal">e</code> pattern modifier has been deprecated for the
+   <span class="function"><a href="https://www.php.net/manual/en/function.mb-ereg-replace.php" class="function">mb_ereg_replace()</a></span> and
+   <span class="function"><a href="https://www.php.net/manual/en/function.mb-eregi-replace.php" class="function">mb_eregi_replace()</a></span> functions.
+  </p>
+ </div>
+</div>

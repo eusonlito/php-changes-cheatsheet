@@ -1,0 +1,245 @@
+---
+title: New Functions
+version: "5.2"
+tags:
+ - "5.2"
+ - functions
+---
+<div id="migration52.functions" class="section">
+  <h2 class="title">New Functions</h2>
+  <p class="para">
+   PHP 5.2.x introduced some new functions:
+  </p>
+
+  <p class="para">PHP Core:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.array-fill-keys.php" class="function">array_fill_keys()</a></span>
+     - Create an array using the elements of the first parameter as keys,
+     each initialized to <code class="literal">val</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.error-get-last.php" class="function">error_get_last()</a></span>
+     - Get the last occurred error as associative array. Returns <strong><code>null</code></strong>
+     if there hasn't been an error yet
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.image-type-to-extension.php" class="function">image_type_to_extension()</a></span>
+     - Get file extension for image-type returned by
+     <span class="function"><a href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.exif-read-data.php" class="function">exif_read_data()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.exif-thumbnail.php" class="function">exif_thumbnail()</a></span>, <span class="function"><a href="https://www.php.net/manual/en/function.exif-imagetype.php" class="function">exif_imagetype()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.memory-get-peak-usage.php" class="function">memory_get_peak_usage()</a></span>
+     - Returns the peak allocated by PHP memory
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.sys-get-temp-dir.php" class="function">sys_get_temp_dir()</a></span>
+     - Returns directory path used for temporary files. (Added in 5.2.1)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.timezone-abbreviations-list.php" class="function">timezone_abbreviations_list()</a></span>
+     - Returns associative array containing DST, offset and the timezone name
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.timezone-identifiers-list.php" class="function">timezone_identifiers_list()</a></span>
+     - Returns numerically indexed array with all timezone identifiers
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.timezone-name-from-abbr.php" class="function">timezone_name_from_abbr()</a></span>
+     - Returns the timezone name from abbreviation
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-socket-shutdown.php" class="function">stream_socket_shutdown()</a></span>
+     - Causes all or part of a full-duplex connection on the socket
+     associated with stream to be shut down. As of PHP 5.2.1.
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.image.php" class="link">Image</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagegrabscreen.php" class="function">imagegrabscreen()</a></span>
+     - Grabs a screenshot of the whole screen. As of PHP 5.2.2.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.imagegrabwindow.php" class="function">imagegrabwindow()</a></span>
+     - Captures a window. As of PHP 5.2.2.
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/book.libxml.php" class="link">libXML</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.libxml-disable-entity-loader.php" class="function">libxml_disable_entity_loader()</a></span>
+     - Disable the ability to load external entities. As of PHP 5.2.11.
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.mbstring.php" class="link">mbstring</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-stripos.php" class="function">mb_stripos()</a></span>
+     - Finds position of first occurrence of a string within another,
+     case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-stristr.php" class="function">mb_stristr()</a></span>
+     - Finds first occurrence of a string within another, case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-strrchr.php" class="function">mb_strrchr()</a></span>
+     - Finds the last occurrence of a character in a string within another
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-strrichr.php" class="function">mb_strrichr()</a></span>
+     - Finds the last occurrence of a character in a string within another,
+     case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-strripos.php" class="function">mb_strripos()</a></span>
+     - Finds position of last occurrence of a string within another,
+     case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.mb-strstr.php" class="function">mb_strstr()</a></span>
+     - Finds first occurrence of a string within another
+    </span>
+   </li>
+  </ul><p class="para">ming (As of PHP 5.2.1):</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     void ming_setSWFCompression(int num)
+     - Sets output compression
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void swfmovie::namedanchor(string name)
+     - Creates anchor
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void swfmovie::protect([string password])
+     - Protects
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.openssl.php" class="link">openssl</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.openssl-csr-get-public-key.php" class="function">openssl_csr_get_public_key()</a></span>
+     - Extracts public key from a CERT and prepares it for use
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.openssl-csr-get-subject.php" class="function">openssl_csr_get_subject()</a></span>
+     - Returns the subject of a CERT
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.openssl-pkey-get-details.php" class="function">openssl_pkey_get_details()</a></span>
+     - Returns an array with the key details (bits, pkey, type)
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.spl.php" class="link">spl</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.spl-object-hash.php" class="function">spl_object_hash()</a></span>
+     - Return hash id for given object
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int iterator_apply(Traversable it, mixed function [, mixed params])
+     - Calls a function for every element in an iterator
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.pcre.php" class="link">pcre</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.preg-last-error.php" class="function">preg_last_error()</a></span>
+     - Returns the error code of the last regex execution
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.pgsql.php" class="link">pgsql</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.pg-field-table.php" class="function">pg_field_table()</a></span>
+     - Returns the name of the table field belongs to, or table's oid
+     if <code class="literal">oid_only</code> is <strong><code>true</code></strong>
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.posix.php" class="link">posix</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.posix-initgroups.php" class="function">posix_initgroups()</a></span>
+     - Calculate the group access list for the user specified in name
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.gmp.php" class="link">gmp</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.gmp-nextprime.php" class="function">gmp_nextprime()</a></span>
+     - Finds next prime number
+    </span>
+   </li>
+  </ul><p class="para"><a href="https://www.php.net/manual/en/ref.xmlwriter.php" class="link">xmlwriter</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.xmlwriter-full-end-element.php" class="function">xmlwriter_full_end_element()</a></span>
+     - End current element - returns <strong><code>false</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.xmlwriter-write-raw.php" class="function">xmlwriter_write_raw()</a></span>
+     - Write text - returns <strong><code>false</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.xmlwriter-start-dtd-entity.php" class="function">xmlwriter_start_dtd_entity()</a></span>
+     - Create start DTD Entity - returns <strong><code>false</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.xmlwriter-end-dtd-entity.php" class="function">xmlwriter_end_dtd_entity()</a></span>
+     - End current DTD Entity - returns <strong><code>false</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.xmlwriter-write-dtd-entity.php" class="function">xmlwriter_write_dtd_entity()</a></span>
+     - Write full DTD Entity tag - returns <strong><code>false</code></strong> on error
+    </span>
+   </li>
+  </ul></div>

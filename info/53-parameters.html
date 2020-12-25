@@ -1,0 +1,109 @@
+---
+title: New Parameters
+version: "5.3"
+tags:
+ - "5.3"
+ - parameters
+---
+<div id="migration53.parameters" class="section">
+  <h2 class="title">New Parameters</h2>
+  <p class="simpara">
+   Several functions were given new, optional parameters in PHP 5.3:
+  </p>
+  <p class="simpara">PHP Core:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.clearstatcache.php" class="function">clearstatcache()</a></span>
+     - Added <code class="parameter">clear_realpath_cache</code> and
+     <code class="parameter">filename</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.copy.php" class="function">copy()</a></span>
+     - Added a stream context parameter, <code class="parameter">context</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.fgetcsv.php" class="function">fgetcsv()</a></span>
+     - Added <code class="parameter">escape</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.ini-get-all.php" class="function">ini_get_all()</a></span>
+     - Added <code class="parameter">details</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.nl2br.php" class="function">nl2br()</a></span>
+     - Added <code class="parameter">is_xhtml</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.parse-ini-file.php" class="function">parse_ini_file()</a></span>
+     - Added <code class="parameter">scanner_mode</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.round.php" class="function">round()</a></span>
+     - Added <code class="parameter">mode</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-context-create.php" class="function">stream_context_create()</a></span>
+     - Added <code class="parameter">params</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.strstr.php" class="function">strstr()</a></span> and <span class="function"><a href="https://www.php.net/manual/en/function.stristr.php" class="function">stristr()</a></span> 
+     - Added <code class="parameter">before_needle</code>.
+    </span>
+   </li>
+  </ul><p class="simpara"><a href="https://www.php.net/manual/en/book.json.php" class="link">json</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span>
+     - Added <code class="parameter">options</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.json-decode.php" class="function">json_decode()</a></span>
+     - Added <code class="parameter">depth</code>.
+    </span>
+   </li>
+  </ul><p class="simpara"><a href="https://www.php.net/manual/en/book.stream.php" class="link">Streams</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-select.php" class="function">stream_select()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-set-blocking.php" class="function">stream_set_blocking()</a></span>,
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-set-timeout.php" class="function">stream_set_timeout()</a></span>, and
+     <span class="function"><a href="https://www.php.net/manual/en/function.stream-set-write-buffer.php" class="function">stream_set_write_buffer()</a></span> now work with user-space
+     stream wrappers.
+    </span>
+   </li>
+  </ul><p class="simpara">sybase_ct:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><strong>sybase_connect()</strong></span>
+     - Added <code class="parameter">new</code>.
+    </span>
+   </li>
+  </ul><p class="simpara">
+   New method parameters in PHP 5.3.0:
+  </p>
+  <p class="simpara">PHP Core:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="https://www.php.net/manual/en/exception.construct.php" class="methodname">Exception::__construct()</a></span>
+     - Added <code class="parameter">previous</code>.
+    </span>
+   </li>
+  </ul></div>

@@ -1,0 +1,190 @@
+---
+title: Backward Incompatible Changes
+version: "5.2"
+tags:
+ - "5.2"
+ - incompatible
+---
+<div id="migration52.incompatible" class="section">
+  <h2 class="title">Backward Incompatible Changes</h2>
+  <p class="para">
+   Although most existing PHP 5 code should work without changes, you should
+   pay attention to the following backward incompatible changes:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/function.getrusage.php" class="function">getrusage()</a></span> returns <strong><code>null</code></strong> when passed
+     incompatible arguments as of PHP 5.2.1.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/ziparchive.setcommentname.php" class="function">ZipArchive::setCommentName()</a></span>
+     returns <strong><code>true</code></strong> on success as of PHP 5.2.1.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="https://www.php.net/manual/en/ziparchive.setcommentindex.php" class="function">ZipArchive::setCommentIndex()</a></span>
+     returns <strong><code>true</code></strong> on success as of PHP 5.2.1.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><strong>SplFileObject::getFilename()</strong></span> returns
+     the filename, not relative/path/to/file, as of PHP 5.2.1.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Changed priority of <var class="varname">PHPRC</var> environment variable on Win32
+    </span>
+    <span class="simpara">
+     The <var class="varname">PHPRC</var> environment variable now takes priority over the path stored
+     in the Windows registry.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     CLI SAPI no longer checks cwd for <var class="filename">php.ini</var> or the <var class="filename">php-cli.ini</var> file
+    </span>
+    <span class="simpara">
+     In PHP 5.1.x an undocumented feature was added that made the CLI binary check
+     the current working directory for a PHP configuration file, potentially
+     leading to unpredictable behavior if an unexpected configuration file were
+     read. This functionality was removed in 5.2.0, and PHP will no longer search
+     CWD for the presence of <var class="filename">php.ini</var> or <var class="filename">php-cli.ini</var> files.
+     See also the <a href="https://www.php.net/manual/en/features.commandline.php" class="link">command line</a> section
+     of the manual.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added a warning when performing modulus 0 operations
+    </span>
+    <span class="simpara">
+     In earlier versions of PHP, performing integer % 0 did not emit any
+     warning messages, instead returning an unexpected return value of <strong><code>false</code></strong>.
+     As of PHP 5.2.0, this operation will emit an <strong><code>E_WARNING</code></strong>, 
+     as is the case in all other instances where division by zero is performed.
+    </span>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">print </span><span style="color: #0000BB">10 </span><span style="color: #007700">% </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  Division by zero in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Changed <a href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> to be called wherever
+     applicable.
+    </span>
+    <span class="simpara">
+     The magic method <a href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> will now be called
+     in a string context, that is, anywhere an object is used as a
+     string.
+    </span>
+    <span class="simpara">
+     The fallback of returning a string that contains the
+     object identifier was dropped in PHP 5.2.0.  It became
+     problematic because an object identifier cannot be considered
+     unique. This change will mean that your application is flawed if you
+     have relied on the object identifier as a return value.  An attempt
+     to use that value as a string will now result in a catchable fatal
+     error.
+    </span>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>print </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Catchable fatal error:  Object of class foo could<br>   not be converted to string in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <span class="simpara">
+     Even with <a href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a>, objects cannot be used as
+     array indices or keys. We may add built-in hash support for this at
+     a later date, but as of PHP 5.2.x you will need to either provide your
+     own hashing or use the new SPL function
+     <span class="function"><a href="https://www.php.net/manual/en/function.spl-object-hash.php" class="function">spl_object_hash()</a></span>.
+    </span>
+    <span class="simpara">
+     Exceptions can not be thrown from
+     <a href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> methods.
+    </span>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">__toString</span><span style="color: #007700">() {<br>        throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">;<br>    }<br>}<br><br>try {<br>    print new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>    </span><span style="color: #FF8000">/* Fatal error:  Method foo::__toString() must<br>       not throw an exception in filename on line n */<br></span><span style="color: #007700">} catch(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Dropped abstract static class functions.
+    </span>
+    <span class="simpara">
+     Due to an oversight, PHP 5.0.x and 5.1.x allowed abstract static 
+     functions in classes. As of PHP 5.2.x, only interfaces can have them.
+    </span>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">abstract class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    abstract static function </span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br>    </span><span style="color: #FF8000">/* Strict Standards:  Static function foo::bar()<br>       should not be abstract in filename on line n */<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="https://www.php.net/manual/en/ref.oci8.php" class="link">Oracle extension</a> requires at least Oracle
+     10 on Windows.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added RFC2397 (<code class="literal">data:</code> stream) support.
+    </span>
+    <span class="simpara">
+     The introduction of the 'data' URL scheme has the potential to lead to a
+     change of behavior under Windows. If you are working with a <acronym>NTFS</acronym>
+     file system and making use of meta streams in your application, and if you
+     just happen to be using a file with the name 'data:' that is accessed without
+     any path information - it won't work any more. The fix is to use the 'file:'
+     protocol when accessing it.
+    </span>
+    <span class="simpara">
+     See also <a href="https://www.php.net/manual/en/http://www.faqs.org/rfcs/rfc2397" class="link external">» RFC 2397</a> 
+    </span>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* when allow_url_include is OFF (default) */<br></span><span style="color: #007700">include </span><span style="color: #DD0000">"data:;base64,PD9waHAgcGhwaW5mbygpOz8+"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  include(): URL file-access is disabled<br>   in the server configuration in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Regression in <code class="literal">glob()</code> patterns
+    </span>
+    <span class="simpara">
+     In version 5.2.4 a security fix caused a regression for patterns of
+     the form "/foo/*/bar/*". Since version 5.2.5 instead of raising a warning the
+     <code class="literal">glob()</code> function will return <strong><code>false</code></strong> when
+     <code class="literal">openbase_dir</code> restrictions are violated.
+    </span>
+   </li>
+  </ul></div>
