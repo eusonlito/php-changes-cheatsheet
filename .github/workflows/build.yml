@@ -18,7 +18,7 @@ jobs:
 
       - name: Run lume
         run: |
-          deno run --unstable -A https://deno.land/x/lume/cli.js --location=https://oscarotero.github.io/php-changes-reference/
+          deno run --unstable -A https://deno.land/x/lume/cli.js --location=https://eusonlito.github.io/php-changes-reference/
 
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v2.0.1
