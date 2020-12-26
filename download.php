@@ -59,11 +59,15 @@ function download(string $url, string $name = ''): string
 
     $cache = CACHE.'/'.($name ?: basename($url));
 
-    if (is_file($cache) === false) {
-        file_put_contents($cache, file_get_contents($url));
+    if (is_file($cache)) {
+        echo sprintf('Loading Cached URL %s from %s'."\n", $url, basename($cache));
+        $html = file_get_contents($cache);
+    } else {
+        echo sprintf('Downloading URL %s as %s'."\n", $url, basename($cache));
+        file_put_contents($cache, $html = file_get_contents($url));
     }
 
-    return file_get_contents($cache);
+    return $html;
 }
 
 /**
@@ -81,7 +85,7 @@ function nodeToHtml(DOMDocument $dom, DOMElement $node, string $name): string
 
     $data = pageData($name, $dom);
 
-    $frontmatter = [
+    $template = [
       "---",
       "title: {$data['title']}",
       "version: \"{$data['version']}\"",
@@ -98,7 +102,7 @@ function nodeToHtml(DOMDocument $dom, DOMElement $node, string $name): string
     $name = preg_replace('/^([0-9])\./', '${1}0.', $name);
     $name = str_replace('.', '-', $name);
 
-    file_put_contents(HTML.'/'.$name.'.html', implode("\n", $frontmatter)."\n".$html);
+    file_put_contents(HTML.'/'.$name.'.html', implode("\n", $template)."\n".$html);
 
     return $name;
 }
@@ -113,7 +117,7 @@ function nodeToHtml(DOMDocument $dom, DOMElement $node, string $name): string
 function pageData(string $name, DOMDocument $dom): array
 {
     [$version, $type] = explode('.', $name);
-    
+
     $version = version($version);
     $title = str_replace("\n", '', xpathQueryItem($dom, '//h2[@class="title"]')->textContent);
 
@@ -154,7 +158,7 @@ function css(): void
 {
     $cached = CACHE.'/styles.scss';
     $scss = HTML.'/styles.scss';
-    $css = HTML.'/styles.scss';
+    $css = HTML.'/styles.css';
 
     download('https://www.php.net/cached.php?t=1606338002&f=/styles/theme-base.css', basename($scss));
 
@@ -179,8 +183,6 @@ foreach (xpathQuery($dom, '//div[@id="appendices"]/ul/li') as $index) {
 
     foreach (xpathQuery($dom, './ul/li/a', $index) as $line) {
         $url = REMOTE.$line->getAttribute('href');
-
-        echo sprintf('Downloading %s -> %s'."\n", $line->textContent, $url);
 
         $page = dom(download($url));
         $id = preg_replace('/\.php$/', '', basename($url));

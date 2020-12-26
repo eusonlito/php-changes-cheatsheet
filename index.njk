@@ -50,18 +50,18 @@ types:
 
 <main class="main-content ly-horizontal">
     {% for version in versions | reverse %}
-        <article id="{{ id }}" style="--color: {{ version.color }};">
-            <h1>{{ version.title }}</h1>
+    <article id="{{ id }}" style="--color: {{ version.color }};">
+        <h1>{{ version.title }}</h1>
 
-            <ul>
+        <ul>
             {% for page in search.pages(version.title) %}
-              <li>
-                  <a href="{{ page.data.url | url }}">
-                      {{ page.data.title }}
-                  </a>
-              </li>
+            <li>
+                <a href="{{ page.data.url | url }}">
+                    {{ page.data.title }}
+                </a>
+            </li>
             {% endfor %}
-            </ul>
-        </article>
+        </ul>
+    </article>
     {% endfor %}
 </main>
