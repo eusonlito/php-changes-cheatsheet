@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'Droid Sans', Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, sans-serif;
     margin: 0;
     color: #333;
     background: #333;
@@ -27,15 +27,18 @@ body {
     text-decoration: none;
 }
 
-.main-header a:hover {
-    text-decoration: underline;
-}
-
 .main-header h1 {
     font-size: 1.4rem;
     padding: 0;
     margin: 0;
     white-space: nowrap;
+    overflow: scroll;
+}
+
+.main-header h1::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    background: transparent;
 }
 
 .main-header h1:after {
@@ -112,13 +115,19 @@ body {
     scroll-snap-type: x proximity;
 }
 
-.index .main-header {
+.index .main-header h1 {
+    font-size: 2rem;
     text-align: center;
+    font-weight: 400;
 }
 
 .index-main {
     padding: 20px;
     margin: 0 auto;
+}
+
+.index-main ul {
+    margin: 0;
 }
 
 .index-main ul li a {
@@ -127,6 +136,26 @@ body {
     padding: 7px 15px;
     margin-bottom: 5px;
     color: #000;
+    border: 0;
+}
+
+.index-main ul li a:hover {
+    background: #DDD;
+}
+
+.index-main ul li a .versions {
+    float: right;
+}
+
+.index-main ul li a .versions span {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 0.8rem;
+    padding: 0 5px;
+    background: #999;
+    color: #F2F2F2;
+    border-radius: 20%;
+    font-weight: 600;
 }
 
 .info-main  {
@@ -176,9 +205,19 @@ body {
     width: auto !important;
 }
 
-@media (min-width: 750px) {
+@media (min-width: 768px) {
     .main-content ul.ly-horizontal {
         flex-wrap: nowrap;
+    }
+
+    .index-main {
+        max-width: 70%;
+    }
+}
+
+@media (min-width: 1240px) {
+    .index-main {
+        max-width: 55%;
     }
 }
 
@@ -189,5 +228,11 @@ body {
 
     .info-main .info-version {
         padding: 10px;
+    }
+}
+
+@media (max-width: 967px) {
+    .index-main ul li a .versions span {
+        display: none;
     }
 }

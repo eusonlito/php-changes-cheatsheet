@@ -142,7 +142,7 @@ class HtmlIndex extends CommandAbstract
         $title = trim($this->dom(reset($group))->queryItem('//h2[@class="title"]')->textContent);
         $title = preg_replace(['/\n/', '/\s+/', '/ in PHP.*/'], [' ', ' ', ''], $title);
 
-        return sprintf('%s in PHP %s', $title, implode(', ', $group['versions']));
+        return $title;
     }
 
     /**
