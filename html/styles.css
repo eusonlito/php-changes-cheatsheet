@@ -4,7 +4,7 @@
     --gutter: 20px;
 }
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -116,7 +116,7 @@ body {
 }
 
 .index .main-header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
     font-weight: 400;
 }
@@ -150,7 +150,8 @@ body {
 .index-main ul li a .versions span {
     display: inline-block;
     margin-right: 5px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
     padding: 0 5px;
     background: #999;
     color: #F2F2F2;

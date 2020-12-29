@@ -52,11 +52,29 @@ class Css extends CommandAbstract
     protected function remote(): void
     {
         $target = $this->path('phpnet.css');
-        $css = file_get_contents($this->url('base'))."\n".file_get_contents($this->url('medium'));
+        $css = $this->remoteFix($this->remoteContents());
 
         MessageConsole::echo(sprintf("Download CSS into <color:green>%s</color>\n", $this->removePathBase($target)));
 
         $this->fileWrite($target, $css);
+    }
+
+    /**
+     * @return string
+     */
+    protected function remoteContents(): string
+    {
+        return file_get_contents($this->url('base'))."\n".file_get_contents($this->url('medium'));
+    }
+
+    /**
+     * @param string $css
+     *
+     * @return string
+     */
+    protected function remoteFix(string $css): string
+    {
+        return preg_replace(['/url\(["\'](.*)["\']\)/', '/url\(\.*\/*/'], ['url($1)', 'url('], $css);
     }
 
     /**

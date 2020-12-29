@@ -1032,7 +1032,7 @@ fieldset {
 }
 
 .tt-dropdown-menu .result-heading .collapsible {
-    background: url(../images/search-sprites.png) no-repeat left center;
+    background: url(images/search-sprites.png) no-repeat left center;
     background-position: 0 -15px;
     width: 30px;
     height: 13px;
@@ -1623,7 +1623,7 @@ div.soft-deprecation-notice blockquote.sidebar {
   }
 
   #mainmenu-toggle-overlay {
-    background: #4F5B93 url(/images/mobile-menu.png) no-repeat center center;
+    background: #4F5B93 url(images/mobile-menu.png) no-repeat center center;
     float: right;
     display: block;
     height: 32px;
@@ -1893,7 +1893,7 @@ aside.tips div.inner {
 
 
 html {
-  background: #333 url('/images/bg-texture-00.svg');
+  background: #333 url(images/bg-texture-00.svg);
   color: #CCC;
 }
 #layout-content {
