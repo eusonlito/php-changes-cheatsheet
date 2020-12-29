@@ -20,8 +20,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?<?= time(); ?>" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?<?= time(); ?>" type="text/css" media="screen">
     </head>
 
     <body class="<?= $class; ?>">
