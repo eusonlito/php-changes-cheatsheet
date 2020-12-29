@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Other changes in PHP 5.4, 5.3, 5.2</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Other changes in PHP 5.4, 5.3, 5.2">
+
+        <meta property="og:title" content="Other changes in PHP 5.4, 5.3, 5.2">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Other changes in PHP 5.4, 5.3, 5.2">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - Other changes in PHP 5.4, 5.3, 5.2</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration54.other.php" target="_blank">PHP 5.4</a></h1>
+    </header>
+
+    <div id="migration54.other" class="section">
+  <h2 class="title">Other changes</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>E_ALL</code></strong> now includes <strong><code>E_STRICT</code></strong> level
+     errors in the <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-reporting" class="link">error_reporting</a> configuration directive.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.snmp.php" class="link">SNMP</a> now has an OOP API.
+    </span>
+    <span class="simpara">
+      Functions now return <strong><code>false</code></strong> on every error condition including SNMP-related
+      (no such instance, end of MIB, etc). Thus, in particular, breaks previous behavior
+      of get/walk functions returning an empty string on SNMP-related errors.
+    </span>
+    <span class="simpara">
+      Multi OID get/getnext/set queries are now supported.
+    </span>
+    <span class="simpara">
+     Dropped UCD-SNMP compatibility code, consider upgrading to net-snmp v5.3+, Net-SNMP v5.4+ is
+     required for Windows version.
+    </span>
+    <span class="simpara">
+     In sake of adding support for IPv6 DNS name resolution of
+     remote SNMP agent (peer) is done by extension now, not by Net-SNMP library anymore.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a> now supports AES.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/features.commandline.php" class="link">CLI SAPI</a> doesn't terminate any
+     more on fatal errors when using interactive mode with readline support.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/language.variables.superglobals.php" class="link">$_SERVER['REQUEST_TIME_FLOAT']</a>
+     has been added to include microsecond precision.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added new hash algorithms: fnv132, fnv164, joaat
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Chained string offsets - e.g. $a[0][0] where $a is a string - now work.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Arrays cast from <span class="type"><a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="type SimpleXMLElement">SimpleXMLElement</a></span> now <em class="emphasis">always</em> contain all nodes instead of
+     just the first matching node. All <span class="type"><a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="type SimpleXMLElement">SimpleXMLElement</a></span> children are now <em class="emphasis">always</em>
+     printed when using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-dump.php" class="function">var_dump()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-export.php" class="function">var_export()</a></span> and
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.print-r.php" class="function">print_r()</a></span>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     It's now possible to enforce the class' <a target="_blank" href="https://www.php.net/manual/en/language.oop5.decon.php" class="link">__construct</a> arguments in an abstract
+     constructor in the base class.
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration53.other.php" target="_blank">PHP 5.3</a></h1>
+    </header>
+
+    <div id="migration53.other" class="section">
+  <h2 class="title">Other changes</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/splfileinfo.getpathinfo.php" class="function">SplFileInfo::getpathinfo()</a></span> now returns information about 
+     the path name.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splobjectstorage.php" class="classname">SplObjectStorage</a> now has
+     <a target="_blank" href="https://www.php.net/manual/en/class.arrayaccess.php" class="classname">ArrayAccess</a> support. It is now also possible to
+     store associative information with objects in
+     <a target="_blank" href="https://www.php.net/manual/en/class.splobjectstorage.php" class="classname">SplObjectStorage</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     In the GD extension, there is now pixelation support available through
+     the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagefilter.php" class="function">imagefilter()</a></span> function.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-dump.php" class="function">var_dump()</a></span> output now includes private object properties.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-start.php" class="function">session_start()</a></span> now returns <strong><code>false</code></strong> when session startup
+     fails.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.property-exists.php" class="function">property_exists()</a></span> now checks the existence of a property
+     independent of accessibility (like <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.method-exists.php" class="function">method_exists()</a></span>).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/wrappers.php" class="link">Stream wrappers</a> can now be used by 
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.include-path" class="link">include_path</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <code class="parameter">initial</code> parameter for
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-reduce.php" class="function">array_reduce()</a></span> can now be of any type.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <a target="_blank" href="https://www.php.net/manual/en/ref.dir.php" class="link">directory functions</a>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.opendir.php" class="function">opendir()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.scandir.php" class="function">scandir()</a></span>, and
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dir.php" class="function">dir()</a></span> now use the default stream context if no explicit
+     context is passed.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.crypt.php" class="function">crypt()</a></span> now has Blowfish and extended DES support, and 
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.crypt.php" class="function">crypt()</a></span> features are now 100% portable. PHP has its own 
+     internal crypt implementation which drops into place when support for 
+     <code class="literal">crypt</code> or <code class="literal">crypt_r</code> is not found.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getopt.php" class="function">getopt()</a></span> now accepts "long options" on all platforms.
+     Optional values and <code class="literal">=</code> as a separator for short options
+     are now supported.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fopen.php" class="function">fopen()</a></span> has a new mode option (<code class="literal">n</code>),
+     which passes <strong><code>O_NONBLOCK</code></strong> to the underlying
+     <code class="literal">open()</code> system call. Note that this mode is not currently 
+     supported on Windows.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span> now supports icon files (.ico).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The mhash extension have moved to PECL, but the 
+     <a target="_blank" href="https://www.php.net/manual/en/ref.hash.php" class="link">Hash</a> extension have been modified to support 
+     mhash if PHP is compiled with <code class="literal">--with-mhash</code>. Note that the 
+     Hash extension does not require the mhash library to be available whether or 
+     not the mhash emulation is enabled.
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration52.other.php" target="_blank">PHP 5.2</a></h1>
+    </header>
+
+    <div id="migration52.other" class="section">
+  <h2 class="title">Other Enhancements</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Improved memory manager and increased default memory limit.
+    </span>
+    <span class="simpara">
+     The new memory manager allocates less memory and works faster than the
+     previous incarnation. It allocates memory from the system in large blocks,
+     and then manages the heap by itself. The <code class="literal">memory_limit</code> value in <var class="filename">php.ini</var> is
+     checked, not for each <code class="literal">emalloc()</code> call (as before), but for actual blocks
+     requested from the system. This means that <code class="literal">memory_limit</code> is far more
+     accurate than it used to be, since the old memory manager didn't calculate
+     all the memory overhead used by the <code class="literal">malloc</code> library.
+    </span>
+    <span class="simpara">
+     Thanks to this new-found accuracy memory usage may appear to have increased,
+     although actually it has not. To accommodate this apparent increase, the
+     default <code class="literal">memory_limit</code> setting was also increased - from 8 to 16 megabytes.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added support for constructors in interfaces to force constructor signature
+     checks in implementations.
+    </span>
+    <span class="simpara">
+     Starting with PHP 5.2.0, interfaces can have constructors. However, if you choose
+     to declare a constructor in an interface, each class implementing that interface
+     MUST include a constructor with a signature matching that of the base interface
+     constructor. By 'signature' we mean the parameter and return type definitions,
+     including any type hints and including whether the data is passed by reference
+     or by value.
+    </span>
+   </li>
+  </ul></div></article>    </main>
+</section>    </body>
+</html>

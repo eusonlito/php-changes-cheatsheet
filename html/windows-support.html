@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Windows Support in PHP 7.4, 7.3, 7.1</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Windows Support in PHP 7.4, 7.3, 7.1">
+
+        <meta property="og:title" content="Windows Support in PHP 7.4, 7.3, 7.1">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Windows Support in PHP 7.4, 7.3, 7.1">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - Windows Support in PHP 7.4, 7.3, 7.1</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration74.windows-support.php" target="_blank">PHP 7.4</a></h1>
+    </header>
+
+    <div id="migration74.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration74.windows-support.configure">
+  <h3 class="title"><strong class="command">configure</strong> flags</h3>
+  <p class="para">
+   <strong class="command">configure</strong> now regards additional <code class="literal">CFLAGS</code> and <code class="literal">LDFLAGS</code> set as environment
+   variables.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.other">
+  <h3 class="title">CTRL handling</h3>
+  <p class="para">
+   CTRL+C and CTRL+BREAK on console can be caught by setting a handler function
+   with <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-set-ctrl-handler.php" class="function">sapi_windows_set_ctrl_handler()</a></span>.
+  </p>
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-open.php" class="function">proc_open()</a></span> on Windows can be passed a
+   "create_process_group" option. It is required if the child
+   process is supposed to handle CTRL events.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.opcache">
+  <h3 class="title">OPcache</h3>
+  <p class="para">
+   OPcache now supports an arbitrary number of separate caches per user via the
+   the INI directive <code class="literal">opcache.cache_id</code>.
+   All processes with the same cache ID and user share an OPcache instance.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.stat">
+  <h3 class="title">stat</h3>
+  <p class="para">
+   The stat implementation has been refactored.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     An inode number is delivered and is based on the NTFS file index.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The device number is now based on the volume serial number.
+    </span>
+   </li>
+  </ul><p class="para">
+   Note that both values are derived from the system and provided as-is on 64-bit
+   systems. On 32-bit systems, these values might overflow the 32-bit integer in
+   PHP, so they're fake.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.sqlite3">
+  <h3 class="title">libsqlite3</h3>
+  <p class="para">
+   libsqlite3 is no longer compiled statically into <var class="filename">php_sqlite3.dll</var>
+   and <var class="filename">php_pdo_sqlite.dll</var>, but rather available as <var class="filename">libsqlite3.dll</var>.
+   Refer to the installation instructions for <a target="_blank" href="https://www.php.net/manual/en/sqlite3.installation.php" class="link">SQLite3</a> and
+   <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-sqlite.php#ref.pdo-sqlite.installation" class="link">PDO_SQLITE</a>, respectively.
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration73.windows-support.php" target="_blank">PHP 7.3</a></h1>
+    </header>
+
+    <div id="migration73.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration73.windows-support.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration73.windows-support.core.file-descriptors">
+   <h4 class="title">More POSIX Conforming File Deletion</h4>
+
+   <p class="para">
+    File descriptors are opened in shared read/write/delete mode by default.
+    This effectively maps the <abbr class="abbrev">POSIX</abbr> semantics and allows to
+    delete files with handles in use. It is not 100% same, some platform
+    differences still persist. After the deletion, the filename entry is
+    blocked, until all the opened handles to it are closed.
+   </p>
+  </div>
+
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration71.windows-support.php" target="_blank">PHP 7.1</a></h1>
+    </header>
+
+    <div id="migration71.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration71.windows-support.long-and-utf8-path">
+  <h3 class="title">Support for long and UTF-8 path</h3>
+  <p class="para">
+    If a web application is UTF-8 conform, no further action is required. For
+    applications depending on paths in non UTF-8 encodings for I/O, an explicit
+    INI directive has to be set. The encoding INI settings check relies on the
+    order in the core:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     internal_encoding
+    </span>
+   </li>
+    <li class="listitem">
+    <span class="simpara">
+     default_charset
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     zend.multibyte
+    </span>
+   </li>
+  </ul><p class="para">
+    Several functions for codepage handling were introduced:
+  </p>
+      <ul class="itemizedlist"><li class="listitem">
+        <span class="simpara">
+         sapi_windows_cp_set() to set the default codepage
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         sapi_windows_cp_get() to retrieve the current codepage
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         sapi_windows_cp_is_utf8()
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         sapi_windows_cp_conv() to convert between codepages, using iconv() compatible signature
+        </span>
+       </li>
+      </ul><p class="para">
+   These functions are thread safe.
+  </p>
+  <p class="para">
+    The console output codepage is adjusted depending on the encoding used in
+    PHP. Depending on the concrete system OEM codepage, the visible output
+    might or might be not correct. For example, in the default cmd.exe and on
+    a system with the OEM codepage 437, outputs in codepages 1251, 1252, 1253
+    and some others can be shown correctly when using UTF-8. On the same system,
+    chars in codepage like 20932 probably won't be shown correctly. This refers
+    to the particular system rules for codepage, font compatibility and the
+    particular console program used. PHP automatically sets the console codepage
+    according to the encoding rules from php.ini. Using alternative consoles
+    instead of cmd.exe directly might bring better experience in some cases.
+  </p>
+  <p class="para">
+    Nevertheless be aware, runtime codepage switch after the request start
+    might bring unexpected side effects on CLI. The preferable way is php.ini,
+    When PHP CLI is used in a console emulator, that doesn't support Unicode,
+    it might possibly be required, to avoid changing the console codepage. The
+    best way to achieve it is by setting the default or internal encoding to
+    correspond the ANSI codepage. Another method is to set the INI directives
+    output_encoding and input_encoding to the required codepage, in which case
+    however the difference between internal and I/O codepage is likely to cause
+    mojibake. In rare cases, if PHP happens to crash gracefully, the original
+    console codepage might be not restored. In this case, the chcp command
+    can be used, to restore it manually.
+  </p>
+  <p class="para">
+    Special awareness for the DBCS systems - the codepage switch on runtime
+    using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ini-set.php" class="function">ini_set()</a></span> is likely to cause display issues. The difference to the
+    non DBCS systems is, that the extended characters require two console cells
+    to be displayed. In certain case, only the mapping of the characters into
+    the glyph set of the font could happen, no actual font change. This is the
+    nature of DBCS systems, the most simple way to prevent display issues is
+    to avoid usage of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ini-set.php" class="function">ini_set()</a></span> for the codepage change.
+  </p>
+  <p class="para">
+    As a result of UTF-8 support in the streams, PHP scripts are not limited
+    to ASCII or ANSI filenames anymore. This is supported out of the box on
+    CLI. For other SAPI, the documentation for the corresponding server
+    is useful.
+  </p>
+  <p class="para">
+    Long paths support is transparent. Paths longer than 260 bytes get
+    automatically prefixed with <code class="literal">\\?\</code>. The max path length is limited to
+    2048 bytes. Be aware, that the path segment limit (basename length) still
+    persists.
+  </p>
+  <p class="para">
+    For the best portability, it is strongely recommended to handle filenames,
+    I/O and other related topics UTF-8. Additionally, for the console applications,
+    the usage of a TrueType font is preferable and the usage of ini_set() for
+    the codepage change is discouraged.
+  </p>
+  <p class="para">
+  </p>
+  <p class="para">
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.windows-support.readline">
+  <h3 class="title">readline</h3>
+
+  <p class="para">
+   The <a target="_blank" href="https://www.php.net/manual/en/book.readline.php" class="link">readline extension</a> is supported
+   through the <a target="_blank" href="https://www.php.net/manual/en/http://mingweditline.sourceforge.net/" class="link external">» WinEditLine
+   library</a>. Thereby, the interactive <acronym title="Command Line Interpreter/Interface">CLI</acronym> shell is
+   supported as well (<code class="literal">php.exe -a</code>).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.windows-support.php-fcgi-children">
+  <h3 class="title">PHP_FCGI_CHILDREN</h3>
+  <p class="para">
+  <var class="varname">PHP_FCGI_CHILDREN</var> is now respected. If this environment variable is 
+  defined, the first <var class="filename">php-cgi.exe</var> process will exec the specified number 
+  of children. These will share the same TCP socket.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration71.windows-support.ftok">
+  <h3 class="title">ftok()</h3>
+  <p class="para">
+   Added support for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ftok.php" class="function">ftok()</a></span>
+  </p>
+ </div>
+
+</div></article>    </main>
+</section>    </body>
+</html>

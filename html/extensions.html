@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Other changes to extensions in PHP 5.6, 5.1</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Other changes to extensions in PHP 5.6, 5.1">
+
+        <meta property="og:title" content="Other changes to extensions in PHP 5.6, 5.1">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Other changes to extensions in PHP 5.6, 5.1">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - Other changes to extensions in PHP 5.6, 5.1</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration56.extensions.php" target="_blank">PHP 5.6</a></h1>
+    </header>
+
+    <div id="migration56.extensions" class="sect1">
+ <h2 class="title">Other changes to extensions</h2>
+
+ <div class="sect2" id="migration56.extensions.curl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.curl.php" class="link">cURL</a></h3>
+
+  <p class="para">
+   A number of constants marked obsolete in the cURL library have now been
+   removed:
+  </p>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_CLOSEPOLICY</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_CALLBACK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_LEAST_RECENTLY_USED</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_LEAST_TRAFFIC</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_OLDEST</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_SLOWEST</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.extensions.oci8">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.oci8.php" class="link">OCI8</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Support for implicit result sets for Oracle Database 12c has been added
+     via the new <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-get-implicit-resultset.php" class="function">oci_get_implicit_resultset()</a></span> function.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Using <code class="literal">oci_execute($s, OCI_NO_AUTO_COMMIT)</code> for a
+     SELECT no longer unnecessarily initiates an internal ROLLBACK during
+     connection close.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added DTrace probes controlled by the <code class="literal">--enable-dtrace</code>
+     configure option.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-internal-debug.php" class="function">oci_internal_debug()</a></span> is now a no-op.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.phpinfo.php" class="function">phpinfo()</a></span> output format for OCI8 has changed.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.extensions.zip">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.zip.php" class="link">Zip</a></h3>
+
+  <p class="para">
+   A <code class="literal">--with-libzip</code> configure option has been added to use
+   a system libzip installation. libzip version 0.11 is required, with 0.11.2
+   or later recommended.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.extensions.mysqli">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.php" class="link">MySQLi</a></h3>
+  <p class="para">
+   A new <a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.rollback-on-cached-plink" class="link">mysqli.rollback_on_cached_plink</a>
+   option was added, which controls the rollback behavior of persistent connections.
+  </p>
+ </div>
+
+ 
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration51.extensions.php" target="_blank">PHP 5.1</a></h1>
+    </header>
+
+    <div id="migration51.extensions" class="section">
+  <h2 class="title">Extensions</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.extensions.php#migration51.extensions-gone" class="link">Extensions that are gone
+      from the PHP core</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.extensions.php#migration51.extensions-constants" class="link">Class constants in new
+      PHP 5.1.x extensions</a>
+    </p>
+   </li>
+  </ul><div class="section" id="migration51.extensions-gone">
+   <h2 class="title">Extensions that are gone from the PHP core</h2>
+   <p class="para">
+    One of the first things you're likely to notice when you download PHP 5.1.x
+    is that several of the older extensions have disappeared. Those extensions
+    that are still actively maintained are available in the PHP Extension
+    Community Library (PECL), at
+    <a target="_blank" href="https://www.php.net/manual/en/https://pecl.php.net/" class="link external">» https://pecl.php.net/</a>.
+   </p>
+   <table class="doctable table"><caption><strong>Removed extensions</strong></caption>
+    
+     <thead><tr><th>Extension</th>
+       <th>Alternative/Status</th>
+      </tr></thead><tbody class="tbody"><tr><td>ext/cpdf</td>
+       <td>pecl/pdflib</td>
+      </tr><tr><td><a target="_blank" href="https://www.php.net/manual/en/ref.dbx.php" class="link">ext/dbx</a></td>
+       <td>pecl/dbx</td>
+      </tr><tr><td><a target="_blank" href="https://www.php.net/manual/en/ref.dio.php" class="link">ext/dio</a></td>
+       <td>pecl/dio</td>
+      </tr><tr><td>ext/fam</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td><a target="_blank" href="https://www.php.net/manual/en/ref.ingres.php" class="link">ext/ingres_ii</a></td>
+       <td>pecl/ingres</td>
+      </tr><tr><td>ext/ircg</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/mcve</td>
+       <td>pecl/mcve</td>
+      </tr><tr><td>ext/mnogosearch</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/oracle</td>
+       <td>
+        <a target="_blank" href="https://www.php.net/manual/en/ref.oci8.php" class="link">ext/oci8</a> or
+        <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-oci.php" class="link">ext/pdo_oci</a>
+       </td>
+      </tr><tr><td>ext/ovrimos</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/pfpro</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/w32api</td>
+       <td><a target="_blank" href="https://www.php.net/manual/en/https://pecl.php.net/package/ffi" class="link external">» pecl/ffi</a></td>
+      </tr><tr><td>ext/yp</td>
+       <td>Not actively maintained</td>
+      </tr><tr><td>ext/activescript</td>
+       <td>
+        <a target="_blank" href="https://www.php.net/manual/en/https://pecl.php.net/package/activescript" class="link external">» pecl/activescript</a>
+       </td>
+      </tr></tbody></table><p class="para">
+    Modules in PECL that are not actively maintained (i.e. have not been
+    supported for some time, have no active maintainer working on them
+    currently, and do not have any PECL package releases), are still available
+    in SVN at <a target="_blank" href="https://www.php.net/manual/en/https://svn.php.net/viewvc/pecl" class="link external">» https://svn.php.net/viewvc/pecl</a>.
+    However, unreleased PHP modules are by their nature unsupported, and your
+    mileage may vary when attempting to install or use them.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.extensions-constants">
+   <h2 class="title">Class constants in new PHP 5.1.x extensions</h2>
+   <p class="para">
+    The Zend Engine 2.1 API allows extension developers to declare class
+    constants in object oriented extensions. New extensions written for PHP
+    5.1.x, including <a target="_blank" href="https://www.php.net/manual/en/ref.spl.php" class="link">SPL</a>,
+    <a target="_blank" href="https://www.php.net/manual/en/intro.pdo.php" class="link">PDO</a>,
+    <a target="_blank" href="https://www.php.net/manual/en/book.xmlreader.php" class="link">XMLReader</a> and
+    <a target="_blank" href="https://www.php.net/manual/en/ref.datetime.php" class="link">date</a>, have their constants in
+    the format <strong><code>PDO::CLASS_CONSTANT</code></strong> rather than in the C
+    format <strong><code>PDO_CLASS_CONSTANT</code></strong> in order to minimise
+    pollution of the global namespace in PHP.
+   </p>
+  </div>
+ </div></article>    </main>
+</section>    </body>
+</html>

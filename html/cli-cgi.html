@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>CLI and CGI in PHP 5.0</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="CLI and CGI in PHP 5.0">
+
+        <meta property="og:title" content="CLI and CGI in PHP 5.0">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="CLI and CGI in PHP 5.0">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - CLI and CGI in PHP 5.0</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration5.cli-cgi.php" target="_blank">PHP 5.0</a></h1>
+    </header>
+
+    <div id="migration5.cli-cgi" class="section">
+   <h2 class="title">CLI and CGI</h2>
+   <p class="para">
+    In PHP 5 there were some changes in CLI and CGI filenames. In PHP 5, the
+    CGI version was renamed to <var class="filename">php-cgi.exe</var> (previously
+    <var class="filename">php.exe</var>) and the CLI version now sits in the main
+    directory (previously <var class="filename">cli/php.exe</var>).
+   </p>
+   <p class="para">
+    In PHP 5 it was also introduced a new mode:
+    <var class="filename">php-win.exe</var>. This is equal to the CLI version, except
+    that php-win doesn't output anything and thus provides no console (no "dos
+    box" appears on the screen). This behavior is similar to php-gtk.
+   </p>
+   <p class="para">
+    In PHP 5, the CLI version will always populate the global 
+    <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argv.php" class="classname">$argv</a></var> and <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argc.php" class="classname">$argc</a></var> variables regardless
+    of any <var class="filename">php.ini</var> directive setting.  Even having  
+    <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.register-argc-argv" class="link">register_argc_argv</a> set to
+    <code class="literal">off</code> will have no affect in CLI.
+   </p>
+   <p class="para">
+    See also the <a target="_blank" href="https://www.php.net/manual/en/features.commandline.php" class="link">command line 
+    reference</a>.
+   </p>
+  </div></article>    </main>
+</section>    </body>
+</html>

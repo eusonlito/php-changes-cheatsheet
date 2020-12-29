@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Changes in SAPI Modules in PHP 7.0</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Changes in SAPI Modules in PHP 7.0">
+
+        <meta property="og:title" content="Changes in SAPI Modules in PHP 7.0">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Changes in SAPI Modules in PHP 7.0">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - Changes in SAPI Modules in PHP 7.0</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration70.sapi-changes.php" target="_blank">PHP 7.0</a></h1>
+    </header>
+
+    <div id="migration70.sapi-changes" class="sect1">
+ <h2 class="title">Changes in SAPI Modules</h2>
+
+ <div class="sect2" id="migration70.sapi-changes.fpm">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.fpm.php" class="link">FPM</a></h3>
+
+  <div class="sect3" id="migration70.sapi-changes.fpm.listen">
+   <h4 class="title">
+    Unqualified <a target="_blank" href="https://www.php.net/manual/en/install.fpm.configuration.php#listen" class="link">listen</a> ports now listen on both
+    IPv4 and IPv6
+   </h4>
+
+   <p class="para">
+    In PHP 5, a <a target="_blank" href="https://www.php.net/manual/en/install.fpm.configuration.php#listen" class="link">listen</a> directive with only a
+    port number would listen on all interfaces, but only on IPv4. PHP 7 will
+    now accept requests made via both IPv4 and IPv6.
+   </p>
+
+   <p class="para">
+    This does not affect directives which include specific IP addresses; these
+    will continue to only listen on that address and protocol.
+   </p>
+  </div>
+ </div>
+</div></article>    </main>
+</section>    </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Removed Extensions in PHP 7.4, 5.4, 5.3, 5.2</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Removed Extensions in PHP 7.4, 5.4, 5.3, 5.2">
+
+        <meta property="og:title" content="Removed Extensions in PHP 7.4, 5.4, 5.3, 5.2">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Removed Extensions in PHP 7.4, 5.4, 5.3, 5.2">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - Removed Extensions in PHP 7.4, 5.4, 5.3, 5.2</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration74.removed-extensions.php" target="_blank">PHP 7.4</a></h1>
+    </header>
+
+    <div id="migration74.removed-extensions" class="sect1">
+ <h2 class="title">Removed Extensions</h2>
+
+ <p class="para">
+  These extensions have been moved to PECL and are no longer part of the PHP
+  distribution. The PECL package versions of these extensions will be created
+  according to user demand.
+ </p>
+
+ <ul class="itemizedlist"><li class="listitem">
+   <span class="simpara">
+    <a target="_blank" href="https://www.php.net/manual/en/book.ibase.php" class="link">Firebird/Interbase</a>
+    - access to an InterBase and/or Firebird based database is still
+    available with the PDO Firebird driver. 
+   </span>
+  </li>
+  <li class="listitem">
+   <span class="simpara">
+    <a target="_blank" href="https://www.php.net/manual/en/book.recode.php" class="link">Recode</a>
+   </span>
+  </li>
+  <li class="listitem">
+   <span class="simpara">
+    <a target="_blank" href="https://www.php.net/manual/en/book.wddx.php" class="link">WDDX</a>
+   </span>
+  </li>
+ </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration54.removed-extensions.php" target="_blank">PHP 5.4</a></h1>
+    </header>
+
+    <div id="migration54.removed-extensions" class="section">
+  <h2 class="title">Removed Extensions</h2>
+  <p class="simpara">
+   These extensions have been moved to PECL and are no longer part of the PHP
+   distribution. The PECL package versions of these extensions will be created
+   according to user demand.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     sqlite
+     - Note that ext/sqlite3 and ext/pdo_sqlite are not affected
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration53.removed-extensions.php" target="_blank">PHP 5.3</a></h1>
+    </header>
+
+    <div id="migration53.removed-extensions" class="section">
+  <h2 class="title">Removed Extensions</h2>
+  <p class="simpara">
+   These extensions have been moved to PECL and are no longer part of the PHP
+   distribution. The PECL package versions of these extensions will be created
+   according to user demand.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.dbase.php" class="link">dbase</a>
+     - No longer maintained
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.fbsql.php" class="link">fbsql</a>
+     - No longer maintained
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.fdf.php" class="link">fdf</a> 
+     - Maintained
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     ming - Maintained
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     msql
+     - No longer maintained
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.ncurses.php" class="link">ncurses</a> 
+     - Maintained
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     sybase
+     - Discontinued; use the sybase_ct
+     extension instead
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.mhash.php" class="link">mhash</a>
+     - Discontinued; use the <a target="_blank" href="https://www.php.net/manual/en/book.hash.php" class="link">hash</a> extension
+     instead. <a target="_blank" href="https://www.php.net/manual/en/book.hash.php" class="link">hash</a> has full mhash
+     compatibility; all existing applications using the old functions will
+     continue to work.
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration52.removed-extensions.php" target="_blank">PHP 5.2</a></h1>
+    </header>
+
+    <div id="migration52.removed-extensions" class="section">
+  <h2 class="title">Removed Extensions</h2>
+  <p class="para">
+   These extensions have been moved to PECL and are no longer
+   part of the PHP distribution.  The PECL package version of
+   these extensions will be created according to user demand.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ref.filepro.php" class="link">filePro</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Hyperwave API
+    </span>
+   </li>
+  </ul></div></article>    </main>
+</section>    </body>
+</html>

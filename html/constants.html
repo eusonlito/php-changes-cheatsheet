@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+
+        <meta property="og:title" content="New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration74.constants.php" target="_blank">PHP 7.4</a></h1>
+    </header>
+
+    <div id="migration74.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration74.constants.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>PHP_WINDOWS_EVENT_CTRL_C</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>PHP_WINDOWS_EVENT_CTRL_BREAK</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.constants.mbstring">
+  <h3 class="title">Multibyte String</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>MB_ONIGURUMA_VERSION</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.constants.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <p class="para">Added the following FreeBSD-specific socket options:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>SO_LABEL</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_PEERLABEL</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_LISTENQLIMIT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_LISTENQLEN</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_USER_COOKIE</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.constants.tidy">
+  <h3 class="title">Tidy</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_ARTICLE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_ASIDE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_AUDIO</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_BDI</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_CANVAS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_COMMAND</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_DATALIST</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_DETAILS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_DIALOG</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_FIGCAPTION</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_FIGURE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_FOOTER</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_HEADER</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_HGROUP</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_MAIN</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_MARK</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_MENUITEM</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_METER</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_NAV</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_OUTPUT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_PROGRESS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_SECTION</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_SOURCE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_SUMMARY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_TEMPLATE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_TIME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_TRACK</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TIDY_TAG_VIDEO</code></strong></span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration73.constants.php" target="_blank">PHP 7.3</a></h1>
+    </header>
+
+    <div id="migration73.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration73.constants.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>PASSWORD_ARGON2ID</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.constants.curl">
+  <h3 class="title">Client URL Library</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>CURLAUTH_BEARER</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLAUTH_GSSAPI</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLE_WEIRD_SERVER_REPLY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_APPCONNECT_TIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_CONNECT_TIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_CONTENT_LENGTH_DOWNLOAD_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_CONTENT_LENGTH_UPLOAD_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_FILETIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_HTTP_VERSION</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_NAMELOOKUP_TIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_PRETRANSFER_TIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_PROTOCOL</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_PROXY_SSL_VERIFYRESULT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_REDIRECT_TIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_SCHEME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_SIZE_DOWNLOAD_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_SIZE_UPLOAD_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_SPEED_DOWNLOAD_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_SPEED_UPLOAD_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_STARTTRANSFER_TIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLINFO_TOTAL_TIME_T</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_LOCK_DATA_CONNECT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_LOCK_DATA_PSL</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_MAX_READ_SIZE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_ABSTRACT_UNIX_SOCKET</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_DISALLOW_USERNAME_IN_URL</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_DNS_SHUFFLE_ADDRESSES</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_HAPPY_EYEBALLS_TIMEOUT_MS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_HAPROXYPROTOCOL</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_KEEP_SENDING_ON_ERROR</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PRE_PROXY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_CAINFO</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_CAPATH</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_CRLFILE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_KEYPASSWD</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_PINNEDPUBLICKEY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSLCERT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSLCERTTYPE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSL_CIPHER_LIST</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSLKEY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSLKEYTYPE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSL_OPTIONS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSL_VERIFYHOST</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSL_VERIFYPEER</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_SSLVERSION</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_TLS13_CIPHERS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_TLSAUTH_PASSWORD</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_TLSAUTH_TYPE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_PROXY_TLSAUTH_USERNAME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_REQUEST_TARGET</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_SOCKS5_AUTH</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_SSH_COMPRESSION</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_SUPPRESS_CONNECT_HEADERS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_TIMEVALUE_LARGE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLOPT_TLS13_CIPHERS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLPROXY_HTTPS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURLSSH_AUTH_GSSAPI</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_SSLVERSION_MAX_DEFAULT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_SSLVERSION_MAX_NONE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_SSLVERSION_MAX_TLSv1_0</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_SSLVERSION_MAX_TLSv1_1</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_SSLVERSION_MAX_TLSv1_2</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_SSLVERSION_MAX_TLSv1_3</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_SSLVERSION_TLSv1_3</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_ALTSVC</code></strong> (as of PHP 7.3.6)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_ASYNCHDNS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_BROTLI</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_CONV</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_CURLDEBUG</code></strong> (as of PHP 7.3.6)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_DEBUG</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_GSSAPI</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_GSSNEGOTIATE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_HTTPS_PROXY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_IDN</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_LARGEFILE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_MULTI_SSL</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_NTLM</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_NTLM_WB</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_PSL</code></strong> (as of PHP 7.3.6)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_SPNEGO</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_SSPI</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>CURL_VERSION_TLSAUTH_SRP</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.constants.filter">
+  <h3 class="title">Data Filtering</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>FILTER_SANITIZE_ADD_SLASHES</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.constants.json">
+  <h3 class="title">JavaScript Object Notation</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>JSON_THROW_ON_ERROR</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.constants.ldap">
+  <h3 class="title">Lightweight Directory Access Protocol</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_ASSERT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_MANAGEDSAIT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_PROXY_AUTHZ</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_SUBENTRIES</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_VALUESRETURNFILTER</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_PRE_READ</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_POST_READ</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_SORTREQUEST</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_SORTRESPONSE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_PAGEDRESULTS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_AUTHZID_REQUEST</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_AUTHZID_RESPONSE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_SYNC</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_SYNC_STATE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_SYNC_DONE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_DONTUSECOPY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_PASSWORDPOLICYREQUEST</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_PASSWORDPOLICYRESPONSE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_X_INCREMENTAL_VALUES</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_X_DOMAIN_SCOPE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_X_PERMISSIVE_MODIFY</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_X_SEARCH_OPTIONS</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_X_TREE_DELETE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_X_EXTENDED_DN</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_VLVREQUEST</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>LDAP_CONTROL_VLVRESPONSE</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.constants.mbstring">
+  <h3 class="title">Multibyte String</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>MB_CASE_FOLD</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>MB_CASE_LOWER_SIMPLE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>MB_CASE_UPPER_SIMPLE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>MB_CASE_TITLE_SIMPLE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>MB_CASE_FOLD_SIMPLE</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.constants.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>STREAM_CRYPTO_PROTO_SSLv3</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>STREAM_CRYPTO_PROTO_TLSv1_0</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>STREAM_CRYPTO_PROTO_TLSv1_1</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>STREAM_CRYPTO_PROTO_TLSv1_2</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.constants.pgsql">
+  <h3 class="title">PostgreSQL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>PGSQL_DIAG_SCHEMA_NAME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>PGSQL_DIAG_TABLE_NAME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>PGSQL_DIAG_COLUMN_NAME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>PGSQL_DIAG_DATATYPE_NAME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>PGSQL_DIAG_CONSTRAINT_NAME</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>PGSQL_DIAG_SEVERITY_NONLOCALIZED</code></strong></span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration72.constants.php" target="_blank">PHP 7.2</a></h1>
+    </header>
+
+    <div id="migration72.constants" class="sect1">
+ <h2 class="title">New global constants</h2>
+
+ <div class="sect2" id="migration72.constants.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-dig" class="link"><strong><code>PHP_FLOAT_DIG</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-epsilon" class="link"><strong><code>PHP_FLOAT_EPSILON</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-min" class="link"><strong><code>PHP_FLOAT_MIN</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-max" class="link"><strong><code>PHP_FLOAT_MAX</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-os-family" class="link"><strong><code>PHP_OS_FAMILY</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.fileinfo">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.fileinfo.php" class="link">File Information</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/fileinfo.constants.php#constant.fileinfo-extension" class="link"><strong><code>FILEINFO_EXTENSION</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.json">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.json.php" class="link">JSON</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>JSON_INVALID_UTF8_IGNORE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>JSON_INVALID_UTF8_SUBSTITUTE</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.image">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.image.php" class="link">GD</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/image.constants.php#constant.img-effect-multiply" class="link"><strong><code>IMG_EFFECT_MULTIPLY</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/image.constants.php#constant.img-bmp" class="link"><strong><code>IMG_BMP</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.ldap">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ldap.constants.php#constant.ldap-exop-start-tls" class="link"><strong><code>LDAP_EXOP_START_TLS</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ldap.constants.php#constant.ldap-exop-modify-passwd" class="link"><strong><code>LDAP_EXOP_MODIFY_PASSWD</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ldap.constants.php#constant.ldap-exop-refresh" class="link"><strong><code>LDAP_EXOP_REFRESH</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ldap.constants.php#constant.ldap-exop-who-am-i" class="link"><strong><code>LDAP_EXOP_WHO_AM_I</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ldap.constants.php#constant.ldap-exop-turn" class="link"><strong><code>LDAP_EXOP_TURN</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.password">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.password.php" class="link">Password Hashing</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/password.constants.php#constant.password-argon2i" class="link"><strong><code>PASSWORD_ARGON2I</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/password.constants.php#constant.password-argon2-default-memory-cost" class="link"><strong><code>PASSWORD_ARGON2_DEFAULT_MEMORY_COST</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/password.constants.php#constant.password-argon2-default-time-cost" class="link"><strong><code>PASSWORD_ARGON2_DEFAULT_TIME_COST</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/password.constants.php#constant.password-argon2-default-threads" class="link"><strong><code>PASSWORD_ARGON2_DEFAULT_THREADS</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.pcre">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pcre.php" class="link">PCRE</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/" class="link">PREG_UNMATCHED_AS_NULL</a></code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.pdo">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pdo.php" class="link">PDO</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/pdo.constants.php#pdo.constants.param-str-natl" class="link"><strong><code>PDO::PARAM_STR_NATL</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/pdo.constants.php#pdo.constants.param-str-char" class="link"><strong><code>PDO::PARAM_STR_CHAR</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/pdo.constants.php#pdo.constants.attr-default-str-param" class="link"><strong><code>PDO::ATTR_DEFAULT_STR_PARAM</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.sodium">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.sodium.php" class="link">Sodium</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-library-version" class="link"><strong><code>SODIUM_LIBRARY_VERSION</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-library-major-version" class="link"><strong><code>SODIUM_LIBRARY_MAJOR_VERSION</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-library-minor-version" class="link"><strong><code>SODIUM_LIBRARY_MINOR_VERSION</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-aes256gcm-keybytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_AES256GCM_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-aes256gcm-nsecbytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_AES256GCM_NSECBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-aes256gcm-npubbytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_AES256GCM_NPUBBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-aes256gcm-abytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_AES256GCM_ABYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-keybytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-nsecbytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_NSECBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-npubbytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_NPUBBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-abytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_ABYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-ietf-keybytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-ietf-nsecbytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NSECBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-ietf-npubbytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-aead-chacha20poly1305-ietf-abytes" class="link"><strong><code>SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_ABYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-auth-bytes" class="link"><strong><code>SODIUM_CRYPTO_AUTH_BYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-auth-keybytes" class="link"><strong><code>SODIUM_CRYPTO_AUTH_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-box-sealbytes" class="link"><strong><code>SODIUM_CRYPTO_BOX_SEALBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-box-secretkeybytes" class="link"><strong><code>SODIUM_CRYPTO_BOX_SECRETKEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-box-publickeybytes" class="link"><strong><code>SODIUM_CRYPTO_BOX_PUBLICKEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-box-keypairbytes" class="link"><strong><code>SODIUM_CRYPTO_BOX_KEYPAIRBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-box-macbytes" class="link"><strong><code>SODIUM_CRYPTO_BOX_MACBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-box-noncebytes" class="link"><strong><code>SODIUM_CRYPTO_BOX_NONCEBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-box-seedbytes" class="link"><strong><code>SODIUM_CRYPTO_BOX_SEEDBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kdf-bytes-min" class="link"><strong><code>SODIUM_CRYPTO_KDF_BYTES_MIN</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kdf-bytes-max" class="link"><strong><code>SODIUM_CRYPTO_KDF_BYTES_MAX</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kdf-contextbytes" class="link"><strong><code>SODIUM_CRYPTO_KDF_CONTEXTBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kdf-keybytes" class="link"><strong><code>SODIUM_CRYPTO_KDF_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kx-seedbytes" class="link"><strong><code>SODIUM_CRYPTO_KX_SEEDBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kx-sessionkeybytes" class="link"><strong><code>SODIUM_CRYPTO_KX_SESSIONKEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kx-publickeybytes" class="link"><strong><code>SODIUM_CRYPTO_KX_PUBLICKEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kx-secretkeybytes" class="link"><strong><code>SODIUM_CRYPTO_KX_SECRETKEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-kx-keypairbytes" class="link"><strong><code>SODIUM_CRYPTO_KX_KEYPAIRBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-generichash-bytes" class="link"><strong><code>SODIUM_CRYPTO_GENERICHASH_BYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-generichash-bytes-min" class="link"><strong><code>SODIUM_CRYPTO_GENERICHASH_BYTES_MIN</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-generichash-bytes-max" class="link"><strong><code>SODIUM_CRYPTO_GENERICHASH_BYTES_MAX</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-generichash-keybytes" class="link"><strong><code>SODIUM_CRYPTO_GENERICHASH_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-generichash-keybytes-min" class="link"><strong><code>SODIUM_CRYPTO_GENERICHASH_KEYBYTES_MIN</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-generichash-keybytes-max" class="link"><strong><code>SODIUM_CRYPTO_GENERICHASH_KEYBYTES_MAX</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-alg-argon2i13" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_ALG_ARGON2I13</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-alg-default" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_ALG_DEFAULT</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-saltbytes" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_SALTBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-strprefix" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_STRPREFIX</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-opslimit-interactive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-memlimit-interactive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-opslimit-moderate" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_OPSLIMIT_MODERATE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-memlimit-moderate" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_MEMLIMIT_MODERATE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-opslimit-sensitive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_OPSLIMIT_SENSITIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-memlimit-sensitive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_MEMLIMIT_SENSITIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-scryptsalsa208sha256-saltbytes" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_SCRYPTSALSA208SHA256_SALTBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-scryptsalsa208sha256-strprefix" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_SCRYPTSALSA208SHA256_STRPREFIX</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-scryptsalsa208sha256-opslimit-interactive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-scryptsalsa208sha256-memlimit-interactive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-scryptsalsa208sha256-opslimit-sensitive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_SENSITIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-pwhash-scryptsalsa208sha256-memlimit-sensitive" class="link"><strong><code>SODIUM_CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_SENSITIVE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-scalarmult-bytes" class="link"><strong><code>SODIUM_CRYPTO_SCALARMULT_BYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-scalarmult-scalarbytes" class="link"><strong><code>SODIUM_CRYPTO_SCALARMULT_SCALARBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-shorthash-bytes" class="link"><strong><code>SODIUM_CRYPTO_SHORTHASH_BYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-shorthash-keybytes" class="link"><strong><code>SODIUM_CRYPTO_SHORTHASH_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-secretbox-keybytes" class="link"><strong><code>SODIUM_CRYPTO_SECRETBOX_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-secretbox-macbytes" class="link"><strong><code>SODIUM_CRYPTO_SECRETBOX_MACBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-secretbox-noncebytes" class="link"><strong><code>SODIUM_CRYPTO_SECRETBOX_NONCEBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-sign-bytes" class="link"><strong><code>SODIUM_CRYPTO_SIGN_BYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-sign-seedbytes" class="link"><strong><code>SODIUM_CRYPTO_SIGN_SEEDBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-sign-publickeybytes" class="link"><strong><code>SODIUM_CRYPTO_SIGN_PUBLICKEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-sign-secretkeybytes" class="link"><strong><code>SODIUM_CRYPTO_SIGN_SECRETKEYBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-sign-keypairbytes" class="link"><strong><code>SODIUM_CRYPTO_SIGN_KEYPAIRBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-stream-noncebytes" class="link"><strong><code>SODIUM_CRYPTO_STREAM_NONCEBYTES</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/sodium.constants.php#constant.sodium-crypto-stream-keybytes" class="link"><strong><code>SODIUM_CRYPTO_STREAM_KEYBYTES</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.constants.zip">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.zip.php" class="link">Zip</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-none" class="link"><strong><code>ZipArchive::EM_NONE</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aez-128" class="link"><strong><code>ZipArchive::EM_AES_128</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aez-192" class="link"><strong><code>ZipArchive::EM_AES_192</code></strong></a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aes256" class="link"><strong><code>ZipArchive::EM_AES_256</code></strong></a>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration71.constants.php" target="_blank">PHP 7.1</a></h1>
+    </header>
+
+    <div id="migration71.constants" class="sect1">
+ <h2 class="title">New global constants</h2>
+
+ <div class="sect2" id="migration71.constants.core">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php" class="link">Core Predefined Constants</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>PHP_FD_SETSIZE</code></strong>
+    </span>
+   </li>
+  </ul></div>
+ 
+ <div class="sect2" id="migration71.constants.curl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.curl.php" class="link">CURL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLMOPT_PUSHFUNCTION</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURL_PUSH_OK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURL_PUSH_DENY</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.constants.filter">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.filter.php" class="link">Data Filtering</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>FILTER_FLAG_EMAIL_UNICODE</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.constants.image">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.image.php" class="link">Image Processing and GD</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>IMAGETYPE_WEBP</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.constants.json">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.json.php" class="link">JSON</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>JSON_UNESCAPED_LINE_TERMINATORS</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.constants.ldap">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_SASL_NOCANON</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_SASL_USERNAME</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CACERTDIR</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CACERTFILE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CERTFILE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CIPHER_SUITE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_KEYFILE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_RANDOM_FILE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CRLCHECK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CRL_NONE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CRL_PEER</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CRL_ALL</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_DHFILE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_CRLFILE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_PROTOCOL_MIN</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_PROTOCOL_SSL2</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_PROTOCOL_SSL3</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_PROTOCOL_TLS1_0</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_PROTOCOL_TLS1_1</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_PROTOCOL_TLS1_2</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_TLS_PACKAGE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_KEEPALIVE_IDLE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_KEEPALIVE_PROBES</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_OPT_X_KEEPALIVE_INTERVAL</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.constants.pgsql">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pgsql.php" class="link">PostgreSQL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_NOTICE_LAST</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_NOTICE_ALL</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_NOTICE_CLEAR</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.constants.spl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.spl.php" class="link">SPL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>MT_RAND_PHP</code></strong>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration70.constants.php" target="_blank">PHP 7.0</a></h1>
+    </header>
+
+    <div id="migration70.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration70.constants.core">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php" class="link">Core Predefined Constants</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>PHP_INT_MIN</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.constants.gd">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.image.php" class="link">GD</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>IMG_WEBP</code></strong> (as of PHP 7.0.10)
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.constants.json">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.json.php" class="link">JSON</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>JSON_ERROR_INVALID_PROPERTY_NAME</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>JSON_ERROR_UTF16</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.constants.libxml">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.libxml.php" class="link">LibXML</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>LIBXML_BIGLINES</code></strong>
+    </span>
+   </li>
+  </ul></div>
+ 
+ <div class="sect2" id="migration70.constants.pcre">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pcre.php" class="link">PCRE</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>PREG_JIT_STACKLIMIT_ERROR</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.constants.posix">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.posix.php" class="link">POSIX</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_AS</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_CORE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_CPU</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_DATA</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_FSIZE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_LOCKS</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_MEMLOCK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_MSGQUEUE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_NICE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_NOFILE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_NPROC</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_RSS</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_RTPRIO</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_RTTIME</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_SIGPENDING</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_STACK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>POSIX_RLIMIT_INFINITY</code></strong>
+    </span>
+   </li>
+  </ul></div>
+ 
+ <div class="sect2" id="migration70.constants.zlib">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.zlib.php" class="link">Zlib</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_ENCODING_RAW</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_ENCODING_DEFLATE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_ENCODING_GZIP</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_FILTERED</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_HUFFMAN_ONLY</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_FIXED</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_RLE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_DEFAULT_STRATEGY</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_BLOCK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_FINISH</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_FULL_FLUSH</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_NO_FLUSH</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_PARTIAL_FLUSH</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZLIB_SYNC_FLUSH</code></strong>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration56.constants.php" target="_blank">PHP 5.6</a></h1>
+    </header>
+
+    <div id="migration56.constants" class="sect1">
+ <h2 class="title">New global constants</h2>
+
+ <div class="sect2" id="migration56.constants.gd">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.image.php" class="link">GD</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>IMG_WEBP</code></strong> (as of PHP 5.6.25)
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.constants.ldap">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_ESCAPE_DN</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>LDAP_ESCAPE_FILTER</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.constants.openssl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>OPENSSL_DEFAULT_STREAM_CIPHERS</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_ANY_CLIENT</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_ANY_SERVER</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_SERVER</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_SERVER</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_SERVER</code></strong>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.constants.pgsql">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pgsql.php" class="link">PostgreSQL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_CONNECT_ASYNC</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_CONNECTION_AUTH_OK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_CONNECTION_AWAITING_RESPONSE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_CONNECTION_MADE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_CONNECTION_SETENV</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_CONNECTION_SSL_STARTUP</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_CONNECTION_STARTED</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_DML_ESCAPE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_POLLING_ACTIVE</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_POLLING_FAILED</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_POLLING_OK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_POLLING_READING</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>PGSQL_POLLING_WRITING</code></strong>
+    </span>
+   </li>
+  </ul></div>
+</div></article>    </main>
+</section>    </body>
+</html>

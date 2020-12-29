@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>New Extensions in PHP 5.3, 5.2</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="New Extensions in PHP 5.3, 5.2">
+
+        <meta property="og:title" content="New Extensions in PHP 5.3, 5.2">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="New Extensions in PHP 5.3, 5.2">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css" type="text/css" media="screen">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <header class="main-header">
+        <h1><a href="index.html">&laquo; Back</a> - New Extensions in PHP 5.3, 5.2</h1>
+    </header>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration53.new-extensions.php" target="_blank">PHP 5.3</a></h1>
+    </header>
+
+    <div id="migration53.new-extensions" class="section">
+  <h2 class="title">New Extensions</h2>
+  <p class="simpara">
+   The following new extensions are added (by default) as of PHP 5.3.0:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.enchant.php" class="link">Enchant</a>
+     - An abstraction layer above various spelling libraries
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.fileinfo.php" class="link">Fileinfo</a>
+     - An improved and more solid replacement, featuring full BC, for the 
+     <a target="_blank" href="https://www.php.net/manual/en/book.mime-magic.php" class="link">Mimetype</a> extension, which has been
+     removed.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.intl.php" class="link">INTL</a>
+     - Internationalization extension. INTL is a wrapper around the 
+     <a target="_blank" href="https://www.php.net/manual/en/http://www.icu-project.org/" class="link external">» ICU</a> library.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.phar.php" class="link">Phar</a>
+     - Implementation of PHP-Archive files.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.sqlite3.php" class="link">SQLite3</a>
+     - Support for SQLite version 3 databases.
+    </span>
+   </li>
+  </ul><p class="simpara">
+   mysqlnd is a new core library shipped with PHP. It is a PHP-specific
+   replacement for libmysqlclient. mysqlnd will be used to build the 
+   <a target="_blank" href="https://www.php.net/manual/en/book.mysql.php" class="link">mysql</a>,
+   <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.php" class="link">mysqli</a> 
+   and <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php" class="link">PDO_MySQL</a> extensions if libmysqlclient
+   isn't found on the system. It may also  be used instead of libmysqlclient even when
+   libmysqlclient is present. mysqlnd is recommended for all PHP installations for
+   performance reasons.
+  </p>
+ </div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration52.new-extensions.php" target="_blank">PHP 5.2</a></h1>
+    </header>
+
+    <div id="migration52.new-extensions" class="section">
+  <h2 class="title">New Extensions</h2>
+  <p class="para">
+   The following are new extensions added (by default) as of PHP 5.2.0:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ref.filter.php" class="link">Filter</a>
+     - validates and filters data, and is designed for use with insecure
+     data such as user input. This extension is enabled by default; the
+     default mode RAW does not impact input data in any way.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ref.json.php" class="link">JSON</a>
+     - implements the JavaScript Object Notation (JSON)
+     data interchange format. This extension is enabled by default.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ref.zip.php" class="link">Zip</a>
+     - enables you to transparently read or write ZIP
+     compressed archives and the files inside them.
+    </span>
+   </li>
+  </ul></div></article>    </main>
+</section>    </body>
+</html>
