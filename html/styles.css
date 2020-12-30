@@ -129,10 +129,12 @@ header.title, h1:after, h2:after, h3:after {
     margin-bottom: 5px;
     color: #000;
     border: 0;
+    transition: 0.15s all ease;
 }
 
 .index-main ul li a:hover {
-    background: #DDD;
+    padding: 7px 20px;
+    background: #FFF;
 }
 
 .index-main ul li a .versions {
@@ -145,7 +147,7 @@ header.title, h1:after, h2:after, h3:after {
     font-size: 0.75rem;
     line-height: 1.2rem;
     padding: 0 5px;
-    background: #999;
+    background: #8892BF;
     color: #F2F2F2;
     border-radius: 20%;
     font-weight: 600;
