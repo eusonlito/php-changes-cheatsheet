@@ -40,7 +40,7 @@ class Command
      */
     protected static function command(string $command, array $arguments): void
     {
-        if ($command === 'Manager') {
+        if ($command === 'CommandAbstract') {
             die(MessageConsole::string("\n<color:red>Invalid command</color>\n\n"));
         }
 
