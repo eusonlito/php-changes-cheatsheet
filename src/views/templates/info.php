@@ -1,7 +1,7 @@
 <section class="info-wrapper">
-    <header class="main-header">
+    <nav id="head-nav" class="navbar">
         <h1><a href="index.html">&laquo; Back</a> - <?= $title; ?></h1>
-    </header>
+    </nav>
 
     <main class="info-main">
         <?= $content; ?>

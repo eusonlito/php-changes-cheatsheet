@@ -1,6 +1,6 @@
-<header class="main-header">
+<nav id="head-nav" class="navbar">
     <h1>PHP Changes Cheatsheet</h1>
-</header>
+</nav>
 
 <main class="index-main">
     <ul>
