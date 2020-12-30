@@ -24,13 +24,21 @@ header.title, h1:after, h2:after, h3:after {
 }
 
 .navbar {
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 .navbar h1 {
     color: white;
     text-align: center;
     margin: 0;
+    white-space: nowrap;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.navbar h1::-webkit-scrollbar {
+    display: none;
 }
 
 .navbar h1 a {
@@ -103,12 +111,6 @@ header.title, h1:after, h2:after, h3:after {
 
     overflow-x: auto;
     scroll-snap-type: x proximity;
-}
-
-.index .main-header h1 {
-    font-size: 1.8rem;
-    text-align: center;
-    font-weight: 400;
 }
 
 .index-main {
