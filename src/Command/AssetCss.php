@@ -4,7 +4,7 @@ namespace App\Command;
 
 use App\Console\Message as MessageConsole;
 
-class Css extends CommandAbstract
+class AssetCss extends CommandAbstract
 {
     /**
      * @return void
@@ -23,7 +23,7 @@ class Css extends CommandAbstract
      */
     protected function url(string $theme): string
     {
-        return static::URL_BASE.'cached.php?f=/styles/theme-'.$theme.'.css&t='.time();
+        return static::URL_BASE.'/cached.php?f=/styles/theme-'.$theme.'.css&t='.time();
     }
 
     /**
@@ -33,7 +33,7 @@ class Css extends CommandAbstract
      */
     protected function path(string $file): string
     {
-        return static::PATH_HTML.$file;
+        return static::PATH_HTML.'/'.$file;
     }
 
     /**
@@ -113,6 +113,6 @@ class Css extends CommandAbstract
     {
         $image = str_replace(["'", '"', '../'], '', $image);
 
-        $this->fileWrite($this->path('images/'.basename($image)), static::URL_BASE.$image, true);
+        $this->fileWrite($this->path('images/'.basename($image)), static::URL_BASE.'/'.$image, true);
     }
 }

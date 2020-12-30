@@ -10,7 +10,12 @@ class Directory
     /**
      * @const
      */
-    protected const FOLDERS = [PATH_BASE.'/cache', PATH_BASE.'/html'];
+    protected const R = [PATH_BASE.'/src/views/assets', PATH_BASE.'/cache', PATH_BASE.'/html'];
+
+    /**
+     * @const
+     */
+    protected const RW = [PATH_BASE.'/cache', PATH_BASE.'/html'];
 
     /**
      * @param string $path
@@ -20,7 +25,7 @@ class Directory
      */
     public static function rmdir(string $path, string $filter = '*'): void
     {
-        static::isPathValid($path);
+        static::isPathValid($path, static::RW);
 
         if (is_dir($path) === false) {
             return;
@@ -38,7 +43,7 @@ class Directory
      */
     public static function mkdir(string $path): void
     {
-        static::isPathValid($path);
+        static::isPathValid($path, static::RW);
 
         if (is_dir($path) === false) {
             mkdir($path, 0755, true);
@@ -53,7 +58,7 @@ class Directory
      */
     public static function files(string $path, string $filter = '*'): array
     {
-        static::isPathValid($path);
+        static::isPathValid($path, static::R);
 
         if (is_dir($path) === false) {
             throw new Exception(MessageConsole::string(sprintf('Path <color:red>%s</color> not exists', $path)));
@@ -64,15 +69,16 @@ class Directory
 
     /**
      * @param string $path
+     * @param array $allowed
      *
      * @return void
      */
-    protected static function isPathValid(string $path): void
+    protected static function isPathValid(string $path, array $allowed): void
     {
         clearstatcache();
 
-        foreach (static::FOLDERS as $allowed) {
-            if (strpos($path, $allowed) === 0) {
+        foreach ($allowed as $folder) {
+            if (strpos($path, $folder) === 0) {
                 return;
             }
         }

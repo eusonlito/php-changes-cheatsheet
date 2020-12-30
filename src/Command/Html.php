@@ -45,7 +45,7 @@ class Html extends CommandAbstract
      */
     protected function path(string $file = ''): string
     {
-        return static::PATH_HTML.$file;
+        return static::PATH_HTML.'/'.$file;
     }
 
     /**

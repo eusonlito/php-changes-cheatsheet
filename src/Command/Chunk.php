@@ -43,7 +43,7 @@ class Chunk extends CommandAbstract
      */
     protected function path(string $file = ''): string
     {
-        return static::PATH_CACHE_CHUNK.$file;
+        return static::PATH_CACHE_CHUNK.'/'.$file;
     }
 
     /**
@@ -69,6 +69,7 @@ class Chunk extends CommandAbstract
 
     /**
      * @param string $file
+     * @param string $html
      *
      * @return void
      */

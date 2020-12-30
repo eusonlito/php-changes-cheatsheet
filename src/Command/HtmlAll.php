@@ -35,7 +35,7 @@ class HtmlAll extends CommandAbstract
      */
     protected function url(string $path = ''): string
     {
-        return static::URL_DOCS.$path;
+        return static::URL_DOCS.'/'.$path;
     }
 
     /**
@@ -45,7 +45,7 @@ class HtmlAll extends CommandAbstract
      */
     protected function path(string $file = ''): string
     {
-        return static::PATH_HTML.$file;
+        return static::PATH_HTML.'/'.$file;
     }
 
     /**

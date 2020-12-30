@@ -12,5 +12,5 @@
 - Create cache: `php command Cache`
 - Create HTML chunks: `php command Chunk`
 - Create HTML files: `php command Html`
-- Create CSS: `php command Css`
+- Create Assets: `php command Asset`
 - Open file `html/index.html`

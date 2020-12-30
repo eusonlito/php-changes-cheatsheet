@@ -12,6 +12,6 @@ class All extends CommandAbstract
         $this->command('Cache');
         $this->command('Chunk');
         $this->command('Html');
-        $this->command('Css');
+        $this->command('Asset');
     }
 }

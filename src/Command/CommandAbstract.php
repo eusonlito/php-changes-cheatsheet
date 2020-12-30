@@ -12,27 +12,32 @@ abstract class CommandAbstract
     /**
      * @const
      */
-    protected const URL_BASE = 'https://www.php.net/';
+    protected const URL_BASE = 'https://www.php.net';
 
     /**
      * @const
      */
-    protected const URL_DOCS = 'https://www.php.net/manual/en/';
+    protected const URL_DOCS = 'https://www.php.net/manual/en';
 
     /**
      * @const
      */
-    protected const PATH_CACHE_MIGRATION = PATH_BASE.'/cache/migration/';
+    protected const PATH_ASSET = PATH_BASE.'/src/views/assets';
 
     /**
      * @const
      */
-    protected const PATH_CACHE_CHUNK = PATH_BASE.'/cache/chunk/';
+    protected const PATH_CACHE_MIGRATION = PATH_BASE.'/cache/migration';
 
     /**
      * @const
      */
-    protected const PATH_HTML = PATH_BASE.'/html/';
+    protected const PATH_CACHE_CHUNK = PATH_BASE.'/cache/chunk';
+
+    /**
+     * @const
+     */
+    protected const PATH_HTML = PATH_BASE.'/html';
 
     /**
      * @param string $command
