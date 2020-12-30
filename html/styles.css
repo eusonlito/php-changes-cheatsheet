@@ -163,8 +163,8 @@ header.title, h1:after, h2:after, h3:after {
     background: #F2F2F2;
     padding: 20px;
     overflow: auto;
-    min-height: 85.9vh;
-    max-height: 85.9vh;
+    min-height: 86.7vh;
+    max-height: 86.7vh;
 }
 
 .info-main .title,
