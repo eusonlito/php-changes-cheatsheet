@@ -46,7 +46,7 @@ class AssetFavicon extends CommandAbstract
 
         MessageConsole::echo(sprintf("Creating <color:green>%s</color> favicon\n", $this->removePathBase($target)));
 
-        $this->fileWrite($target, $file);
+        $this->fileWrite($target, $file, true);
     }
 
     /**
