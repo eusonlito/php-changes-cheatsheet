@@ -44,11 +44,11 @@ header.title, h1:after, h2:after, h3:after {
 .navbar h1 a {
     color: white;
     text-shadow: none;
-    -moz-transform: scale(-1, 1);
-    -webkit-transform: scale(-1, 1);
-    -o-transform: scale(-1, 1);
-    -ms-transform: scale(-1, 1);
-    transform: scale(-1, 1);
+    font-weight: normal;
+}
+
+.navbar h1 a:before {
+    content: "\20 \00AB";
 }
 
 /* Main content */
