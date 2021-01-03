@@ -44,8 +44,18 @@ header.title, h1:after, h2:after, h3:after {
 .navbar h1 a {
     color: white;
     text-shadow: none;
+    font-weight: normal;
+
+}
+
+.navbar h1 a:before {
+    content: "\20 \00AB";
+}
+
+.navbar h1 a:hover::before {
     text-decoration: underline;
 }
+
 
 /* Main content */
 .main-content {
