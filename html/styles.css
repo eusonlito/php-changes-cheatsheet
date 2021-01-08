@@ -153,14 +153,15 @@ header.title, h1:after, h2:after, h3:after {
 
 .index-main ul li a .versions span {
     display: inline-block;
-    margin-right: 5px;
     font-size: 0.75rem;
     line-height: 1.2rem;
-    padding: 0 5px;
+    padding: 0 7px;
+    margin-right: 5px;
     background: #8892BF;
     color: #F2F2F2;
     border-radius: 3px;
     font-weight: 600;
+    word-spacing: 10px;
 }
 
 .info-wrapper + .info-wrapper {
