@@ -45,7 +45,6 @@ header.title, h1:after, h2:after, h3:after {
     color: white;
     text-shadow: none;
     font-weight: normal;
-
 }
 
 .navbar h1 a:before {
@@ -55,7 +54,6 @@ header.title, h1:after, h2:after, h3:after {
 .navbar h1 a:hover::before {
     text-decoration: underline;
 }
-
 
 /* Main content */
 .main-content {
@@ -244,6 +242,7 @@ header.title, h1:after, h2:after, h3:after {
     .index-main ul li a {
         display: grid;
     }
+  
     .index-main ul li a .versions  {
         justify-self: self-end;
     }
