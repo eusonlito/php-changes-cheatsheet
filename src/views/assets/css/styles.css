@@ -240,7 +240,6 @@ header.title, h1:after, h2:after, h3:after {
 
 @media (max-width: 967px) {
     .index-main ul li a {
-        display: none;
         display: grid;
     }
 
