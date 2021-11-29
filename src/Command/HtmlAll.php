@@ -2,8 +2,10 @@
 
 namespace App\Command;
 
+use DOMElement;
 use App\Console\Message as MessageConsole;
 use App\Filesystem\Directory as DirectoryFilesystem;
+use App\Html\Dom as DomHtml;
 use App\View\Template as TemplateView;
 
 class HtmlAll extends CommandAbstract
@@ -15,7 +17,7 @@ class HtmlAll extends CommandAbstract
      */
     public function handle(): void
     {
-        $this->store($this->html($this->files()));
+        $this->store($this->html());
     }
 
     /**
@@ -49,28 +51,37 @@ class HtmlAll extends CommandAbstract
     }
 
     /**
-     * @return array
-     */
-    protected function files(): array
-    {
-        return DirectoryFilesystem::files(static::PATH_HTML, '*.html');
-    }
-
-    /**
-     * @param array $files
-     *
      * @return string
      */
-    protected function html(array $files): string
+    protected function html(): string
     {
+        $dom = $this->dom($this->path('index.html'));
         $html = '';
 
-        foreach ($files as $file) {
-            $dom = $this->dom($file);
-            $html .= $dom->toHtml($dom->queryItem('//section[@class="info-wrapper"]'));
+        foreach ($dom->query('//main/ul/li/a') as $node) {
+            $html .= $this->htmlNode($dom, $node);
         }
 
         return $this->htmlLayout($html);
+    }
+
+    /**
+     * @param \App\Html\Dom $dom
+     * @param \DOMElement $node
+     *
+     * @return string
+     */
+    protected function htmlNode(DomHtml $dom, DOMElement $node): string
+    {
+        $link = $node->getAttribute('href');
+
+        if ((strpos($link, 'http') === 0) || ($link === 'all.html')) {
+            return '';
+        }
+
+        $dom = $this->dom($this->path($link));
+
+        return $dom->toHtml($dom->queryItem('//section[@class="info-wrapper"]'));
     }
 
     /**

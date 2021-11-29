@@ -20,8 +20,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181223" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181223" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -48,30 +48,30 @@
   <h2 class="title">Changes in database support</h2>
   <ul class="itemizedlist"><li class="listitem">
     <p class="para">
-     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.php#migration51.databases-pdo" class="link">PDO overview</a>
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.html#migration51.databases-pdo" class="link">PDO overview</a>
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.php#migration51.databases-mysql" class="link">Changes in MySQL support</a>
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.html#migration51.databases-mysql" class="link">Changes in MySQL support</a>
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.php#migration51.databases-sqlite" class="link">Changes in SQLite support</a>
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.html#migration51.databases-sqlite" class="link">Changes in SQLite support</a>
     </p>
    </li>
   </ul><div class="section" id="migration51.databases-pdo">
    <h2 class="title">PDO overview</h2>
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/intro.pdo.php" class="link">PHP Data Objects (PDO)</a> were introduced as a
+    <a target="_blank" href="https://www.php.net/manual/en/intro.pdo.html" class="link">PHP Data Objects (PDO)</a> were introduced as a
     PECL extension under PHP 5.0, and became part of the core PHP distribution
     in PHP 5.1.x. The PDO extension provides a consistent interface for database
     access, and is used alongside database-specific PDO drivers. Each driver
     may also have database-specific functions of its own, but basic data
     access functionality such as issuing queries and fetching data is covered
     by PDO functions, using the driver named in
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/pdo.construct.php" class="function">PDO::__construct()</a></span>.
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/pdo.construct.html" class="function">PDO::__construct()</a></span>.
    </p>
    <p class="para">
     Note that the PDO extension, and its drivers, are intended to be built as
@@ -160,18 +160,18 @@
     change being that MySQL support is no longer enabled by 
     <em class="emphasis">default</em> in PHP 5.  This essentially means that
     PHP doesn't include the <strong class="option configure">--with-mysql</strong>
-    option in the <a target="_blank" href="https://www.php.net/manual/en/configuration.php" class="link">configure</a> line so 
+    option in the <a target="_blank" href="https://www.php.net/manual/en/configuration.html" class="link">configure</a> line so 
     that you must now manually do this when compiling PHP. Windows users will 
     need to edit <var class="filename">php.ini</var> and enable the <var class="filename">php_mysql.dll</var>
     DLL as in PHP 4 no such DLL existed, it was simply built into your Windows
     PHP binaries.
    </p>
    <p class="para">
-    There is also a new extension, <a target="_blank" href="https://www.php.net/manual/en/ref.mysqli.php" class="link">MySQLi (Improved
+    There is also a new extension, <a target="_blank" href="https://www.php.net/manual/en/ref.mysqli.html" class="link">MySQLi (Improved
      MySQL)</a>, which is designed to work with MySQL 4.1 and above.
    </p>
    <p class="para">
-    Since PHP 5, the SQLite extension is
+    Since PHP 5, the <a target="_blank" href="https://www.php.net/manual/en/ref.sqlite.html" class="link">SQLite</a> extension is
     built-in PHP. SQLite is an embeddable SQL database engine and is not a
     client library used to connect to a big database server (like MySQL or
     PostgreSQL). The SQLite library reads and writes directly to and from the

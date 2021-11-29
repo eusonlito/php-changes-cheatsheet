@@ -18,8 +18,8 @@ class Html extends CommandAbstract
             $this->group($name);
         }
 
-        $this->all();
         $this->index();
+        $this->all();
     }
 
     /**
@@ -69,17 +69,7 @@ class Html extends CommandAbstract
      */
     protected function groups(): array
     {
-        return array_map(fn ($file) => $this->groupsName($file), DirectoryFilesystem::files(static::PATH_CACHE_CHUNK));
-    }
-
-    /**
-     * @param string $file
-     *
-     * @return string
-     */
-    protected function groupsName(string $file): string
-    {
-        return explode('.', basename($file))[1];
+        return array_map(fn ($file) => $this->fileCode($file), DirectoryFilesystem::files(static::PATH_CACHE_CHUNK));
     }
 
     /**

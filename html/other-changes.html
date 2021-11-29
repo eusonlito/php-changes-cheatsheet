@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Other Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
+        <title>Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Other Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="title" content="Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
-        <meta property="og:title" content="Other Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta property="og:title" content="Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Other Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="twitter:title" content="Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,225 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Other Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
+        <h1><a href="index.html"> Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration81.other-changes.php" target="_blank">PHP 8.1</a></h1>
+    </header>
+
+    <div id="migration81.other-changes" class="sect1">
+ <h2 class="title">Other Changes</h2>
+
+ <div class="sect2" id="migration81.other-changes.sapi">
+  <h3 class="title">Changes in SAPI Modules</h3>
+
+  <div class="sect3" id="migration81.other-changes.sapi.cli">
+   <h4 class="title">CLI</h4>
+
+   <p class="para">
+    Using <strong class="option unknown">-a</strong> without the <a target="_blank" href="https://www.php.net/manual/en/book.readline.php" class="link">readline extension</a> will now result in an error.
+    Previously, <strong class="option unknown">-a</strong> without readline had the same behavior as
+    calling <strong class="command">php</strong> without any arguments, apart from printing an additional
+    <code class="literal">"Interactive mode enabled"</code> message.
+    This mode was <em class="emphasis">not</em> interactive.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.sapi.phpdbg">
+   <h4 class="title">PHPDBG</h4>
+
+   <p class="para">
+    Remote functionality from <a target="_blank" href="https://www.php.net/manual/en/book.phpdbg.php" class="link">phpdbg</a> has been removed.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration81.other-changes.functions">
+  <h3 class="title">Changed Functions</h3>
+
+  <div class="sect3" id="migration81.other-changes.functions.core">
+   <h4 class="title">Core</h4>
+
+   <p class="para">
+    The order of properties used in <a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.php" class="link">foreach</a>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-dump.php" class="function">var_dump()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.serialize.php" class="function">serialize()</a></span>, object comparison, etc. was changed.
+    Properties are now ordered naturally according to their declaration
+    and inheritance. Properties declared in a base class are going
+    to be before the child properties.
+   </p>
+   <p class="para">
+    This order is consistent with internal layout of properties in
+    <code class="code">zend_object</code> structure and repeats the order in
+    <code class="code">default_properties_table[]</code> and <code class="code">properties_info_table[]</code>.
+    The old order was not documented and was caused by class inheritance implementation details.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.functions.filter">
+   <h4 class="title">Filter</h4>
+
+   <p class="para">
+    The <strong><code>FILTER_FLAG_ALLOW_OCTAL</code></strong> flag of the
+    <strong><code>FILTER_VALIDATE_INT</code></strong> filter
+    now accept octal string with the leading octal prefix
+    (<code class="literal">"0o"</code>/<code class="literal">"0O"</code>).
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.functions.gmp">
+   <h4 class="title">GMP</h4>
+
+   <p class="para">
+    All <a target="_blank" href="https://www.php.net/manual/en/book.gmp.php" class="link">GMP</a> functions now accept octal string with the leading octal prefix
+    (<code class="literal">"0o"</code>/<code class="literal">"0O"</code>).
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.functions.pdo-odbc">
+   <h4 class="title">PDO ODBC</h4>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.getattribute.php" class="methodname">PDO::getAttribute()</a></span> with
+    <strong><code>PDO::ATTR_SERVER_INFO</code></strong> and
+    <strong><code>PDO::ATTR_SERVER_VERSION</code></strong>
+    now return values instead of throwing <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdoexception.php" class="classname">PDOException</a></span>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.functions.reflection">
+   <h4 class="title">Reflection</h4>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.setaccessible.php" class="methodname">ReflectionProperty::setAccessible()</a></span> and
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionmethod.setaccessible.php" class="methodname">ReflectionMethod::setAccessible()</a></span>
+    no longer have an effect.
+    Properties and methods are now always considered accessible via Reflection.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.functions.standard">
+   <h4 class="title">Standard</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.syslog.php" class="function">syslog()</a></span> is now binary safe.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration81.other-changes.extensions">
+  <h3 class="title">Other Changes to Extensions</h3>
+
+  <div class="sect3" id="migration81.other-changes.extensions.gd">
+   <h4 class="title">GD</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagewebp.php" class="function">imagewebp()</a></span> can now do lossless WebP encoding
+    by passing <strong><code>IMG_WEBP_LOSSLESS</code></strong> as the quality.
+   </p>
+   <p class="para">
+    This constant is only defined, if the used libgd supports
+    lossless WebP encoding.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.extensions.mysqli">
+   <h4 class="title">MySQLi</h4>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli-stmt.next-result.php" class="methodname">mysqli_stmt::next_result()</a></span> and
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-all.php" class="methodname">mysqli::fetch_all()</a></span>
+    are now available when linking against libmysqlclient.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.other-changes.extensions.openssl">
+   <h4 class="title">OpenSSL</h4>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <p class="para">
+      The <a target="_blank" href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL extension</a> now requires at least OpenSSL version 1.0.2.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      OpenSSL 3.0 is now supported. Be aware that many ciphers are no longer
+      enabled by default (part of the legacy provider), and that parameter
+      validation (e.g. minimum key sizes) is stricter now.
+     </p>
+    </li>
+   </ul></div>
+
+  <div class="sect3" id="migration81.other-changes.extensions.phar">
+   <h4 class="title">Phar</h4>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <p class="para">
+      SHA256 is now used by default for signatures.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Added support for OpenSSL_SHA256 and OpenSSL_SHA512 signatures.
+     </p>
+    </li>
+   </ul></div>
+
+  <div class="sect3" id="migration81.other-changes.extensions.snmp">
+   <h4 class="title">SNMP</h4>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <p class="para">
+      Added support for SHA256 and SHA512 for the security protocol.
+     </p>
+    </li>
+   </ul></div>
+
+  <div class="sect3" id="migration81.other-changes.extensions.standard">
+   <h4 class="title">Standard</h4>
+
+   <p class="para">
+    <code class="code">--with-password-argon2</code> now uses pkg-config to detect libargon2.
+    As such, an alternative libargon2 location should now be specified using
+    <var class="envar">PKG_CONFIG_PATH</var>.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration81.other-changes.ini">
+  <h3 class="title">Changes to INI File Handling</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.log-errors-max-len" class="link">log_errors_max_len</a>
+     INI directive has been removed.
+     It no longer had an effect since PHP 8.0.0.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     A leading dollar in a quoted string can now be escaped: <code class="literal">"\${"</code> will now be
+     interpreted as a string with contents <code class="literal">${</code>.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Backslashes in double quoted strings are now more consistently treated as
+     escape characters. Previously, <code class="literal">"foo\\"</code> followed by
+     something other than a newline was not considered as a terminated string.
+     It is now interpreted as a string with contents <code class="literal">foo\</code>.
+     However, as an exception, the string <code class="literal">"foo\"</code>
+     followed by a newline will continue to be treated as a valid string with
+     contents <code class="literal">foo\</code> rather than an unterminated string.
+     This exception exists to support naive uses of Windows file paths such as
+     <code class="literal">"C:\foo\"</code>.
+    </p>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration80.other-changes.php" target="_blank">PHP 8.0</a></h1>
     </header>
@@ -76,6 +290,17 @@
      <li class="member"><strong><code>ReflectionClassConstant::IS_PROTECTED</code></strong></li>
      <li class="member"><strong><code>ReflectionClassConstant::IS_PRIVATE</code></strong></li>
     </ul></div>
+
+  <div class="sect3" id="migration80.other-changes.functions.standard">
+   <h4 class="title">Standard</h4>
+
+   <p class="para">
+    The math functions <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.abs.php" class="function">abs()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ceil.php" class="function">ceil()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.floor.php" class="function">floor()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.round.php" class="function">round()</a></span> now properly heed
+    <a target="_blank" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.strict" class="link">the <code class="literal">strict_types</code> directive</a>.
+    Previously, they coerced the first argument even in strict type mode.
+   </p>
+  </div>
 
   <div class="sect3" id="migration80.other-changes.functions.zip">
    <h4 class="title">Zip</h4>
@@ -133,7 +358,7 @@
    <h4 class="title">Date and Time</h4>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/class.dateperiod.php" class="classname">DatePeriod</a> now implements <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span>
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateperiod.php" class="classname">DatePeriod</a></span> now implements <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span>
     (instead of <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="interfacename">Traversable</a></span>).
    </p>
   </div>
@@ -142,7 +367,7 @@
    <h4 class="title">DOM</h4>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/class.domnamednodemap.php" class="classname">DOMNamedNodeMap</a> and <a target="_blank" href="https://www.php.net/manual/en/class.domnodelist.php" class="classname">DOMNodeList</a> now implement
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domnamednodemap.php" class="classname">DOMNamedNodeMap</a></span> and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domnodelist.php" class="classname">DOMNodeList</a></span> now implement
     <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span> (instead of
     <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="interfacename">Traversable</a></span>).
    </p>
@@ -152,7 +377,7 @@
    <h4 class="title">Intl</h4>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/class.intlbreakiterator.php" class="classname">IntlBreakIterator</a> and <a target="_blank" href="https://www.php.net/manual/en/class.resourcebundle.php" class="classname">ResourceBundle</a> now implement
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlbreakiterator.php" class="classname">IntlBreakIterator</a></span> and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.resourcebundle.php" class="classname">ResourceBundle</a></span> now implement
     <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span> (instead of <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="interfacename">Traversable</a></span>).
    </p>
   </div>
@@ -206,7 +431,7 @@
    <h4 class="title">PDO</h4>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/class.pdostatement.php" class="classname">PDOStatement</a> now implements
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdostatement.php" class="classname">PDOStatement</a></span> now implements
     <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span> (instead of
     <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="interfacename">Traversable</a></span>).
    </p>
@@ -233,7 +458,7 @@
     </li>
     <li class="listitem">
      <p class="para">
-      <a target="_blank" href="https://www.php.net/manual/en/class.mysqli-result.php" class="classname">mysqli_result</a> now implements
+      <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.mysqli-result.php" class="classname">mysqli_result</a></span> now implements
       <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span> (instead of
       <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="interfacename">Traversable</a></span>).
      </p>
@@ -264,10 +489,10 @@
    <h4 class="title">SimpleXML</h4>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="classname">SimpleXMLElement</a> now implements
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="classname">SimpleXMLElement</a></span> now implements
     <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.recursiveiterator.php" class="interfacename">RecursiveIterator</a></span> and absorbed the functionality of
-    <a target="_blank" href="https://www.php.net/manual/en/class.simplexmliterator.php" class="classname">SimpleXMLIterator</a>. <a target="_blank" href="https://www.php.net/manual/en/class.simplexmliterator.php" class="classname">SimpleXMLIterator</a> is an empty
-    extension of <a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="classname">SimpleXMLElement</a>.
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.simplexmliterator.php" class="classname">SimpleXMLIterator</a></span>. <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.simplexmliterator.php" class="classname">SimpleXMLIterator</a></span> is an empty
+    extension of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="classname">SimpleXMLElement</a></span>.
    </p>
   </div>
  </div>
@@ -279,7 +504,7 @@
     <p class="para">
      com.dotnet_version
      is a new INI directive to choose the version of the .NET framework to use for
-     <a target="_blank" href="https://www.php.net/manual/en/class.dotnet.php" class="classname">dotnet</a> objects.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dotnet.php" class="classname">dotnet</a></span> objects.
     </p>
    </li>
    <li class="listitem">
@@ -707,7 +932,7 @@
    now requires at least ICU 50.1.
   </p>
   <p class="para">
-   <a target="_blank" href="https://www.php.net/manual/en/class.resourcebundle.php" class="classname">ResourceBundle</a> now implements
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.resourcebundle.php" class="classname">ResourceBundle</a></span> now implements
    <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.countable.php" class="interfacename">Countable</a></span>.
   </p>
  </div>
@@ -776,11 +1001,11 @@
    <code class="literal">IS_PROTECTED</code>,
    <code class="literal">IS_PUBLIC</code>, and
    <code class="literal">IS_STATIC</code>) on the
-   <a target="_blank" href="https://www.php.net/manual/en/class.reflectionclass.php" class="classname">ReflectionClass</a>,
-   <a target="_blank" href="https://www.php.net/manual/en/class.reflectionfunction.php" class="classname">ReflectionFunction</a>,
-   <a target="_blank" href="https://www.php.net/manual/en/class.reflectionmethod.php" class="classname">ReflectionMethod</a>,
-   <a target="_blank" href="https://www.php.net/manual/en/class.reflectionobject.php" class="classname">ReflectionObject</a>, and
-   <a target="_blank" href="https://www.php.net/manual/en/class.reflectionproperty.php" class="classname">ReflectionProperty</a>
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionclass.php" class="classname">ReflectionClass</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionfunction.php" class="classname">ReflectionFunction</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionmethod.php" class="classname">ReflectionMethod</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionobject.php" class="classname">ReflectionObject</a></span>, and
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionproperty.php" class="classname">ReflectionProperty</a></span>
    classes have changed.
   </p>
  </div>
@@ -788,7 +1013,7 @@
  <div class="sect2" id="migration74.other-changes.simplexml">
   <h3 class="title">SimpleXML</h3>
   <p class="para">
-   <a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="classname">SimpleXMLElement</a> now implements
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.simplexmlelement.php" class="classname">SimpleXMLElement</a></span> now implements
    <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.countable.php" class="interfacename">Countable</a></span>.
   </p>
  </div>
@@ -803,8 +1028,8 @@
    a system libsqlite3 ≥ 3.5.0 is now required.
   </p>
   <p class="para">
-   Serialization and unserialization of <a target="_blank" href="https://www.php.net/manual/en/class.sqlite3.php" class="classname">SQLite3</a>,
-   <a target="_blank" href="https://www.php.net/manual/en/class.sqlite3stmt.php" class="classname">SQLite3Stmt</a> and <a target="_blank" href="https://www.php.net/manual/en/class.sqlite3result.php" class="classname">SQLite3Result</a>
+   Serialization and unserialization of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sqlite3.php" class="classname">SQLite3</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sqlite3stmt.php" class="classname">SQLite3Stmt</a></span> and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sqlite3result.php" class="classname">SQLite3Result</a></span>
    is now explicitly forbidden. Formerly, serialization of instances of
    these classes was possible, but unserialization yielded unusable objects.
   </p>
@@ -841,11 +1066,7 @@
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setcookie.php" class="function">setcookie()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setrawcookie.php" class="function">setrawcookie()</a></span> now also
     support the following signature:
     </p><div class="methodsynopsis dc-description">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.setcookie.php" class="methodname">setcookie</a></span>
-      ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
-     [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code><span class="initializer"> = ""</span></span>
-     [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>
-    ]] ) : <span class="type">bool</span></div>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.setcookie.php" class="methodname">setcookie</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code><span class="initializer"> = ""</span></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>): <span class="type">bool</span></div>
 
     where <code class="literal">$options</code> is an associative array which may have
     any of the keys <code class="literal">"expires"</code>, <code class="literal">"path"</code>,
@@ -879,9 +1100,12 @@
       <dd>
 
        <span class="simpara">
-        Specifies the filter type to filter the logged messages. There are three
+        Specifies the filter type to filter the logged messages, with the
         supported filter types - <code class="literal">all</code>,
         <code class="literal">no-ctrl</code> and <code class="literal">ascii</code>.
+        Starting with PHP 7.3.8, <code class="literal">raw</code> is also available, 
+        restoring the way syslog behaved in previous PHP versions.
+        This filter will also affect calls to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.syslog.php" class="function">syslog()</a></span>.
        </span>
       </dd>
 
@@ -913,7 +1137,7 @@
    <h4 class="title">Miscellaneous</h4>
 
    <p class="para">
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-export.php" class="function">var_export()</a></span> now exports <strong class="classname">stdClass</strong>
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-export.php" class="function">var_export()</a></span> now exports <span class="classname"><strong class="classname">stdClass</strong></span>
     objects as an array cast to an object (<code class="code">(object) array( ... )</code>), rather
     than using the nonexistent method <span class="methodname"><strong>stdClass::__setState()</strong></span>.
    </p>
@@ -1006,7 +1230,7 @@
    A new flag has been added, <strong><code>JSON_THROW_ON_ERROR</code></strong>, which
    can be used with <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-decode.php" class="function">json_decode()</a></span> or
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span> and causes these functions to throw the new
-   <a target="_blank" href="https://www.php.net/manual/en/class.jsonexception.php" class="classname">JsonException</a> upon an error, instead of setting the
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.jsonexception.php" class="classname">JsonException</a></span> upon an error, instead of setting the
    global error state that is retrieved with
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error.php" class="function">json_last_error()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error-msg.php" class="function">json_last_error_msg()</a></span>.
    <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong> takes precedence over
@@ -1103,9 +1327,7 @@
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-set-cookie-params.php" class="function">session_set_cookie_params()</a></span> now also supports the
    following signature:
    </p><div class="methodsynopsis dc-description">
-    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.session-set-cookie-params.php" class="methodname">session_set_cookie_params</a></span>
-     ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>
-    ) : <span class="type">bool</span></div>
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.session-set-cookie-params.php" class="methodname">session_set_cookie_params</a></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>): <span class="type">bool</span></div>
 
    where <code class="literal">$options</code> is an associative array which may have
    any of the keys <code class="literal">"lifetime"</code>, <code class="literal">"path"</code>,
@@ -1457,9 +1679,9 @@ string(1) "@"
  </div>
 
  <div class="sect2" id="migration71.other-changes.typeerror-error-messages">
-  <h3 class="title">More informative <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a> messages when <strong><code>null</code></strong> is allowed</h3>
+  <h3 class="title">More informative <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span> messages when <strong><code>null</code></strong> is allowed</h3>
   <p class="para">
-   <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a> exceptions for arg_info type checks will
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span> exceptions for arg_info type checks will
    now provide more informative error messages. If the parameter type or return
    type accepts <strong><code>null</code></strong> (by either having a default value of <strong><code>null</code></strong> or being a
    nullable type), then the error message will now mention this with a message

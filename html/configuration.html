@@ -20,8 +20,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181223" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181223" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -49,13 +49,13 @@
    <p class="para">
     Since the ISAPI modules changed their names, from php4xxx to php5xxx, you
     need to make some changes in the configuration files. There were also
-    changes in the CLI and CGI filenames. Please refer to the <a target="_blank" href="https://www.php.net/manual/en/migration5.cli-cgi.php" class="link">corresponding section</a> for more
+    changes in the CLI and CGI filenames. Please refer to the <a target="_blank" href="https://www.php.net/manual/en/migration5.cli-cgi.html" class="link">corresponding section</a> for more
     information.
    </p>
    <p class="para">
     Migrating the Apache configuration is extremely easy. See the example below
     to check the change you need to do:
-    </p><div class="example" id="example-6102">
+    </p><div class="example" id="example-6944">
      <p><strong>Example #1 Migrating Apache configuration files for PHP 5</strong></p>
      <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode"># change this line:    
@@ -73,7 +73,7 @@ LoadModule php5_module /php/php5apache2.dll</pre>
     CGI version has changed its name from <var class="filename">php.exe</var> to
     <var class="filename">php-cgi.exe</var>.
     In Apache, you should do something like this:
-    </p><div class="example" id="example-6103">
+    </p><div class="example" id="example-6945">
      <p><strong>Example #2 Migrating Apache configuration files for PHP 5, CGI mode</strong></p>
      <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode"># change this line:    

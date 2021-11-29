@@ -22,6 +22,16 @@ abstract class CommandAbstract
     /**
      * @const
      */
+    protected const URL_LEGACY_BASE = 'https://php-legacy-docs.zend.com';
+
+    /**
+     * @const
+     */
+    protected const URL_LEGACY_DOCS = 'https://php-legacy-docs.zend.com/manual/php5/en';
+
+    /**
+     * @const
+     */
     protected const PATH_ASSET = PATH_BASE.'/src/views/assets';
 
     /**
@@ -78,6 +88,16 @@ abstract class CommandAbstract
     protected function dom(string $file): DomHtml
     {
         return new DomHtml(file_get_contents($file));
+    }
+
+    /**
+     * @param string $file
+     *
+     * @return string
+     */
+    protected function fileCode(string $file): string
+    {
+        return explode('.', str_replace('.new-', '.', basename($file)))[1];
     }
 
     /**

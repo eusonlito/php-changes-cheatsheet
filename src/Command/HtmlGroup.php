@@ -65,7 +65,7 @@ class HtmlGroup extends CommandAbstract
         $files = [];
 
         foreach (DirectoryFilesystem::files(static::PATH_CACHE_CHUNK) as $file) {
-            if ($this->filesName($file) === $this->name) {
+            if ($this->fileCode($file) === $this->name) {
                 $files[$this->filesVersion($file)] = $file;
             }
         }
@@ -73,16 +73,6 @@ class HtmlGroup extends CommandAbstract
         krsort($files, SORT_NUMERIC);
 
         return $files;
-    }
-
-    /**
-     * @param string $file
-     *
-     * @return string
-     */
-    protected function filesName(string $file): string
-    {
-        return explode('.', basename($file))[1];
     }
 
     /**

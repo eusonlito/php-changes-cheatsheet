@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Functions in PHP 5.4, 5.3, 5.2, 5.0</title>
+        <title>New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Functions in PHP 5.4, 5.3, 5.2, 5.0">
+        <meta name="title" content="New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
-        <meta property="og:title" content="New Functions in PHP 5.4, 5.3, 5.2, 5.0">
+        <meta property="og:title" content="New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Functions in PHP 5.4, 5.3, 5.2, 5.0">
+        <meta name="twitter:title" content="New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,2086 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Functions in PHP 5.4, 5.3, 5.2, 5.0</a></h1>
+        <h1><a href="index.html"> New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration81.new-functions.php" target="_blank">PHP 8.1</a></h1>
+    </header>
+
+    <div id="migration81.new-functions" class="sect1">
+ <h2 class="title">New Functions</h2>
+
+ <div class="sect2" id="migration81.new-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-is-list.php" class="function">array_is_list()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-functions.pcntl">
+  <h3 class="title">Process Control</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><strong>pcntl_rfork()</strong></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-functions.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><strong>ReflectionFunctionAbstract::getClosureUsedVariables()</strong></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-functions.standard">
+  <h3 class="title">Standard</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fsync.php" class="function">fsync()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fdatasync.php" class="function">fdatasync()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-functions.sodium">
+  <h3 class="title">Sodium</h3>
+
+  <div class="sect3">
+   <h4 class="title">XChaCha20</h4>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_stream_xchacha20()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_stream_xchacha20_keygen()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_stream_xchacha20_xor()</strong></span>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect3">
+   <h4 class="title">Ristretto255</h4>
+
+   <p class="para">
+    Ristretto255 functions are available as of libsodium 1.0.18.
+   </p>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_add()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_from_hash()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_is_valid_point()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_random()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_add()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_complement()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_invert()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_mul()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_negate()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_random()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_reduce()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_sub()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_core_ristretto255_sub()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_scalarmult_ristretto255()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>sodium_crypto_scalarmult_ristretto255_base()</strong></span>
+     </span>
+    </li>
+   </ul></div>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration74.new-functions.php" target="_blank">PHP 7.4</a></h1>
+    </header>
+
+    <div id="migration74.new-functions" class="sect1">
+ <h2 class="title">New Functions</h2>
+
+ <div class="sect2" id="migration74.new-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-mangled-object-vars.php" class="function">get_mangled_object_vars()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-algos.php" class="function">password_algos()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-set-ctrl-handler.php" class="function">sapi_windows_set_ctrl_handler()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.new-functions.gd">
+  <h3 class="title">GD</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecreatefromtga.php" class="function">imagecreatefromtga()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.new-functions.mbstring">
+  <h3 class="title">Multibyte String</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-str-split.php" class="function">mb_str_split()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.new-functions.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-x509-verify.php" class="function">openssl_x509_verify()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.new-functions.pcntl">
+  <h3 class="title">Process Control</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><strong>pcntl_unshare()</strong></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration74.new-functions.sqlite3">
+  <h3 class="title">SQLite3</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/sqlite3.backup.php" class="methodname">SQLite3::backup()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/sqlite3stmt.getsql.php" class="methodname">SQLite3Stmt::getSQL()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration73.new-functions.php" target="_blank">PHP 7.3</a></h1>
+    </header>
+
+    <div id="migration73.new-functions" class="sect1">
+ <h2 class="title">New Functions</h2>
+
+ <div class="sect2" id="migration73.new-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-key-first.php" class="function">array_key_first()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-key-last.php" class="function">array_key_last()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-status.php" class="function">gc_status()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hrtime.php" class="function">hrtime()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.is-countable.php" class="function">is_countable()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><strong>net_get_interfaces()</strong></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.new-functions.fpm">
+  <h3 class="title">FastCGI Process Manager</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><strong>fpm_get_status()</strong></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.new-functions.datetime">
+  <h3 class="title">Date and Time</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/datetime.createfromimmutable.php" class="methodname">DateTime::createFromImmutable()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.new-functions.gmp">
+  <h3 class="title">GNU Multiple Precision</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-binomial.php" class="function">gmp_binomial()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-kronecker.php" class="function">gmp_kronecker()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-lcm.php" class="function">gmp_lcm()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-perfect-power.php" class="function">gmp_perfect_power()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.new-functions.intl">
+  <h3 class="title">Internationalization Functions</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/normalizer.getrawdecomposition.php" class="methodname">Normalizer::getRawDecomposition()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/normalizer.getrawdecomposition.php" class="function">normalizer_get_raw_decomposition()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><strong>Spoofchecker::setRestrictionLevel()</strong></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.new-functions.ldap">
+  <h3 class="title">Lightweight Directory Access Protocol</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-add-ext.php" class="function">ldap_add_ext()</a></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-bind-ext.php" class="function">ldap_bind_ext()</a></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-delete-ext.php" class="function">ldap_delete_ext()</a></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-exop-refresh.php" class="function">ldap_exop_refresh()</a></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-mod_add-ext.php" class="function">ldap_mod_add_ext()</a></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-mod_replace-ext.php" class="function">ldap_mod_replace_ext()</a></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-mod_del-ext.php" class="function">ldap_mod_del_ext()</a></span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-rename-ext.php" class="function">ldap_rename_ext()</a></span></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.new-functions.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pkey-derive.php" class="function">openssl_pkey_derive()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration73.new-functions.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-wsaprotocol-info-export.php" class="function">socket_wsaprotocol_info_export()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-wsaprotocol-info-import.php" class="function">socket_wsaprotocol_info_import()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-wsaprotocol-info-release.php" class="function">socket_wsaprotocol_info_release()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration72.new-functions.php" target="_blank">PHP 7.2</a></h1>
+    </header>
+
+    <div id="migration72.new-functions" class="sect1">
+ <h2 class="title">New functions</h2>
+
+ <div class="sect2" id="migration72.new-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-isatty.php" class="function">stream_isatty()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-vt100-support.php" class="function">sapi_windows_vt100_support()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.spl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.spl.php" class="link">SPL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-object-id.php" class="function">spl_object_id()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.dom">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.dom.php" class="link">DOM</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnodelist.count.php" class="methodname">DomNodeList::count()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnamednodemap.count.php" class="methodname">DOMNamedNodeMap::count()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.ftp">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.ftp.php" class="link">FTP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ftp-append.php" class="function">ftp_append()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.image">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.image.php" class="link">GD</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagesetclip.php" class="function">imagesetclip()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagegetclip.php" class="function">imagegetclip()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageopenpolygon.php" class="function">imageopenpolygon()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageresolution.php" class="function">imageresolution()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecreatefrombmp.php" class="function">imagecreatefrombmp()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagebmp.php" class="function">imagebmp()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.hash">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.hash.php" class="link">Hash</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hash-hmac-algos.php" class="function">hash_hmac_algos()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.ldap">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-parse-exop.php" class="function">ldap_parse_exop()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-exop.php" class="function">ldap_exop()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-exop-passwd.php" class="function">ldap_exop_passwd()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-exop-whoami.php" class="function">ldap_exop_whoami()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.mbstring">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mbstring.php" class="link">Multibyte String</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-chr.php" class="function">mb_chr()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-ord.php" class="function">mb_ord()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-scrub.php" class="function">mb_scrub()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.oci8">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.oci8.php" class="link">Oracle OCI8</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-register-taf-callback.php" class="function">oci_register_taf_callback()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-unregister-taf-callback.php" class="function">oci_unregister_taf_callback()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.sockets">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.sockets.php" class="link">Sockets</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-lookup.php" class="function">socket_addrinfo_lookup()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-connect.php" class="function">socket_addrinfo_connect()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-bind.php" class="function">socket_addrinfo_bind()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-explain.php" class="function">socket_addrinfo_explain()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.sodium">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.sodium.php" class="link">Sodium</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-add.php" class="function">sodium_add()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-bin2hex.php" class="function">sodium_bin2hex()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-compare.php" class="function">sodium_compare()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-decrypt.php" class="function">sodium_crypto_aead_aes256gcm_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-encrypt.php" class="function">sodium_crypto_aead_aes256gcm_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-is-available.php" class="function">sodium_crypto_aead_aes256gcm_is_available()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-aes256gcm-keygen.php" class="function">sodium_crypto_aead_aes256gcm_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-decrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-encrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-ietf-decrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_ietf_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-ietf-encrypt.php" class="function">sodium_crypto_aead_chacha20poly1305_ietf_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-ietf-keygen.php" class="function">sodium_crypto_aead_chacha20poly1305_ietf_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-aead-chacha20poly1305-keygen.php" class="function">sodium_crypto_aead_chacha20poly1305_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-auth-keygen.php" class="function">sodium_crypto_auth_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-auth-verify.php" class="function">sodium_crypto_auth_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-auth.php" class="function">sodium_crypto_auth()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-keypair-from-secretkey-and-publickey.php" class="function">sodium_crypto_box_keypair_from_secretkey_and_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-keypair.php" class="function">sodium_crypto_box_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-open.php" class="function">sodium_crypto_box_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-publickey-from-secretkey.php" class="function">sodium_crypto_box_publickey_from_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-publickey.php" class="function">sodium_crypto_box_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-seal-open.php" class="function">sodium_crypto_box_seal_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-seal.php" class="function">sodium_crypto_box_seal()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-secretkey.php" class="function">sodium_crypto_box_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box-seed-keypair.php" class="function">sodium_crypto_box_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-box.php" class="function">sodium_crypto_box()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-generichash-final.php" class="function">sodium_crypto_generichash_final()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-generichash-init.php" class="function">sodium_crypto_generichash_init()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-generichash-keygen.php" class="function">sodium_crypto_generichash_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-generichash-update.php" class="function">sodium_crypto_generichash_update()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-generichash.php" class="function">sodium_crypto_generichash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kdf-derive-from-key.php" class="function">sodium_crypto_kdf_derive_from_key()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kdf-keygen.php" class="function">sodium_crypto_kdf_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kx-client-session-keys.php" class="function">sodium_crypto_kx_client_session_keys()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kx-keypair.php" class="function">sodium_crypto_kx_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kx-publickey.php" class="function">sodium_crypto_kx_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kx-secretkey.php" class="function">sodium_crypto_kx_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kx-seed-keypair.php" class="function">sodium_crypto_kx_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-kx-server-session-keys.php" class="function">sodium_crypto_kx_server_session_keys()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-scryptsalsa208sha256-str-verify.php" class="function">sodium_crypto_pwhash_scryptsalsa208sha256_str_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-scryptsalsa208sha256-str.php" class="function">sodium_crypto_pwhash_scryptsalsa208sha256_str()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-scryptsalsa208sha256.php" class="function">sodium_crypto_pwhash_scryptsalsa208sha256()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-str-verify.php" class="function">sodium_crypto_pwhash_str_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-pwhash-str.php" class="function">sodium_crypto_pwhash_str()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-pwhash.php" class="function">sodium_crypto_pwhash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-scalarmult-base.php" class="function">sodium_crypto_scalarmult_base()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-scalarmult.php" class="function">sodium_crypto_scalarmult()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-secretbox-keygen.php" class="function">sodium_crypto_secretbox_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-secretbox-open.php" class="function">sodium_crypto_secretbox_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-secretbox.php" class="function">sodium_crypto_secretbox()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-shorthash-keygen.php" class="function">sodium_crypto_shorthash_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-shorthash.php" class="function">sodium_crypto_shorthash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-detached.php" class="function">sodium_crypto_sign_detached()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-ed25519-pk-to-curve25519.php" class="function">sodium_crypto_sign_ed25519_pk_to_curve25519()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-ed25519-sk-to-curve25519.php" class="function">sodium_crypto_sign_ed25519_sk_to_curve25519()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-keypair-from-secretkey-and-publickey.php" class="function">sodium_crypto_sign_keypair_from_secretkey_and_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-keypair.php" class="function">sodium_crypto_sign_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-open.php" class="function">sodium_crypto_sign_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-publickey-from-secretkey.php" class="function">sodium_crypto_sign_publickey_from_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-publickey.php" class="function">sodium_crypto_sign_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-secretkey.php" class="function">sodium_crypto_sign_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-seed-keypair.php" class="function">sodium_crypto_sign_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign-verify-detached.php" class="function">sodium_crypto_sign_verify_detached()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-sign.php" class="function">sodium_crypto_sign()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-stream-keygen.php" class="function">sodium_crypto_stream_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-stream-xor.php" class="function">sodium_crypto_stream_xor()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-stream.php" class="function">sodium_crypto_stream()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-hex2bin.php" class="function">sodium_hex2bin()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-increment.php" class="function">sodium_increment()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-memcmp.php" class="function">sodium_memcmp()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-memzero.php" class="function">sodium_memzero()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-pad.php" class="function">sodium_pad()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-unpad.php" class="function">sodium_unpad()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration72.new-functions.zip">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.zip.php" class="link">ZIP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.count.php" class="methodname">ZipArchive::count()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setencryptionname.php" class="methodname">ZipArchive::setEncryptionName()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setencryptionindex.php" class="methodname">ZipArchive::setEncryptionIndex()</a></span>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration71.new-functions.php" target="_blank">PHP 7.1</a></h1>
+    </header>
+
+    <div id="migration71.new-functions" class="sect1">
+ <h2 class="title">New functions</h2>
+
+ <div class="sect2" id="migration71.new-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-cp-get.php" class="function">sapi_windows_cp_get()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-cp-set.php" class="function">sapi_windows_cp_set()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-cp-conv.php" class="function">sapi_windows_cp_conv()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-cp-is-utf8.php" class="function">sapi_windows_cp_is_utf8()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.new-functions.closure">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/class.closure.php" class="link">Closure</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/closure.fromcallable.php" class="methodname">Closure::fromCallable()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.new-functions.curl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.curl.php" class="link">CURL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-multi-errno.php" class="function">curl_multi_errno()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-errno.php" class="function">curl_share_errno()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-strerror.php" class="function">curl_share_strerror()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.new-functions.openssl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-get-curve-names.php" class="function">openssl_get_curve_names()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.new-functions.session">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.session.php" class="link">Session</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-create-id.php" class="function">session_create_id()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-gc.php" class="function">session_gc()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.new-functions.spl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.spl.php" class="link">SPL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.is-iterable.php" class="function">is_iterable()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.new-functions.pcntl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pcntl.php" class="link">PCNTL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-async-signals.php" class="function">pcntl_async_signals()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-signal-get-handler.php" class="function">pcntl_signal_get_handler()</a></span>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration70.new-functions.php" target="_blank">PHP 7.0</a></h1>
+    </header>
+
+    <div id="migration70.new-functions" class="sect1">
+ <h2 class="title">New functions</h2>
+
+ <div class="sect2" id="migration70.new-functions.closure">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/class.closure.php" class="link">Closure</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/closure.call.php" class="methodname">Closure::call()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.csprng">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.csprng.php" class="link">CSPRNG</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.random-bytes.php" class="function">random_bytes()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.random-int.php" class="function">random_int()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.errorfunc">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.errorfunc.php" class="link">Error Handling and Logging</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.error-clear-last.php" class="function">error_clear_last()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.generator">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/class.generator.php" class="link">Generator</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/generator.getreturn.php" class="methodname">Generator::getReturn()</a></span>
+    </span>
+   </li>
+  </ul></div>
+ 
+ <div class="sect2" id="migration70.new-functions.gmp">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.gmp.php" class="link">GNU Multiple Precision</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-random-seed.php" class="function">gmp_random_seed()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.math">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.math.php" class="link">Math</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.intdiv.php" class="function">intdiv()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.pcre">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pcre.php" class="link">PCRE</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace-callback-array.php" class="function">preg_replace_callback_array()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.info">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.info.php" class="link">PHP Options/Info</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-mem-caches.php" class="function">gc_mem_caches()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-resources.php" class="function">get_resources()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.posix">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.posix.php" class="link">POSIX</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-setrlimit.php" class="function">posix_setrlimit()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.reflection">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.php" class="link">Reflection</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/reflectionparameter.gettype.php" class="function">ReflectionParameter::getType()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/reflectionparameter.hastype.php" class="function">ReflectionParameter::hasType()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/reflectionfunctionabstract.getreturntype.php" class="function">ReflectionFunctionAbstract::getReturnType()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/reflectionfunctionabstract.hasreturntype.php" class="function">ReflectionFunctionAbstract::hasReturnType()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.zip">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.zip.php" class="link">Zip</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcompressionindex.php" class="methodname">ZipArchive::setCompressionIndex()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcompressionname.php" class="methodname">ZipArchive::setCompressionName()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.new-functions.zlib">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.zlib.php" class="link">Zlib Compression</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.inflate-add.php" class="function">inflate_add()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.deflate-add.php" class="function">deflate_add()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.inflate-init.php" class="function">inflate_init()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.deflate-init.php" class="function">deflate_init()</a></span>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration56.new-functions.php" target="_blank">PHP 5.6</a></h1>
+    </header>
+
+    <div id="migration56.new-functions" class="sect1">
+ <h2 class="title">New functions</h2>
+
+ <div class="sect2" id="migration56.new-functions.datetime">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.datetime.php" class="link">Date and Time</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/datetimeimmutable.createfrommutable.php" class="methodname">DateTimeImmutable::createFromMutable()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.gmp">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.gmp.php" class="link">GMP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-root.php" class="function">gmp_root()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-rootrem.php" class="function">gmp_rootrem()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.hash">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.hash.php" class="link">Hash</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hash-equals.php" class="function">hash_equals()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.ldap">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-escape.php" class="function">ldap_escape()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-modify-batch.php" class="function">ldap_modify_batch()</a></span>
+    </span>
+   </li>
+  </ul></div>
+ 
+ <div class="sect2" id="migration56.new-functions.mysqli">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.php" class="link">MySQLi</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-get-links-stats.php" class="function">mysqli_get_links_stats()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.oci8">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.oci8.php" class="link">OCI8</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-get-implicit-resultset.php" class="function">oci_get_implicit_resultset()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.openssl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-get-cert-locations.php" class="function">openssl_get_cert_locations()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-x509-fingerprint.php" class="function">openssl_x509_fingerprint()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-spki-new.php" class="function">openssl_spki_new()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-spki-verify.php" class="function">openssl_spki_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-spki-export-challenge.php" class="function">openssl_spki_export_challenge()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-spki-export.php" class="function">openssl_spki_export()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.pgsql">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pgsql.php" class="link">PostgreSQL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-connect-poll.php" class="function">pg_connect_poll()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-consume-input.php" class="function">pg_consume_input()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-flush.php" class="function">pg_flush()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-socket.php" class="function">pg_socket()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.pdo-pgsql">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-pgsql.php" class="link">PDO_PGSQL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlgetnotify.php" class="methodname">PDO::pgsqlGetNotify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlgetpid.php" class="methodname">PDO::pgsqlGetPid()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.session">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.session.php" class="link">Session</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-abort.php" class="function">session_abort()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-reset.php" class="function">session_reset()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.new-functions.zip">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.zip.php" class="link">Zip</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setpassword.php" class="methodname">ZipArchive::setPassword()</a></span>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration55.new-functions.php" target="_blank">PHP 5.5</a></h1>
+    </header>
+
+    <div id="migration55.new-functions" class="sect1">
+  <h2 class="title">New Functions</h2>
+
+  <div class="sect2" id="migration55.new-functions.core">
+   <h3 class="title">PHP Core</h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-column.html" class="function">array_column()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.boolval.html" class="function">boolval()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error-msg.html" class="function">json_last_error_msg()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-get-info.html" class="function">password_get_info()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-hash.html" class="function">password_hash()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-needs-rehash.html" class="function">password_needs_rehash()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-verify.html" class="function">password_verify()</a></span>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect2" id="migration55.new-functions.hash">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">Hash</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hash-pbkdf2.html" class="function">hash_pbkdf2()</a></span>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect2" id="migration55.new-functions.openssl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.openssl.html" class="link">OpenSSL</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pbkdf2.html" class="function">openssl_pbkdf2()</a></span>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect2" id="migration55.new-functions.curl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.curl.html" class="link">cURL</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-escape.html" class="function">curl_escape()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/curlfile.construct.html" class="function">curl_file_create()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-multi-setopt.html" class="function">curl_multi_setopt()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-multi-strerror.html" class="function">curl_multi_strerror()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-pause.html" class="function">curl_pause()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-reset.html" class="function">curl_reset()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-close.html" class="function">curl_share_close()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-init.html" class="function">curl_share_init()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-setopt.html" class="function">curl_share_setopt()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-strerror.html" class="function">curl_strerror()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-unescape.html" class="function">curl_unescape()</a></span>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect2" id="migration55.new-functions.gd">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.image.html" class="link">GD</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageaffinematrixconcat.html" class="function">imageaffinematrixconcat()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageaffinematrixget.html" class="function">imageaffinematrixget()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecrop.html" class="function">imagecrop()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecropauto.html" class="function">imagecropauto()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageflip.html" class="function">imageflip()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagepalettetotruecolor.html" class="function">imagepalettetotruecolor()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagescale.html" class="function">imagescale()</a></span>
+     </span>
+    </li>
+   </ul></div>
+  
+  <div class="sect2" id="migration55.new-functions.mysqli">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">MySQLi</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.begin-transaction.html" class="function">mysqli_begin_transaction()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.release-savepoint.html" class="function">mysqli_release_savepoint()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.savepoint.html" class="function">mysqli_savepoint()</a></span>
+     </span>
+    </li>
+   </ul></div>
+  
+  <div class="sect2" id="migration55.new-functions.pgsql">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pgsql.html" class="link">PostgreSQL</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-escape-literal.html" class="function">pg_escape_literal()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-escape-identifier.html" class="function">pg_escape_identifier()</a></span>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect2" id="migration55.new-functions.sockets">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.sockets.html" class="link">Sockets</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-sendmsg.html" class="function">socket_sendmsg()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-recvmsg.html" class="function">socket_recvmsg()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-cmsg-space.html" class="function">socket_cmsg_space()</a></span>
+     </span>
+    </li>
+   </ul></div>  
+
+  <div class="sect2" id="migration55.new-functions.cli">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/features.commandline.html" class="link">CLI</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.cli-get-process-title.html" class="function">cli_get_process_title()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.cli-set-process-title.html" class="function">cli_set_process_title()</a></span>
+     </span>
+    </li>
+   </ul></div>
+  
+  <div class="sect2" id="migration55.new-functions.intl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.formatobject.html" class="function">datefmt_format_object()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendarobject.html" class="function">datefmt_get_calendar_object()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.gettimezone.html" class="function">datefmt_get_timezone()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.html" class="function">datefmt_set_timezone()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendarobject.html" class="function">datefmt_get_calendar_object()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_create_instance()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_keyword_values_for_locale()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_now()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_available_locales()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_time()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_set_time()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_add()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_set_time_zone()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_after()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_before()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_set()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_roll()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_clear()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_field_difference()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_actual_maximum()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_actual_minimum()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_day_of_week_type()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_first_day_of_week()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_greatest_minimum()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_least_maximum()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_locale()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_maximum()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_minimal_days_in_first_week()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_minimum()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_time_zone()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_type()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_weekend_transition()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_in_daylight_time()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_is_equivalent_to()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_is_lenient()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_is_set()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_is_weekend()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_set_first_day_of_week()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_set_lenient()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_equals()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_repeated_wall_time_option()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_get_skipped_wall_time_option()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_set_repeated_wall_time_option()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_set_skipped_wall_time_option()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_from_date_time()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlcal_to_date_time()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.geterrorcode.html" class="function">intlcal_get_error_code()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.geterrormessage.html" class="function">intlcal_get_error_message()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlgregcal_create_instance()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlgregcal_set_gregorian_change()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlgregcal_get_gregorian_change()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intlgregcal_is_leap_year()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_create_time_zone()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_create_default()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_id()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_gmt()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_unknown()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_create_enumeration()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_count_equivalent_ids()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_create_time_zone_id_enumeration()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_canonical_id()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_region()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_tz_data_version()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_equivalent_id()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_use_daylight_time()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_offset()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_raw_offset()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_has_same_rules()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_display_name()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_get_dst_savings()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_from_date_time_zone()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><strong>intltz_to_date_time_zone()</strong></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intltimezone.geterrorcode.html" class="function">intltz_get_error_code()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intltimezone.geterrormessage.html" class="function">intltz_get_error_message()</a></span>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect2" id="migration55.new-features.spl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.wakeup.html" class="methodname">SplFixedArray::__wakeup()</a></span>
+     </span>
+    </li>
+   </ul></div>
+ </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration54.functions.php" target="_blank">PHP 5.4</a></h1>
     </header>
@@ -52,134 +2127,134 @@
   <p class="simpara">PHP Core:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hex2bin.php" class="function">hex2bin()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hex2bin.html" class="function">hex2bin()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.http-response-code.php" class="function">http_response_code()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.http-response-code.html" class="function">http_response_code()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-declared-traits.php" class="function">get_declared_traits()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-declared-traits.html" class="function">get_declared_traits()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesizefromstring.php" class="function">getimagesizefromstring()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesizefromstring.html" class="function">getimagesizefromstring()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-set-chunk-size.php" class="function">stream_set_chunk_size()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-set-chunk-size.html" class="function">stream_set_chunk_size()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-import-stream.php" class="function">socket_import_stream()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-import-stream.html" class="function">socket_import_stream()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.trait-exists.php" class="function">trait_exists()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.trait-exists.html" class="function">trait_exists()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.header-register-callback.php" class="function">header_register_callback()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.header-register-callback.html" class="function">header_register_callback()</a></span>
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.php" class="link">SPL:</a></p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL:</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.class-uses.php" class="function">class_uses()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.class-uses.html" class="function">class_uses()</a></span>
     </span>
    </li>
-   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.session.php" class="link">Session:</a></p>
+   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.session.html" class="link">Session:</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-status.php" class="function">session_status()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-status.html" class="function">session_status()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-register-shutdown.php" class="function">session_register_shutdown()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-register-shutdown.html" class="function">session_register_shutdown()</a></span>
     </span>
    </li>
-   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.php" class="link">Mysqli:</a></p>
+   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">Mysqli:</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.error-list.php" class="function">mysqli_error_list()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.error-list.html" class="function">mysqli_error_list()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-stmt.error-list.php" class="function">mysqli_stmt_error_list()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-stmt.error-list.html" class="function">mysqli_stmt_error_list()</a></span>
     </span>
    </li>
-   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.libxml.php" class="link">Libxml:</a></p>
+   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.libxml.html" class="link">Libxml:</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-set-external-entity-loader.php" class="function">libxml_set_external_entity_loader()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-set-external-entity-loader.html" class="function">libxml_set_external_entity_loader()</a></span>
     </span>
    </li>
-   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP:</a></p>
+   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.ldap.html" class="link">LDAP:</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-control-paged-result.php" class="function">ldap_control_paged_result()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-control-paged-result.html" class="function">ldap_control_paged_result()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-control-paged-result-response.php" class="function">ldap_control_paged_result_response()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-control-paged-result-response.html" class="function">ldap_control_paged_result_response()</a></span>
     </span>
    </li>
-   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.intl.php" class="link">Intl:</a></p>
+   </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl:</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.create.php" class="function">transliterator_create()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.create.html" class="function">transliterator_create()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.createfromrules.php" class="function">transliterator_create_from_rules()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.createfromrules.html" class="function">transliterator_create_from_rules()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.createinverse.php" class="function">transliterator_create_inverse()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.createinverse.html" class="function">transliterator_create_inverse()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrorcode.php" class="function">transliterator_get_error_code()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrorcode.html" class="function">transliterator_get_error_code()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrormessage.php" class="function">transliterator_get_error_message()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrormessage.html" class="function">transliterator_get_error_message()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.listids.php" class="function">transliterator_list_ids()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.listids.html" class="function">transliterator_list_ids()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.transliterate.php" class="function">transliterator_transliterate()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.transliterate.html" class="function">transliterator_transliterate()</a></span>
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.zlib.php" class="link">Zlib:</a></p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.zlib.html" class="link">Zlib:</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.zlib-decode.php" class="function">zlib_decode()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.zlib-decode.html" class="function">zlib_decode()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.zlib-encode.php" class="function">zlib_encode()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.zlib-encode.html" class="function">zlib_encode()</a></span>
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
@@ -196,296 +2271,296 @@
   <p class="simpara">PHP Core:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-replace.php" class="function">array_replace()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-replace.html" class="function">array_replace()</a></span>
      - Replaces elements from passed arrays into one array.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-replace-recursive.php" class="function">array_replace_recursive()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-replace-recursive.html" class="function">array_replace_recursive()</a></span>
      - Recursively replaces elements from passed arrays into one array.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.class-alias.php" class="function">class_alias()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.class-alias.html" class="function">class_alias()</a></span>
      - Creates an alias for a user defined class.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.forward-static-call.php" class="function">forward_static_call()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.forward-static-call.html" class="function">forward_static_call()</a></span>
      - Call a user function from a method context.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.forward-static-call-array.php" class="function">forward_static_call_array()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.forward-static-call-array.html" class="function">forward_static_call_array()</a></span>
      - Call a user function from a method context, with the arguments contained
      in an array.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-collect-cycles.php" class="function">gc_collect_cycles()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-collect-cycles.html" class="function">gc_collect_cycles()</a></span>
      - Forces collection of any existing garbage cycles.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-disable.php" class="function">gc_disable()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-disable.html" class="function">gc_disable()</a></span>
      - Deactivates the circular reference collector.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-enable.php" class="function">gc_enable()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-enable.html" class="function">gc_enable()</a></span>
      - Activates the circular reference collector.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-enabled.php" class="function">gc_enabled()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-enabled.html" class="function">gc_enabled()</a></span>
      - Returns the status of the circular reference collector.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-called-class.php" class="function">get_called_class()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-called-class.html" class="function">get_called_class()</a></span>
      - Return the name of the class a static method is called in.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gethostname.php" class="function">gethostname()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gethostname.html" class="function">gethostname()</a></span>
      - Return the current host name for the local machine.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.header-remove.php" class="function">header_remove()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.header-remove.html" class="function">header_remove()</a></span>
      - Removes an HTTP header previously set using the 
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.header.php" class="function">header()</a></span> function.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.header.html" class="function">header()</a></span> function.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.lcfirst.php" class="function">lcfirst()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.lcfirst.html" class="function">lcfirst()</a></span>
      - Make a string's first character lowercase.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.parse-ini-string.php" class="function">parse_ini_string()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.parse-ini-string.html" class="function">parse_ini_string()</a></span>
      - Parse a configuration string.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.quoted-printable-encode.php" class="function">quoted_printable_encode()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.quoted-printable-encode.html" class="function">quoted_printable_encode()</a></span>
      - Convert an 8 bit string to a quoted-printable string.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-getcsv.php" class="function">str_getcsv()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-getcsv.html" class="function">str_getcsv()</a></span>
      - Parse a CSV string into an array.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-set-default.php" class="function">stream_context_set_default()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-set-default.html" class="function">stream_context_set_default()</a></span>
      - Set the default stream context.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-supports-lock.php" class="function">stream_supports_lock()</a></span>
-     - Return <strong><code>true</code></strong> if the stream supports locking.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-supports-lock.html" class="function">stream_supports_lock()</a></span>
+     - Return <strong><code>TRUE</code></strong> if the stream supports locking.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-get-params.php" class="function">stream_context_get_params()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-get-params.html" class="function">stream_context_get_params()</a></span>
      - Retrieve parameters from a stream context.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-cast.php" class="function">streamWrapper::stream_cast()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-cast.html" class="function">streamWrapper::stream_cast()</a></span>
      - Retrieve the underlying stream resource.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-set-option.php" class="function">streamWrapper::stream_set_option()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-set-option.html" class="function">streamWrapper::stream_set_option()</a></span>
      - Change stream options
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.datetime.php" class="link">Date/Time</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">Date/Time</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-add.php" class="function">date_add()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-add.html" class="function">date_add()</a></span>
      - Adds an amount of days, months, years, hours, minutes and seconds to a
-     <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> object.
+     <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a> object.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-create-from-format.php" class="function">date_create_from_format()</a></span>
-     - Returns a new <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> object formatted according
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-create-from-format.html" class="function">date_create_from_format()</a></span>
+     - Returns a new <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a> object formatted according
      to the given format.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-diff.php" class="function">date_diff()</a></span>
-     - Returns the difference between two <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-diff.html" class="function">date_diff()</a></span>
+     - Returns the difference between two <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a>
      objects.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-get-last-errors.php" class="function">date_get_last_errors()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-get-last-errors.html" class="function">date_get_last_errors()</a></span>
      - Returns the warnings and errors from the last date/time operation.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-parse-from-format.php" class="function">date_parse_from_format()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-parse-from-format.html" class="function">date_parse_from_format()</a></span>
      - Get information about a given date.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sub.php" class="function">date_sub()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sub.html" class="function">date_sub()</a></span>
      - Subtracts an amount of days, months, years, hours, minutes and seconds
-     from a <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> object.
+     from a <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a> object.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-version-get.php" class="function">timezone_version_get()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-version-get.html" class="function">timezone_version_get()</a></span>
      - Returns the version of the timezonedb.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.gmp.php" class="link">GMP</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.gmp.html" class="link">GMP</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-testbit.php" class="function">gmp_testbit()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-testbit.html" class="function">gmp_testbit()</a></span>
      - Tests whether a bit is set.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.hash.php" class="link">Hash</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">Hash</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hash-copy.php" class="function">hash_copy()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hash-copy.html" class="function">hash_copy()</a></span>
      - Copy hashing context.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.imap.php" class="link">IMAP</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.imap.html" class="link">IMAP</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-gc.php" class="function">imap_gc()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-gc.html" class="function">imap_gc()</a></span>
      - Clears IMAP cache.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-utf8-to-mutf7.php" class="function">imap_utf8_to_mutf7()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-utf8-to-mutf7.html" class="function">imap_utf8_to_mutf7()</a></span>
      - Encode a UTF-8 string to modified UTF-7.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-mutf7-to-utf8.php" class="function">imap_mutf7_to_utf8()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-mutf7-to-utf8.html" class="function">imap_mutf7_to_utf8()</a></span>
      - Decode a modified UTF-7 string to UTF-8.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.json.php" class="link">JSON</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.json.html" class="link">JSON</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error.php" class="function">json_last_error()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error.html" class="function">json_last_error()</a></span>
      - Returns the last JSON error that occurred.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.php" class="link">MySQL Improved</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">MySQL Improved</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-all.php" class="function">mysqli_fetch_all()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-all.html" class="function">mysqli_fetch_all()</a></span>
      - Fetches all result rows as an associative array, a numeric 
      array, or both.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.get-connection-stats.php" class="function">mysqli_get_connection_stats()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.get-connection-stats.html" class="function">mysqli_get_connection_stats()</a></span>
      - Returns statistics about the client connection.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.poll.php" class="function">mysqli_poll()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.poll.html" class="function">mysqli_poll()</a></span>
      - Poll connections.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.reap-async-query.php" class="function">mysqli_reap_async_query()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.reap-async-query.html" class="function">mysqli_reap_async_query()</a></span>
      - Get result from async query.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.openssl.html" class="link">OpenSSL</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.php" class="function">openssl_random_pseudo_bytes()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.html" class="function">openssl_random_pseudo_bytes()</a></span>
      - Returns a string of the given length specified, filled with pseudo-random
      bytes.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.pcntl.php" class="link">PCNTL</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.pcntl.html" class="link">PCNTL</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-signal-dispatch.php" class="function">pcntl_signal_dispatch()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-signal-dispatch.html" class="function">pcntl_signal_dispatch()</a></span>
      - Calls signal handlers for pending signals.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-sigprocmask.php" class="function">pcntl_sigprocmask()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-sigprocmask.html" class="function">pcntl_sigprocmask()</a></span>
      - Sets and retrieves blocked signals.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-sigtimedwait.php" class="function">pcntl_sigtimedwait()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-sigtimedwait.html" class="function">pcntl_sigtimedwait()</a></span>
      - Wait for signals with a timeout.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-sigwaitinfo.php" class="function">pcntl_sigwaitinfo()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-sigwaitinfo.html" class="function">pcntl_sigwaitinfo()</a></span>
      - Wait for signals.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.pcre.php" class="link">PCRE</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.pcre.html" class="link">PCRE</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-filter.php" class="function">preg_filter()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-filter.html" class="function">preg_filter()</a></span>
      - Perform a regular expression search and replace, returning only results
      which matched the pattern.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.sem.php" class="link">Semaphore</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.sem.html" class="link">Semaphore</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.msg-queue-exists.php" class="function">msg_queue_exists()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.msg-queue-exists.html" class="function">msg_queue_exists()</a></span>
      - Check whether a message queue exists.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shm-has-var.php" class="function">shm_has_var()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shm-has-var.html" class="function">shm_has_var()</a></span>
      - Checks whether a specific key exists inside a shared memory segment.
     </span>
    </li>
@@ -495,27 +2570,27 @@
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.acosh.php" class="function">acosh()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.acosh.html" class="function">acosh()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.asinh.php" class="function">asinh()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.asinh.html" class="function">asinh()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.atanh.php" class="function">atanh()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.atanh.html" class="function">atanh()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.expm1.php" class="function">expm1()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.expm1.html" class="function">expm1()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.log1p.php" class="function">log1p()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.log1p.html" class="function">log1p()</a></span>
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
@@ -532,124 +2607,124 @@
   <p class="para">PHP Core:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-fill-keys.php" class="function">array_fill_keys()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-fill-keys.html" class="function">array_fill_keys()</a></span>
      - Create an array using the elements of the first parameter as keys,
      each initialized to <code class="literal">val</code>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.error-get-last.php" class="function">error_get_last()</a></span>
-     - Get the last occurred error as associative array. Returns <strong><code>null</code></strong>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.error-get-last.html" class="function">error_get_last()</a></span>
+     - Get the last occurred error as associative array. Returns <strong><code>NULL</code></strong>
      if there hasn't been an error yet
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.image-type-to-extension.php" class="function">image_type_to_extension()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.image-type-to-extension.html" class="function">image_type_to_extension()</a></span>
      - Get file extension for image-type returned by
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-read-data.php" class="function">exif_read_data()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-thumbnail.php" class="function">exif_thumbnail()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-imagetype.php" class="function">exif_imagetype()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.html" class="function">getimagesize()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-read-data.html" class="function">exif_read_data()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-thumbnail.html" class="function">exif_thumbnail()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-imagetype.html" class="function">exif_imagetype()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.memory-get-peak-usage.php" class="function">memory_get_peak_usage()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.memory-get-peak-usage.html" class="function">memory_get_peak_usage()</a></span>
      - Returns the peak allocated by PHP memory
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sys-get-temp-dir.php" class="function">sys_get_temp_dir()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sys-get-temp-dir.html" class="function">sys_get_temp_dir()</a></span>
      - Returns directory path used for temporary files. (Added in 5.2.1)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-abbreviations-list.php" class="function">timezone_abbreviations_list()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-abbreviations-list.html" class="function">timezone_abbreviations_list()</a></span>
      - Returns associative array containing DST, offset and the timezone name
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-identifiers-list.php" class="function">timezone_identifiers_list()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-identifiers-list.html" class="function">timezone_identifiers_list()</a></span>
      - Returns numerically indexed array with all timezone identifiers
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-name-from-abbr.php" class="function">timezone_name_from_abbr()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.timezone-name-from-abbr.html" class="function">timezone_name_from_abbr()</a></span>
      - Returns the timezone name from abbreviation
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-shutdown.php" class="function">stream_socket_shutdown()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-shutdown.html" class="function">stream_socket_shutdown()</a></span>
      - Causes all or part of a full-duplex connection on the socket
      associated with stream to be shut down. As of PHP 5.2.1.
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.image.php" class="link">Image</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.image.html" class="link">Image</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagegrabscreen.php" class="function">imagegrabscreen()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagegrabscreen.html" class="function">imagegrabscreen()</a></span>
      - Grabs a screenshot of the whole screen. As of PHP 5.2.2.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagegrabwindow.php" class="function">imagegrabwindow()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagegrabwindow.html" class="function">imagegrabwindow()</a></span>
      - Captures a window. As of PHP 5.2.2.
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/book.libxml.php" class="link">libXML</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/book.libxml.html" class="link">libXML</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-disable-entity-loader.php" class="function">libxml_disable_entity_loader()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-disable-entity-loader.html" class="function">libxml_disable_entity_loader()</a></span>
      - Disable the ability to load external entities. As of PHP 5.2.11.
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.mbstring.php" class="link">mbstring</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.mbstring.html" class="link">mbstring</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-stripos.php" class="function">mb_stripos()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-stripos.html" class="function">mb_stripos()</a></span>
      - Finds position of first occurrence of a string within another,
      case insensitive
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-stristr.php" class="function">mb_stristr()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-stristr.html" class="function">mb_stristr()</a></span>
      - Finds first occurrence of a string within another, case insensitive
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strrchr.php" class="function">mb_strrchr()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strrchr.html" class="function">mb_strrchr()</a></span>
      - Finds the last occurrence of a character in a string within another
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strrichr.php" class="function">mb_strrichr()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strrichr.html" class="function">mb_strrichr()</a></span>
      - Finds the last occurrence of a character in a string within another,
      case insensitive
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strripos.php" class="function">mb_strripos()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strripos.html" class="function">mb_strripos()</a></span>
      - Finds position of last occurrence of a string within another,
      case insensitive
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strstr.php" class="function">mb_strstr()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strstr.html" class="function">mb_strstr()</a></span>
      - Finds first occurrence of a string within another
     </span>
    </li>
-  </ul><p class="para">ming (As of PHP 5.2.1):</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.ming.html" class="link">ming</a> (As of PHP 5.2.1):</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
      void ming_setSWFCompression(int num)
@@ -668,29 +2743,29 @@
      - Protects
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.openssl.php" class="link">openssl</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.openssl.html" class="link">openssl</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-csr-get-public-key.php" class="function">openssl_csr_get_public_key()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-csr-get-public-key.html" class="function">openssl_csr_get_public_key()</a></span>
      - Extracts public key from a CERT and prepares it for use
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-csr-get-subject.php" class="function">openssl_csr_get_subject()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-csr-get-subject.html" class="function">openssl_csr_get_subject()</a></span>
      - Returns the subject of a CERT
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pkey-get-details.php" class="function">openssl_pkey_get_details()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pkey-get-details.html" class="function">openssl_pkey_get_details()</a></span>
      - Returns an array with the key details (bits, pkey, type)
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.spl.php" class="link">spl</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.spl.html" class="link">spl</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-object-hash.php" class="function">spl_object_hash()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-object-hash.html" class="function">spl_object_hash()</a></span>
      - Return hash id for given object
     </span>
    </li>
@@ -700,64 +2775,64 @@
      - Calls a function for every element in an iterator
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.pcre.php" class="link">pcre</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.pcre.html" class="link">pcre</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-last-error.php" class="function">preg_last_error()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-last-error.html" class="function">preg_last_error()</a></span>
      - Returns the error code of the last regex execution
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.pgsql.php" class="link">pgsql</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.pgsql.html" class="link">pgsql</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-table.php" class="function">pg_field_table()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-table.html" class="function">pg_field_table()</a></span>
      - Returns the name of the table field belongs to, or table's oid
-     if <code class="literal">oid_only</code> is <strong><code>true</code></strong>
+     if <code class="literal">oid_only</code> is <strong><code>TRUE</code></strong>
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.posix.php" class="link">posix</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.posix.html" class="link">posix</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-initgroups.php" class="function">posix_initgroups()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-initgroups.html" class="function">posix_initgroups()</a></span>
      - Calculate the group access list for the user specified in name
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.gmp.php" class="link">gmp</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.gmp.html" class="link">gmp</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-nextprime.php" class="function">gmp_nextprime()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmp-nextprime.html" class="function">gmp_nextprime()</a></span>
      - Finds next prime number
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.xmlwriter.php" class="link">xmlwriter</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.xmlwriter.html" class="link">xmlwriter</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-full-end-element.php" class="function">xmlwriter_full_end_element()</a></span>
-     - End current element - returns <strong><code>false</code></strong> on error
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-full-end-element.html" class="function">xmlwriter_full_end_element()</a></span>
+     - End current element - returns <strong><code>FALSE</code></strong> on error
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-write-raw.php" class="function">xmlwriter_write_raw()</a></span>
-     - Write text - returns <strong><code>false</code></strong> on error
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-write-raw.html" class="function">xmlwriter_write_raw()</a></span>
+     - Write text - returns <strong><code>FALSE</code></strong> on error
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-start-dtd-entity.php" class="function">xmlwriter_start_dtd_entity()</a></span>
-     - Create start DTD Entity - returns <strong><code>false</code></strong> on error
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-start-dtd-entity.html" class="function">xmlwriter_start_dtd_entity()</a></span>
+     - Create start DTD Entity - returns <strong><code>FALSE</code></strong> on error
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-end-dtd-entity.php" class="function">xmlwriter_end_dtd_entity()</a></span>
-     - End current DTD Entity - returns <strong><code>false</code></strong> on error
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-end-dtd-entity.html" class="function">xmlwriter_end_dtd_entity()</a></span>
+     - End current DTD Entity - returns <strong><code>FALSE</code></strong> on error
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-write-dtd-entity.php" class="function">xmlwriter_write_dtd_entity()</a></span>
-     - Write full DTD Entity tag - returns <strong><code>false</code></strong> on error
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-write-dtd-entity.html" class="function">xmlwriter_write_dtd_entity()</a></span>
+     - Write full DTD Entity tag - returns <strong><code>FALSE</code></strong> on error
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
@@ -770,305 +2845,305 @@
    <p class="para">
     In PHP 5 there are some new functions. Here is the list of them:
    </p>
-   <p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.array.php" class="link">Arrays</a>:</p>
+   <p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.array.html" class="link">Arrays</a>:</p>
     <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-combine.php" class="function">array_combine()</a></span> - Creates an array by using one array
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-combine.html" class="function">array_combine()</a></span> - Creates an array by using one array
       for keys and another for its values
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-diff-uassoc.php" class="function">array_diff_uassoc()</a></span> - Computes the difference of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-diff-uassoc.html" class="function">array_diff_uassoc()</a></span> - Computes the difference of
       arrays with additional index check which is performed by a user supplied
       callback function
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-udiff.php" class="function">array_udiff()</a></span> - Computes the difference of arrays by
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-udiff.html" class="function">array_udiff()</a></span> - Computes the difference of arrays by
       using a callback function for data comparison
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-udiff-assoc.php" class="function">array_udiff_assoc()</a></span> - Computes the difference of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-udiff-assoc.html" class="function">array_udiff_assoc()</a></span> - Computes the difference of
       arrays with additional index check. The data is compared by using a
       callback function
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-udiff-uassoc.php" class="function">array_udiff_uassoc()</a></span> - Computes the difference of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-udiff-uassoc.html" class="function">array_udiff_uassoc()</a></span> - Computes the difference of
       arrays with additional index check. The data is compared by using a
       callback function. The index check is done by a callback function also
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-walk-recursive.php" class="function">array_walk_recursive()</a></span> - Apply a user function
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-walk-recursive.html" class="function">array_walk_recursive()</a></span> - Apply a user function
       recursively to every member of an array
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-uintersect-assoc.php" class="function">array_uintersect_assoc()</a></span> - Computes the intersection of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-uintersect-assoc.html" class="function">array_uintersect_assoc()</a></span> - Computes the intersection of
       arrays with additional index check. The data is compared by using a
       callback function
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-uintersect-uassoc.php" class="function">array_uintersect_uassoc()</a></span> - Computes the intersection of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-uintersect-uassoc.html" class="function">array_uintersect_uassoc()</a></span> - Computes the intersection of
       arrays with additional index check. Both the data and the indexes are compared
       by using separate callback functions
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-uintersect.php" class="function">array_uintersect()</a></span> - Computes the intersection of arrays.
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-uintersect.html" class="function">array_uintersect()</a></span> - Computes the intersection of arrays.
       The data is compared by using a callback function
      </span>
     </li>
-   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.ibase.php" class="link">InterBase</a>:</p>
+   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.ibase.html" class="link">InterBase</a>:</p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-affected-rows.php" class="function">ibase_affected_rows()</a></span> - Return the number of rows
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-affected-rows.html" class="function">ibase_affected_rows()</a></span> - Return the number of rows
       that were affected by the previous query
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-backup.php" class="function">ibase_backup()</a></span> - Initiates a backup task in the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-backup.html" class="function">ibase_backup()</a></span> - Initiates a backup task in the
       service manager and returns immediately
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-commit-ret.php" class="function">ibase_commit_ret()</a></span> - Commit a transaction without
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-commit-ret.html" class="function">ibase_commit_ret()</a></span> - Commit a transaction without
       closing it
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-db-info.php" class="function">ibase_db_info()</a></span> - Request statistics about a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-db-info.html" class="function">ibase_db_info()</a></span> - Request statistics about a
       database
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-drop-db.php" class="function">ibase_drop_db()</a></span> - Drops a database
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-drop-db.html" class="function">ibase_drop_db()</a></span> - Drops a database
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-errcode.php" class="function">ibase_errcode()</a></span> - Return an error code
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-errcode.html" class="function">ibase_errcode()</a></span> - Return an error code
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-free-event-handler.php" class="function">ibase_free_event_handler()</a></span> - Cancels a registered
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-free-event-handler.html" class="function">ibase_free_event_handler()</a></span> - Cancels a registered
       event handler
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-gen-id.php" class="function">ibase_gen_id()</a></span> - Increments the named generator and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-gen-id.html" class="function">ibase_gen_id()</a></span> - Increments the named generator and
       returns its new value
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-maintain-db.php" class="function">ibase_maintain_db()</a></span> - Execute a maintenance command
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-maintain-db.html" class="function">ibase_maintain_db()</a></span> - Execute a maintenance command
       on the database server
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-name-result.php" class="function">ibase_name_result()</a></span> - Assigns a name to a result set
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-name-result.html" class="function">ibase_name_result()</a></span> - Assigns a name to a result set
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-num-params.php" class="function">ibase_num_params()</a></span> - Return the number of parameters
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-num-params.html" class="function">ibase_num_params()</a></span> - Return the number of parameters
       in a prepared query
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-param-info.php" class="function">ibase_param_info()</a></span> - Return information about a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-param-info.html" class="function">ibase_param_info()</a></span> - Return information about a
       parameter in a prepared query
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-restore.php" class="function">ibase_restore()</a></span> - Initiates a restore task in the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-restore.html" class="function">ibase_restore()</a></span> - Initiates a restore task in the
       service manager and returns immediately
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-rollback-ret.php" class="function">ibase_rollback_ret()</a></span> - Rollback transaction and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-rollback-ret.html" class="function">ibase_rollback_ret()</a></span> - Rollback transaction and
       retain the transaction context
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-server-info.php" class="function">ibase_server_info()</a></span> - Request statistics about a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-server-info.html" class="function">ibase_server_info()</a></span> - Request statistics about a
       database server
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-service-attach.php" class="function">ibase_service_attach()</a></span> - Connect to the service manager
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-service-attach.html" class="function">ibase_service_attach()</a></span> - Connect to the service manager
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-service-detach.php" class="function">ibase_service_detach()</a></span> - Disconnect from the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-service-detach.html" class="function">ibase_service_detach()</a></span> - Disconnect from the
       service manager 
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-set-event-handler.php" class="function">ibase_set_event_handler()</a></span> - Register a callback
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-set-event-handler.html" class="function">ibase_set_event_handler()</a></span> - Register a callback
       function to be called when events are posted
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-wait-event.php" class="function">ibase_wait_event()</a></span> - Wait for an event to be posted
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ibase-wait-event.html" class="function">ibase_wait_event()</a></span> - Wait for an event to be posted
       by the database
      </span>
     </li>
-   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.iconv.php" class="link">iconv</a>:</p>
+   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.iconv.html" class="link">iconv</a>:</p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-mime-decode.php" class="function">iconv_mime_decode()</a></span> - Decodes a MIME header field
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-mime-decode.html" class="function">iconv_mime_decode()</a></span> - Decodes a MIME header field
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-mime-decode-headers.php" class="function">iconv_mime_decode_headers()</a></span> - Decodes multiple MIME
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-mime-decode-headers.html" class="function">iconv_mime_decode_headers()</a></span> - Decodes multiple MIME
       header fields at once
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-mime-encode.php" class="function">iconv_mime_encode()</a></span> - Composes a MIME header field
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-mime-encode.html" class="function">iconv_mime_encode()</a></span> - Composes a MIME header field
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-strlen.php" class="function">iconv_strlen()</a></span> - Returns the character count of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-strlen.html" class="function">iconv_strlen()</a></span> - Returns the character count of
       string
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-strpos.php" class="function">iconv_strpos()</a></span> - Finds position of first occurrence
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-strpos.html" class="function">iconv_strpos()</a></span> - Finds position of first occurrence
       of a needle within a haystack
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-strrpos.php" class="function">iconv_strrpos()</a></span> - Finds the last occurrence of a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-strrpos.html" class="function">iconv_strrpos()</a></span> - Finds the last occurrence of a
       needle within a haystack
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-substr.php" class="function">iconv_substr()</a></span> - Cut out part of a string
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-substr.html" class="function">iconv_substr()</a></span> - Cut out part of a string
      </span>
     </li>
-   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.stream.php" class="link">Streams</a>:</p>
+   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.stream.html" class="link">Streams</a>:</p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-copy-to-stream.php" class="function">stream_copy_to_stream()</a></span> - Copies data from one stream
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-copy-to-stream.html" class="function">stream_copy_to_stream()</a></span> - Copies data from one stream
       to another
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-get-line.php" class="function">stream_get_line()</a></span> - Gets line from stream resource up
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-get-line.html" class="function">stream_get_line()</a></span> - Gets line from stream resource up
       to a given delimiter
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-accept.php" class="function">stream_socket_accept()</a></span> - Accept a connection on a
-      socket created by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-server.php" class="function">stream_socket_server()</a></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-accept.html" class="function">stream_socket_accept()</a></span> - Accept a connection on a
+      socket created by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-server.html" class="function">stream_socket_server()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-client.php" class="function">stream_socket_client()</a></span> - Open Internet or Unix domain
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-client.html" class="function">stream_socket_client()</a></span> - Open Internet or Unix domain
       socket connection
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-get-name.php" class="function">stream_socket_get_name()</a></span> - Retrieve the name of the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-get-name.html" class="function">stream_socket_get_name()</a></span> - Retrieve the name of the
       local or remote sockets
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-recvfrom.php" class="function">stream_socket_recvfrom()</a></span> - Receives data from a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-recvfrom.html" class="function">stream_socket_recvfrom()</a></span> - Receives data from a
       socket, connected or not
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-sendto.php" class="function">stream_socket_sendto()</a></span> - Sends a message to a socket,
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-sendto.html" class="function">stream_socket_sendto()</a></span> - Sends a message to a socket,
       whether it is connected or not
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-server.php" class="function">stream_socket_server()</a></span> - Create an Internet or Unix
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-server.html" class="function">stream_socket_server()</a></span> - Create an Internet or Unix
       domain server socket
      </span>
     </li>
-   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.datetime.php" class="link">Date and time related</a>:</p>
+   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.datetime.html" class="link">Date and time related</a>:</p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.idate.php" class="function">idate()</a></span> - Format a local time/date as integer
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.idate.html" class="function">idate()</a></span> - Format a local time/date as integer
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunset.php" class="function">date_sunset()</a></span> - Time of sunset for a given day and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunset.html" class="function">date_sunset()</a></span> - Time of sunset for a given day and
       location
     </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunrise.php" class="function">date_sunrise()</a></span> - Time of sunrise for a given day and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunrise.html" class="function">date_sunrise()</a></span> - Time of sunrise for a given day and
       location
     </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.time-nanosleep.php" class="function">time_nanosleep()</a></span> - Delay for a number of seconds and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.time-nanosleep.html" class="function">time_nanosleep()</a></span> - Delay for a number of seconds and
       nanoseconds
     </span>
     </li>
-   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.strings.php" class="link">Strings</a>:</p>
+   </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.strings.html" class="link">Strings</a>:</p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-split.php" class="function">str_split()</a></span> - Convert a string to an array
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-split.html" class="function">str_split()</a></span> - Convert a string to an array
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strpbrk.php" class="function">strpbrk()</a></span> - Search a string for any of a set of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strpbrk.html" class="function">strpbrk()</a></span> - Search a string for any of a set of
       characters
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.substr-compare.php" class="function">substr_compare()</a></span> - Binary safe optionally case
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.substr-compare.html" class="function">substr_compare()</a></span> - Binary safe optionally case
       insensitive comparison of two strings from an offset, up to length
       characters
      </span>
@@ -1076,184 +3151,184 @@
    </ul><p class="para">Other:</p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.convert-uudecode.php" class="function">convert_uudecode()</a></span> - decode a uuencoded string
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.convert-uudecode.html" class="function">convert_uudecode()</a></span> - decode a uuencoded string
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.convert-uuencode.php" class="function">convert_uuencode()</a></span> - uuencode a string
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.convert-uuencode.html" class="function">convert_uuencode()</a></span> - uuencode a string
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-copy-handle.php" class="function">curl_copy_handle()</a></span> - Copy a cURL handle
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-copy-handle.html" class="function">curl_copy_handle()</a></span> - Copy a cURL handle
       along with all of its preferences
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-key-split.php" class="function">dba_key_split()</a></span> - Splits a key in string
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-key-split.html" class="function">dba_key_split()</a></span> - Splits a key in string
       representation into array representation
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dbase-get-header-info.php" class="function">dbase_get_header_info()</a></span> - Get the header info of a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dbase-get-header-info.html" class="function">dbase_get_header_info()</a></span> - Get the header info of a
       dBase database
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dbx-fetch-row.php" class="function">dbx_fetch_row()</a></span> - Fetches rows from a query-result
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dbx-fetch-row.html" class="function">dbx_fetch_row()</a></span> - Fetches rows from a query-result
       that had the <strong><code>DBX_RESULT_UNBUFFERED</code></strong> flag set
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fbsql-set-password.php" class="function">fbsql_set_password()</a></span> - Change the password for a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fbsql-set-password.html" class="function">fbsql_set_password()</a></span> - Change the password for a
       given user 
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.file-put-contents.php" class="function">file_put_contents()</a></span> - Write a string to a file
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.file-put-contents.html" class="function">file_put_contents()</a></span> - Write a string to a file
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ftp-alloc.php" class="function">ftp_alloc()</a></span> - Allocates space for a file to be
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ftp-alloc.html" class="function">ftp_alloc()</a></span> - Allocates space for a file to be
       uploaded
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-declared-interfaces.php" class="function">get_declared_interfaces()</a></span> - Returns an array of all
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-declared-interfaces.html" class="function">get_declared_interfaces()</a></span> - Returns an array of all
       declared interfaces
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-headers.php" class="function">get_headers()</a></span> - Fetches all the headers sent by the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-headers.html" class="function">get_headers()</a></span> - Fetches all the headers sent by the
       server in response to a HTTP request
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.headers-list.php" class="function">headers_list()</a></span> - Returns a list of response headers
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.headers-list.html" class="function">headers_list()</a></span> - Returns a list of response headers
       sent (or ready to send)
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.http-build-query.php" class="function">http_build_query()</a></span> - Generate URL-encoded query string
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.http-build-query.html" class="function">http_build_query()</a></span> - Generate URL-encoded query string
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.image-type-to-extension.php" class="function">image_type_to_extension()</a></span> - Get file extension for
-      image-type returned by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span>,
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-read-data.php" class="function">exif_read_data()</a></span>,
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-thumbnail.php" class="function">exif_thumbnail()</a></span>,
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-imagetype.php" class="function">exif_imagetype()</a></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.image-type-to-extension.html" class="function">image_type_to_extension()</a></span> - Get file extension for
+      image-type returned by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.html" class="function">getimagesize()</a></span>,
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-read-data.html" class="function">exif_read_data()</a></span>,
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-thumbnail.html" class="function">exif_thumbnail()</a></span>,
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exif-imagetype.html" class="function">exif_imagetype()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagefilter.php" class="function">imagefilter()</a></span> - Applies a filter to an image using
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagefilter.html" class="function">imagefilter()</a></span> - Applies a filter to an image using
       custom arguments
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-getacl.php" class="function">imap_getacl()</a></span> - Gets the ACL for a given mailbox
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-getacl.html" class="function">imap_getacl()</a></span> - Gets the ACL for a given mailbox
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-sasl-bind.php" class="function">ldap_sasl_bind()</a></span> - Bind to LDAP directory using SASL
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-sasl-bind.html" class="function">ldap_sasl_bind()</a></span> - Bind to LDAP directory using SASL
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-list-encodings.php" class="function">mb_list_encodings()</a></span> - Returns an array of all
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-list-encodings.html" class="function">mb_list_encodings()</a></span> - Returns an array of all
       supported encodings
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-getpriority.php" class="function">pcntl_getpriority()</a></span> - Get the priority of any
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-getpriority.html" class="function">pcntl_getpriority()</a></span> - Get the priority of any
       process
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-wait.php" class="function">pcntl_wait()</a></span> - Waits on or returns the status of a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-wait.html" class="function">pcntl_wait()</a></span> - Waits on or returns the status of a
       forked child as defined by the <code class="literal">waitpid()</code> system call
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-version.php" class="function">pg_version()</a></span> - Returns an array with client, protocol
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-version.html" class="function">pg_version()</a></span> - Returns an array with client, protocol
       and server version (when available)
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>php_check_syntax()</strong></span> - Check the syntax of the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.php-check-syntax.html" class="function">php_check_syntax()</a></span> - Check the syntax of the
       specified file
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.php-strip-whitespace.php" class="function">php_strip_whitespace()</a></span> - Return source with stripped
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.php-strip-whitespace.html" class="function">php_strip_whitespace()</a></span> - Return source with stripped
       comments and whitespace
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-nice.php" class="function">proc_nice()</a></span> - Change the priority of the current
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-nice.html" class="function">proc_nice()</a></span> - Change the priority of the current
       process
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pspell-config-data-dir.php" class="function">pspell_config_data_dir()</a></span> - Change location of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pspell-config-data-dir.html" class="function">pspell_config_data_dir()</a></span> - Change location of
       language data files
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pspell-config-dict-dir.php" class="function">pspell_config_dict_dir()</a></span> - Change location of the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pspell-config-dict-dir.html" class="function">pspell_config_dict_dir()</a></span> - Change location of the
       main word list
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setrawcookie.php" class="function">setrawcookie()</a></span> - Send a cookie without URL-encoding
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setrawcookie.html" class="function">setrawcookie()</a></span> - Send a cookie without URL-encoding
       the value
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.scandir.php" class="function">scandir()</a></span> - List files and directories inside the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.scandir.html" class="function">scandir()</a></span> - List files and directories inside the
       specified path
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmp-read-mib.php" class="function">snmp_read_mib()</a></span> - Reads and parses a MIB file into
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmp-read-mib.html" class="function">snmp_read_mib()</a></span> - Reads and parses a MIB file into
       the active MIB tree
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sqlite_fetch_column_types()</strong></span> - Return an array of
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sqlite-fetch-column-types.html" class="function">sqlite_fetch_column_types()</a></span> - Return an array of
       column types from a particular table
      </span>
     </li>
    </ul><blockquote class="note"><p><strong class="note">Note</strong>: 
     </p><p class="para">
-     The <a target="_blank" href="https://www.php.net/manual/en/ref.tidy.php" class="link">Tidy</a> extension has also changed its
+     The <a target="_blank" href="https://www.php.net/manual/en/ref.tidy.html" class="link">Tidy</a> extension has also changed its
      API completely.
     </p>
    </blockquote>

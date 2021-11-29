@@ -76,7 +76,7 @@ class HtmlIndex extends CommandAbstract
      */
     protected function filesFile(array $files, string $file): array
     {
-        $name = $this->filesName($file);
+        $name = $this->fileCode($file);
 
         if (empty($files[$name])) {
             $files[$name] = ['file' => $file, 'versions' => []];
@@ -85,16 +85,6 @@ class HtmlIndex extends CommandAbstract
         $files[$name]['versions'][] = $this->filesVersion($file);
 
         return $files;
-    }
-
-    /**
-     * @param string $file
-     *
-     * @return string
-     */
-    protected function filesName(string $file): string
-    {
-        return explode('.', basename($file))[1];
     }
 
     /**
@@ -142,7 +132,7 @@ class HtmlIndex extends CommandAbstract
         $title = trim($this->dom(reset($group))->queryItem('//h2[@class="title"]')->textContent);
         $title = preg_replace(['/\n/', '/\s+/', '/ in PHP.*/'], [' ', ' ', ''], $title);
 
-        return $title;
+        return trim($title);
     }
 
     /**

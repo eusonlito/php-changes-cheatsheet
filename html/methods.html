@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Methods in PHP 5.4, 5.3, 5.2</title>
+        <title>New Methods in PHP 5.5, 5.4, 5.3, 5.2</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Methods in PHP 5.4, 5.3, 5.2">
+        <meta name="title" content="New Methods in PHP 5.5, 5.4, 5.3, 5.2">
 
-        <meta property="og:title" content="New Methods in PHP 5.4, 5.3, 5.2">
+        <meta property="og:title" content="New Methods in PHP 5.5, 5.4, 5.3, 5.2">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Methods in PHP 5.4, 5.3, 5.2">
+        <meta name="twitter:title" content="New Methods in PHP 5.5, 5.4, 5.3, 5.2">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,63 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Methods in PHP 5.4, 5.3, 5.2</a></h1>
+        <h1><a href="index.html"> New Methods in PHP 5.5, 5.4, 5.3, 5.2</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration55.new-methods.php" target="_blank">PHP 5.5</a></h1>
+    </header>
+
+    <div id="migration55.new-methods" class="sect1">
+  <h2 class="title">New Methods</h2>
+
+  <div class="sect2" id="migration55.new-methods.mysqli">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">MySQLi</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli.begin-transaction.html" class="methodname">mysqli::begin_transaction()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli.release-savepoint.html" class="methodname">mysqli::release_savepoint()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli.savepoint.html" class="methodname">mysqli::savepoint()</a></span>
+     </span>
+    </li>
+   </ul></div>
+  
+  <div class="sect2" id="migration55.new-methods.intl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.formatobject.html" class="methodname">IntlDateFormatter::formatObject()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendarobject.html" class="methodname">IntlDateFormatter::getCalendarObject()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.gettimezone.html" class="methodname">IntlDateFormatter::getTimeZone()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.html" class="methodname">IntlDateFormatter::setTimeZone()</a></span>
+     </span>
+    </li>
+   </ul></div>
+ </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration54.methods.php" target="_blank">PHP 5.4</a></h1>
     </header>
@@ -49,51 +101,51 @@
   <p class="simpara">
    Several new methods were introduced in 5.4.0:
   </p>
-  <p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.xsl.php" class="link">XSL</a>:</p>
+  <p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.xsl.html" class="link">XSL</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.setsecurityprefs.php" class="methodname">XsltProcessor::setSecurityPrefs()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.setsecurityprefs.html" class="methodname">XsltProcessor::setSecurityPrefs()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.getsecurityprefs.php" class="methodname">XsltProcessor::getSecurityPrefs()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.getsecurityprefs.html" class="methodname">XsltProcessor::getSecurityPrefs()</a></span>
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.php" class="link">SPL</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/regexiterator.getregex.php" class="methodname">RegexIterator::getRegex()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/regexiterator.getregex.html" class="methodname">RegexIterator::getRegex()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.gethash.php" class="methodname">SplObjectStorage::getHash()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.gethash.html" class="methodname">SplObjectStorage::getHash()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/directoryiterator.getextension.php" class="methodname">DirectoryIterator::getExtension()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/directoryiterator.getextension.html" class="methodname">DirectoryIterator::getExtension()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/spldoublylinkedlist.serialize.php" class="methodname">SplDoublyLinkedList::serialize()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/spldoublylinkedlist.serialize.html" class="methodname">SplDoublyLinkedList::serialize()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/spldoublylinkedlist.unserialize.php" class="methodname">SplDoublyLinkedList::unserialize()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/spldoublylinkedlist.unserialize.html" class="methodname">SplDoublyLinkedList::unserialize()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileinfo.getextension.php" class="methodname">SplFileInfo::getExtension()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileinfo.getextension.html" class="methodname">SplFileInfo::getExtension()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fputcsv.php" class="methodname">SplFileObject::fputcsv()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fputcsv.html" class="methodname">SplFileObject::fputcsv()</a></span>
     </span>
    </li>
    <li class="listitem">
@@ -121,48 +173,48 @@
      <span class="methodname"><strong>SplTempFileObject::fputcsv()</strong></span>
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.php" class="link">Reflection</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.html" class="link">Reflection</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionextension.ispersistent.php" class="methodname">ReflectionExtension::isPersistent()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionextension.ispersistent.html" class="methodname">ReflectionExtension::isPersistent()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionextension.istemporary.php" class="methodname">ReflectionExtension::isTemporary()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionextension.istemporary.html" class="methodname">ReflectionExtension::isTemporary()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.iscloneable.php" class="methodname">ReflectionClass::isCloneable()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.iscloneable.html" class="methodname">ReflectionClass::isCloneable()</a></span>
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/class.closure.php" class="classname">Closure</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/class.closure.html" class="classname">Closure</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/closure.bind.php" class="methodname">Closure::bind()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/closure.bind.html" class="methodname">Closure::bind()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/closure.bindto.php" class="methodname">Closure::bindTo()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/closure.bindto.html" class="methodname">Closure::bindTo()</a></span>
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-dblib.php" class="link">PDO_dblib</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-dblib.html" class="link">PDO_dblib</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
      <span class="methodname"><strong>PDO::newRowset()</strong></span>
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/class.streamwrapper.php" class="classname">StreamWrapper</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/class.streamwrapper.html" class="classname">StreamWrapper</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-metadata.php" class="methodname">StreamWrapper::stream_metadata()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-metadata.html" class="methodname">StreamWrapper::stream_metadata()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-truncate.php" class="methodname">StreamWrapper::stream_truncate()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/streamwrapper.stream-truncate.html" class="methodname">StreamWrapper::stream_truncate()</a></span>
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
@@ -176,78 +228,78 @@
    Several new methods were introduced in 5.3.0:
   </p>
 
-  <p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.datetime.php" class="link">Date/Time</a>:</p>
+  <p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">Date/Time</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.add.php" class="function">DateTime::add()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.add.html" class="function">DateTime::add()</a></span>
      - Adds an amount of days, months, years, hours, minutes and seconds to a
-     <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> object.
+     <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a> object.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.createfromformat.php" class="function">DateTime::createFromFormat()</a></span>
-     - Returns a new <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> object formatted according
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.createfromformat.html" class="function">DateTime::createFromFormat()</a></span>
+     - Returns a new <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a> object formatted according
      to the given format.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.diff.php" class="function">DateTime::diff()</a></span>
-     - Returns the difference between two <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.diff.html" class="function">DateTime::diff()</a></span>
+     - Returns the difference between two <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a>
      objects.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.getlasterrors.php" class="function">DateTime::getLastErrors()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.getlasterrors.html" class="function">DateTime::getLastErrors()</a></span>
      - Returns the warnings and errors from the last date/time operation.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.sub.php" class="function">DateTime::sub()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/datetime.sub.html" class="function">DateTime::sub()</a></span>
      - Subtracts an amount of days, months, years, hours, minutes and seconds
-     from a <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> object.
+     from a <a target="_blank" href="https://www.php.net/manual/en/class.datetime.html" class="classname">DateTime</a> object.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/class.exception.html" class="classname">Exception</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/exception.getprevious.php" class="function">Exception::getPrevious()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/exception.getprevious.html" class="function">Exception::getPrevious()</a></span>
      - Retrieves the previous exception.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.dom.php" class="link">DOM</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.dom.html" class="link">DOM</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domnode.getlineno.php" class="function">DOMNode::getLineNo()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domnode.getlineno.html" class="function">DOMNode::getLineNo()</a></span>
      - Get the line number of a parsed node.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-firebird.php" class="link">PDO_FIREBIRD</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-firebird.html" class="link">PDO_FIREBIRD</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/pdo.setattribute.php" class="function">PDO::setAttribute()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/pdo.setattribute.html" class="function">PDO::setAttribute()</a></span>
      - Sets an attribute.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.php" class="link">Reflection</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.html" class="link">Reflection</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.getnamespacename.php" class="methodname">ReflectionClass::getNamespaceName()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.getnamespacename.html" class="methodname">ReflectionClass::getNamespaceName()</a></span>
      - Returns the name of namespace where this class is defined.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.getshortname.php" class="methodname">ReflectionClass::getShortName()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.getshortname.html" class="methodname">ReflectionClass::getShortName()</a></span>
      - Returns the short name of this class (without namespace part).
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.innamespace.php" class="methodname">ReflectionClass::inNamespace()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.innamespace.html" class="methodname">ReflectionClass::inNamespace()</a></span>
      - Returns whether this class is defined in a namespace.
     </span>
    </li>
@@ -271,27 +323,27 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.setaccessible.php" class="methodname">ReflectionProperty::setAccessible()</a></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.setaccessible.html" class="methodname">ReflectionProperty::setAccessible()</a></span>
      - Sets whether non-public properties can be requested.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.php" class="link">SPL</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.addall.php" class="function">SplObjectStorage::addAll()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.addall.html" class="function">SplObjectStorage::addAll()</a></span>
      - Add all elements from another SplObjectStorage object.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.removeall.php" class="function">SplObjectStorage::removeAll()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.removeall.html" class="function">SplObjectStorage::removeAll()</a></span>
      - Remove all elements from another SplObjectStorage object.
     </span>
    </li>
-  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.xsl.php" class="link">XSL</a>:</p>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.xsl.html" class="link">XSL</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.setprofiling.php" class="function">XSLTProcessor::setProfiling()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.setprofiling.html" class="function">XSLTProcessor::setProfiling()</a></span>
      - Sets the profiling output file.
     </span>
    </li>
@@ -306,180 +358,180 @@
    New methods were introduced in 5.2.0:
   </p>
 
-  <p class="para"><a target="_blank" href="https://www.php.net/manual/en/book.dom.php" class="link">dom</a>:</p>
+  <p class="para"><a target="_blank" href="https://www.php.net/manual/en/book.dom.html" class="link">dom</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domdocument.registernodeclass.php" class="function">DOMDocument::registerNodeClass()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domdocument.registernodeclass.html" class="function">DOMDocument::registerNodeClass()</a></span>
      - Register extended class used to create base node type
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domelement.setidattribute.php" class="function">DOMElement::setIDAttribute()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domelement.setidattribute.html" class="function">DOMElement::setIDAttribute()</a></span>
      - Declares the attribute specified by name to be of type ID
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domelement.setidattributenode.php" class="function">DOMElement::setIDAttributeNode()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domelement.setidattributenode.html" class="function">DOMElement::setIDAttributeNode()</a></span>
      - Declares the attribute specified by node to be of type ID
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domelement.setidattributens.php" class="function">DOMElement::setIDAttributeNS()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/domelement.setidattributens.html" class="function">DOMElement::setIDAttributeNS()</a></span>
      - Declares the attribute specified by local name and namespace URI to be
      of type ID
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.c14n.php" class="methodname">DOMNode::C14N()</a></span>([bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.c14n.html" class="methodname">DOMNode::C14N()</a></span>([bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
      - Canonicalize nodes to a string
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.c14nfile.php" class="methodname">DOMNode::C14NFile()</a></span>(string uri [, bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.c14nfile.html" class="methodname">DOMNode::C14NFile()</a></span>(string uri [, bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
      - Canonicalize nodes to a file
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.getnodepath.php" class="methodname">DOMNode::getNodePath()</a></span>()
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.getnodepath.html" class="methodname">DOMNode::getNodePath()</a></span>()
      - Gets an <code class="literal">xpath</code> for a node
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.soap.php" class="link">soap</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.soap.html" class="link">soap</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/soapserver.setobject.php" class="methodname">SoapServer::setObject()</a></span>(object obj)
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/soapserver.setobject.html" class="methodname">SoapServer::setObject()</a></span>(object obj)
      - Sets object which will handle SOAP requests
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.spl.php" class="link">spl</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.spl.html" class="link">spl</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.asort.php" class="methodname">ArrayObject::asort()</a></span>(void)
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.asort.html" class="methodname">ArrayObject::asort()</a></span>(void)
      - Sort the entries by values
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.ksort.php" class="methodname">ArrayObject::ksort()</a></span>(void)
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.ksort.html" class="methodname">ArrayObject::ksort()</a></span>(void)
      - Sort the entries by key
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.natcasesort.php" class="methodname">ArrayObject::natcasesort()</a></span>(void)
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.natcasesort.html" class="methodname">ArrayObject::natcasesort()</a></span>(void)
      - Sort the entries by key using case insensitive
      "natural order" algorithm.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.natsort.php" class="methodname">ArrayObject::natsort()</a></span>(void)
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.natsort.html" class="methodname">ArrayObject::natsort()</a></span>(void)
      - Sort the entries by values using "natural order" algorithm.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.uasort.php" class="methodname">ArrayObject::uasort()</a></span>(callback cmp_function)
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.uasort.html" class="methodname">ArrayObject::uasort()</a></span>(callback cmp_function)
      - Sort the entries by values using a user defined function
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.uksort.php" class="methodname">ArrayObject::uksort()</a></span>(callback cmp_function)
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayobject.uksort.html" class="methodname">ArrayObject::uksort()</a></span>(callback cmp_function)
      - Sort the entries by key using a user defined function.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     ArrayIterator <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/appenditerator.getarrayiterator.php" class="methodname">AppendIterator::getArrayIterator()</a></span>()
+     ArrayIterator <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/appenditerator.getarrayiterator.html" class="methodname">AppendIterator::getArrayIterator()</a></span>()
      - Get access to inner <code class="literal">ArrayIterator</code>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/appenditerator.getiteratorindex.php" class="methodname">AppendIterator::getIteratorIndex()</a></span>()
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/appenditerator.getiteratorindex.html" class="methodname">AppendIterator::getIteratorIndex()</a></span>()
      - Get index of iterator
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     bool <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.getcache.php" class="methodname">CachingIterator::getCache()</a></span>()
+     bool <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.getcache.html" class="methodname">CachingIterator::getCache()</a></span>()
      - Return the cache
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.getflags.php" class="methodname">CachingIterator::getFlags()</a></span>()
+     int <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.getflags.html" class="methodname">CachingIterator::getFlags()</a></span>()
      - Return the internal flags
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     bool <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetexists.php" class="methodname">CachingIterator::offsetExists()</a></span>(mixed index)
-     - Returns <strong><code>true</code></strong> if the requested index exists
+     bool <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetexists.html" class="methodname">CachingIterator::offsetExists()</a></span>(mixed index)
+     - Returns <strong><code>TRUE</code></strong> if the requested index exists
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     string <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetget.php" class="methodname">CachingIterator::offsetGet()</a></span>(mixed index)
+     string <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetget.html" class="methodname">CachingIterator::offsetGet()</a></span>(mixed index)
      - Return the internal cache if used
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetset.php" class="methodname">CachingIterator::offsetSet()</a></span>(mixed index, mixed newval)
+     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetset.html" class="methodname">CachingIterator::offsetSet()</a></span>(mixed index, mixed newval)
      - Set given index in cache
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetunset.php" class="methodname">CachingIterator::offsetUnset()</a></span>(mixed index)
+     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.offsetunset.html" class="methodname">CachingIterator::offsetUnset()</a></span>(mixed index)
      - Unset given index in cache
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.setflags.php" class="methodname">CachingIterator::setFlags()</a></span>()
+     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/cachingiterator.setflags.html" class="methodname">CachingIterator::setFlags()</a></span>()
      - Set the internal flags
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     array("delimiter" =&gt;, "enclosure" =&gt;) <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.getcsvcontrol.php" class="methodname">SplFileObject::getCsvControl()</a></span>(void)
-     - Get the delimiter and enclosure character used in <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fgetcsv.php" class="function">fgetcsv()</a></span>
+     array("delimiter" =&gt;, "enclosure" =&gt;) <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.getcsvcontrol.html" class="methodname">SplFileObject::getCsvControl()</a></span>(void)
+     - Get the delimiter and enclosure character used in <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fgetcsv.html" class="function">fgetcsv()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.setcsvcontrol.php" class="methodname">SplFileObject::setCsvControl()</a></span>([string delimiter = ',' [, string enclosure = '"']])
-     - Set the delimiter and enclosure character used in <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fgetcsv.php" class="function">fgetcsv()</a></span>
+     void <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.setcsvcontrol.html" class="methodname">SplFileObject::setCsvControl()</a></span>([string delimiter = ',' [, string enclosure = '"']])
+     - Set the delimiter and enclosure character used in <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fgetcsv.html" class="function">fgetcsv()</a></span>
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.tidy.php" class="link">Tidy</a></p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.tidy.html" class="link">Tidy</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     tidyNode <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/tidynode.getparent.php" class="methodname">tidyNode::getParent()</a></span>()
+     tidyNode <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/tidynode.getparent.html" class="methodname">tidyNode::getParent()</a></span>()
      - Returns the parent node of the current node (Added in PHP 5.2.2)
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/book.xmlreader.php" class="link">XMLReader</a></p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/book.xmlreader.html" class="link">XMLReader</a></p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     boolean <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.setschema.php" class="function">XMLReader::setSchema()</a></span>
+     boolean <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.setschema.html" class="function">XMLReader::setSchema()</a></span>
      - Use W3C XSD schema to validate the document as it is processed. Activation is
-     only possible before the first <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.read.php" class="function">XMLReader::read()</a></span>
+     only possible before the first <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.read.html" class="function">XMLReader::read()</a></span>
     </span>
    </li>
-  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.zip.php" class="link">zip</a>:</p>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.zip.html" class="link">zip</a>:</p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.addemptydir.php" class="methodname">ZipArchive::addEmptyDir()</a></span>()
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.addemptydir.html" class="methodname">ZipArchive::addEmptyDir()</a></span>()
      - Creates an empty directory in the archive
     </span>
    </li>

@@ -20,8 +20,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -300,7 +300,7 @@
     <span class="simpara">
      Uploads using the <code class="literal">@file</code> syntax are now only supported
      if the <strong><code>CURLOPT_SAFE_UPLOAD</code></strong> option is set to
-     <strong><code>false</code></strong>. <a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a> should be used instead.
+     <strong><code>false</code></strong>. <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a></span> should be used instead.
     </span>
    </li>
   </ul></div>
@@ -389,94 +389,94 @@
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-error-handler.php" class="function">set_error_handler()</a></span> can now be called with <strong><code>null</code></strong> as
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-error-handler.html" class="function">set_error_handler()</a></span> can now be called with <strong><code>NULL</code></strong> as
       an argument to reset the error handler.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      When called with <strong><code>null</code></strong>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-error-handler.php" class="function">set_error_handler()</a></span> and
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-exception-handler.php" class="function">set_exception_handler()</a></span> now return the previous error
+      When called with <strong><code>NULL</code></strong>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-error-handler.html" class="function">set_error_handler()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-exception-handler.html" class="function">set_exception_handler()</a></span> now return the previous error
       or exception handler, respectively.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span> now accepts <code class="parameter">depth</code>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.html" class="function">json_encode()</a></span> now accepts <code class="parameter">depth</code>
       parameter.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      The behaviour of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.php" class="function">pack()</a></span> and
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> with the "a" and "A" format codes has
+      The behaviour of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> with the "a" and "A" format codes has
       changed.
-      <a target="_blank" href="https://www.php.net/manual/en/migration55.incompatible.php#migration55.incompatible.pack" class="link">Detailed notes on these changes are available.</a>
+      <a target="_blank" href="https://www.php.net/manual/en/migration55.incompatible.html#migration55.incompatible.pack" class="link">Detailed notes on these changes are available.</a>
      </span>
     </li>
    </ul></div>
 
   <div class="sect2" id="migration55.changed-functions.intl">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.php" class="link">intl</a></h3>
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">intl</a></h3>
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.php" class="methodname">MessageFormatter::format()</a></span> and related functions
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.html" class="methodname">MessageFormatter::format()</a></span> and related functions
       now accept named arguments and mixed numeric and named arguments when PHP
       is linked to ICU 4.8 or later.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.php" class="methodname">MessageFormatter::format()</a></span> and related functions
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.html" class="methodname">MessageFormatter::format()</a></span> and related functions
       no longer error when an insufficient number of arguments have been
       provided. Instead, the placeholders will not be substituted.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.php" class="methodname">MessageFormatter::format()</a></span> and
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.parse.php" class="methodname">MessageFormatter::parse()</a></span> are no longer limited to
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.html" class="methodname">MessageFormatter::format()</a></span> and
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.parse.html" class="methodname">MessageFormatter::parse()</a></span> are no longer limited to
       second precision when dealing with times.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.create.php" class="methodname">IntlDateFormatter::__construct()</a></span> and
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.create.php" class="function">datefmt_create()</a></span> now accept
-      <a target="_blank" href="https://www.php.net/manual/en/class.intltimezone.php" class="classname">IntlTimeZone</a> and
-      <a target="_blank" href="https://www.php.net/manual/en/class.datetimezone.php" class="classname">DateTimeZone</a> objects for the
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.create.html" class="methodname">IntlDateFormatter::__construct()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.create.html" class="function">datefmt_create()</a></span> now accept
+      <a target="_blank" href="https://www.php.net/manual/en/class.intltimezone.html" class="classname">IntlTimeZone</a> and
+      <a target="_blank" href="https://www.php.net/manual/en/class.datetimezone.html" class="classname">DateTimeZone</a> objects for the
       <code class="parameter">timezone</code> argument, and
-      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a> objects for the
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> objects for the
       <code class="parameter">calendar</code> argument. Furthermore, if the time zone
       is omitted and the <code class="parameter">calendar</code> doesn't specify a time
       zone, PHP's default time zone from
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-default-timezone-get.php" class="function">date_default_timezone_get()</a></span> is now used instead of the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span> is now used instead of the
       default ICU time zone.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendar.php" class="methodname">IntlDateFormatter::getCalendar()</a></span> and
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendar.php" class="function">datefmt_get_calendar()</a></span> return false if the
-      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.php" class="classname">IntlDateFormatter</a> object was created with an
-      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a> instance instead of one of the
-      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.php" class="classname">IntlDateFormatter</a> constants.
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendar.html" class="methodname">IntlDateFormatter::getCalendar()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendar.html" class="function">datefmt_get_calendar()</a></span> return false if the
+      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.html" class="classname">IntlDateFormatter</a> object was created with an
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> instance instead of one of the
+      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.html" class="classname">IntlDateFormatter</a> constants.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.setcalendar.php" class="methodname">IntlDateFormatter::setCalendar()</a></span> and
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.setcalendar.php" class="function">datefmt_set_calendar()</a></span> now accept
-      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a> objects in addition to the
-      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.php" class="classname">IntlDateFormatter</a> constants.
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.setcalendar.html" class="methodname">IntlDateFormatter::setCalendar()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.setcalendar.html" class="function">datefmt_set_calendar()</a></span> now accept
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> objects in addition to the
+      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.html" class="classname">IntlDateFormatter</a> constants.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.format.php" class="methodname">IntlDateFormatter::format()</a></span> and
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.format.php" class="function">datefmt_format()</a></span> now accept
-      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a> objects.
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.format.html" class="methodname">IntlDateFormatter::format()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.format.html" class="function">datefmt_format()</a></span> now accept
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> objects.
      </span>
     </li>
    </ul></div>

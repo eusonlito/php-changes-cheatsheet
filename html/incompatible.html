@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Backward Incompatible Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
+        <title>Backward Incompatible Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Backward Incompatible Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="title" content="Backward Incompatible Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
-        <meta property="og:title" content="Backward Incompatible Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta property="og:title" content="Backward Incompatible Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Backward Incompatible Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="twitter:title" content="Backward Incompatible Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,323 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Backward Incompatible Changes in PHP 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
+        <h1><a href="index.html"> Backward Incompatible Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration81.incompatible.php" target="_blank">PHP 8.1</a></h1>
+    </header>
+
+    <div id="migration81.incompatible" class="sect1">
+ <h2 class="title">Backward Incompatible Changes</h2>
+
+ <div class="sect2" id="migration81.incompatible.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration81.incompatible.core.globals-access">
+   <h4 class="title">$GLOBALS Access Restrictions</h4>
+
+   <p class="para">
+    Access to the <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.globals.php" class="classname">$GLOBALS</a></var> array is now subject to
+    a number of restrictions.
+    Read and write access to individual array elements like
+    <code class="code">$GLOBALS['var']</code> continues to work as-is.
+    Read-only access to the entire <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.globals.php" class="classname">$GLOBALS</a></var> array also
+    continues to be supported.
+    However, write access to the entire <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.globals.php" class="classname">$GLOBALS</a></var> array
+    is no longer supported. For example, <code class="code">array_pop($GLOBALS)</code>
+    will result in an error.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.incompatible.core.static-variable-inheritance">
+   <h4 class="title">
+    Usage of <span class="modifier">static</span> Variables in Inherited Methods
+   </h4>
+
+   <p class="para">
+    When a method using static variables is inherited (but not overridden), the
+    inherited method will now share static variables with the parent method.
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    public static function </span><span style="color: #0000BB">counter</span><span style="color: #007700">() {<br>        static </span><span style="color: #0000BB">$counter </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>        </span><span style="color: #0000BB">$counter</span><span style="color: #007700">++;<br>        return </span><span style="color: #0000BB">$counter</span><span style="color: #007700">;<br>    }<br>}<br>class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(1)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(2)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(3), previously int(1)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(4), previously int(2)<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+    This means that static variables in methods now behave the same way as
+    static properties.
+   
+  </div>
+
+  <div class="sect3" id="migration81.incompatible.core.type-compatibility-internal">
+   <h4 class="title">Return Type Compatibility with Internal Classes</h4>
+
+   <p class="para">
+    Most non-final internal methods now require overriding methods to declare
+    a compatible return type, otherwise a deprecated notice is emitted during
+    inheritance validation.
+    In case the return type cannot be declared for an overriding method due to
+    PHP cross-version compatibility concerns,
+    a <code class="code">#[ReturnTypeWillChange]</code> attribute can be added to silence
+    the deprecation notice.
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration81.incompatible.resource2object">
+  <h3 class="title">Resource to Object Migration</h3>
+
+  <p class="para">
+   Several <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s have been migrated to <span class="type">object</span>s.
+   Return value checks using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.is-resource.php" class="function">is_resource()</a></span> should be replaced with checks for <strong><code>false</code></strong>.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.fileinfo.php" class="link">FileInfo</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.finfo.php" class="classname">finfo</a></span> objects instead of
+     <code class="literal">fileinfo</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.ftp.php" class="link">FTP</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ftp-connection.php" class="classname">FTP\Connection</a></span> objects instead of
+     <code class="literal">ftp</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.imap.php" class="link">IMAP</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.imap-connection.php" class="classname">IMAP\Connection</a></span> objects instead of
+     <code class="literal">imap</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ldap-connection.php" class="classname">LDAP\Connection</a></span> objects instead of
+     <code class="literal">ldap link</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ldap-result.php" class="classname">LDAP\Result</a></span> objects instead of
+     <code class="literal">ldap result</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.ldap.php" class="link">LDAP</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ldap-result-entry.php" class="classname">LDAP\ResultEntry</a></span> objects instead of
+     <code class="literal">ldap result entry</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.pgsql.php" class="link">PgSQL</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pgsql-connection.php" class="classname">PgSql\Connection</a></span> objects instead of
+     <code class="literal">pgsql link</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.pgsql.php" class="link">PgSQL</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pgsql-result.php" class="classname">PgSql\Result</a></span> objects instead of
+     <code class="literal">pgsql result</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.pgsql.php" class="link">PgSQL</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pgsql-lob.php" class="classname">PgSql\Lob</a></span> objects instead of
+     <code class="literal">pgsql large object</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.pspell.php" class="link">PSpell</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pspell-dictionary.php" class="classname">PSpell\Dictionary</a></span> objects instead of
+     <code class="literal">pspell</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The <a target="_blank" href="https://www.php.net/manual/en/book.pspell.php" class="link">PSpell</a> functions now accept and return,
+     respectively, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pspell-config.php" class="classname">PSpell\Config</a></span> objects instead of
+     <code class="literal">pspell config</code> <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+    </p>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.incompatible.mysqli">
+  <h3 class="title">MySQLi</h3>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-fields.php" class="function">mysqli_fetch_fields()</a></span>, and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-field-direct.php" class="function">mysqli_fetch_field_direct()</a></span> will now always return
+   <code class="literal">0</code> for the <span class="property">max_length</span>.
+   This information can be computed by iterating over the result set,
+   and taking the maximum length. This is what PHP was doing
+   internally previously.
+  </p>
+
+  <p class="para">
+   The <strong><code>MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH</code></strong>
+   option no longer has any effect.
+  </p>
+
+  <p class="para">
+   The <strong><code>MYSQLI_STORE_RESULT_COPY_DATA</code></strong>
+   option no longer has any effect. Passing any value to the
+   <code class="parameter">mode</code> parameter of
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli.store-result.php" class="methodname">mysqli::store_result()</a></span> no longer has any effect.
+  </p>
+
+  <p class="para">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-connect.php" class="methodname">mysqli::connect()</a></span> now returns <strong><code>true</code></strong> instead of <strong><code>null</code></strong> on success.
+  </p>
+
+  <p class="para">
+   The default error handling mode has been changed from "silent" to "exceptions"
+   See the <a target="_blank" href="https://www.php.net/manual/en/mysqli-driver.report-mode.php" class="link">MySQLi reporting mode</a>
+   page for more details on what this entails,
+   and how to explicitly set this attribute.
+   To restore the previous behaviour use:
+   <code class="code">mysqli_report(MYSQLI_REPORT_OFF);</code>
+  </p>
+
+  <p class="para">
+   Classes extending <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli-stmt.execute.php" class="methodname">mysqli_stmt::execute()</a></span>
+   are now required to specify the additional mandatory parameter.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration81.incompatible.mysqlnd">
+  <h3 class="title">MySQLnd</h3>
+
+  <p class="para">
+   The <a target="_blank" href="https://www.php.net/manual/en/mysqlnd.config.php#ini.mysqlnd.fetch_data_copy" class="link">mysqlnd.fetch_data_copy</a>
+   INI directive has been removed.
+   This should not result in user-visible behavior changes.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration81.incompatible.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <p class="para">
+   EC private keys will now be exported in PKCS#8 format rather than
+   traditional format, just like all other keys.
+  </p>
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pkcs7-encrypt.php" class="function">openssl_pkcs7_encrypt()</a></span> and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-cms-encrypt.php" class="function">openssl_cms_encrypt()</a></span> will now to default using
+   AES-128-CBC rather than RC2-40. The RC2-40 cipher is considered
+   insecure and not enabled by default by OpenSSL 3.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration81.incompatible.pdo">
+  <h3 class="title">PHP Data Objects</h3>
+
+  <p class="para">
+   <strong><code>PDO::ATTR_STRINGIFY_FETCHES</code></strong> now stringifies values
+   of type <span class="type">bool</span> to <code class="literal">"0"</code> or
+   <code class="literal">"1"</code>. Previously <span class="type">bool</span>s were not stringified.
+  </p>
+  <p class="para">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdostatement.bindcolumn.php" class="methodname">PDOStatement::bindColumn()</a></span> with
+   <strong><code>PDO::PARAM_LOB</code></strong> will now constantly bind a stream
+   result when <strong><code>PDO::ATTR_STRINGIFY_FETCHES</code></strong> is not enabled.
+   Previously, the result would either be a stream or a string depending on
+   the used database driver and the time the binding is performed.
+  </p>
+
+  <div class="sect3" id="migration81.incompatible.pdo.mysql">
+   <h4 class="title">MySQL Driver</h4>
+
+   <p class="para">
+    Integers and floats in result sets will now be returned using native
+    PHP types instead of <span class="type">string</span>s when using emulated prepared statements.
+    This matches the behavior of native prepared statements.
+    The previous behaviour can be restored by enabling the
+    <strong><code>PDO::ATTR_STRINGIFY_FETCHES</code></strong> option.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration81.incompatible.pdo.sqlite">
+   <h4 class="title">SQLite Driver</h4>
+
+   <p class="para">
+    Integers and floats in results sets will now be returned using native
+    PHP types.
+    The previous behaviour can be restored by enabling the
+    <strong><code>PDO::ATTR_STRINGIFY_FETCHES</code></strong> option.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration81.incompatible.phar">
+  <h3 class="title">Phar</h3>
+
+  <p class="para">
+   To comply with the <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.arrayaccess.php" class="interfacename">ArrayAccess</a></span> interface,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/phar.offsetunset.php" class="methodname">Phar::offsetUnset()</a></span> and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/phardata.offsetunset.php" class="methodname">PharData::offsetUnset()</a></span> no longer return a <span class="type">bool</span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration81.incompatible.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.version-compare.php" class="function">version_compare()</a></span> no longer accepts undocumented operator abbreviations.
+  </p>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.php" class="function">htmlspecialchars()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.php" class="function">htmlentities()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars-decode.php" class="function">htmlspecialchars_decode()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.php" class="function">html_entity_decode()</a></span>,
+   and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-html-translation-table.php" class="function">get_html_translation_table()</a></span>
+   now use <code class="literal">ENT_QUOTES | ENT_SUBSTITUTE</code> rather than
+   <strong><code>ENT_COMPAT</code></strong> by default.
+   This means that <code class="literal">'</code> is escaped to
+   <code class="literal">&amp;#039;</code> while previously nothing was done.
+   Additionally, malformed UTF-8 will be replaced by a Unicode substitution
+   character, instead of resulting in an empty string.
+  </p>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.debug-zval-dump.php" class="function">debug_zval_dump()</a></span> now prints the refcount of a reference
+   wrappers with their refcount, instead of only prepending
+   <code class="literal">&amp;</code> to the value.
+   This more accurately models reference representation since PHP 7.0.
+  </p>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.debug-zval-dump.php" class="function">debug_zval_dump()</a></span> now prints <code class="literal">interned</code>
+   instead of a dummy refcount for interned strings and immutable arrays.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration81.incompatible.spl">
+  <h3 class="title">Standard PHP Library (SPL)</h3>
+
+  <p class="para">
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.php" class="classname">SplFixedArray</a></span>, will now be JSON encoded like an <span class="type">array</span>
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration80.incompatible.php" target="_blank">PHP 8.0</a></h1>
     </header>
@@ -145,7 +457,7 @@
     </li>
     <li class="listitem">
      <p class="para">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.each.php" class="function">each()</a></span> has been removed. <a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.php" class="link">foreach</a> or <a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.each.php" class="function">each()</a></span> has been removed. <a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.php" class="link">foreach</a> or <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a></span>
       should be used instead.
      </p>
     </li>
@@ -173,7 +485,7 @@
       The behavior of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-key-exists.php" class="function">array_key_exists()</a></span> regarding the type of the
       <code class="parameter">key</code> parameter has been made consistent with <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.isset.php" class="function">isset()</a></span> and
       normal array access. All key types now use the usual coercions and array/object keys throw a
-      <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a>.
+      <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span>.
      </p>
     </li>
     <li class="listitem">
@@ -214,7 +526,7 @@
      <p class="para">
       </p><div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Replace<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() == </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br>        return; </span><span style="color: #FF8000">// Silenced<br>    </span><span style="color: #007700">}<br>    </span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br><br></span><span style="color: #FF8000">// With<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (!(</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() &amp; </span><span style="color: #0000BB">$err_no</span><span style="color: #007700">)) {<br>        return; </span><span style="color: #FF8000">// Silenced<br>    </span><span style="color: #007700">}<br>    </span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Replace<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() == </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br>        return </span><span style="color: #0000BB">false</span><span style="color: #007700">; </span><span style="color: #FF8000">// Silenced<br>    </span><span style="color: #007700">}<br>    </span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br><br></span><span style="color: #FF8000">// With<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (!(</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() &amp; </span><span style="color: #0000BB">$err_no</span><span style="color: #007700">)) {<br>        return </span><span style="color: #0000BB">false</span><span style="color: #007700">; </span><span style="color: #FF8000">// Silenced<br>    </span><span style="color: #007700">}<br>    </span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
       </div>
@@ -274,7 +586,7 @@
     </li>
     <li class="listitem">
      <p class="para">
-      A number of warnings have been converted into <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exceptions:
+      A number of warnings have been converted into <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exceptions:
      </p>
      <p class="para">
       </p><ul class="simplelist"><li class="member">
@@ -318,7 +630,7 @@
     <li class="listitem">
      <p class="para">
       Unexpected characters in source files (such as NUL bytes outside of strings) will now result in a
-      <a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a> exception instead of a compile warning.
+      <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a></span> exception instead of a compile warning.
      </p>
     </li>
     <li class="listitem">
@@ -331,7 +643,7 @@
      <p class="para">
       The compile time fatal error "Only variables can be passed by reference" has been delayed until
       runtime, and converted into an "Argument cannot be passed by reference"
-      <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception.
+      <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception.
      </p>
     </li>
     <li class="listitem">
@@ -413,7 +725,7 @@
       <code class="literal">*</code>, <code class="literal">/</code>, <code class="literal">**</code>, <code class="literal">%</code>,
       <code class="literal">&lt;&lt;</code>, <code class="literal">&gt;&gt;</code>, <code class="literal">&amp;</code>,
       <code class="literal">|</code>, <code class="literal">^</code>, <code class="literal">~</code>, <code class="literal">++</code>,
-      <code class="literal">--</code> will now consistently throw a <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a> when one of
+      <code class="literal">--</code> will now consistently throw a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span> when one of
       the operands is an <span class="type">array</span>, <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a> or non-overloaded <span class="type">object</span>. The only exception to this is
       the array <code class="literal">+</code> array merge operation, which remains supported.
       
@@ -506,13 +818,13 @@
       well-formed numeric value encountered" will now emit an <strong><code>E_WARNING</code></strong> "A
       non-numeric value encountered" and all strings which emitted an <strong><code>E_WARNING</code></strong> "A
       non-numeric value encountered" will now throw a
-      <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a>. This mostly affects:
+      <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span>. This mostly affects:
      </p>
      <p class="para">
       </p><ul class="simplelist"><li class="member">Arithmetic operations</li>
        <li class="member">Bitwise operations</li>
       </ul><p class="para">
-      This <strong><code>E_WARNING</code></strong> to <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a> change also affects the
+      This <strong><code>E_WARNING</code></strong> to <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span> change also affects the
       <strong><code>E_WARNING</code></strong> "Illegal string offset 'string'" for illegal string offsets. The
       behavior of explicit casts to int/float from strings has not been changed.
       
@@ -565,31 +877,31 @@
   </p>
   <ul class="itemizedlist"><li class="listitem">
      <p class="para">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-init.php" class="function">curl_init()</a></span> will now return a <a target="_blank" href="https://www.php.net/manual/en/class.curlhandle.php" class="classname">CurlHandle</a> object rather
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-init.php" class="function">curl_init()</a></span> will now return a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlhandle.php" class="classname">CurlHandle</a></span> object rather
       than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>. The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-close.php" class="function">curl_close()</a></span> function no longer has an effect,
-      instead the <a target="_blank" href="https://www.php.net/manual/en/class.curlhandle.php" class="classname">CurlHandle</a> instance is automatically destroyed if it is no
+      instead the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlhandle.php" class="classname">CurlHandle</a></span> instance is automatically destroyed if it is no
       longer referenced.
      </p>
     </li>
     <li class="listitem">
      <p class="para">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-multi-init.php" class="function">curl_multi_init()</a></span> will now return a <a target="_blank" href="https://www.php.net/manual/en/class.curlmultihandle.php" class="classname">CurlMultiHandle</a>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-multi-init.php" class="function">curl_multi_init()</a></span> will now return a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlmultihandle.php" class="classname">CurlMultiHandle</a></span>
       object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>. The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-multi-close.php" class="function">curl_multi_close()</a></span> function no
-      longer has an effect, instead the <a target="_blank" href="https://www.php.net/manual/en/class.curlmultihandle.php" class="classname">CurlMultiHandle</a> instance is
+      longer has an effect, instead the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlmultihandle.php" class="classname">CurlMultiHandle</a></span> instance is
       automatically destroyed if it is no longer referenced.
      </p>
     </li>
     <li class="listitem">
      <p class="para">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-init.php" class="function">curl_share_init()</a></span> will now return a <a target="_blank" href="https://www.php.net/manual/en/class.curlsharehandle.php" class="classname">CurlShareHandle</a>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-init.php" class="function">curl_share_init()</a></span> will now return a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlsharehandle.php" class="classname">CurlShareHandle</a></span>
       object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>. The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-close.php" class="function">curl_share_close()</a></span> function no
-      longer has an effect, instead the <a target="_blank" href="https://www.php.net/manual/en/class.curlsharehandle.php" class="classname">CurlShareHandle</a> instance is
+      longer has an effect, instead the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlsharehandle.php" class="classname">CurlShareHandle</a></span> instance is
       automatically destroyed if it is no longer referenced.
      </p>
     </li>
    <li class="listitem">
     <p class="para">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.enchant-broker-init.php" class="function">enchant_broker_init()</a></span> will now return an <a target="_blank" href="https://www.php.net/manual/en/class.enchantbroker.php" class="classname">EnchantBroker</a>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.enchant-broker-init.php" class="function">enchant_broker_init()</a></span> will now return an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.enchantbroker.php" class="classname">EnchantBroker</a></span>
      object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
@@ -597,46 +909,46 @@
     <p class="para">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.enchant-broker-request-dict.php" class="function">enchant_broker_request_dict()</a></span> and
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.enchant-broker-request-pwl-dict.php" class="function">enchant_broker_request_pwl_dict()</a></span> will now return an
-     <a target="_blank" href="https://www.php.net/manual/en/class.enchantdictionary.php" class="classname">EnchantDictionary</a> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.enchantdictionary.php" class="classname">EnchantDictionary</a></span> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     The GD extension now uses <a target="_blank" href="https://www.php.net/manual/en/class.gdimage.php" class="classname">GdImage</a> objects as the underlying data structure
+     The GD extension now uses <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.gdimage.php" class="classname">GdImage</a></span> objects as the underlying data structure
      for images, rather than <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
      The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagedestroy.php" class="function">imagedestroy()</a></span> function no longer has an effect; instead the
-     <a target="_blank" href="https://www.php.net/manual/en/class.gdimage.php" class="classname">GdImage</a> instance is automatically destroyed if it is no longer referenced.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.gdimage.php" class="classname">GdImage</a></span> instance is automatically destroyed if it is no longer referenced.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-x509-read.php" class="function">openssl_x509_read()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-csr-sign.php" class="function">openssl_csr_sign()</a></span> will now return
-     an <a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificate.php" class="classname">OpenSSLCertificate</a> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
+     an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificate.php" class="classname">OpenSSLCertificate</a></span> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
      The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-x509-free.php" class="function">openssl_x509_free()</a></span> function is deprecated and no longer has an effect,
-     instead the <a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificate.php" class="classname">OpenSSLCertificate</a> instance is automatically destroyed if it
+     instead the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificate.php" class="classname">OpenSSLCertificate</a></span> instance is automatically destroyed if it
      is no longer referenced.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-csr-new.php" class="function">openssl_csr_new()</a></span> will now return an
-     <a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificatesigningrequest.php" class="classname">OpenSSLCertificateSigningRequest</a> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificatesigningrequest.php" class="classname">OpenSSLCertificateSigningRequest</a></span> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pkey-new.php" class="function">openssl_pkey_new()</a></span> will now return an
-     <a target="_blank" href="https://www.php.net/manual/en/class.opensslasymmetrickey.php" class="classname">OpenSSLAsymmetricKey</a> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslasymmetrickey.php" class="classname">OpenSSLAsymmetricKey</a></span> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
      The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pkey-free.php" class="function">openssl_pkey_free()</a></span> function is deprecated and no longer has an effect,
-     instead the <a target="_blank" href="https://www.php.net/manual/en/class.opensslasymmetrickey.php" class="classname">OpenSSLAsymmetricKey</a> instance is automatically destroyed if it
+     instead the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslasymmetrickey.php" class="classname">OpenSSLAsymmetricKey</a></span> instance is automatically destroyed if it
      is no longer referenced.
     </p>
    </li>
    <li class="listitem">
      <p class="para">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-open.php" class="function">shmop_open()</a></span> will now return a <a target="_blank" href="https://www.php.net/manual/en/class.shmop.php" class="classname">Shmop</a> object rather than
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-open.php" class="function">shmop_open()</a></span> will now return a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.shmop.php" class="classname">Shmop</a></span> object rather than
       a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>. The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-close.php" class="function">shmop_close()</a></span> function no longer has an effect, and is
-      deprecated; instead the <a target="_blank" href="https://www.php.net/manual/en/class.shmop.php" class="classname">Shmop</a> instance is automatically destroyed if it is
+      deprecated; instead the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.shmop.php" class="classname">Shmop</a></span> instance is automatically destroyed if it is
       no longer referenced.
      </p>
     </li>
@@ -646,52 +958,52 @@
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-accept.php" class="function">socket_accept()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-import-stream.php" class="function">socket_import_stream()</a></span>,
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-connect.php" class="function">socket_addrinfo_connect()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-bind.php" class="function">socket_addrinfo_bind()</a></span>, and
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-wsaprotocol-info-import.php" class="function">socket_wsaprotocol_info_import()</a></span> will now return a
-     <a target="_blank" href="https://www.php.net/manual/en/class.socket.php" class="classname">Socket</a> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.socket.php" class="classname">Socket</a></span> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-lookup.php" class="function">socket_addrinfo_lookup()</a></span> will now return an array of
-     <a target="_blank" href="https://www.php.net/manual/en/class.addressinfo.php" class="classname">AddressInfo</a> objects rather than <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.addressinfo.php" class="classname">AddressInfo</a></span> objects rather than <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.msg-get-queue.php" class="function">msg_get_queue()</a></span> will now return an <strong class="classname">SysvMessageQueue</strong>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.msg-get-queue.php" class="function">msg_get_queue()</a></span> will now return an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sysvmessagequeue.php" class="classname">SysvMessageQueue</a></span>
      object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sem-get.php" class="function">sem_get()</a></span> will now return an <strong class="classname">SysvSemaphore</strong> object
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sem-get.php" class="function">sem_get()</a></span> will now return an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sysvsemaphore.php" class="classname">SysvSemaphore</a></span> object
      rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shm-attach.php" class="function">shm_attach()</a></span> will now return an <strong class="classname">SysvSharedMemory</strong> object
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shm-attach.php" class="function">shm_attach()</a></span> will now return an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sysvsharedmemory.php" class="classname">SysvSharedMemory</a></span> object
      rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xml-parser-create.php" class="function">xml_parser_create()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xml-parser-create-ns.php" class="function">xml_parser_create_ns()</a></span> will now
-     return an <a target="_blank" href="https://www.php.net/manual/en/class.xmlparser.php" class="classname">XMLParser</a> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>. The
+     return an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.xmlparser.php" class="classname">XMLParser</a></span> object rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>. The
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xml-parser-free.php" class="function">xml_parser_free()</a></span> function no longer has an effect, instead the XMLParser
      instance is automatically destroyed if it is no longer referenced.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     The <a target="_blank" href="https://www.php.net/manual/en/ref.xmlwriter.php" class="link">XMLWriter functions</a> now accept and return, respectively,
-     <strong class="classname">XMLWriter</strong> objects instead of <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
+     The <a target="_blank" href="https://www.php.net/manual/en/book.xmlwriter.php" class="link">XMLWriter</a> functions now accept and return, respectively,
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.xmlwriter.php" class="classname">XMLWriter</a></span> objects instead of <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>s.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.inflate-init.php" class="function">inflate_init()</a></span> will now return an <a target="_blank" href="https://www.php.net/manual/en/class.inflatecontext.php" class="classname">InflateContext</a> object
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.inflate-init.php" class="function">inflate_init()</a></span> will now return an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.inflatecontext.php" class="classname">InflateContext</a></span> object
      rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.deflate-init.php" class="function">deflate_init()</a></span> will now return a <a target="_blank" href="https://www.php.net/manual/en/class.deflatecontext.php" class="classname">DeflateContext</a> object
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.deflate-init.php" class="function">deflate_init()</a></span> will now return a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.deflatecontext.php" class="classname">DeflateContext</a></span> object
      rather than a <a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="link">resource</a>.
     </p>
    </li>
@@ -984,8 +1296,8 @@
 
   <ul class="itemizedlist"><li class="listitem">
     <p class="para">
-     The <strong class="classname">OCI-Lob</strong> class is now called <a target="_blank" href="https://www.php.net/manual/en/class.OCI-Lob.php" class="classname">OCILob</a>, and the
-     <strong class="classname">OCI-Collection</strong> class is now called <a target="_blank" href="https://www.php.net/manual/en/class.OCI-Collection.php" class="classname">OCICollection</a>
+     The <span class="classname"><strong class="classname">OCI-Lob</strong></span> class is now called <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.OCI-Lob.php" class="classname">OCILob</a></span>, and the
+     <span class="classname"><strong class="classname">OCI-Collection</strong></span> class is now called <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.OCI-Collection.php" class="classname">OCICollection</a></span>
      for name compliance enforced by PHP 8 arginfo type annotation tooling.
     </p>
    </li>
@@ -1167,7 +1479,7 @@
    <li class="listitem">
     <p class="para">
      <span class="methodname"><strong>ReflectionType::isBuiltin()</strong></span> method has been moved to
-     <a target="_blank" href="https://www.php.net/manual/en/class.reflectionnamedtype.php" class="classname">ReflectionNamedType</a>. <a target="_blank" href="https://www.php.net/manual/en/class.reflectionuniontype.php" class="classname">ReflectionUnionType</a> does not
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionnamedtype.php" class="classname">ReflectionNamedType</a></span>. <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionuniontype.php" class="classname">ReflectionUnionType</a></span> does not
      have it.
     </p>
    </li>
@@ -1215,13 +1527,13 @@
    <li class="listitem">
     <p class="para">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-autoload-register.php" class="function">spl_autoload_register()</a></span> will now always throw a
-     <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a> on invalid arguments, therefore the second argument
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span> on invalid arguments, therefore the second argument
      <code class="parameter">do_throw</code> is ignored and a notice will be emitted if it is set to <strong><code>false</code></strong>.
     </p>
    </li>
    <li class="listitem">
     <p class="para">
-     <a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.php" class="classname">SplFixedArray</a> is now an <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span>
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.php" class="classname">SplFixedArray</a></span> is now an <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span>
      and not an <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iterator.php" class="interfacename">Iterator</a></span>.
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.rewind.php" class="methodname">SplFixedArray::rewind()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.current.php" class="methodname">SplFixedArray::current()</a></span>,
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.key.php" class="methodname">SplFixedArray::key()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.next.php" class="methodname">SplFixedArray::next()</a></span>, and
@@ -1230,7 +1542,7 @@
      iteration over SplFixedArray must now obtain an
      <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iterator.php" class="interfacename">Iterator</a></span> through
      <span class="methodname"><strong>SplFixedArray::getIterator()</strong></span>. This means that
-     <a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.php" class="classname">SplFixedArray</a> is now safe to use in nested loops.
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.php" class="classname">SplFixedArray</a></span> is now safe to use in nested loops.
     </p>
    </li>
   </ul></div>
@@ -1698,7 +2010,7 @@
   <h3 class="title">CURL</h3>
 
   <p class="para">
-   Attempting to serialize a <a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a> class will now
+   Attempting to serialize a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a></span> class will now
    generate an exception. Previously the exception was only thrown on unserialization.
   </p>
   <p class="para">
@@ -1717,13 +2029,13 @@
 
   <p class="para">
    Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-dump.php" class="function">var_dump()</a></span> or similar on a
-   <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> or <a target="_blank" href="https://www.php.net/manual/en/class.datetimeimmutable.php" class="classname">DateTimeImmutable</a>
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a></span> or <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datetimeimmutable.php" class="classname">DateTimeImmutable</a></span>
    instance will no longer leave behind accessible properties on the object.
   </p>
   <p class="para">
-   Comparison of <a target="_blank" href="https://www.php.net/manual/en/class.dateinterval.php" class="classname">DateInterval</a> objects
+   Comparison of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateinterval.php" class="classname">DateInterval</a></span> objects
    (using <code class="literal">==</code>, <code class="literal">&lt;</code>, and so on) will now generate
-   a warning and always return <strong><code>false</code></strong>. Previously all <a target="_blank" href="https://www.php.net/manual/en/class.dateinterval.php" class="classname">DateInterval</a>
+   a warning and always return <strong><code>false</code></strong>. Previously all <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateinterval.php" class="classname">DateInterval</a></span>
    objects were considered equal, unless they had properties.
   </p>
  </div>
@@ -1757,8 +2069,8 @@
   <p class="para">
    The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.php" class="function">openssl_random_pseudo_bytes()</a></span> function will now
    throw an exception in error situations, similar to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.random-bytes.php" class="function">random_bytes()</a></span>.
-   In particular, an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> is thrown if the number of
-   requested bytes is less than or equal to zero, and an <a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a>
+   In particular, an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> is thrown if the number of
+   requested bytes is less than or equal to zero, and an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span>
    is thrown if sufficient randomness cannot be gathered.
    The <code class="literal">$crypto_strong output</code> argument is guaranteed to always
    be <strong><code>true</code></strong> if the function does not throw, so explicitly checking it is not necessary.
@@ -1780,9 +2092,9 @@
   <h3 class="title">PHP Data Objects</h3>
 
   <p class="para">
-   Attempting to serialize a <a target="_blank" href="https://www.php.net/manual/en/class.pdo.php" class="classname">PDO</a> or
-   <a target="_blank" href="https://www.php.net/manual/en/class.pdostatement.php" class="classname">PDOStatement</a> instance will now generate
-   an <a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a> rather than a <a target="_blank" href="https://www.php.net/manual/en/class.pdoexception.php" class="classname">PDOException</a>,
+   Attempting to serialize a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdo.php" class="classname">PDO</a></span> or
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdostatement.php" class="classname">PDOStatement</a></span> instance will now generate
+   an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span> rather than a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdoexception.php" class="classname">PDOException</a></span>,
    consistent with other internal classes which do not support serialization.
   </p>
  </div>
@@ -1796,14 +2108,20 @@
    supported and resulted in corrupted reflection objects. It has been
    explicitly prohibited now.
   </p>
+
+  <p class="para">
+   The values of the class constant of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionclassconstant.php" class="classname">ReflectionClassConstant</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionmethod.php" class="classname">ReflectionMethod</a></span> and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionproperty.php" class="classname">ReflectionProperty</a></span>
+   have changed.
+  </p>
  </div>
 
  <div class="sect2" id="migration74.incompatible.spl">
   <h3 class="title">Standard PHP Library (SPL)</h3>
 
   <p class="para">
-   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-object-vars.php" class="function">get_object_vars()</a></span> on an <a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a>
-   instance will now always return the properties of the <a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a>
+   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-object-vars.php" class="function">get_object_vars()</a></span> on an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a></span>
+   instance will now always return the properties of the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a></span>
    itself (or a subclass). Previously it returned the values of the wrapped
    array/object unless the <strong><code>ArrayObject::STD_PROP_LIST</code></strong>
    flag was specified.
@@ -1830,7 +2148,7 @@
    </li>
   </ul><p class="para">
    <code class="literal">(array)</code> casts are not affected. They will continue to
-   return either the wrapped array, or the <a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a>
+   return either the wrapped array, or the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a></span>
    properties, depending on whether the <strong><code>ArrayObject::STD_PROP_LIST</code></strong>
    flag is used.
   </p>
@@ -1840,8 +2158,8 @@
    fatal error on the next extraction operation.
   </p>
   <p class="para">
-   <a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a>, <a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a>,
-   <a target="_blank" href="https://www.php.net/manual/en/class.spldoublylinkedlist.php" class="classname">SplDoublyLinkedList</a> and <a target="_blank" href="https://www.php.net/manual/en/class.splobjectstorage.php" class="classname">SplObjectStorage</a>
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a></span>, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.spldoublylinkedlist.php" class="classname">SplDoublyLinkedList</a></span> and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.splobjectstorage.php" class="classname">SplObjectStorage</a></span>
    now support the <code class="literal">__serialize()</code> and <code class="literal">__unserialize()</code>
    mechanism in addition to the <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.serializable.php" class="interfacename">Serializable</a></span> interface.
    This means that serialization payloads created on older PHP versions can still be
@@ -1929,7 +2247,7 @@
 
    <p class="para">
     Array accesses of type <code class="literal">$obj["123"]</code>, where
-    <code class="literal">$obj</code> implements <a target="_blank" href="https://www.php.net/manual/en/class.arrayaccess.php" class="classname">ArrayAccess</a> and
+    <code class="literal">$obj</code> implements <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayaccess.php" class="classname">ArrayAccess</a></span> and
     <code class="literal">"123"</code> is an integer <span class="type">string</span> literal will no
     longer result in an implicit conversion to integer, i.e.,
     <code class="literal">$obj-&gt;offsetGet("123")</code> will be called instead of
@@ -1985,7 +2303,7 @@
    <h4 class="title">Argument Unpacking of Traversables with non-Integer Keys no longer supported</h4>
 
    <p class="para">
-    Argument unpacking stopped working with <a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a>s
+    Argument unpacking stopped working with <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a></span>s
     with non-integer keys. The following code worked in PHP 5.6-7.2 by accident.
     </p><div class="informalexample">
      <div class="example-contents">
@@ -2014,13 +2332,13 @@
 
    <p class="para">
     Exceptions thrown due to automatic conversion of warnings into exceptions in
-    <code class="literal">EH_THROW</code> mode (e.g. some <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a>
+    <code class="literal">EH_THROW</code> mode (e.g. some <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a></span>
     exceptions) no longer populate <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.error-get-last.php" class="function">error_get_last()</a></span> state. As
     such, they now work the same way as manually thrown exceptions.
    </p>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a> now reports wrong types as
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span> now reports wrong types as
     <code class="literal">int</code> and <code class="literal">bool</code> instead of
     <code class="literal">integer</code> and <code class="literal">boolean</code>, respectively.
    </p>
@@ -2341,11 +2659,11 @@ int(2)
  </div>
 
  <div class="sect2" id="migration72.incompatible.is_object-on-incomplete_class">
-  <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.is-object.php" class="function">is_object()</a></span> and <strong class="classname">__PHP_Incomplete_Class</strong></h3>
+  <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.is-object.php" class="function">is_object()</a></span> and <span class="classname"><strong class="classname">__PHP_Incomplete_Class</strong></span></h3>
 
   <p class="para">
    Previously, using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.is-object.php" class="function">is_object()</a></span> on the
-   <strong class="classname">__PHP_Incomplete_Class</strong> class would return <strong><code>false</code></strong>.
+   <span class="classname"><strong class="classname">__PHP_Incomplete_Class</strong></span> class would return <strong><code>false</code></strong>.
    Now, <strong><code>true</code></strong> will be returned.
   </p>
  </div>
@@ -2357,7 +2675,7 @@ int(2)
    Unqualified references to undefined constants will now generate an
    <strong><code>E_WARNING</code></strong> (instead of an <strong><code>E_NOTICE</code></strong>).
    In the next major version of PHP, they will generate
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exceptions.
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exceptions.
   </p>
  </div>
 
@@ -2852,7 +3170,7 @@ array(2) {
  <div class="sect2" id="migration71.incompatible.datetime-microseconds">
   <h3 class="title">DateTime constructor incorporates microseconds</h3>
   <p class="para">
-   <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> and <a target="_blank" href="https://www.php.net/manual/en/class.datetimeimmutable.php" class="classname">DateTimeImmutable</a>
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a></span> and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datetimeimmutable.php" class="classname">DateTimeImmutable</a></span>
    now properly incorporate microseconds when constructed from the current time,
    either explicitly or with a relative string (e.g. <code class="literal">"first day of next
    month"</code>). This means that naive comparisons of two newly created
@@ -2870,12 +3188,12 @@ array(2) {
  </div>
 
  <div class="sect2" id="migration71.incompatible.fatal-errors-to-error-exceptions">
-  <h3 class="title">Fatal errors to <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exceptions conversions</h3>
+  <h3 class="title">Fatal errors to <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exceptions conversions</h3>
   <p class="para">
    In the Date extension, invalid serialization data for
-   <a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a> or <a target="_blank" href="https://www.php.net/manual/en/class.dateperiod.php" class="classname">DatePeriod</a> classes,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datetime.php" class="classname">DateTime</a></span> or <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateperiod.php" class="classname">DatePeriod</a></span> classes,
    or timezone initialization failure from serialized data, will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception from the
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception from the
    <span class="methodname"><strong>__wakeup()</strong></span> or <span class="methodname"><strong>__set_state()</strong></span>
    methods, instead of resulting in a fatal error.
   </p>
@@ -2883,118 +3201,118 @@ array(2) {
   <p class="para">
    In the DBA extension, data modification functions (such as
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-insert.php" class="function">dba_insert()</a></span>) will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of triggering a catchable
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of triggering a catchable
    fatal error if the key does not contain exactly two elements.
   </p>
 
   <p class="para">
    In the DOM extension, invalid schema or RelaxNG validation contexts will now
-   throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a
+   throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of resulting in a
    fatal error. Similarly, attempting to register a node class that does not
    extend the appropriate base class, or attempting to read an invalid property
    or write to a readonly property, will also now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception.
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception.
   </p>
 
   <p class="para">
    In the IMAP extension, email addresses longer than 16385 bytes will throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal error.
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of resulting in a fatal error.
   </p>
 
   <p class="para">
    In the Intl extension, failing to call the parent constructor in a class
-   extending <a target="_blank" href="https://www.php.net/manual/en/class.collator.php" class="classname">Collator</a> before invoking the parent methods
-   will now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> instead of resulting in a
+   extending <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.collator.php" class="classname">Collator</a></span> before invoking the parent methods
+   will now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> instead of resulting in a
    recoverable fatal error. Also, cloning a
-   <a target="_blank" href="https://www.php.net/manual/en/class.transliterator.php" class="classname">Transliterator</a> object will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception on failure to clone the internal
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.transliterator.php" class="classname">Transliterator</a></span> object will now throw an
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception on failure to clone the internal
    transliterator instead of resulting in a fatal error.
   </p>
 
   <p class="para">
    In the LDAP extension, providing an unknown modification type to
    <span class="function"><strong>ldap_batch_modify()</strong></span> will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal error.
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of resulting in a fatal error.
   </p>
 
   <p class="para">
    In the mbstring extension, the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-ereg.php" class="function">mb_ereg()</a></span> and
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-eregi.php" class="function">mb_eregi()</a></span> functions will now throw a
-   <a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a> exception if an invalid PHP expression is
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a></span> exception if an invalid PHP expression is
    provided and the 'e' option is used.
   </p>
 
   <p class="para">
    In the Mcrypt extension, the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-encrypt.php" class="function">mcrypt_encrypt()</a></span> and
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-decrypt.php" class="function">mcrypt_decrypt()</a></span> will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal error
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of resulting in a fatal error
    if mcrypt cannot be initialized.
   </p>
 
   <p class="para">
    In the mysqli extension, attempting to read an invalid property or write to
-   a readonly property will now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception
+   a readonly property will now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception
    instead of resulting in a fatal error.
   </p>
 
   <p class="para">
    In the Reflection extension, failing to retrieve a reflection object or
-   retrieve an object property will now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a>
+   retrieve an object property will now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span>
    exception instead of resulting in a fatal error.
   </p>
 
   <p class="para">
    In the Session extension, custom session handlers that do not return strings
-   for session IDs will now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception
+   for session IDs will now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception
    instead of resulting in a fatal error when a function is called that must
    generate a session ID.
   </p>
 
   <p class="para">
    In the SimpleXML extension, creating an unnamed or duplicate attribute will
-   now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in
+   now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of resulting in
    a fatal error.
   </p>
 
   <p class="para">
    In the SPL extension, attempting to clone an
-   <strong class="classname">SplDirectory</strong> object will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal
+   <span class="classname"><strong class="classname">SplDirectory</strong></span> object will now throw an
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of resulting in a fatal
    error. Similarly, calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/arrayiterator.append.php" class="methodname">ArrayIterator::append()</a></span> when
-   iterating over an object will also now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a>
+   iterating over an object will also now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span>
    exception.
   </p>
 
   <p class="para">
    In the standard extension, the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.assert.php" class="function">assert()</a></span> function, when
    provided with a string argument as its first parameter, will now throw a
-   <a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a> exception instead of resulting in a
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a></span> exception instead of resulting in a
    catchable fatal error if the PHP code is invalid. Similarly, calling
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.forward-static-call.php" class="function">forward_static_call()</a></span> outside of a class scope will now
-   throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception.
+   throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception.
   </p>
 
   <p class="para">
-   In the Tidy extension, creating a <a target="_blank" href="https://www.php.net/manual/en/class.tidynode.php" class="classname">tidyNode</a> manually
-   will now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of
+   In the Tidy extension, creating a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.tidynode.php" class="classname">tidyNode</a></span> manually
+   will now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of
    resulting in a fatal error.
   </p>
 
   <p class="para">
    In the WDDX extension, a circular reference when serializing will now throw
-   an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of resulting in a fatal
+   an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of resulting in a fatal
    error.
   </p>
 
   <p class="para">
    In the XML-RPC extension, a circular reference when serializing will now
-   throw an instance of <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of
+   throw an instance of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of
    resulting in a fatal error.
   </p>
 
   <p class="para">
    In the Zip extension, the <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.addglob.php" class="methodname">ZipArchive::addGlob()</a></span>
-   method will now throw an <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exception instead of
+   method will now throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception instead of
    resulting in a fatal error if glob support is not available.
   </p>
  </div>
@@ -3111,15 +3429,15 @@ object(stdClass)#1 (1) {
 
  <p class="para">
   Many fatal and recoverable fatal errors have been converted to exceptions in
-  PHP 7. These error exceptions inherit from the <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a>
-  class, which itself implements the <a target="_blank" href="https://www.php.net/manual/en/class.throwable.php" class="classname">Throwable</a>
+  PHP 7. These error exceptions inherit from the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span>
+  class, which itself implements the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.throwable.php" class="classname">Throwable</a></span>
   interface (the new base interface all exceptions inherit).
  </p>
 
  <p class="para">
   This means that custom error handlers may no longer be triggered because
   exceptions may be thrown instead (causing new fatal errors for uncaught
-  <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> exceptions).
+  <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exceptions).
  </p>
 
  <p class="para">
@@ -3132,22 +3450,22 @@ object(stdClass)#1 (1) {
  <div class="sect3" id="migration70.incompatible.error-handling.set-exception-handler">
   <h4 class="title">
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-exception-handler.php" class="function">set_exception_handler()</a></span> is no longer guaranteed to
-   receive <a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a> objects
+   receive <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span> objects
   </h4>
 
   <p class="para">
    Code that implements an exception handler registered with
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-exception-handler.php" class="function">set_exception_handler()</a></span> using a type declaration of
-   <a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a> will cause a fatal error when an
-   <a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a> object is thrown.
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span> will cause a fatal error when an
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> object is thrown.
   </p>
 
   <p class="para">
    If the handler needs to work on both PHP 5 and 7, you should remove the
    type declaration from the handler, while code that is being migrated to
    work on PHP 7 exclusively can simply replace the
-   <a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a> type declaration with
-   <a target="_blank" href="https://www.php.net/manual/en/class.throwable.php" class="classname">Throwable</a> instead.
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span> type declaration with
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.throwable.php" class="classname">Throwable</a></span> instead.
   </p>
 
   <div class="informalexample">
@@ -3167,16 +3485,16 @@ object(stdClass)#1 (1) {
   <p class="para">
    Previously, some internal classes would return <strong><code>null</code></strong> or an unusable object
    when the constructor failed. All internal classes will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a> in this case in the same way that user
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span> in this case in the same way that user
    classes already had to.
   </p>
  </div>
 
  <div class="sect3" id="migration70.incompatible.error-handling.parse">
-  <h4 class="title">Parse errors throw <a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a></h4>
+  <h4 class="title">Parse errors throw <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a></span></h4>
 
   <p class="para">
-   Parser errors now throw a <a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a> object. Error
+   Parser errors now throw a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a></span> object. Error
    handling for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.eval.php" class="function">eval()</a></span> should now include a <a target="_blank" href="https://www.php.net/manual/en/language.exceptions.php#language.exceptions.catch" class="link"><code class="literal">catch</code></a> block
    that can handle this error.
   </p>
@@ -3567,10 +3885,10 @@ int(1)
  </div>
 
  <div class="sect3" id="migration70.incompatible.foreach.object">
-  <h4 class="title">Iteration of non-<a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a> objects</h4>
+  <h4 class="title">Iteration of non-<span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a></span> objects</h4>
 
   <p class="para">
-   Iterating over a non-<a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a> object will now
+   Iterating over a non-<span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="classname">Traversable</a></span> object will now
    have the same behaviour as iterating over by-reference arrays. This
    results in the
    <a target="_blank" href="https://www.php.net/manual/en/migration70.incompatible.php#migration70.incompatible.foreach.by-ref" class="link">improved behaviour when modifying an array during iteration</a>
@@ -3603,7 +3921,7 @@ int(1)
 
   <p class="para">
    Bitwise shifts by negative numbers will now throw an
-   <a target="_blank" href="https://www.php.net/manual/en/class.arithmeticerror.php" class="classname">ArithmeticError</a>:
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arithmeticerror.php" class="classname">ArithmeticError</a></span>:
   </p>
   <div class="informalexample">
    <div class="example-contents">
@@ -3649,7 +3967,7 @@ Stack trace:
    modulus (%) operators, an E_WARNING would be emitted and
    <strong><code>false</code></strong> would be returned. Now, the divide operator
    returns a float as either +INF, -INF, or NAN, as specified by IEEE 754. The modulus operator E_WARNING
-   has been removed and will throw a <a target="_blank" href="https://www.php.net/manual/en/class.divisionbyzeroerror.php" class="classname">DivisionByZeroError</a>
+   has been removed and will throw a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.divisionbyzeroerror.php" class="classname">DivisionByZeroError</a></span>
    exception.
   </p>
   <div class="informalexample">
@@ -3796,7 +4114,7 @@ string(3) "foo"
    All ereg* functions
   </h4>
   <p class="para">
-   All <a target="_blank" href="https://www.php.net/manual/en/book.regex.php" class="link">ereg</a> functions were removed. 
+   All <code class="literal">ereg</code> functions were removed.
    <a target="_blank" href="https://www.php.net/manual/en/book.pcre.php" class="link">PCRE</a> is a recommended alternative.
   </p>
  </div>
@@ -3805,14 +4123,14 @@ string(3) "foo"
   <h4 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mcrypt.php" class="link">mcrypt</a> aliases</h4>
 
   <p class="para">
-   The deprecated <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-generic-end.php" class="function">mcrypt_generic_end()</a></span> function has been
+   The deprecated <span class="function"><strong>mcrypt_generic_end()</strong></span> function has been
    removed in favour of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-generic-deinit.php" class="function">mcrypt_generic_deinit()</a></span>.
   </p>
 
   <p class="para">
-   Additionally, the deprecated <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-ecb.php" class="function">mcrypt_ecb()</a></span>,
-   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-cbc.php" class="function">mcrypt_cbc()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-cfb.php" class="function">mcrypt_cfb()</a></span> and
-   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-ofb.php" class="function">mcrypt_ofb()</a></span> functions have been removed in favour of
+   Additionally, the deprecated <span class="function"><strong>mcrypt_ecb()</strong></span>,
+   <span class="function"><strong>mcrypt_cbc()</strong></span>, <span class="function"><strong>mcrypt_cfb()</strong></span> and
+   <span class="function"><strong>mcrypt_ofb()</strong></span> functions have been removed in favour of
    using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-decrypt.php" class="function">mcrypt_decrypt()</a></span> with the appropriate
    <strong><code>MCRYPT_MODE_*</code></strong> constant.
   </p>
@@ -3845,8 +4163,8 @@ string(3) "foo"
   <h4 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.php" class="link">intl</a> aliases</h4>
 
   <p class="para">
-   The deprecated <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezoneid.php" class="function">datefmt_set_timezone_id()</a></span> and
-   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezoneid.php" class="methodname">IntlDateFormatter::setTimeZoneID()</a></span> aliases have been
+   The deprecated <span class="function"><strong>datefmt_set_timezone_id()</strong></span> and
+   <span class="methodname"><strong>IntlDateFormatter::setTimeZoneID()</strong></span> aliases have been
    removed in favour of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="function">datefmt_set_timezone()</a></span> and
    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="methodname">IntlDateFormatter::setTimeZone()</a></span>, respectively.
   </p>
@@ -3859,8 +4177,7 @@ string(3) "foo"
    <span class="function"><strong>set_magic_quotes_runtime()</strong></span>, along with its alias
    <span class="function"><strong>magic_quotes_runtime()</strong></span>, have been removed. They were
    deprecated in PHP 5.3.0, and became effectively non-functional with the
-   removal of magic quotes
-   <a target="_blank" href="https://www.php.net/manual/en/migration54.incompatible.php" class="link">in PHP 5.4.0</a>.
+   removal of magic quotes in PHP 5.4.0.
   </p>
  </div>
 
@@ -3949,12 +4266,12 @@ string(3) "foo"
 
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data" class="link"><code class="parameter">always_populate_raw_post_data</code></a>
+     <code class="parameter">always_populate_raw_post_data</code>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.asp-tags" class="link"><code class="parameter">asp_tags</code></a>
+     <code class="parameter">asp_tags</code>
     </span>
    </li>
   </ul></div>
@@ -4442,9 +4759,9 @@ array(3) {
 
   <p class="para">
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-encrypt.php" class="function">mcrypt_encrypt()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-decrypt.php" class="function">mcrypt_decrypt()</a></span>,
-   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-cbc.php" class="function">mcrypt_cbc()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-cfb.php" class="function">mcrypt_cfb()</a></span>,
-   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-ecb.php" class="function">mcrypt_ecb()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-generic.php" class="function">mcrypt_generic()</a></span> and
-   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-ofb.php" class="function">mcrypt_ofb()</a></span> will no longer accept keys or IVs with
+   <span class="function"><strong>mcrypt_cbc()</strong></span>, <span class="function"><strong>mcrypt_cfb()</strong></span>,
+   <span class="function"><strong>mcrypt_ecb()</strong></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-generic.php" class="function">mcrypt_generic()</a></span> and
+   <span class="function"><strong>mcrypt_ofb()</strong></span> will no longer accept keys or IVs with
    incorrect sizes, and block cipher modes that require IVs will now fail if
    an IV isn't provided.
   </p>
@@ -4455,7 +4772,7 @@ array(3) {
 
   <p class="para">
    Uploads using the @file syntax now require CURLOPT_SAFE_UPLOAD to be set to
-   <strong><code>false</code></strong>. <a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a> should be used instead.
+   <strong><code>false</code></strong>. <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a></span> should be used instead.
   </p>
  </div>
 </div></article><article id="layout-content" class="info-version">
@@ -4499,42 +4816,42 @@ array(3) {
   </div>
 
   <div class="sect2" id="migration55.incompatible.pack">
-   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.php" class="function">pack()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> changes</h3>
+   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> changes</h3>
 
    <p class="para">
-    Changes were made to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.php" class="function">pack()</a></span> and
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> to make them more compatible with Perl:
+    Changes were made to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> to make them more compatible with Perl:
    </p>
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.php" class="function">pack()</a></span> now supports the "Z" format code, which
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> now supports the "Z" format code, which
       behaves identically to "a".
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> now support the "Z" format code for NULL
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> now support the "Z" format code for NULL
       padded strings, and behaves as "a" did in previous versions: it will
       strip trailing NULL bytes.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> now keeps trailing NULL bytes when the "a"
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> now keeps trailing NULL bytes when the "a"
       format code is used.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> now strips all trailing ASCII whitespace
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> now strips all trailing ASCII whitespace
       when the "A" format code is used.
      </span>
     </li>
    </ul><p class="para">
     Writing backward compatible code that uses the "a" format code with
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> requires the use of
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.version-compare.php" class="function">version_compare()</a></span>, due to the backward compatibility
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> requires the use of
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.version-compare.html" class="function">version_compare()</a></span>, due to the backward compatibility
     break.
    </p>
    <p class="para">
@@ -4551,12 +4868,12 @@ array(3) {
    </div>
   </div>
   <div class="sect2" id="migration55.incompatible.json">
-   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span> changes</h3>
+   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.html" class="function">json_encode()</a></span> changes</h3>
    <p class="para">
-     When the <code class="parameter">value</code> passed to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span> triggers a JSON encoding error,
-     <strong><code>false</code></strong> is returned instead of partial output,
+     When the <code class="parameter">value</code> passed to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.html" class="function">json_encode()</a></span> triggers a JSON encoding error,
+     <strong><code>FALSE</code></strong> is returned instead of partial output,
      unless <code class="parameter">options</code> contains <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong>.
-     See <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error.php" class="function">json_last_error()</a></span> for the full list of reasons that can cause JSON encoding to fail.
+     See <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error.html" class="function">json_last_error()</a></span> for the full list of reasons that can cause JSON encoding to fail.
      One of the potential failure reasons is that <code class="parameter">value</code> contains strings containing invalid UTF-8.
    </p>
   </div>
@@ -4566,9 +4883,9 @@ array(3) {
 
    <p class="para">
     Prior to PHP 5.5, cases existed where the
-    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php" class="link">self</a>,
-    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php" class="link">parent</a>, and
-    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.late-static-bindings.php" class="link">static</a>
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.html" class="link">self</a>,
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.html" class="link">parent</a>, and
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.late-static-bindings.html" class="link">static</a>
     keywords were treated in a case sensitive fashion. These have now been
     resolved, and these keywords are always handled case insensitively:
     <code class="literal">SELF::CONSTANT</code> is now treated identically to
@@ -4587,7 +4904,7 @@ array(3) {
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>php_logo_guid()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.php-logo-guid.html" class="function">php_logo_guid()</a></span>
      </span>
     </li>
     <li class="listitem">
@@ -4602,7 +4919,7 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>zend_logo_guid()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.zend-logo-guid.html" class="function">zend_logo_guid()</a></span>
      </span>
     </li>
    </ul></div>
@@ -4620,7 +4937,7 @@ array(3) {
    <p class="para">
     Most extension authors are unlikely to be affected, but those writing
     extensions that hook deeply into the Zend Engine should read
-    <a target="_blank" href="https://www.php.net/manual/en/migration55.internals.php" class="link">the notes on these changes</a>.
+    <a target="_blank" href="https://www.php.net/manual/en/migration55.internals.html" class="link">the notes on these changes</a>.
    </p>
   </div>
  </div></article><article id="layout-content" class="info-version">
@@ -4636,43 +4953,43 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     Safe mode is no
+     <a target="_blank" href="https://www.php.net/manual/en/features.safe-mode.html" class="link">Safe mode</a> is no
      longer supported. Any applications that rely on safe mode may need
      adjustment, in terms of security.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/security.magicquotes.php" class="link">Magic quotes</a> has been removed. Applications relying
+     <a target="_blank" href="https://www.php.net/manual/en/security.magicquotes.html" class="link">Magic quotes</a> has been removed. Applications relying
      on this feature may need to be updated, to avoid security issues.
     </span>
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-gpc.php" class="function">get_magic_quotes_gpc()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-runtime.php" class="function">get_magic_quotes_runtime()</a></span>
-     now always return <strong><code>false</code></strong>. <span class="function"><strong>set_magic_quotes_runtime()</strong></span> raises an
-     <strong><code>E_CORE_ERROR</code></strong> level error on trying to enable <a target="_blank" href="https://www.php.net/manual/en/security.magicquotes.php" class="link">Magic quotes</a>.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-gpc.html" class="function">get_magic_quotes_gpc()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-runtime.html" class="function">get_magic_quotes_runtime()</a></span>
+     now always return <strong><code>FALSE</code></strong>. <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a></span> raises an
+     <strong><code>E_CORE_ERROR</code></strong> level error on trying to enable <a target="_blank" href="https://www.php.net/manual/en/security.magicquotes.html" class="link">Magic quotes</a>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.register-globals" class="link">register_globals</a> and
-     <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.register-long-arrays" class="link">register_long_arrays</a> <var class="filename">php.ini</var> directives
+     The <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-globals" class="link">register_globals</a> and
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a> <var class="filename">php.ini</var> directives
      have been removed.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The mbstring.script_encoding directive has been removed. Use <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.zend.script-encoding" class="link">zend.script_encoding</a> instead.
+     The mbstring.script_encoding directive has been removed. Use <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a> instead.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.references.pass.php" class="link">Call-time pass by reference</a> has been removed.
+     <a target="_blank" href="https://www.php.net/manual/en/language.references.pass.html" class="link">Call-time pass by reference</a> has been removed.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/control-structures.break.php" class="link">break</a>
-     and <a target="_blank" href="https://www.php.net/manual/en/control-structures.continue.php" class="link">continue</a>
+     The <a target="_blank" href="https://www.php.net/manual/en/control-structures.break.html" class="link">break</a>
+     and <a target="_blank" href="https://www.php.net/manual/en/control-structures.continue.html" class="link">continue</a>
      statements no longer accept variable arguments (e.g., <code class="literal">break 1 + foo() * $bar;</code>).
      Static arguments still work, such as <code class="literal">break 2;</code>. As a side effect of this change
      <code class="literal">break 0;</code> and <code class="literal">continue 0;</code> are no longer allowed.
@@ -4680,25 +4997,25 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     The default character set for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.php" class="function">htmlspecialchars()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.php" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.php" class="function">html_entity_decode()</a></span> is now <code class="literal">UTF-8</code>,
+     The default character set for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span> is now <code class="literal">UTF-8</code>,
      instead of <code class="literal">ISO-8859-1</code>.  Note that changing your output
-     charset via the <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.default-charset" class="link">default_charset</a>
+     charset via the <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.default-charset" class="link">default_charset</a>
      configuration setting does not affect htmlspecialchars/htmlentities unless
      you are passing "" (an empty string) as the encoding parameter to your 
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.php" class="function">htmlspecialchars()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.php" class="function">htmlentities()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.php" class="function">html_entity_decode()</a></span> calls.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span> calls.
      Generally we do not recommend doing this because you should be able to
      change your output charset without affecting the runtime charset used by
      these functions. The safest approach is to explicitly set the charset on
-     each call to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.php" class="function">htmlspecialchars()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.php" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.php" class="function">html_entity_decode()</a></span>.
+     each call to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     In the <a target="_blank" href="https://www.php.net/manual/en/book.datetime.php" class="link">date and time extension</a>, the timezone can no longer be
+     In the <a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">date and time extension</a>, the timezone can no longer be
      set using the TZ environment variable. Instead you have to specify a timezone using the
-     <a target="_blank" href="https://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone" class="link">date.timezone</a> <var class="filename">php.ini</var> option or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-default-timezone-set.php" class="function">date_default_timezone_set()</a></span>
+     <a target="_blank" href="https://www.php.net/manual/en/datetime.configuration.html#ini.date.timezone" class="link">date.timezone</a> <var class="filename">php.ini</var> option or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span>
      function. PHP will no longer attempt to guess the timezone, and will instead fall back to "UTC" and issue
      a <strong><code>E_WARNING</code></strong>.
     </span>
@@ -4706,7 +5023,7 @@ array(3) {
    <li class="listitem">
     <span class="simpara">
      Non-numeric string offsets - e.g. <code class="literal">$a['foo']</code> where $a is a string - now return
-     false on <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.isset.php" class="function">isset()</a></span> and true on <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.empty.php" class="function">empty()</a></span>, and produce a <strong><code>E_WARNING</code></strong>
+     false on <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.isset.html" class="function">isset()</a></span> and true on <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.empty.html" class="function">empty()</a></span>, and produce a <strong><code>E_WARNING</code></strong>
      if you try to use them. Offsets of types double, bool and null produce a <strong><code>E_NOTICE</code></strong>. Numeric strings
      (e.g. <code class="literal">$a['2']</code>) still work as before. Note that offsets like <code class="literal">'12.3'</code>
      and <code class="literal">'5 foobar'</code> are considered non-numeric and produce a <strong><code>E_WARNING</code></strong>, but are converted
@@ -4727,7 +5044,7 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     Turning <strong><code>null</code></strong>, <strong><code>false</code></strong>, or an empty string into an object by adding a property
+     Turning <strong><code>NULL</code></strong>, <strong><code>FALSE</code></strong>, or an empty string into an object by adding a property
      will now emit an <strong><code>E_WARNING</code></strong> level error, instead of <strong><code>E_STRICT</code></strong>.
     </span>
    </li>
@@ -4739,65 +5056,58 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     The Salsa10 and Salsa20 <a target="_blank" href="https://www.php.net/manual/en/book.hash.php" class="link">hash algorithms</a> have been removed.
+     The Salsa10 and Salsa20 <a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">hash algorithms</a> have been removed.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The Tiger <a target="_blank" href="https://www.php.net/manual/en/book.hash.php" class="link">hash algorithm</a> now uses big-endian byte ordering.
-     Please follow <a target="_blank" href="https://www.php.net/manual/en/function.hash.php#function.hash.tiger-bc" class="link">this example</a> to write code that
+     The Tiger <a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">hash algorithm</a> now uses big-endian byte ordering.
+     Please follow <a target="_blank" href="https://www.php.net/manual/en/function.hash.html#function.hash.tiger-bc" class="link">this example</a> to write code that
      is compatible with both PHP 5.3 and 5.4.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-combine.php" class="function">array_combine()</a></span> now returns <code class="literal">array()</code> instead of <strong><code>false</code></strong>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-combine.html" class="function">array_combine()</a></span> now returns <code class="literal">array()</code> instead of <strong><code>FALSE</code></strong>
      when two empty arrays are provided as parameters.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     If you use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.php" class="function">htmlentities()</a></span> with asian character sets, it
-     works like <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.php" class="function">htmlspecialchars()</a></span> - this has always been the
+     If you use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span> with asian character sets, it
+     works like <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> - this has always been the
      case in previous versions of PHP, but now an <strong><code>E_STRICT</code></strong>
      level error is emitted.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The third parameter of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ob-start.php" class="function">ob_start()</a></span> has changed from
-     <span class="type">bool</span> <code class="parameter">erase</code> to <span class="type">int</span>
+     The third parameter of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ob-start.html" class="function">ob_start()</a></span> has changed from
+     <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.html" class="type boolean">boolean</a></span> <code class="parameter">erase</code> to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.html" class="type integer">integer</a></span>
      <code class="parameter">flags</code>. Note that code that explicitly set
-     <code class="parameter">erase</code> to <strong><code>false</code></strong> will no longer behave as expected
+     <code class="parameter">erase</code> to <strong><code>FALSE</code></strong> will no longer behave as expected
      in PHP 5.4: please follow
-     <a target="_blank" href="https://www.php.net/manual/en/function.ob-start.php#function.ob-start.flags-bc" class="link">this example</a> to write
+     <a target="_blank" href="https://www.php.net/manual/en/function.ob-start.html#function.ob-start.flags-bc" class="link">this example</a> to write
      code that is compatible with PHP 5.3 and 5.4.
     </span>
    </li>
-   <li class="listitem">
-    <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-select.php" class="function">stream_select()</a></span> now preserves the keys of the
-     <code class="parameter">read</code>, <code class="parameter">write</code> and <code class="parameter">except</code>
-     <span class="type">array</span>s.
-    </span>
-   </li>
   </ul><p class="simpara">
-   The following keywords are now <a target="_blank" href="https://www.php.net/manual/en/reserved.php" class="link">reserved</a>, and may not be used
+   The following keywords are now <a target="_blank" href="https://www.php.net/manual/en/reserved.html" class="link">reserved</a>, and may not be used
    as names by functions, classes, etc.
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.traits.php" class="link">trait</a>
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.traits.html" class="link">trait</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.callable.php" class="link">callable</a>
+     <a target="_blank" href="https://www.php.net/manual/en/language.types.callable.html" class="link">callable</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.traits.php" class="link">insteadof</a>
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.traits.html" class="link">insteadof</a>
     </span>
    </li>
   </ul><p class="simpara">
@@ -4805,27 +5115,27 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.define-syslog-variables.php" class="function">define_syslog_variables()</a></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.define-syslog-variables.html" class="function">define_syslog_variables()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><strong>import_request_variables()</strong></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.import-request-variables.html" class="function">import_request_variables()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-is-registered.php" class="function">session_is_registered()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-register.php" class="function">session_register()</a></span>
-     and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-unregister.php" class="function">session_unregister()</a></span>.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-is-registered.html" class="function">session_is_registered()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-register.html" class="function">session_register()</a></span>
+     and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-unregister.html" class="function">session_unregister()</a></span>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
      The aliases
-     <span class="function"><strong>mysqli_bind_param()</strong></span>, <span class="function"><strong>mysqli_bind_result()</strong></span>,
-     <span class="function"><strong>mysqli_client_encoding()</strong></span>, <span class="function"><strong>mysqli_fetch()</strong></span>,
-     <span class="function"><strong>mysqli_param_count()</strong></span>, <span class="function"><strong>mysqli_get_metadata()</strong></span>,
-     <span class="function"><strong>mysqli_send_long_data()</strong></span>, mysqli::client_encoding() and mysqli_stmt::stmt().
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-bind-param.html" class="function">mysqli_bind_param()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-bind-result.html" class="function">mysqli_bind_result()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-client-encoding.html" class="function">mysqli_client_encoding()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-fetch.html" class="function">mysqli_fetch()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-param-count.html" class="function">mysqli_param_count()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-get-metadata.html" class="function">mysqli_get_metadata()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-send-long-data.html" class="function">mysqli_send_long_data()</a></span>, mysqli::client_encoding() and mysqli_stmt::stmt().
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
@@ -4843,36 +5153,36 @@ array(3) {
     <span class="simpara">
      The newer internal parameter parsing API has been applied across all the
      extensions bundled with PHP 5.3.x. This parameter parsing API causes
-     functions to return <strong><code>null</code></strong> when passed incompatible parameters. There are
-     some exceptions to this rule, such as the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class.php" class="function">get_class()</a></span>
-     function, which will continue to return <strong><code>false</code></strong> on error.
+     functions to return <strong><code>NULL</code></strong> when passed incompatible parameters. There are
+     some exceptions to this rule, such as the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class.html" class="function">get_class()</a></span>
+     function, which will continue to return <strong><code>FALSE</code></strong> on error.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.clearstatcache.php" class="function">clearstatcache()</a></span> no longer clears the realpath cache by
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.clearstatcache.html" class="function">clearstatcache()</a></span> no longer clears the realpath cache by
      default.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.realpath.php" class="function">realpath()</a></span> is now fully platform-independent.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.realpath.html" class="function">realpath()</a></span> is now fully platform-independent.
      Consequence of this is that invalid relative paths such as
      <code class="literal">__FILE__ . "/../x"</code> do not work anymore.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func.php" class="function">call_user_func()</a></span> family of functions now propagate
+     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func.html" class="function">call_user_func()</a></span> family of functions now propagate
      <code class="literal">$this</code> even if the callee is a parent class.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The array functions <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.natsort.php" class="function">natsort()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.natcasesort.php" class="function">natcasesort()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.usort.php" class="function">usort()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.uasort.php" class="function">uasort()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.uksort.php" class="function">uksort()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-flip.php" class="function">array_flip()</a></span>, and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-unique.php" class="function">array_unique()</a></span> no
+     The array functions <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.natsort.html" class="function">natsort()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.natcasesort.html" class="function">natcasesort()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.usort.html" class="function">usort()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.uasort.html" class="function">uasort()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.uksort.html" class="function">uksort()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-flip.html" class="function">array_flip()</a></span>, and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-unique.html" class="function">array_unique()</a></span> no
      longer accept objects passed as arguments. To apply these functions to an
      object, cast the object to an array first.
     </span>
@@ -4890,7 +5200,7 @@ array(3) {
     <span class="simpara">
      The new mysqlnd library necessitates the use of MySQL 4.1's newer 41-byte
      password format. Continued use of the old 16-byte passwords will cause
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-connect.php" class="function">mysql_connect()</a></span> and similar functions to emit the error,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-connect.html" class="function">mysql_connect()</a></span> and similar functions to emit the error,
      <code class="literal">"mysqlnd cannot connect to MySQL 4.1+ using old
      authentication."</code>
     </span>
@@ -4900,7 +5210,7 @@ array(3) {
      The new mysqlnd library does not read mysql configuration files 
      (my.cnf/my.ini), as the older libmysqlclient library does.  If your code relies on 
      settings in the configuration file, you can load it explicitly with the 
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.options.php" class="function">mysqli_options()</a></span> function. Note that this means the 
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.options.html" class="function">mysqli_options()</a></span> function. Note that this means the 
      PDO specific constants <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_FILE</code></strong> 
      and <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</code></strong> are not defined 
      if MySQL support in PDO is compiled with mysqlnd.
@@ -4908,39 +5218,39 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     The trailing / has been removed from the <a target="_blank" href="https://www.php.net/manual/en/class.splfileinfo.php" class="classname">SplFileInfo</a>
+     The trailing / has been removed from the <a target="_blank" href="https://www.php.net/manual/en/class.splfileinfo.html" class="classname">SplFileInfo</a>
      class and other related directory classes.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> magic
+     The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> magic
      method can no longer accept arguments.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
      The magic methods 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.get" class="link">__get()</a>, 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.set" class="link">__set()</a>, 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.isset" class="link">__isset()</a>, 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.unset" class="link">__unset()</a>, and
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.call" class="link">__call()</a> must always
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.get" class="link">__get()</a>, 
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.set" class="link">__set()</a>, 
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.isset" class="link">__isset()</a>, 
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.unset" class="link">__unset()</a>, and
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.call" class="link">__call()</a> must always
      be public and can no longer be static. Method signatures are now enforced.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.call" class="link">__call()</a>
+     The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.call" class="link">__call()</a>
      magic method is now invoked on access to private and protected methods.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-arg.php" class="function">func_get_arg()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-args.php" class="function">func_get_args()</a></span> and
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-num-args.php" class="function">func_num_args()</a></span> can no longer be called from the
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-arg.html" class="function">func_get_arg()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-args.html" class="function">func_get_args()</a></span> and
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-num-args.html" class="function">func_num_args()</a></span> can no longer be called from the
      outermost scope of a file that has been included by calling
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include.php" class="function">include</a></span> or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.require.php" class="function">require</a></span> from within
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include.html" class="function">include</a></span> or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.require.html" class="function">require</a></span> from within
      a function in the calling file.
     </span>
    </li>
@@ -4958,12 +5268,12 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/control-structures.goto.php" class="link">goto</a>
+     <a target="_blank" href="https://www.php.net/manual/en/control-structures.goto.html" class="link">goto</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.namespaces.php" class="link">namespace</a>
+     <a target="_blank" href="https://www.php.net/manual/en/language.namespaces.html" class="link">namespace</a>
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
@@ -4979,20 +5289,20 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getrusage.php" class="function">getrusage()</a></span> returns <strong><code>null</code></strong> when passed
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getrusage.html" class="function">getrusage()</a></span> returns <strong><code>NULL</code></strong> when passed
      incompatible arguments as of PHP 5.2.1.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcommentname.php" class="function">ZipArchive::setCommentName()</a></span>
-     returns <strong><code>true</code></strong> on success as of PHP 5.2.1.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcommentname.html" class="function">ZipArchive::setCommentName()</a></span>
+     returns <strong><code>TRUE</code></strong> on success as of PHP 5.2.1.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcommentindex.php" class="function">ZipArchive::setCommentIndex()</a></span>
-     returns <strong><code>true</code></strong> on success as of PHP 5.2.1.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcommentindex.html" class="function">ZipArchive::setCommentIndex()</a></span>
+     returns <strong><code>TRUE</code></strong> on success as of PHP 5.2.1.
     </span>
    </li>
    <li class="listitem">
@@ -5020,7 +5330,7 @@ array(3) {
      leading to unpredictable behavior if an unexpected configuration file were
      read. This functionality was removed in 5.2.0, and PHP will no longer search
      CWD for the presence of <var class="filename">php.ini</var> or <var class="filename">php-cli.ini</var> files.
-     See also the <a target="_blank" href="https://www.php.net/manual/en/features.commandline.php" class="link">command line</a> section
+     See also the <a target="_blank" href="https://www.php.net/manual/en/features.commandline.html" class="link">command line</a> section
      of the manual.
     </span>
    </li>
@@ -5030,7 +5340,7 @@ array(3) {
     </span>
     <span class="simpara">
      In earlier versions of PHP, performing integer % 0 did not emit any
-     warning messages, instead returning an unexpected return value of <strong><code>false</code></strong>.
+     warning messages, instead returning an unexpected return value of <strong><code>FALSE</code></strong>.
      As of PHP 5.2.0, this operation will emit an <strong><code>E_WARNING</code></strong>, 
      as is the case in all other instances where division by zero is performed.
     </span>
@@ -5046,11 +5356,11 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     Changed <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> to be called wherever
+     Changed <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> to be called wherever
      applicable.
     </span>
     <span class="simpara">
-     The magic method <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> will now be called
+     The magic method <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> will now be called
      in a string context, that is, anywhere an object is used as a
      string.
     </span>
@@ -5073,15 +5383,15 @@ array(3) {
 
     </div>
     <span class="simpara">
-     Even with <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a>, objects cannot be used as
+     Even with <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a>, objects cannot be used as
      array indices or keys. We may add built-in hash support for this at
      a later date, but as of PHP 5.2.x you will need to either provide your
      own hashing or use the new SPL function
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-object-hash.php" class="function">spl_object_hash()</a></span>.
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-object-hash.html" class="function">spl_object_hash()</a></span>.
     </span>
     <span class="simpara">
      Exceptions can not be thrown from
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a> methods.
+     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> methods.
     </span>
     <div class="informalexample">
      <div class="example-contents">
@@ -5113,7 +5423,7 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ref.oci8.php" class="link">Oracle extension</a> requires at least Oracle
+     <a target="_blank" href="https://www.php.net/manual/en/ref.oci8.html" class="link">Oracle extension</a> requires at least Oracle
      10 on Windows.
     </span>
    </li>
@@ -5149,7 +5459,7 @@ array(3) {
     <span class="simpara">
      In version 5.2.4 a security fix caused a regression for patterns of
      the form "/foo/*/bar/*". Since version 5.2.5 instead of raising a warning the
-     <code class="literal">glob()</code> function will return <strong><code>false</code></strong> when
+     <code class="literal">glob()</code> function will return <strong><code>FALSE</code></strong> when
      <code class="literal">openbase_dir</code> restrictions are violated.
     </span>
    </li>
@@ -5166,13 +5476,13 @@ array(3) {
    </p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      There are some <a target="_blank" href="https://www.php.net/manual/en/reserved.keywords.php" class="link">new reserved
+      There are some <a target="_blank" href="https://www.php.net/manual/en/reserved.keywords.html" class="link">new reserved
       keywords</a>.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strrpos.php" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strripos.php" class="function">strripos()</a></span> now use
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strrpos.html" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strripos.html" class="function">strripos()</a></span> now use
       the entire string as a needle.
      </span>
     </li>
@@ -5185,7 +5495,7 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-merge.php" class="function">array_merge()</a></span> was changed to accept only arrays. If a
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-merge.html" class="function">array_merge()</a></span> was changed to accept only arrays. If a
       non-array variable is passed, a <strong><code>E_WARNING</code></strong> will be
       thrown for every such parameter. Be careful because your code may start
       emitting <strong><code>E_WARNING</code></strong> out of the blue.
@@ -5197,7 +5507,7 @@ array(3) {
       Apache2 SAPI in contrast to the situation in PHP 4, where it is set to
       the same value as the <strong><code>SCRIPT_FILENAME</code></strong> server variable when it is not
       populated by Apache. This change was made to comply with the <a target="_blank" href="https://www.php.net/manual/en/http://www.faqs.org/rfcs/rfc3875" class="link external">» CGI/1.1 specification</a>. Please refer to <a target="_blank" href="https://www.php.net/manual/en/https://bugs.php.net/23610" class="link external">» bug #23610</a> for further information,
-      and see also the <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.php" class="classname">$_SERVER['PATH_TRANSLATED']</a></var>
+      and see also the <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.html" class="classname">$_SERVER['PATH_TRANSLATED']</a></var>
       description in the manual. This issue 
       also affects PHP versions &gt;= 4.3.2.
      </span>
@@ -5205,7 +5515,7 @@ array(3) {
     <li class="listitem">
      <span class="simpara">
       The <strong><code>T_ML_COMMENT</code></strong> constant is no longer defined by
-      the <a target="_blank" href="https://www.php.net/manual/en/ref.tokenizer.php" class="link">Tokenizer</a> extension. If
+      the <a target="_blank" href="https://www.php.net/manual/en/ref.tokenizer.html" class="link">Tokenizer</a> extension. If
       error_reporting is set to <strong><code>E_ALL</code></strong>, PHP will
       generate a notice. Although the <strong><code>T_ML_COMMENT</code></strong> was
       never used at all, it was defined in PHP 4. In both PHP 4 and PHP 5
@@ -5216,16 +5526,16 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.php" class="classname">$_SERVER</a></var> should be populated with <var class="varname">argc</var> and
+      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.html" class="classname">$_SERVER</a></var> should be populated with <var class="varname">argc</var> and
       <var class="varname">argv</var> if
-      <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.variables-order" class="link">variables_order</a> includes "S".
+      <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.variables-order" class="link">variables_order</a> includes "S".
       If you have specifically configured your system to not create
-      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.php" class="classname">$_SERVER</a></var>, then of course it shouldn't be there.
+      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.html" class="classname">$_SERVER</a></var>, then of course it shouldn't be there.
       The change was to always make <var class="varname">argc</var>
       and <var class="varname">argv</var> available in the CLI version regardless of the
-      <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.variables-order" class="link">variables_order</a> setting.
+      <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.variables-order" class="link">variables_order</a> setting.
       As in, the CLI version will now always populate the global
-      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argc.php" class="classname">$argc</a></var> and <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argv.php" class="classname">$argv</a></var> variables.
+      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argc.html" class="classname">$argc</a></var> and <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argv.html" class="classname">$argv</a></var> variables.
      </span>
     </li>
     <li class="listitem">
@@ -5236,23 +5546,23 @@ array(3) {
     <li class="listitem">
      <span class="simpara">
       In some cases classes must be declared before use. It only happens if
-      some of the new features of PHP 5 (such as <a target="_blank" href="https://www.php.net/manual/en/language.oop5.interfaces.php" class="link">interfaces</a>) are used.
+      some of the new features of PHP 5 (such as <a target="_blank" href="https://www.php.net/manual/en/language.oop5.interfaces.html" class="link">interfaces</a>) are used.
       Otherwise the behaviour is the old.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class.php" class="function">get_class()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-parent-class.php" class="function">get_parent_class()</a></span>
-      and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class-methods.php" class="function">get_class_methods()</a></span> now return the name of the
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class.html" class="function">get_class()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-parent-class.html" class="function">get_parent_class()</a></span>
+      and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class-methods.html" class="function">get_class_methods()</a></span> now return the name of the
       classes/methods as they were declared (case-sensitive) which may lead to
       problems in older scripts that rely on the previous behaviour (the
       class/method name was always returned lowercased). A possible solution
       is to search for those functions in all your scripts and use
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strtolower.php" class="function">strtolower()</a></span>.
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strtolower.html" class="function">strtolower()</a></span>.
      </span>
      <span class="simpara">
       This case sensitivity change also applies to the 
-      <a target="_blank" href="https://www.php.net/manual/en/language.constants.predefined.php" class="link">magical predefined 
+      <a target="_blank" href="https://www.php.net/manual/en/language.constants.predefined.html" class="link">magical predefined 
       constants</a> <strong><code>__CLASS__</code></strong>, 
       <strong><code>__METHOD__</code></strong>, and <strong><code>__FUNCTION__</code></strong>.
       The values are returned exactly as they're declared (case-sensitive).
@@ -5260,7 +5570,7 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ip2long.php" class="function">ip2long()</a></span> now returns <strong><code>false</code></strong> when an invalid IP
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ip2long.html" class="function">ip2long()</a></span> now returns <strong><code>FALSE</code></strong> when an invalid IP
       address is passed as argument to the function, and no longer
       <code class="literal">-1</code>.
      </span>
@@ -5268,17 +5578,17 @@ array(3) {
     <li class="listitem">
      <span class="simpara">
       If there are functions defined in the included file, they can be used in the
-      main file independent if they are before <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.return.php" class="function">return</a></span> or after.
+      main file independent if they are before <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.return.html" class="function">return</a></span> or after.
       If the file is included twice, PHP 5 issues fatal error because functions
       were already declared, while PHP 4 doesn't complain about it.
-      It is recommended to use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include-once.php" class="function">include_once</a></span> instead of
+      It is recommended to use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include-once.html" class="function">include_once</a></span> instead of
       checking if the file was already included and conditionally return inside
       the included file.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include-once.php" class="function">include_once</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.require-once.php" class="function">require_once</a></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include-once.html" class="function">include_once</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.require-once.html" class="function">require_once</a></span>
       first normalize the path of included file on Windows so that including
       A.php and a.php include the file just once.
      </span>
@@ -5295,8 +5605,8 @@ array(3) {
      </span>
     </li>
    </ul><p class="para">
-    </p><div class="example" id="example-6099">
-     <p><strong>Example #1 <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strrpos.php" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strripos.php" class="function">strripos()</a></span> now
+    </p><div class="example" id="example-6941">
+     <p><strong>Example #1 <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strrpos.html" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strripos.html" class="function">strripos()</a></span> now
       use the entire string as a needle</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -5308,7 +5618,7 @@ array(3) {
     </div>
    
    <p class="para">
-    </p><div class="example" id="example-6100">
+    </p><div class="example" id="example-6942">
      <p><strong>Example #2 An object with no properties is no longer considered "empty"</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -5320,7 +5630,7 @@ array(3) {
     </div>
    
    <p class="para">
-    </p><div class="example" id="example-6101">
+    </p><div class="example" id="example-6943">
      <p><strong>Example #3 In some cases classes must be declared before used</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

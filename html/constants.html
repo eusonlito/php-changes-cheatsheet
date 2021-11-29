@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</title>
+        <title>New Global Constants in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta name="title" content="New Global Constants in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
 
-        <meta property="og:title" content="New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta property="og:title" content="New Global Constants in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta name="twitter:title" content="New Global Constants in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,57 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Global Constants in PHP 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</a></h1>
+        <h1><a href="index.html"> New Global Constants in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration81.constants.php" target="_blank">PHP 8.1</a></h1>
+    </header>
+
+    <div id="migration81.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration81.constants.mysqli">
+  <h3 class="title">MySQLi</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>MYSQLI_REFRESH_REPLICA</code></strong></span>
+    <p class="para">
+     This constant has been added as a replacement for
+     <strong><code>MYSQLI_REFRESH_SLAVE</code></strong>,
+     in line with an upstream change in MySQL.
+     The old constant is still available for backwards-compatibility reasons,
+     but may be deprecated/removed in the future.
+    </p>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.constants.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <p class="para">
+   The following socket options are now defined if they are supported:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>SO_ACCEPTFILTER</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_DONTTRUNC</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_WANTMORE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_MARK</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TCP_DEFER_ACCEPT</code></strong></span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration74.constants.php" target="_blank">PHP 7.4</a></h1>
     </header>

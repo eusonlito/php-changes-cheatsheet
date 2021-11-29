@@ -58,9 +58,28 @@ class Cache extends CommandAbstract
     }
 
     /**
+     * @param string $path
+     *
+     * @return string
+     */
+    protected function urlLegacy(string $path): string
+    {
+        return static::URL_LEGACY_DOCS.'/'.str_replace('.html', '.php', $path);
+    }
+
+    /**
      * @return \Generator
      */
     protected function urls(): Generator
+    {
+        yield from $this->urlsCurrent();
+        yield from $this->urlsLegacy();
+    }
+
+    /**
+     * @return \Generator
+     */
+    protected function urlsCurrent(): Generator
     {
         $dom = $this->dom($this->url('appendices.php'));
 
@@ -74,6 +93,22 @@ class Cache extends CommandAbstract
     }
 
     /**
+     * @return \Generator
+     */
+    protected function urlsLegacy(): Generator
+    {
+        $dom = $this->dom($this->urlLegacy('appendices'));
+
+        foreach ($dom->query('//div[@id="appendices"]/ul/li/ul/li/a') as $node) {
+            $href = $node->getAttribute('href');
+
+            if (strpos($href, 'migration') === 0) {
+                yield $this->urlLegacy($href);
+            }
+        }
+    }
+
+    /**
      * @param string $url
      *
      * @return void
@@ -81,6 +116,11 @@ class Cache extends CommandAbstract
     protected function store(string $url): void
     {
         $target = $this->path(basename($url));
+
+        if (is_file($target)) {
+            MessageConsole::echo(sprintf("Skip download existing file <color:yellow>%s</color> into <color:yellow>%s</color>\n", $url, $this->removePathBase($target)));
+            return;
+        }
 
         MessageConsole::echo(sprintf("Downloading <color:green>%s</color> into <color:green>%s</color>\n", $url, $this->removePathBase($target)));
 

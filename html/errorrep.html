@@ -20,8 +20,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1609711191" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1609711191" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1638181223" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1638181223" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -49,29 +49,29 @@
   <p class="para">
    Some of the existing <strong><code>E_ERROR</code></strong> conditions have been
    converted to something that can be caught with a user-defined error
-   handler.  If an <a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php" class="link"><strong><code>E_RECOVERABLE_ERROR</code></strong></a>
+   handler.  If an <a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.html" class="link"><strong><code>E_RECOVERABLE_ERROR</code></strong></a>
    is not handled, it will behave in the same way as
    <strong><code>E_ERROR</code></strong> behaves in all versions of PHP.  Errors of
    this type are logged as <code class="literal">Catchable fatal error</code>.
   </p>
   <p class="para">
    This change means that the value of the <strong><code>E_ALL</code></strong>
-   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-reporting" class="link">error_reporting</a> constant is 
+   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> constant is 
    now 6143, where the previous value was 2047. Because PHP constants have 
    no meaning outside of PHP, in some cases the integer value is used 
    instead so these will need to be adjusted. So for example by
    setting the error_reporting mode from either the
-   <a target="_blank" href="https://www.php.net/manual/en/apache.configuration.php" class="link">httpd.conf</a> or the
+   <a target="_blank" href="https://www.php.net/manual/en/apache.configuration.html" class="link">httpd.conf</a> or the
    <var class="filename">.htaccess</var> files, the value has to be changed
    accordingly.  The same applies when the numeric values are used
    rather than the constants in PHP scripts.
   </p>
   <p class="para">
    As a side-effect of a change made to prevent duplicate error messages when
-   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.track-errors" class="link">track_errors</a> is
-   <code class="literal">On</code>, it is now necessary to return <strong><code>false</code></strong> from
+   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> is
+   <code class="literal">On</code>, it is now necessary to return <strong><code>FALSE</code></strong> from
    user defined error handlers in order to populate
-   <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.phperrormsg.php" class="classname">$php_errormsg</a></var>.  This
+   <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.phperrormsg.html" class="classname">$php_errormsg</a></var>.  This
    provides a fine-grain control over the levels of messages stored.
   </p>
  </div></article>    </main>
