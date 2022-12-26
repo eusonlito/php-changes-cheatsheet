@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Windows Support in PHP 7.4, 7.3, 7.1</title>
+        <title>Windows Support in PHP 8.2, 7.4, 7.3, 7.1</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Windows Support in PHP 7.4, 7.3, 7.1">
+        <meta name="title" content="Windows Support in PHP 8.2, 7.4, 7.3, 7.1">
 
-        <meta property="og:title" content="Windows Support in PHP 7.4, 7.3, 7.1">
+        <meta property="og:title" content="Windows Support in PHP 8.2, 7.4, 7.3, 7.1">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Windows Support in PHP 7.4, 7.3, 7.1">
+        <meta name="twitter:title" content="Windows Support in PHP 8.2, 7.4, 7.3, 7.1">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,48 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Windows Support in PHP 7.4, 7.3, 7.1</a></h1>
+        <h1><a href="index.html"> Windows Support in PHP 8.2, 7.4, 7.3, 7.1</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration82.windows-support.php" target="_blank">PHP 8.2</a></h1>
+    </header>
+
+    <div id="migration82.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration82.windows-support.core">
+  <h3 class="title">Core</h3>
+  <p class="para">
+   Windows specific error messages are no longer localized, but instead
+   always displayed in English to better match PHP error messages.
+  </p>
+  <p class="para">
+   Preliminary and highly experimental support for building on ARM64 has been added.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.windows-support.oci8">
+  <h3 class="title">OCI8</h3>
+  <p class="para">
+   Because building against Oracle Client 10g is no longer supported anyway,
+   the configuration option <strong class="command">--with-oci8</strong> has been dropped.
+   The <strong class="command">--with-oci8-11g</strong>, <strong class="command">--with-oci8-12c</strong> and
+   <strong class="command">--with-oci8-19</strong> configuration options are still supported.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.windows-support.zip">
+  <h3 class="title">Zip</h3>
+  <p class="para">
+   The Zip extension is upgraded to version 1.21.0,
+   and is now built as shared library (<abbr title="Dynamic Link Library">DLL</abbr>) by default.
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration74.windows-support.php" target="_blank">PHP 7.4</a></h1>
     </header>
@@ -72,7 +109,7 @@
   <h3 class="title">OPcache</h3>
   <p class="para">
    OPcache now supports an arbitrary number of separate caches per user via the
-   the INI directive <code class="literal">opcache.cache_id</code>.
+   INI directive <code class="literal">opcache.cache_id</code>.
    All processes with the same cache ID and user share an OPcache instance.
   </p>
  </div>
@@ -255,7 +292,7 @@
   <p class="para">
    The <a target="_blank" href="https://www.php.net/manual/en/book.readline.php" class="link">readline extension</a> is supported
    through the <a target="_blank" href="https://www.php.net/manual/en/http://mingweditline.sourceforge.net/" class="link external">» WinEditLine
-   library</a>. Thereby, the interactive <acronym title="Command Line Interpreter/Interface">CLI</acronym> shell is
+   library</a>. Thereby, the interactive <abbr title="Command Line Interpreter/Interface">CLI</abbr> shell is
    supported as well (<code class="literal">php.exe -a</code>).
   </p>
  </div>

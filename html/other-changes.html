@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
+        <title>Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="title" content="Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
-        <meta property="og:title" content="Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta property="og:title" content="Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="twitter:title" content="Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,329 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Other Changes in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
+        <h1><a href="index.html"> Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration82.other-changes.php" target="_blank">PHP 8.2</a></h1>
+    </header>
+
+    <div id="migration82.other-changes" class="sect1">
+ <h2 class="title">Other Changes</h2>
+
+ <div class="sect2" id="migration82.other-changes.core">
+  <h3 class="title">Core changes</h3>
+
+  <p class="para">
+   The <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span> type is now a built-in compile time alias for
+   <span class="type"><span class="type">array</span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/class.traversable.php" class="type Traversable">Traversable</a></span></span>.
+   Error messages relating to <code class="literal">iterable</code> will therefore
+   now use <code class="literal">array|Traversable</code>.
+   Type Reflection is preserved for single <code class="literal">iterable</code>
+   (and <code class="literal">?iterable</code>) to produce a
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionnamedtype.php" class="classname">ReflectionNamedType</a></span> with name <code class="literal">iterable</code>,
+   however usage of <code class="literal">iterable</code> in union types will be
+   converted to <code class="literal">array|Traversable</code>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.other-changes.sapi">
+  <h3 class="title">Changes in SAPI Modules</h3>
+
+  <div class="sect3" id="migration82.other-changes.sapi.cli">
+   <h4 class="title">CLI</h4>
+
+   <p class="para">
+    The STDOUT, STDERR and STDIN streams are no longer closed on resource destruction
+    which is mostly when the CLI finishes. It is however still possible to
+    explicitly close those streams using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fclose.php" class="function">fclose()</a></span> and similar.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration82.other-changes.functions">
+  <h3 class="title">Changed Functions</h3>
+
+  <div class="sect3" id="migration82.other-changes.functions.core">
+   <h4 class="title">Core</h4>
+
+   <p class="para">
+    The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strcmp.php" class="function">strcmp()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strcasecmp.php" class="function">strcasecmp()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strncmp.php" class="function">strncmp()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strncasecmp.php" class="function">strncasecmp()</a></span>, and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.substr-compare.php" class="function">substr_compare()</a></span> functions, using binary safe string
+    comparison now return <code class="literal">-1</code>, <code class="literal">0</code> and <code class="literal">1</code>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.functions.dba">
+   <h4 class="title">DBA</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-open.php" class="function">dba_open()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-popen.php" class="function">dba_popen()</a></span>
+    now have the following enforced signature:
+    </p><div class="methodsynopsis dc-description">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-open.php" class="methodname">dba_open</a></span>(<br>    <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>,<br>    <span class="methodparam"><span class="type">string</span> <code class="parameter">$mode</code></span>,<br>    <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">string</span><span class="type"></span></span> <code class="parameter">$handler</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>    <span class="methodparam"><span class="type">int</span> <code class="parameter">$permission</code><span class="initializer"> = 0644</span></span>,<br>    <span class="methodparam"><span class="type">int</span> <code class="parameter">$map_size</code><span class="initializer"> = 0</span></span>,<br>    <span class="methodparam"><span class="type">?</span><span class="type"><span class="type">int</span><span class="type"></span></span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type"><span class="type">resource</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+   
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="function">dba_fetch()</a></span>'s optional skip argument is now at the end
+    in line with PHP userland semantics. Its signature is now:
+    </p><div class="methodsynopsis dc-description"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="methodname">dba_fetch</a></span>(<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">array</span></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$skip</code></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+
+    The overloaded signature:
+    <div class="methodsynopsis dc-description"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="methodname">dba_fetch</a></span>(<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">array</span></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$skip</code></span>, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+    is still accepted, but it is recommended to use the new standard variant.
+   
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.functions.random">
+   <h4 class="title">Random</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.random-bytes.php" class="function">random_bytes()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.random-int.php" class="function">random_int()</a></span>
+    now throw a <span class="classname"><strong class="classname">\Random\RandomException</strong></span> on <abbr title="Cryptographically Secure PseudoRandom Number Generator">CSPRNG</abbr> failures.
+    Previously a plain <span class="classname"><strong class="classname">\Exception</strong></span> was thrown instead.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.functions.spl">
+   <h4 class="title">SPL</h4>
+
+   <p class="para">
+    The <code class="parameter">iterator</code> parameter of
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iterator-to-array.php" class="function">iterator_to_array()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iterator-count.php" class="function">iterator_count()</a></span>
+    is widened to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span> from <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.iterator.php" class="classname">Iterator</a></span>,
+    allowing arrays to be passed.
+    
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration82.other-changes.extensions">
+  <h3 class="title">Other Changes to Extensions</h3>
+
+  <div class="sect3" id="migration82.other-changes.extensions.date">
+   <h4 class="title">Date</h4>
+
+   <p class="para">
+    The properties of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateperiod.php" class="classname">DatePeriod</a></span> are now properly declared.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.intl">
+   <h4 class="title">Intl</h4>
+
+   <p class="para">
+    Instances of
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlbreakiterator.php" class="classname">IntlBreakIterator</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlrulebasedbreakiterator.php" class="classname">IntlRuleBasedBreakIterator</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlcodepointbreakiterator.php" class="classname">IntlCodePointBreakIterator</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlpartsiterator.php" class="classname">IntlPartsIterator</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.collator.php" class="classname">Collator</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intliterator.php" class="classname">IntlIterator</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.uconverter.php" class="classname">UConverter</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.php" class="classname">IntlDateFormatter</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intldatepatterngenerator.php" class="classname">IntlDatePatternGenerator</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.messageformatter.php" class="classname">MessageFormatter</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.resourcebundle.php" class="classname">ResourceBundle</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.spoofchecker.php" class="classname">Spoofchecker</a></span>,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intltimezone.php" class="classname">IntlTimeZone</a></span>,
+    and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.transliterator.php" class="classname">Transliterator</a></span>
+    are no longer serializable. Previously, they could be serialized, but
+    unserialization yielded unusable objects or failed.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.mysqli">
+   <h4 class="title">MySQLi</h4>
+
+   <p class="para">
+    The support for libmysql has been removed and it is no longer
+    possible to compile mysqli with libmysql.
+    From now on, the mysqli extension can be compiled only with mysqlnd.
+    All libmysql features unavailable in mysqlnd have been removed:
+    </p><ul class="simplelist"><li class="member">The reconnect property of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.mysqli-driver.php" class="classname">mysqli_driver</a></span></li>
+     <li class="member">
+      The <a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.reconnect" class="link">mysqli.reconnect</a> INI directive
+     </li>
+     <li class="member">The <strong><code>MYSQLI_IS_MARIADB</code></strong> constant has been deprecated</li>
+    </ul></div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.oci8">
+   <h4 class="title">OCI8</h4>
+
+   <p class="para">
+    The minimum Oracle Client library version required is now 11.2.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.pcre">
+   <h4 class="title">PCRE</h4>
+
+   <p class="para">
+    NUL characters (<code class="literal">\0</code>) in pattern strings are now supported.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.session">
+   <h4 class="title">Session</h4>
+
+   <p class="para">
+    Trying to change the
+    <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.cookie-samesite" class="link">session.cookie_samesite</a>
+    INI directive while the session is active or output has already been sent
+    will now fail and emit a warning.
+    This aligns the behaviour with all other session INI settings.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.sqlite3">
+   <h4 class="title">SQLite3</h4>
+
+   <p class="para">
+    <a target="_blank" href="https://www.php.net/manual/en/sqlite3.configuration.php#ini.sqlite3.defensive" class="link">sqlite3.defensive</a>
+    is now <strong><code>PHP_INI_USER</code></strong>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.standard">
+   <h4 class="title">Standard</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span> now reports the actual image dimensions,
+    bits and channels of AVIF images. Previously, the dimensions have been reported as 0x0,
+    and bits and channels have not been reported at all.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.tidy">
+   <h4 class="title">Tidy</h4>
+
+   <p class="para">
+    The properties of the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.tidy.php" class="classname">tidy</a></span> class are now properly declared.
+    And those of the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.tidynode.php" class="classname">tidyNode</a></span> class are now properly declared as readonly.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.other-changes.extensions.zip">
+   <h4 class="title">Zip</h4>
+
+   <p class="para">
+    The Zip extension has been updated to version 1.20.0,
+    which adds the following methods:
+    </p><ul class="simplelist"><li class="member"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.clearerror.php" class="methodname">ZipArchive::clearError()</a></span></li>
+     <li class="member"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.getstreamname.php" class="methodname">ZipArchive::getStreamName()</a></span></li>
+     <li class="member"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.getstreamindex.php" class="methodname">ZipArchive::getStreamIndex()</a></span></li>
+    </ul></div>
+ </div>
+
+ <div class="sect2" id="migration82.other-changes.ini">
+  <h3 class="title">Changes to INI File Handling</h3>
+
+  
+  <p class="para">
+   Support for binary (<code class="literal">0b</code>/<code class="literal">0B</code>) and octal
+   (<code class="literal">0o</code>/<code class="literal">0O</code>) prefixes has been added to integer INI settings.
+   Integer INI settings that start with a zero (<code class="literal">0</code>)
+   continue to be interpreted as an octal integer.
+  </p>
+
+  <p class="para">
+   Parsing of some ill-formatted values will now trigger a warning when this
+   was silently ignored before.
+   For backwards compatibility, interpretation of these values has not changed.
+   This affects the following settings:
+
+   
+   </p><ul class="simplelist"><li class="member"><a target="_blank" href="https://www.php.net/manual/en/bc.configuration.php#ini.bcmath.scale" class="link">bcmath.scale</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/com.configuration.php#ini.com.code-page" class="link">com.code_page</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/filesystem.configuration.php#ini.default-socket-timeout" class="link">default_socket_timeout</a></li>
+    <li class="member">fiber.stack_size</li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.hard-timeout" class="link">hard_timeout</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/intl.configuration.php#ini.intl.error-level" class="link">intl.error_level</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ldap.configuration.php#ini.ldap.max_links" class="link">ldap.max_links</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/info.configuration.php#ini.max-input-nesting-level" class="link">max_input_nesting_level</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/info.configuration.php#ini.max-input-vars" class="link">max_input_vars</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mbstring.configuration.php#ini.mbstring.regex-retry-limit" class="link">mbstring.regex_retry_limit</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mbstring.configuration.php#ini.mbstring.regex-stack-limit" class="link">mbstring.regex_stack_limit</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.allow-local-infile" class="link">mysqli.allow_local_infile</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.allow-persistent" class="link">mysqli.allow_persistent</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.default-port" class="link">mysqli.default_port</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.max-links" class="link">mysqli.max_links</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.max-persistent" class="link">mysqli.max_persistent</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqli.configuration.php#ini.mysqli.rollback-on-cached-plink" class="link">mysqli.rollback_on_cached_plink</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqlnd.config.php#ini.mysqlnd.log-mask" class="link">mysqlnd.log_mask</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqlnd.config.php#ini.mysqlnd.mempool-default-size" class="link">mysqlnd.mempool_default_size</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqlnd.config.php#ini.mysqlnd.net-read-buffer-size" class="link">mysqlnd.net_read_buffer_size</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/mysqlnd.config.php#ini.mysqlnd.net-read-timeout" class="link">mysqlnd.net_read_timeout</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.default-prefetch" class="link">oci8.default_prefetch</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.max-persistent" class="link">oci8.max_persistent</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.persistent-timeout" class="link">oci8.persistent_timeout</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.ping-interval" class="link">oci8.ping_interval</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.prefetch-lob-size" class="link">oci8.prefetch_lob_size</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.privileged-connect" class="link">oci8.privileged_connect</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.statement-cache-size" class="link">oci8.statement_cache_size</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/odbc.configuration.php#ini.uodbc.allow-persistent" class="link">odbc.allow_persistent</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/odbc.configuration.php#ini.uodbc.check-persistent" class="link">odbc.check_persistent</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/odbc.configuration.php#ini.uodbc.max-persistent" class="link">odbc.max_persistent</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/odbc.configuration.php#ini.uodbc.max-links" class="link">odbc.max_links</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/odbc.configuration.php#ini.uodbc.defaultbinmode" class="link">odbc.defaultbinmode</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/odbc.configuration.php#ini.uodbc.defaultcursortype" class="link">odbc.default_cursortype</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/odbc.configuration.php#ini.uodbc.defaultlrl" class="link">odbc.defaultlrl</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.consistency-checks" class="link">opcache.consistency_checks</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.file_update_protection" class="link">opcache.file_update_protection</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.force-restart-timeout" class="link">opcache.force_restart_timeout</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.interned-strings-buffer" class="link">opcache.interned_strings_buffer</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-bisect-limit" class="link">opcache.jit_bisect_limit</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-blacklist-root-trace" class="link">opcache.jit_blacklist_root_trace</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-blacklist-side-trace" class="link">opcache.jit_blacklist_side_trace</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-debug" class="link">opcache.jit_debug</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-hot-func" class="link">opcache.jit_hot_func</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-hot-loop" class="link">opcache.jit_hot_loop</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-hot-return" class="link">opcache.jit_hot_return</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-hot-side-exit" class="link">opcache.jit_hot_side_exit</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-max-exit-counters" class="link">opcache.jit_max_exit_counters</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-max-loop-unrolls" class="link">opcache.jit_max_loop_unrolls</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-max-polymorphic-calls" class="link">opcache.jit_max_polymorphic_calls</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-max-recursive-calls" class="link">opcache.jit_max_recursive_calls</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-max-recursive-return" class="link">opcache.jit_max_recursive_returns</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-max-root-traces" class="link">opcache.jit_max_root_traces</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-max-side-traces" class="link">opcache.jit_max_side_traces</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.log-verbosity-level" class="link">opcache.log_verbosity_level</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.max-file-size" class="link">opcache.max_file_size</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.opt_debug_level" class="link">opcache.opt_debug_level</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.optimization-level" class="link">opcache.optimization_level</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.revalidate-freq" class="link">opcache.revalidate_freq</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/outcontrol.configuration.php#ini.output-buffering" class="link">output_buffering</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/pcre.configuration.php#ini.pcre.backtrack-limit" class="link">pcre.backtrack_limit</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/pcre.configuration.php#ini.pcre.recursion-limit" class="link">pcre.recursion_limit</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/pgsql.configuration.php#ini.pgsql.max-links" class="link">pgsql.max_links</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/pgsql.configuration.php#ini.pgsql.max-persistent" class="link">pgsql.max_persistent</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.post-max-size" class="link">post_max_size</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.realpath-cache-size" class="link">realpath_cache_size</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.realpath-cache-ttl" class="link">realpath_cache_ttl</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.cache-expire" class="link">session.cache_expire</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.cookie-lifetime" class="link">session.cookie_lifetime</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.gc-divisor" class="link">session.gc_divisor</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime" class="link">session.gc_maxlifetime</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.gc-probability" class="link">session.gc_probability</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/soap.configuration.php#ini.soap.wsdl-cache-limit" class="link">soap.wsdl_cache_limit</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/soap.configuration.php#ini.soap.wsdl-cache-ttl" class="link">soap.wsdl_cache_ttl</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/var.configuration.php#ini.unserialize-max-depth" class="link">unserialize_max_depth</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize" class="link">upload_max_filesize</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.user-ini.cache-ttl" class="link">user_ini.cache_ttl</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.xmlrpc-error-number" class="link">xmlrpc_error_number</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.zend.assertions" class="link">zend.assertions</a></li>
+    <li class="member"><a target="_blank" href="https://www.php.net/manual/en/zlib.configuration.php#ini.zlib.output-compression-level" class="link">zlib.output_compression_level</a></li>
+   </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration81.other-changes.php" target="_blank">PHP 8.1</a></h1>
     </header>
@@ -974,9 +1292,10 @@
  <div class="sect2" id="migration74.other-changes.password">
   <h3 class="title">Password Hashing</h3>
   <p class="para">
-   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-hash.php" class="function">password_hash()</a></span> and <span class="function"> functions
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-hash.php" class="function">password_hash()</a></span> and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-needs-rehash.php" class="function">password_needs_rehash()</a></span> functions
    now accept nullable <span class="type">string</span> and <span class="type">int</span> for <code class="literal">$algo</code> argument.
-  </span></p>
+  </p>
  </div>
 
  <div class="sect2" id="migration74.other-changes.pear">
@@ -1137,7 +1456,7 @@
    <h4 class="title">Miscellaneous</h4>
 
    <p class="para">
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-export.php" class="function">var_export()</a></span> now exports <span class="classname"><strong class="classname">stdClass</strong></span>
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-export.php" class="function">var_export()</a></span> now exports <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.stdclass.php" class="classname">stdClass</a></span>
     objects as an array cast to an object (<code class="code">(object) array( ... )</code>), rather
     than using the nonexistent method <span class="methodname"><strong>stdClass::__setState()</strong></span>.
    </p>
@@ -1401,11 +1720,11 @@
  </div>
 
  <div class="sect2" id="migration72.other-changes.mail">
-  <h3 class="title">Changes to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mail.php" class="function">mail()</a></span> and <span class="function"><strong>mb_sendmail()</strong></span></h3>
+  <h3 class="title">Changes to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mail.php" class="function">mail()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-send-mail.php" class="function">mb_send_mail()</a></span></h3>
 
   <p class="para">
    The $additional_headers parameter of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mail.php" class="function">mail()</a></span> and
-   <span class="function"><strong>mb_sendmail()</strong></span> now also accepts an <span class="type">array</span>
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-send-mail.php" class="function">mb_send_mail()</a></span> now also accepts an <span class="type">array</span>
    instead of a <span class="type">string</span>.
   </p>
  </div>

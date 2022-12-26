@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
+        <title>New Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="title" content="New Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
-        <meta property="og:title" content="New Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta property="og:title" content="New Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="twitter:title" content="New Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,181 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
+        <h1><a href="index.html"> New Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration82.new-features.php" target="_blank">PHP 8.2</a></h1>
+    </header>
+
+    <div id="migration82.new-features" class="sect1">
+ <h2 class="title">New Features</h2>
+
+ <div class="sect2" id="migration82.new-features.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration82.new-features.core.sensitive-parameter">
+   <h4 class="title">SensitiveParameter Attribute</h4>
+
+   <p class="para">
+    Added the <code class="code">#[\SensitiveParameter]</code> attribute to redact
+    sensitive data in backtraces.
+    
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.new-features.core.error-log-mode-ini">
+   <h4 class="title">error_log_mode INI directive</h4>
+
+   <p class="para">
+    The <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-log-mode" class="link">error_log_mode</a> INI directive has been added which allows setting
+    the permissions for the error log file.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.new-features.core.enums-property-constant-expression">
+   <h4 class="title">Enumerations properties in constant expressions</h4>
+
+   <p class="para">
+    It is now possible to fetch properties of
+    <a target="_blank" href="https://www.php.net/manual/en/language.enumerations.php" class="link">Enumerations</a>
+    in constant expressions.
+    
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.new-features.core.type-system">
+   <h4 class="title">Type System Improvements</h4>
+
+   <p class="para">
+    It is now possible to use <span class="type">null</span> and <span class="type"><span class="type false">false</span></span>
+    as stand-alone types.
+    
+   </p>
+
+   <p class="para">
+    The <span class="type"><span class="type true">true</span></span> type has been added.
+    
+   </p>
+
+   <p class="para">
+    It is now possible to combine intersection and union types.
+    The type needs to be written in <abbr title="Disjunctive Normal Form">DNF</abbr>.
+    
+   </p>
+  </div>
+
+  <div class="sect3" id="migration82.new-features.core.constant-in-traits">
+   <h4 class="title">Constants in Traits</h4>
+
+   <p class="para">
+    It is now possible to define constants in traits.
+    
+   </p>
+   
+  </div>
+
+  <div class="sect3" id="migration82.new-features.core.readonly-classes">
+   <h4 class="title">Readonly Classes</h4>
+
+   <p class="para">
+    Support for <a target="_blank" href="https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly" class="link">readonly
+    on classes</a> has been added.
+    
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration82.new-features.curl">
+  <h3 class="title">cURL</h3>
+
+  <p class="para">
+   Added the <strong><code>CURLINFO_EFFECTIVE_METHOD</code></strong> option,
+   which returns the effective <abbr title="Hypertext Transfer Protocol">HTTP</abbr> method in the return value of
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span>.
+  </p>
+
+  <p class="para">
+   Exposed <a target="_blank" href="https://www.php.net/manual/en/migration82.constants.php#migration82.constants.curl" class="link">multiple new constants</a> from libcurl 7.62 to 7.80.
+  </p>
+
+  <p class="para">
+   Added the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl_upkeep.php" class="function">curl_upkeep()</a></span> function to perform any connection upkeep checks.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.new-features.dba">
+  <h3 class="title">DBA</h3>
+
+  <p class="para">
+   The LMDB Driver now accepts the <strong><code>DBA_LMDB_USE_SUB_DIR</code></strong> or
+   <strong><code>DBA_LMDB_NO_SUB_DIR</code></strong> flags to determine if it should
+   create a subdirectory or not when creating a database file.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.new-features.oci8">
+  <h3 class="title">OCI8</h3>
+
+  <p class="para">
+   Added the <a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.php#ini.oci8.prefetch-lob-size" class="link">oci8.prefetch_lob_size</a> INI directive and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-set-prefetch-lob.php" class="function">oci_set_prefetch_lob()</a></span> function to tune LOB query
+   performance by reducing the number of round-trips between PHP and
+   Oracle Databases when fetching LOBS.
+   This is usable with Oracle Database 12.2 or later.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.new-features.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <p class="para">
+   Added AEAD support for the chacha20-poly1305 algorithm.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.new-features.odbc">
+  <h3 class="title">ODBC</h3>
+
+  <p class="para">
+   Added the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.odbc-connection-string-is-quoted.php" class="function">odbc_connection_string_is_quoted()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.odbc-connection-string-should-quote.php" class="function">odbc_connection_string_should_quote()</a></span>, and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.odbc-connection-string-quote.php" class="function">odbc_connection_string_quote()</a></span> functions.
+   These are primarily used behind the scenes in the ODBC and PDO_ODBC extensions,
+   but are exposed to userland for easier unit testing, and for user
+   applications and libraries to perform quoting themselves.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.new-features.pcre">
+  <h3 class="title">PCRE</h3>
+
+  <p class="para">
+   Added support for the <code class="literal">n</code> (NO_AUTO_CAPTURE) modifier,
+   which makes simple <code class="code">(xyz)</code> groups non-capturing.
+   Only named groups like <code class="code">(?&lt;name&gt;xyz)</code> are capturing.
+   This only affects which groups are capturing, it is still possible to use
+   numbered subpattern references, and the matches array will still contain
+   numbered results.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.new-features.random">
+  <h3 class="title">Random</h3>
+
+  <p class="para">
+   This is a new extension which organises and consolidates existing
+   implementations related to random number generators.
+   New and better RNGs are available with scope issues eliminated.
+   
+   
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration81.new-features.php" target="_blank">PHP 8.1</a></h1>
     </header>
@@ -75,9 +245,17 @@
    <h4 class="title">Array Unpacking with String Keys</h4>
 
    <p class="para">
-    Added support for array unpacking with strings keys.
-    
-   </p>
+    Added support for <a target="_blank" href="https://www.php.net/manual/en/language.types.array.php#language.types.array.unpacking" class="link">array unpacking with strings keys</a>.
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$arr1 </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'a' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'b'</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$arr2 </span><span style="color: #007700">= [...</span><span style="color: #0000BB">$arr1</span><span style="color: #007700">, </span><span style="color: #DD0000">'c' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'d'</span><span style="color: #007700">]; </span><span style="color: #FF8000">//[1, 'a' =&gt; 'b', 'c' =&gt; 'd']<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
    
   </div>
 
@@ -116,7 +294,7 @@
    <h4 class="title">Fibers</h4>
 
    <p class="para">
-    Support for Fibers has been added.
+    Support for <a target="_blank" href="https://www.php.net/manual/en/language.fibers.php" class="link">Fibers</a> has been added.
     
    </p>
   </div>
@@ -125,7 +303,7 @@
    <h4 class="title">First Class Callable Syntax</h4>
 
    <p class="para">
-    Closures for callables can now be created using the syntax <code class="code">myFunc(...)</code>,
+    Closures for callables can now be created using <a target="_blank" href="https://www.php.net/manual/en/functions.first_class_callable_syntax.php" class="link">the syntax <code class="code">myFunc(...)</code></a>,
     which is identical to <code class="code">Closure::fromCallable('myFunc')</code>.
     
    </p>
@@ -140,13 +318,15 @@
    <h4 class="title">Intersection Types</h4>
 
    <p class="para">
-    Support for intersection types has been added.
+    Support for <a target="_blank" href="https://www.php.net/manual/en/language.types.type-system.php#language.types.type-system.composite.intersection" class="link">intersection types</a> has been added.
     
    </p>
    <div class="caution"><strong class="caution">Caution</strong>
     <p class="simpara">
-     Intersection types cannot be used together with
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union" class="link">union types</a>
+     <a target="_blank" href="https://www.php.net/manual/en/language.types.type-system.php#language.types.type-system.composite.intersection" class="link">
+      Intersection types</a> cannot be used together with
+     <a target="_blank" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.composite.union" class="link">
+      union types</a>
     </p>
    </div>
   </div>
@@ -188,7 +368,8 @@
    <h4 class="title">Final class constants</h4>
 
    <p class="para">
-    Added support for the <span class="modifier">final</span> modifier for class constants.
+    Added support for <a target="_blank" href="https://www.php.net/manual/en/language.oop5.final.php#language.oop5.final.example.php81" class="link">the <span class="modifier">final</span> modifier for class constants</a>.
+    Also, interface constants become overridable by default.
     
    </p>
   </div>
@@ -197,7 +378,7 @@
 
  <div class="sect2" id="migration81.new-features.curl">
   <h3 class="title">CURL</h3>
-  
+
   <p class="para">
    Added the <strong><code>CURLOPT_DOH_URL</code></strong> option.
   </p>
@@ -227,7 +408,7 @@
     <span class="simpara"><strong><code>CURLOPT_SSLKEY_BLOB</code></strong></span>
    </li>
   </ul><p class="para">
-   Added <span class="classname"><strong class="classname">CURLStringFile</strong></span>, which can be used to post
+   Added <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlstringfile.php" class="classname">CURLStringFile</a></span>, which can be used to post
    a file from a <span class="type">string</span> rather than a file:
    </p><div class="informalexample">
     <div class="example-contents">
@@ -261,10 +442,10 @@
   <h3 class="title">GD</h3>
 
   <p class="para">
-   Avix support is now available through
+   Avif support is now available through
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecreatefromavif.php" class="function">imagecreatefromavif()</a></span> and
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageavif.php" class="function">imageavif()</a></span>,
-   if libgd has been built with Avix support.
+   if libgd has been built with Avif support.
   </p>
  </div>
 
@@ -385,7 +566,7 @@
    <h4 class="title">Binding parameters in execute</h4>
 
    <p class="para">
-    It is now possible to bind parameters by passing them as an array to 
+    It is now possible to bind parameters by passing them as an array to
     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli-stmt.execute.php" class="methodname">mysqli_stmt::execute()</a></span>. All values will be bound as
     strings. Only list arrays are allowed. This new feature is not available
     when MySQLi is compiled with libmysqlclient.
@@ -470,7 +651,7 @@
 
   <p class="para">
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fputcsv.php" class="function">fputcsv()</a></span> now accepts a new
-   <code class="parameter">eol</code> argument which allow to define a custom
+   <code class="parameter">eol</code> argument which allows to define a custom
    End of Line sequence, the default remains the same and is <code class="literal">"\n"</code>.
   </p>
  </div>
@@ -480,7 +661,7 @@
 
   <p class="para">
    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fputcsv.php" class="methodname">SplFileObject::fputcsv()</a></span> now accepts a new
-   <code class="parameter">eol</code> argument which allow to define a custom
+   <code class="parameter">eol</code> argument which allows to define a custom
    End of Line sequence, the default remains the same and is <code class="literal">"\n"</code>.
   </p>
  </div>
@@ -531,7 +712,7 @@
    <h4 class="title">Union Types</h4>
 
    <p class="para">
-    Support for <a target="_blank" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union" class="link">union types</a> has been added.
+    Support for <a target="_blank" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.composite.union" class="link">union types</a> has been added.
     
    </p> 
   </div>
@@ -694,6 +875,11 @@
       <code class="code">(int) $resource</code>. It provides the same functionality under a clearer API.
      </p>
     </li>
+    <li class="listitem">
+     <p class="para">
+      The <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.internaliterator.php" class="classname">InternalIterator</a></span> has been added.
+     </p>
+    </li>
    </ul></div>
  </div>
 
@@ -719,7 +905,7 @@
   <h3 class="title">DOM</h3>
 
   <p class="para">
-   <span class="interfacename"><strong class="interfacename">DOMParentNode</strong></span> and <span class="interfacename"><strong class="interfacename">DOMChildNode</strong></span> with
+   <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.domparentnode.php" class="interfacename">DOMParentNode</a></span> and <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.domchildnode.php" class="interfacename">DOMChildNode</a></span> with
    new traversal and manipulation APIs have been added.
    
   </p>
@@ -2980,7 +3166,7 @@ int(3)
  </div>
 
  <div class="sect2" id="migration70.new-features.csprng-functions">
-  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.csprng.php" class="link">CSPRNG</a> Functions</h3>
+  <h3 class="title">CSPRNG Functions</h3>
 
   <p class="para">
    Two new functions have been added to generate cryptographically secure

@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
+        <title>New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="title" content="New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
-        <meta property="og:title" content="New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta property="og:title" content="New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="twitter:title" content="New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,69 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Functions in PHP 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
+        <h1><a href="index.html"> New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration82.new-functions.php" target="_blank">PHP 8.2</a></h1>
+    </header>
+
+    <div id="migration82.new-functions" class="sect1">
+ <h2 class="title">New Functions</h2>
+
+ <div class="sect2" id="migration82.new-functions.curl">
+  <h3 class="title">cURL</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl_upkeep.php" class="function">curl_upkeep()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration82.new-functions.mysqli">
+  <h3 class="title">MySQLi</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.execute-query.php" class="function">mysqli_execute_query()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration82.new-functions.odbc">
+  <h3 class="title">ODBC</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.odbc-connection-string-is-quoted.php" class="function">odbc_connection_string_is_quoted()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.odbc-connection-string-should-quote.php" class="function">odbc_connection_string_should_quote()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.odbc-connection-string-quote.php" class="function">odbc_connection_string_quote()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration82.new-functions.openssl">
+  <h3 class="title">OpenSSL</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-cipher-key-length.php" class="function">openssl_cipher_key_length()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration82.new-functions.reflection">
+  <h3 class="title">Reflection</h3>
+  <ul class="simplelist"><li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionfunction.isanonymous.php" class="methodname">ReflectionFunction::isAnonymous()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionmethod.hasprototype.php" class="methodname">ReflectionMethod::hasPrototype()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration82.new-functions.sodium">
+  <h3 class="title">Sodium</h3>
+
+  <div class="sect3">
+   <h4 class="title">XChaCha20</h4><ul class="simplelist"><li class="member">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-stream-xchacha20-xor-ic.php" class="function">sodium_crypto_stream_xchacha20_xor_ic()</a></span></li>
+   </ul></div>
+ </div>
+
+ <div class="sect2" id="migration82.new-functions.standard">
+  <h3 class="title">Standard</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.memory-reset-peak-usage.php" class="function">memory_reset_peak_usage()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ini-parse-quantity.php" class="function">ini_parse_quantity()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration82.new-functions.xml">
+  <h3 class="title">XML</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-get-external-entity-loader.php" class="function">libxml_get_external_entity_loader()</a></span></li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration81.new-functions.php" target="_blank">PHP 8.1</a></h1>
     </header>
@@ -57,12 +115,42 @@
    </li>
   </ul></div>
 
+ <div class="sect2" id="migration81.new-functions.gd">
+  <h3 class="title">GD</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecreatefromavif.php" class="function">imagecreatefromavif()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageavif.php" class="function">imageavif()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-functions.mysqli">
+  <h3 class="title">MySQLi</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-column.php" class="function">mysqli_result::fetch_column()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-column.php" class="function">mysqli_fetch_column()</a></span>
+    </span>
+   </li>
+  </ul></div>
+
  <div class="sect2" id="migration81.new-functions.pcntl">
   <h3 class="title">Process Control</h3>
 
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><strong>pcntl_rfork()</strong></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-rfork.php" class="function">pcntl_rfork()</a></span>
     </span>
    </li>
   </ul></div>
@@ -72,7 +160,7 @@
 
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="methodname"><strong>ReflectionFunctionAbstract::getClosureUsedVariables()</strong></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionfunctionabstract.getclosureusedvariables.php" class="methodname">ReflectionFunctionAbstract::getClosureUsedVariables()</a></span>
     </span>
    </li>
   </ul></div>
@@ -99,17 +187,17 @@
    <h4 class="title">XChaCha20</h4>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_stream_xchacha20()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-stream-xchacha20.php" class="function">sodium_crypto_stream_xchacha20()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_stream_xchacha20_keygen()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-stream-xchacha20-keygen.php" class="function">sodium_crypto_stream_xchacha20_keygen()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_stream_xchacha20_xor()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-stream-xchacha20-xor.php" class="function">sodium_crypto_stream_xchacha20_xor()</a></span>
      </span>
     </li>
    </ul></div>
@@ -123,77 +211,77 @@
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_add()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-add.php" class="function">sodium_crypto_core_ristretto255_add()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_from_hash()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-from-hash.php" class="function">sodium_crypto_core_ristretto255_from_hash()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_is_valid_point()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-is-valid-point.php" class="function">sodium_crypto_core_ristretto255_is_valid_point()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_random()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-random.php" class="function">sodium_crypto_core_ristretto255_random()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_add()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-add.php" class="function">sodium_crypto_core_ristretto255_scalar_add()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_complement()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-complement.php" class="function">sodium_crypto_core_ristretto255_scalar_complement()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_invert()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-invert.php" class="function">sodium_crypto_core_ristretto255_scalar_invert()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_mul()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-mul.php" class="function">sodium_crypto_core_ristretto255_scalar_mul()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_negate()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-negate.php" class="function">sodium_crypto_core_ristretto255_scalar_negate()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_random()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-random.php" class="function">sodium_crypto_core_ristretto255_scalar_random()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_reduce()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-reduce.php" class="function">sodium_crypto_core_ristretto255_scalar_reduce()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_scalar_sub()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-scalar-sub.php" class="function">sodium_crypto_core_ristretto255_scalar_sub()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_core_ristretto255_sub()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-core-ristretto255-sub.php" class="function">sodium_crypto_core_ristretto255_sub()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_scalarmult_ristretto255()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-scalarmult-ristretto255.php" class="function">sodium_crypto_scalarmult_ristretto255()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><strong>sodium_crypto_scalarmult_ristretto255_base()</strong></span>
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sodium-crypto-scalarmult-ristretto255-base.php" class="function">sodium_crypto_scalarmult_ristretto255_base()</a></span>
      </span>
     </li>
    </ul></div>
@@ -262,7 +350,7 @@
 
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><strong>pcntl_unshare()</strong></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-unshare.php" class="function">pcntl_unshare()</a></span>
     </span>
    </li>
   </ul></div>
@@ -320,7 +408,7 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><strong>net_get_interfaces()</strong></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.net-get-interfaces.php" class="function">net_get_interfaces()</a></span>
     </span>
    </li>
   </ul></div>
@@ -330,7 +418,7 @@
 
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><strong>fpm_get_status()</strong></span>
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fpm-get-status.php" class="function">fpm_get_status()</a></span>
     </span>
    </li>
   </ul></div>
@@ -1157,7 +1245,7 @@
   </ul></div>
 
  <div class="sect2" id="migration70.new-functions.csprng">
-  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.csprng.php" class="link">CSPRNG</a></h3>
+  <h3 class="title">CSPRNG</h3>
 
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">

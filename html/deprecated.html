@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Deprecated Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
+        <title>Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Deprecated Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="title" content="Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
-        <meta property="og:title" content="Deprecated Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta property="og:title" content="Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Deprecated Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="twitter:title" content="Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1638181224" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1638181224" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,117 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Deprecated Features in PHP 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
+        <h1><a href="index.html"> Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration82.deprecated.php" target="_blank">PHP 8.2</a></h1>
+    </header>
+
+    <div id="migration82.deprecated" class="sect1">
+ <h2 class="title">Deprecated Features</h2>
+
+ <div class="sect2" id="migration82.deprecated.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration82.deprecated.core.dynamic-properties">
+   <h4 class="title">Usage of dynamic properties</h4>
+
+   <p class="para">
+    The creation of dynamic properties is deprecated, unless the class opts in by
+    using the <code class="code">#[\AllowDynamicProperties]</code> attribute.
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.stdclass.php" class="classname">stdClass</a></span> allows dynamic properties.
+    Usage of the <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.get" class="link">__get()</a>/<a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.set" class="link">__set()</a> magic methods is not affected by this change.
+    A dynamic properties deprecation warning can be addressed by:
+
+    </p><ul class="simplelist"><li class="member">Declaring the property (preferred).</li>
+     <li class="member">
+      Adding the <code class="code">#[\AllowDynamicProperties]</code> attribute to the class
+      (which also applies to all child classes).
+     </li>
+     <li class="member">
+      Using a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.weakmap.php" class="classname">WeakMap</a></span> if additional data needs to be
+      associated with an object which one does not own.
+     </li>
+    </ul></div>
+
+  <div class="sect3" id="migration82.deprecated.core.relative-callables">
+   <h4 class="title">Relative callables</h4>
+
+   <p class="para">
+    Callables that are not accepted by the <code class="code">$callable()</code> syntax
+    (but are accepted by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func.php" class="function">call_user_func()</a></span>) are deprecated.
+
+    In particular:
+    </p><ul class="simplelist"><li class="member"><code class="code">"self::method"</code></li>
+     <li class="member"><code class="code">"parent::method"</code></li>
+     <li class="member"><code class="code">"static::method"</code></li>
+     <li class="member"><code class="code">["self", "method"]</code></li>
+     <li class="member"><code class="code">["parent", "method"]</code></li>
+     <li class="member"><code class="code">["static", "method"]</code></li>
+     <li class="member"><code class="code">["Foo", "Bar::method"]</code></li>
+     <li class="member"><code class="code">[new Foo, "Bar::method"]</code></li>
+    </ul>
+
+    This does not affect normal method callables such as
+    <code class="code">"A::method"</code> or <code class="code">["A", "method"]</code>.
+   
+   
+   
+  </div>
+
+  <div class="sect3" id="migration82.deprecated.core.dollar-brace-interpolation">
+   <h4 class="title"><code class="code">"${var}"</code> and <code class="code">"${expr}"</code> style interpolation</h4>
+
+   <p class="para">
+    The <code class="code">"${var}"</code> and <code class="code">"${expr}"</code> style of string
+    interpolation is deprecated.
+    Use <code class="code">"$var"/"{$var}"</code> and <code class="code">"{${expr}}"</code>, respectively.
+    
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration82.deprecated.mbstring">
+  <h3 class="title">MBString</h3>
+
+  <p class="para">
+   Usage of the <code class="literal">QPrint</code>, <code class="literal">Base64</code>,
+   <code class="literal">Uuencode</code>, and <code class="literal">HTML-ENTITIES</code>
+   'text encodings' is deprecated for all MBString functions.
+
+   Unlike all the other text encodings supported by MBString,
+   these do not encode a sequence of Unicode codepoints, but rather a sequence of raw bytes.
+   It is not clear what the correct return values for most MBString functions
+   should be when one of these non-encodings is specified.
+   Moreover, PHP has separate, built-in implementations of all of them;
+   for example, UUencoded data can be handled using
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.convert-uuencode.php" class="function">convert_uuencode()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.convert-uudecode.php" class="function">convert_uudecode()</a></span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.deprecated.spl">
+  <h3 class="title">SPL</h3>
+
+  <p class="para">
+   The internal <span class="methodname"><strong>SplFileInfo::_bad_state_ex()</strong></span> method
+   has been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration82.deprecated.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.utf8-encode.php" class="function">utf8_encode()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.utf8-decode.php" class="function">utf8_decode()</a></span>
+   have been deprecated.
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration81.deprecated.php" target="_blank">PHP 8.1</a></h1>
     </header>
@@ -188,7 +294,7 @@
     In the future, the argument will be interpreted as a string instead
     of an ASCII codepoint.
     Depending on the intended behavior, the argument should either be
-    casted to <span class="type">string</span> or an explicit call to
+    cast to <span class="type">string</span> or an explicit call to
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.chr.php" class="function">chr()</a></span> should be made.
     All <code class="literal">ctype_*()</code> functions are affected.
    </p>
@@ -199,14 +305,20 @@
   <h3 class="title">Date</h3>
 
   <p class="para">
-   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunrise.php" class="function">date_sunrise()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunset.php" class="function">date_sunset()</a></span>
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunrise.php" class="function">date_sunrise()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunset.php" class="function">date_sunset()</a></span>
    have been deprecated in favor of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sun-info.php" class="function">date_sun_info()</a></span>.
   </p>
 
   <p class="para">
-   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strptime.php" class="function">strptime()</a></span> has been deprecated.
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strptime.php" class="function">strptime()</a></span> has been deprecated.
    Use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-parse-from-format.php" class="function">date_parse_from_format()</a></span> instead (for locale-independent parsing),
    or <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.parse.php" class="methodname">IntlDateFormatter::parse()</a></span> (for locale-dependent parsing).
+  </p>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strftime.php" class="function">strftime()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmstrftime.php" class="function">gmstrftime()</a></span> have been deprecated.
+   Use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date.php" class="function">date()</a></span> instead (for locale-independent formatting),
+   or <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.format.php" class="methodname">IntlDateFormatter::format()</a></span> (for locale-dependent formatting).
   </p>
  </div>
 
@@ -228,8 +340,9 @@
   <h3 class="title">GD</h3>
 
   <p class="para">
-   The <code class="parameter">num_points</code> of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageopenpolygon.php" class="function">imageopenpolygon()</a></span>
-   and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagefilledpolygon.php" class="function">imagefilledpolygon()</a></span> has been deprecated.
+   The <code class="parameter">num_points</code> of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagepolygon.php" class="function">imagepolygon()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageopenpolygon.php" class="function">imageopenpolygon()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagefilledpolygon.php" class="function">imagefilledpolygon()</a></span>
+   has been deprecated.
   </p>
  </div>
 
