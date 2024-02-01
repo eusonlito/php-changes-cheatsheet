@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
+        <title>Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="title" content="Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
-        <meta property="og:title" content="Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta property="og:title" content="Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="twitter:title" content="Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1706797420" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1706797420" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,174 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Deprecated Features in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
+        <h1><a href="index.html"> Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration83.deprecated.php" target="_blank">PHP 8.3</a></h1>
+    </header>
+
+    <div id="migration83.deprecated" class="sect1">
+ <h2 class="title">Deprecated Features</h2>
+
+ <div class="sect2" id="migration83.deprecated.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration83.deprecated.core.saner-inc-dec-operators">
+   <h4 class="title">Saner Increment/Decrement operators</h4>
+
+   <p class="para">
+    Using the <a target="_blank" href="https://www.php.net/manual/en/language.operators.increment.php" class="link">increment</a>
+    operator (<code class="literal">++</code>) on empty, non-numeric,
+    or non-alphanumeric strings is now deprecated.
+    Moreover, incrementing non-numeric strings is soft deprecated.
+    That means no <strong><code>E_DEPRECATED</code></strong> diagnostic is emitted,
+    but this feature should not be used when producing new code.
+    The new <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-increment.php" class="function">str_increment()</a></span> function should be used instead.
+   </p>
+
+   <p class="para">
+    Using the <a target="_blank" href="https://www.php.net/manual/en/language.operators.increment.php" class="link">decrement</a>
+    operator (<code class="literal">--</code>) on empty or non-numeric strings is now deprecated.
+   </p>
+   
+  </div>
+
+  <div class="sect3" id="migration83.deprecated.core.get-class">
+   <h4 class="title">get_class()/get_parent_class() call without arguments</h4>
+
+   <p class="para">
+    Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class.php" class="function">get_class()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-parent-class.php" class="function">get_parent_class()</a></span>
+    without arguments is now deprecated.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.core.dba">
+  <h3 class="title">DBA</h3>
+
+  <p class="para">
+   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="function">dba_fetch()</a></span> with <code class="parameter">$dba</code> as
+   the 3rd argument is now deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.ffi">
+  <h3 class="title">FFI</h3>
+
+  <p class="para">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ffi.cast.php" class="methodname">FFI::cast()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ffi.new.php" class="methodname">FFI::new()</a></span>,
+   and <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ffi.type.php" class="methodname">FFI::type()</a></span> statically is now deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.intl">
+  <h3 class="title">Intl</h3>
+
+  <p class="para">
+   The <strong><code>U_MULTIPLE_DECIMAL_SEP*E*RATORS</code></strong>
+   constant had been deprecated, using the
+   <strong><code>U_MULTIPLE_DECIMAL_SEP*A*RATORS</code></strong>
+   constant instead is recommended.
+  </p>
+  <p class="para">
+   The <strong><code>NumberFormatter::TYPE_CURRENCY</code></strong> constant has been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.ldap">
+  <h3 class="title">LDAP</h3>
+
+  <p class="para">
+   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-connect.php" class="function">ldap_connect()</a></span> with separate
+   <code class="parameter">$hostname</code> and <code class="parameter">$port</code> is
+   deprecated.
+   
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.mbstring">
+  <h3 class="title">MBString</h3>
+
+  <p class="para">
+   Passing a negative <code class="parameter">$width</code> to
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strimwidth.php" class="function">mb_strimwidth()</a></span> is now deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.phar">
+  <h3 class="title">Phar</h3>
+
+  <p class="para">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/phar.setstub.php" class="methodname">Phar::setStub()</a></span> with a
+   <span class="type">resource</span> and a <code class="parameter">$length</code>
+   is now deprecated. Such calls should be replaced by:
+   <code class="code">$phar-&gt;setStub(stream_get_contents($resource));</code>
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.random">
+  <h3 class="title">Random</h3>
+
+  <p class="para">
+   The <strong><code>MT_RAND_PHP</code></strong> Mt19937 variant is deprecated.
+   
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <p class="para">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.setvalue.php" class="methodname">ReflectionProperty::setValue()</a></span> with only one
+   parameter is deprecated.
+   To set static properties, pass <strong><code>null</code></strong> as the first parameter.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="para">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.assert-options.php" class="function">assert_options()</a></span> function is now deprecated.
+  </p>
+  <p class="para">
+   The <strong><code>ASSERT_ACTIVE</code></strong>, <strong><code>ASSERT_BAIL</code></strong>,
+   <strong><code>ASSERT_CALLBACK</code></strong>, <strong><code>ASSERT_EXCEPTION</code></strong>,
+   and <strong><code>ASSERT_WARNING</code></strong> constants have been deprecated.
+  </p>
+
+  <p class="para">
+   The <code class="literal">assert.*</code> INI settings have been deprecated.
+   See the
+   <a target="_blank" href="https://www.php.net/manual/en/migration83.other-changes.php#migration83.other-changes.ini" class="link">Changes to INI File Handling</a>
+   page for further details.
+  </p>
+  
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.sqlite3">
+  <h3 class="title">SQLite3</h3>
+
+  <p class="para">
+   Using exceptions is now preferred, warnings will be removed in the future.
+   Calling <code class="code">SQLite3::enableExceptions(false)</code> will trigger a
+   deprecation warning in this version.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.deprecated.zip">
+  <h3 class="title">Zip</h3>
+
+  <p class="para">
+   The <strong><code>ZipArchive::FL_RECOMPRESS</code></strong> constant is deprecated
+   and will be removed in a future version of libzip.
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration82.deprecated.php" target="_blank">PHP 8.2</a></h1>
     </header>
@@ -172,16 +335,13 @@
    <h4 class="title">Passing <strong><code>null</code></strong> to non-nullable parameters of built-in functions</h4>
 
    <p class="para">
-    Scalar types for built-in functions are nullable by default,
-    this behaviour is deprecated to align with the behaviour of user-defined
+    Scalar types for built-in functions are nullable by default.
+    This behaviour is deprecated to align with the behaviour of user-defined
     functions, where scalar types need to be marked as nullable explicitly.
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">));<br></span><span style="color: #FF8000">// Deprecated: Passing null to parameter #2 ($needle) of type string<br>//             is deprecated<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">));<br></span><span style="color: #FF8000">// Deprecated: Passing null to parameter #2 ($needle) of type string<br>//             is deprecated<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -199,10 +359,7 @@
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$a </span><span style="color: #007700">= [];<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">15.5</span><span style="color: #007700">]; </span><span style="color: #FF8000">// deprecated, as key value loses the 0.5 component<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">15.0</span><span style="color: #007700">]; </span><span style="color: #FF8000">// ok, as 15.0 == 15<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$a </span><span style="color: #007700">= [];<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">15.5</span><span style="color: #007700">]; </span><span style="color: #FF8000">// deprecated, as key value loses the 0.5 component<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">15.0</span><span style="color: #007700">]; </span><span style="color: #FF8000">// ok, as 15.0 == 15<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -234,10 +391,7 @@
    <p class="para">
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">test</span><span style="color: #007700">(): </span><span style="color: #0000BB">void </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">test</span><span style="color: #007700">(): </span><span style="color: #0000BB">void </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -257,10 +411,7 @@
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$arr </span><span style="color: #007700">= </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$arr </span><span style="color: #007700">= </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -270,10 +421,7 @@
      Autovivification from <strong><code>null</code></strong> and undefined values is still allowed:
      </p><div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// From undefined<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #DD0000">'some value'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'doesNotExist'</span><span style="color: #007700">][] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// From null<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// From undefined<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #DD0000">'some value'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'doesNotExist'</span><span style="color: #007700">][] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// From null<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
      </div>
@@ -466,8 +614,9 @@
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.next.php" class="function">next()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.prev.php" class="function">prev()</a></span>,
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.reset.php" class="function">reset()</a></span>, or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.end.php" class="function">end()</a></span>
    on <span class="type">object</span>s is deprecated.
-   Either use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-mangled-object-vars.php" class="function">get_mangled_object_vars()</a></span> on the
-   object first, or use <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a></span>.
+   Either convert the <span class="type">object</span> to an <span class="type">array</span> using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-mangled-object-vars.php" class="function">get_mangled_object_vars()</a></span>
+   first, or use the methods provided by a class that implements
+   <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iterator.php" class="interfacename">Iterator</a></span>, such as <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a></span>, instead.
   </p>
 
   <p class="para">
@@ -502,10 +651,7 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">= [], </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Before<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {}      </span><span style="color: #FF8000">// After<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">= [], </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Before<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {}      </span><span style="color: #FF8000">// After<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     
@@ -516,10 +662,7 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">A $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Still allowed<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">A $a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {}       </span><span style="color: #FF8000">// Recommended<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">A $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Still allowed<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">A $a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {}       </span><span style="color: #FF8000">// Recommended<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     
@@ -636,10 +779,7 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Replace<br></span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">, </span><span style="color: #0000BB">fn</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$a </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// With<br></span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">, </span><span style="color: #0000BB">fn</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$a </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// Replace<br></span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">, fn(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$a </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// With<br></span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">, fn(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$a </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
  
     
@@ -663,10 +803,7 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// iterate using the procedural API<br></span><span style="color: #0000BB">assert</span><span style="color: #007700">(</span><span style="color: #0000BB">is_resource</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">));<br>while (</span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">zip_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #0000BB">zip_entry_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$entry</span><span style="color: #007700">);<br>}<br><br></span><span style="color: #FF8000">// iterate using the object-oriented API<br></span><span style="color: #0000BB">assert</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip </span><span style="color: #007700">instanceof </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">);<br>for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">statIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">); </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br>    echo </span><span style="color: #0000BB">$entry</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">];<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// iterate using the procedural API<br></span><span style="color: #0000BB">assert</span><span style="color: #007700">(</span><span style="color: #0000BB">is_resource</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">));<br>while (</span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">zip_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #0000BB">zip_entry_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$entry</span><span style="color: #007700">);<br>}<br><br></span><span style="color: #FF8000">// iterate using the object-oriented API<br></span><span style="color: #0000BB">assert</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip </span><span style="color: #007700">instanceof </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">);<br>for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">statIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">); </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br>    echo </span><span style="color: #0000BB">$entry</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">];<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     
@@ -715,22 +852,17 @@
     in the expected behaviour in most cases.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated<br></span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3</span><span style="color: #007700">) ? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">; </span><span style="color: #FF8000">// ok<br></span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: (</span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// ok<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated<br></span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3</span><span style="color: #007700">) ? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">; </span><span style="color: #FF8000">// ok<br></span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: (</span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// ok<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
    
    <p class="para">
-    Parentheses are <em class="emphasis">not</em> required when nesting into the middle operand,
+    Parentheses are <em>not</em> required when nesting into the middle operand,
     as this is always unambiguous and not affected by associativity:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-1 ? 2 ? 3 : 4 : 5 // ok</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000">1 ? 2 ? 3 : 4 : 5 // ok</span></code></div>
      </div>
 
     </div>
@@ -939,10 +1071,7 @@
    convert it to string instead:
    </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// ReflectionClass::export(Foo::class, false) is:<br></span><span style="color: #007700">echo new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// $str = ReflectionClass::export(Foo::class, true) is:<br></span><span style="color: #0000BB">$str </span><span style="color: #007700">= (string) new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// ReflectionClass::export(Foo::class, false) is:<br></span><span style="color: #007700">echo new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// $str = ReflectionClass::export(Foo::class, true) is:<br></span><span style="color: #0000BB">$str </span><span style="color: #007700">= (string) new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -1151,10 +1280,7 @@
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br><br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">NONEXISTENT</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* Output:<br>Warning: Use of undefined constant NONEXISTENT - assumed 'NONEXISTENT' (this will throw an Error in a future version of PHP) in %s on line %d<br>string(11) "NONEXISTENT"<br>*/</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /><br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">NONEXISTENT</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* Output:<br>Warning: Use of undefined constant NONEXISTENT - assumed 'NONEXISTENT' (this will throw an Error in a future version of PHP) in %s on line %d<br>string(11) "NONEXISTENT"<br>*/</span></span></code></div>
    </div>
 
   </div>
@@ -1353,10 +1479,7 @@
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">'I am the constructor'</span><span style="color: #007700">;<br>    }<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">'I am the constructor'</span><span style="color: #007700">;<br>    }<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -1379,10 +1502,7 @@ Deprecated: Methods with the same name as their class will not be constructors i
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">bar</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">'I am not static!'</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">bar</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">'I am not static!'</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -1453,10 +1573,7 @@ I am not static!
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">); }<br>}<br><br>class </span><span style="color: #0000BB">B </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { </span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">f</span><span style="color: #007700">(); }<br>}<br><br>(new </span><span style="color: #0000BB">B</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">f</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">); }<br>}<br><br>class </span><span style="color: #0000BB">B </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { </span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">f</span><span style="color: #007700">(); }<br>}<br><br>(new </span><span style="color: #0000BB">B</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">f</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>

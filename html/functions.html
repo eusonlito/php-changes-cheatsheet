@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
+        <title>New Functions in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="title" content="New Functions in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
-        <meta property="og:title" content="New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta property="og:title" content="New Functions in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="twitter:title" content="New Functions in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1706797420" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1706797420" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,127 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Functions in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
+        <h1><a href="index.html"> New Functions in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration83.new-functions.php" target="_blank">PHP 8.3</a></h1>
+    </header>
+
+    <div id="migration83.new-functions" class="sect1">
+ <h2 class="title">New Functions</h2>
+
+ <div class="sect2" id="migration83.new-functions.date">
+  <h3 class="title">Date</h3>
+  <ul class="simplelist"><li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/dateperiod.createfromiso8601string.php" class="methodname">DatePeriod::createFromISO8601String()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.dom">
+  <h3 class="title">DOM</h3>
+  <ul class="simplelist"><li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domelement.getattributenames.php" class="methodname">DOMElement::getAttributeNames()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domelement.insertadjacentelement.php" class="methodname">DOMElement::insertAdjacentElement()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domelement.insertadjacenttext.php" class="methodname">DOMElement::insertAdjacentText()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domelement.toggleattribute.php" class="methodname">DOMElement::toggleAttribute()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.contains.php" class="methodname">DOMNode::contains()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.getrootnode.php" class="methodname">DOMNode::getRootNode()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.isequalnode.php" class="methodname">DOMNode::isEqualNode()</a></span></li>
+    <li class="member">
+     <span class="methodname"><strong>DOMNameSpaceNode::contains()</strong></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domparentnode.replacechildren.php" class="methodname">DOMParentNode::replaceChildren()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.intl">
+  <h3 class="title">Intl</h3>
+  <ul class="simplelist"><li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.setdate.php" class="methodname">IntlCalendar::setDate()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.setdatetime.php" class="methodname">IntlCalendar::setDateTime()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlgregoriancalendar.createfromdate.php" class="methodname">IntlGregorianCalendar::createFromDate()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlgregoriancalendar.createfromdatetime.php" class="methodname">IntlGregorianCalendar::createFromDateTime()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.json">
+  <h3 class="title">JSON</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-validate.php" class="function">json_validate()</a></span></li>
+    
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.ldap">
+  <h3 class="title">LDAP</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-connect-wallet.php" class="function">ldap_connect_wallet()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-exop-sync.php" class="function">ldap_exop_sync()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.mbstring">
+  <h3 class="title">MBString</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-str-pad.php" class="function">mb_str_pad()</a></span></li>
+    
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.posix">
+  <h3 class="title">Posix</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-sysconf.php" class="function">posix_sysconf()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-pathconf.php" class="function">posix_pathconf()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-fpathconf.php" class="function">posix_fpathconf()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-eaccess.php" class="function">posix_eaccess()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.pgsql">
+  <h3 class="title">PostgreSQL</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-set-error-context-visibility.php" class="function">pg_set_error_context_visibility()</a></span>
+    (libpq &gt;= 9.6)</li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.random">
+  <h3 class="title">Random</h3>
+  
+  <ul class="simplelist"><li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/random-randomizer.getbytesfromstring.php" class="methodname">Random\Randomizer::getBytesFromString()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/random-randomizer.nextfloat.php" class="methodname">Random\Randomizer::nextFloat()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/random-randomizer.getfloat.php" class="methodname">Random\Randomizer::getFloat()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.reflection">
+  <h3 class="title">Reflection</h3>
+  <ul class="simplelist"><li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionmethod.createfrommethodname.php" class="methodname">ReflectionMethod::createFromMethodName()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.sockets">
+  <h3 class="title">Sockets</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-atmark.php" class="function">socket_atmark()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.standard">
+  <h3 class="title">Standard</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-increment.php" class="function">str_increment()</a></span></li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-decrement.php" class="function">str_decrement()</a></span></li>
+    
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-set-options.php" class="function">stream_context_set_options()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-functions.zip">
+  <h3 class="title">Zip</h3>
+  <ul class="simplelist"><li class="member">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.getarchiveflag.php" class="methodname">ZipArchive::getArchiveFlag()</a></span></li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration82.new-functions.php" target="_blank">PHP 8.2</a></h1>
     </header>
@@ -50,6 +166,11 @@
  <div class="sect2" id="migration82.new-functions.curl">
   <h3 class="title">cURL</h3>
   <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl_upkeep.php" class="function">curl_upkeep()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration82.new-functions.imap">
+  <h3 class="title">IMAP</h3>
+  <ul class="simplelist"><li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-is-open.php" class="function">imap_is_open()</a></span> (as of PHP 8.2.1)</li>
   </ul></div>
 
  <div class="sect2" id="migration82.new-functions.mysqli">
@@ -473,7 +594,7 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="methodname"><strong>Spoofchecker::setRestrictionLevel()</strong></span>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/spoofchecker.setrestrictionlevel.php" class="methodname">Spoofchecker::setRestrictionLevel()</a></span>
     </span>
    </li>
   </ul></div>

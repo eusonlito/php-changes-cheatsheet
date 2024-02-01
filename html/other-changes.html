@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
+        <title>Other Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="title" content="Other Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
-        <meta property="og:title" content="Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta property="og:title" content="Other Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="twitter:title" content="Other Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1706797420" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1706797420" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,589 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Other Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
+        <h1><a href="index.html"> Other Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration83.other-changes.php" target="_blank">PHP 8.3</a></h1>
+    </header>
+
+    <div id="migration83.other-changes" class="sect1">
+ <h2 class="title">Other Changes</h2>
+
+ <div class="sect2" id="migration83.other-changes.core">
+  <h3 class="title">Core changes</h3>
+
+  <div class="sect3" id="migration83.other-changes.core.ffi">
+   <h4 class="title">FFI</h4>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ffi.load.php" class="methodname">FFI::load()</a></span> is now allowed during preloading
+    when <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.preload-user" class="link">opcache.preload_user</a>
+    is the current system user. Previously,
+    calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ffi.load.php" class="methodname">FFI::load()</a></span> was not possible
+    during preloading if the
+    <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.preload-user" class="link">opcache.preload_user</a>
+    directive was set.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.core.fpm">
+   <h4 class="title">FPM</h4>
+
+   <p class="para">
+    FPM CLI test now fails if the socket path is longer than supported by OS.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.core.opcache">
+   <h4 class="title">Opcache</h4>
+
+   <p class="para">
+    In the CLI and phpdbg SAPIs, preloading does not require the
+    <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.preload-user" class="link">opcache.preload_user</a>
+    directive to be set anymore when running as root.
+    In other SAPIs, this directive is required when running as root because
+    preloading is done before the SAPI switches to an unprivileged user.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.core.streams">
+   <h4 class="title">Streams</h4>
+
+   <p class="para">
+    Blocking <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fread.php" class="function">fread()</a></span> on socket connection returns
+    immediately if there are any buffered data instead of waiting for more data.
+   </p>
+
+   <p class="para">
+    A memory stream no longer fails if the seek offset is past the end.
+    Instead, the memory will be increased on the next write and the data between
+    the old end and the offset is filled with zero bytes, similar to how files work.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stat.php" class="function">stat()</a></span> access operations like
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.file-exists.php" class="function">file_exists()</a></span> and similar will now use real
+    path instead of the actual stream path. This is consistent with stream
+    opening.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration83.other-changes.sapi">
+  <h3 class="title">Changes in SAPI Modules</h3>
+
+  <div class="sect3" id="migration83.other-changes.sapi.cli">
+   <h4 class="title">CLI</h4>
+
+   <p class="para">
+    The <strong><code>STDOUT</code></strong>, <strong><code>STDERR</code></strong> and
+    <strong><code>STDIN</code></strong> streams are no longer closed on resource
+    destruction which is mostly when the CLI finishes.
+    It is however still possible to explicitly close those streams using
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fclose.php" class="function">fclose()</a></span> and similar.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration83.other-changes.functions">
+  <h3 class="title">Changed Functions</h3>
+
+  <div class="sect3" id="migration83.other-changes.functions.core">
+   <h4 class="title">Core</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-status.php" class="function">gc_status()</a></span> has added the following 8 fields:
+
+    </p><ul class="simplelist"><li class="member"><code class="literal">"running"</code> =&gt; bool</li>
+     <li class="member"><code class="literal">"protected"</code> =&gt; bool</li>
+     <li class="member"><code class="literal">"full"</code> =&gt; bool</li>
+     <li class="member"><code class="literal">"buffer_size"</code> =&gt; int</li>
+     <li class="member"><code class="literal">"application_time"</code> =&gt; float: Total application
+     time, in seconds (including collector_time)</li>
+     <li class="member"><code class="literal">"collector_time"</code> =&gt; float: Time spent collecting
+     cycles, in seconds (including destructor_time and free_time)</li>
+     <li class="member"><code class="literal">"destructor_time"</code> =&gt; float: Time spent executing
+     destructors during cycle collection, in seconds</li>
+     <li class="member"><code class="literal">"free_time"</code> =&gt; float: Time spent freeing values
+     during cycle collection, in seconds</li>
+    </ul><p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.class-alias.php" class="function">class_alias()</a></span> now supports creating an alias of an
+    internal class.
+   </p>
+
+   <p class="para">
+    Setting <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.open-basedir" class="link">open_basedir</a> at runtime
+    using <code class="code">ini_set('open_basedir', ...);</code> no longer accepts paths
+    containing the parent directory (<code class="literal">..</code>). Previously,
+    only paths starting with <code class="literal">..</code> were disallowed. This could
+    easily be circumvented by prepending <code class="literal">./</code> to the path.
+   </p>
+
+   <p class="para">
+    User exception handlers now catch exceptions during shutdown.
+   </p>
+
+   <p class="para">
+    The resultant HTML of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.highlight-string.php" class="function">highlight_string()</a></span> and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.highlight-file.php" class="function">highlight_file()</a></span> has changed.
+    Whitespace between outer HTML tags is removed. Newlines and spaces
+    are no longer converted to HTML entities. The whole HTML is now wrapped in a
+    <code class="literal"><pre></pre></code> tag. The outer <code class="literal"><span></span></code>
+    tag has been merged with the <code class="literal"><code></code> tag.
+   </code></p>
+
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.calendar">
+   <h4 class="title">Calendar</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.easter-date.php" class="function">easter_date()</a></span> now supports years from 1970 to
+    2,000,000,000 on 64-bit systems, previously it only supported years in the
+    range from 1970 to 2037.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.curl">
+   <h4 class="title">Curl</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span> now supports two new constants:
+    <strong><code>CURLINFO_CAPATH</code></strong> and
+    <strong><code>CURLINFO_CAINFO</code></strong>. If option is <strong><code>null</code></strong>, the following
+    two additional keys are present:
+    <code class="literal">"capath"</code> and <code class="literal">"cainfo"</code>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.dom">
+   <h4 class="title">DOM</h4>
+
+   <p class="para">
+    Changed <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domcharacterdata.appenddata.php" class="methodname">DOMCharacterData::appendData()</a></span> tentative
+    return type to <span class="type"><span class="type true">true</span></span>.
+   </p>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domdocument.loadhtml.php" class="methodname">DOMDocument::loadHTML()</a></span>,
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domdocument.loadhtmlfile.php" class="methodname">DOMDocument::loadHTMLFile()</a></span>, and
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domdocument.loadxml.php" class="methodname">DOMDocument::loadXML()</a></span> now have a tentative
+    return type of <span class="type">bool</span>. Previously, this was documented as having a return
+    type of <code class="code">DOMDocument|bool</code>, but, as of PHP 8.0.0,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domdocument.php" class="classname">DOMDocument</a></span>
+    cannot be returned as it is no longer statically callable.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.gd">
+   <h4 class="title">Gd</h4>
+
+   <p class="para">
+    The signature of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagerotate.php" class="function">imagerotate()</a></span> has changed.
+    The <code class="parameter">$ignore_transparent</code> parameter has been removed,
+    as it was ignored since PHP 5.5.0.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.intl">
+   <h4 class="title">Intl</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="function">datefmt_set_timezone()</a></span> (and its alias
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="methodname">IntlDateformatter::setTimeZone()</a></span>)
+    now returns <strong><code>true</code></strong> on success, previously <strong><code>null</code></strong> was returned.
+   </p>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlbreakiterator.settext.php" class="methodname">IntlBreakiterator::setText()</a></span> now returns <strong><code>false</code></strong>
+    on failure, previously <strong><code>null</code></strong> was returned.
+    It now returns <strong><code>true</code></strong> on success, previously <strong><code>null</code></strong> was returned.
+   </p>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlchar.enumcharnames.php" class="methodname">IntlChar::enumCharNames()</a></span> is now returning a boolean.
+    Previously it returned <strong><code>null</code></strong> on success and <strong><code>false</code></strong> on failure.
+   </p>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.create.php" class="methodname">IntlDateFormatter::__construct()</a></span> throws an <strong><code>U_ILLEGAL_ARGUMENT_ERROR</code></strong>
+    exception when an invalid locale had been set.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.mbstring">
+   <h4 class="title">MBString</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strtolower.php" class="function">mb_strtolower()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-convert-case.php" class="function">mb_convert_case()</a></span>
+    implement conditional casing rules for the Greek letter sigma.
+    For <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-convert-case.php" class="function">mb_convert_case()</a></span>,
+    conditional casing only applies to <strong><code>MB_CASE_LOWER</code></strong>
+    and <strong><code>MB_CASE_TITLE</code></strong> modes, not to
+    <strong><code>MB_CASE_LOWER_SIMPLE</code></strong> and
+    <strong><code>MB_CASE_TITLE_SIMPLE</code></strong>.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-decode-mimeheader.php" class="function">mb_decode_mimeheader()</a></span> interprets underscores in
+    QPrint-encoded MIME encoded words as required by RFC 2047; they are
+    converted to spaces.
+    Underscores must be encoded as <code class="literal">"=5F"</code> in such MIME
+    encoded words.
+   </p>
+
+   <p class="para">
+    In rare cases, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-encode-mimeheader.php" class="function">mb_encode_mimeheader()</a></span> will transfer-encode
+    its input string where it would pass it through as raw ASCII in PHP 8.2.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-encode-mimeheader.php" class="function">mb_encode_mimeheader()</a></span> no longer drops NUL (zero)
+    bytes when QPrint-encoding the input string.
+    This previously caused strings in certain text encodings, especially
+    UTF-16 and UTF-32, to be corrupted by mb_encode_mimeheader.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-detect-encoding.php" class="function">mb_detect_encoding()</a></span>'s "non-strict" mode now behaves
+    as described in the documentation.
+    Previously, it would return <strong><code>false</code></strong> if the same byte (for example, the first
+    byte) of the input string was invalid in all candidate encodings.
+    More generally, it would eliminate candidate encodings from consideration
+    when an invalid byte was seen, and if the same input byte eliminated all
+    remaining encodings still under consideration, it would return <strong><code>false</code></strong>.
+    On the other hand, if all candidate encodings but one were eliminated
+    from consideration, it would return the last remaining one without regard
+    for how many encoding errors might be encountered later in the string.
+    This is different from the behavior described in the documentation, which
+    says: "If strict is set to false, the closest matching encoding will be
+    returned."
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.mysqli">
+   <h4 class="title">mysqli</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.fetch-object.php" class="function">mysqli_fetch_object()</a></span> now raises a
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span> instead of an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span>
+    when the <code class="parameter">$constructor_args</code> argument is non empty with
+    the class not having constructor.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.poll.php" class="function">mysqli_poll()</a></span> now raises a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span>
+    when neither the <code class="parameter">$read</code>
+    nor the <code class="parameter">$error</code> arguments are passed.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.field-seek.php" class="function">mysqli_field_seek()</a></span> and
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.field-seek.php" class="methodname">mysqli_result::field_seek()</a></span> now specify the return
+    type as <span class="type"><span class="type true">true</span></span> instead of <span class="type">bool</span>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.odbc">
+   <h4 class="title">ODBC</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.odbc-autocommit.php" class="function">odbc_autocommit()</a></span> now accepts <strong><code>null</code></strong> for the
+    <code class="parameter">$enable</code> parameter.
+    Passing <strong><code>null</code></strong> has the same behaviour as passing only 1 parameter,
+    namely indicating if the autocommit feature is enabled or not.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.pgsql">
+   <h4 class="title">PGSQL</h4>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-object.php" class="function">pg_fetch_object()</a></span> now raises a
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span> instead of an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span>
+    when the <code class="parameter">$constructor_args</code> argument is non empty with
+    the class not having constructor.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-insert.php" class="function">pg_insert()</a></span> now raises a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span>
+    instead of a <strong><code>E_WARNING</code></strong> when the table specified is invalid.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-insert.php" class="function">pg_insert()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-convert.php" class="function">pg_convert()</a></span> raises
+    a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span> or a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span>
+    instead of a <strong><code>E_WARNING</code></strong> when the value/type of a field
+    does not match properly with a PostgreSQL's type.
+   </p>
+
+   <p class="para">
+    The <code class="parameter">$row</code> parameter of
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-result.php" class="function">pg_fetch_result()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-prtlen.php" class="function">pg_field_prtlen()</a></span>, and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-is-null.php" class="function">pg_field_is_null()</a></span> is now nullable.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.random">
+   <h4 class="title">Random</h4>
+
+   <p class="para">
+    Changed <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mt-srand.php" class="function">mt_srand()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.srand.php" class="function">srand()</a></span> to
+    not check the number of arguments to determine whether a random seed should
+    be used. Passing <strong><code>null</code></strong> will generate a random seed, <code class="literal">0</code>
+    will use zero as the seed. The functions are now consistent with
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/random-engine-mt19937.construct.php" class="methodname">Random\Engine\Mt19937::__construct()</a></span>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.reflection">
+   <h4 class="title">Reflection</h4>
+
+   <p class="para">
+    Return type of <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.getstaticproperties.php" class="methodname">ReflectionClass::getStaticProperties()</a></span>
+    is no longer nullable.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.functions.standard">
+   <h4 class="title">Standard</h4>
+
+   <p class="para">
+    <strong><code>E_NOTICE</code></strong>s emitted by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unserialize.php" class="function">unserialize()</a></span>
+    have been promoted to <strong><code>E_WARNING</code></strong>.
+    
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unserialize.php" class="function">unserialize()</a></span> now emits a new <strong><code>E_WARNING</code></strong>
+    if the input contains unconsumed bytes.
+    
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-pad.php" class="function">array_pad()</a></span> is now only limited by the maximum number of
+    elements an array can have. Before, it was only possible to add at most 1048576
+    elements at a time.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strtok.php" class="function">strtok()</a></span> raises an <strong><code>E_WARNING</code></strong> in the
+    case token is not provided when starting tokenization.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-hash.php" class="function">password_hash()</a></span> will now chain the underlying
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.random-randomexception.php" class="classname">Random\RandomException</a></span>
+    as the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span>'s <code class="parameter">$previous</code>
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span> when salt generation fails.
+   </p>
+
+   <p class="para">
+    If using an array as the <code class="parameter">$command</code>
+    for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-open.php" class="function">proc_open()</a></span>, it must now have at least one
+    non empty element. Otherwise a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span>
+    is thrown.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-open.php" class="function">proc_open()</a></span> returns false if <code class="parameter">$command</code>
+    array is invalid command instead of resource object that produces warning later.
+    This was already the case for Windows but it is now also the case if posix_spawn
+    implementation is in use (most Linux, BSD and MacOS platforms). There are still
+    some old platforms where this behavior is not changed as posix_spawn is not
+    supported there.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-sum.php" class="function">array_sum()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-product.php" class="function">array_product()</a></span> now
+    warn when values in the array cannot be converted to int/float.
+    Previously arrays and objects where ignored whilst every other value was
+    cast to int. Moreover, objects that define a numeric cast (e.g.
+    <a target="_blank" href="https://www.php.net/manual/en/book.gmp.php" class="link">GMP</a>) are now casted instead of ignored.
+    
+   </p>
+
+   <p class="para">
+    The <code class="parameter">$decimal</code> of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.number-format.php" class="function">number_format()</a></span>
+    now properly handles negative integers.
+    Rounding with a negative value for <code class="parameter">$decimal</code> means
+    that <code class="parameter">$num</code> is rounded to <code class="parameter">$decimals</code>
+    significant digits before the decimal point.
+    Previously negative <code class="parameter">$decimals</code> were silently
+    ignored and the number got rounded to zero decimal places.
+   </p>
+
+   <p class="para">
+    A new <code class="parameter">$before_needle</code> argument has been added to
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strrchr.php" class="function">strrchr()</a></span>. It behaves like its counterpart in the
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strstr.php" class="function">strstr()</a></span> or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stristr.php" class="function">stristr()</a></span> functions.
+   </p>
+
+   <p class="para">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-getcsv.php" class="function">str_getcsv()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fgetcsv.php" class="function">fgetcsv()</a></span> now return
+    an empty string instead of a string with a single null byte for the last field
+    which only contains an unterminated enclosure.
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration83.other-changes.extensions">
+  <h3 class="title">Other Changes to Extensions</h3>
+
+  <div class="sect3" id="migration83.other-changes.extensions.core">
+   <h4 class="title">Core</h4>
+
+   <p class="para">
+    Using the <a target="_blank" href="https://www.php.net/manual/en/language.operators.increment.php" class="link">increment/decrement</a>
+    operators (<code class="literal">++</code>/<code class="literal">--</code>) on values of type
+    <span class="type">bool</span> now emit warnings.
+    This is because it currently has no effect, but will behave like
+    <code class="code">$bool += 1</code> in the future.
+   </p>
+
+   <p class="para">
+    Using the <a target="_blank" href="https://www.php.net/manual/en/language.operators.increment.php" class="link">decrement</a>
+    operator (<code class="literal">--</code>) on values of type <span class="type">null</span> now emit warnings.
+    This is because it currently has no effect, but will behave like
+    <code class="code">$null -= 1</code> in the future.
+   </p>
+
+   <p class="para">
+    Internal objects that implement an _IS_NUMBER cast but not a do_operator
+    handler that overrides addition and subtraction now can be incremented
+    and decrement as if one would do <code class="code">$o += 1</code> or <code class="code">$o -= 1</code>
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.extensions.dom">
+   <h4 class="title">DOM</h4>
+
+   <p class="para">
+    The DOM lifetime mechanism has been reworked such that implicitly removed
+    nodes can still be fetched. Previously this resulted in an exception.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.extensions.sqlite3">
+   <h4 class="title">SQLite3</h4>
+
+   <p class="para">
+    The <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sqlite3.php" class="classname">SQLite3</a></span> class now throws
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sqlite3exception.php" class="classname">SQLite3Exception</a></span> (extends
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span>) instead of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span>.
+   </p>
+
+   <p class="para">
+    The SQLite error code is now passed in the exception error code instead of
+    being included in the error message.
+   </p>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration83.other-changes.ini">
+  <h3 class="title">Changes to INI File Handling</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <p class="para">
+     The <code class="literal">assert.*</code> INI settings have been deprecated.
+     This comprises the following INI settings:
+     </p><ul class="simplelist"><li class="member"><a target="_blank" href="https://www.php.net/manual/en/info.configuration.php#ini.assert.active" class="link">assert.active</a></li>
+      <li class="member"><a target="_blank" href="https://www.php.net/manual/en/info.configuration.php#ini.assert.bail" class="link">assert.bail</a></li>
+      <li class="member"><a target="_blank" href="https://www.php.net/manual/en/info.configuration.php#ini.assert.callback" class="link">assert.callback</a></li>
+      <li class="member"><a target="_blank" href="https://www.php.net/manual/en/info.configuration.php#ini.assert.exception" class="link">assert.exception</a></li>
+      <li class="member"><a target="_blank" href="https://www.php.net/manual/en/info.configuration.php#ini.assert.warning" class="link">assert.warning</a></li>
+     </ul>
+     If the value of the setting is equal to the default value, no deprecation
+     notice is emitted.
+     The <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.zend.assertions" class="link">zend.assertions</a> INI setting
+     should be used instead.
+    
+   </li>
+   <li class="listitem">
+    <p class="para">
+     zend.max_allowed_stack_size
+    is a new INI directive to set the maximum allowed stack size.
+    Possible values are <code class="literal">0</code> (detect the process or thread maximum stack size),
+    <code class="literal">-1</code> (no limit), or a positive number of bytes.
+    The default is <code class="literal">0</code>.
+    When it is not possible to detect the process or thread maximum stack
+    size, a known system default is used.
+    Setting this value too high has the same effect as disabling the stack size limit.
+    Fibers use
+    fiber.stack_size
+    as maximum allowed stack size.
+    An <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> is thrown when the process call stack exceeds
+    zend.max_allowed_stack_size-zend.reserved_stack_size
+    bytes, to prevent stack-overflow-induced segmentation faults, with
+    the goal of making debugging easier.
+    The stack size increases during uncontrolled recursions involving internal functions
+    or the magic methods
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring" class="link">__toString()</a>,
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.cloning.php#object.clone" class="link">__clone()</a>,
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.sleep" class="link">__sleep()</a>,
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.decon.php#object.destruct" class="link">__destruct()</a>.
+    This is not related to stack buffer overflows, and is not a security feature.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     zend.reserved_stack_size
+     is a new INI directive to set the reserved stack size, in bytes.
+     This is subtracted from the max allowed stack size,
+     as a buffer, when checking the stack size.
+    </p>
+   </li>
+   </ul></div>
+
+ <div class="sect2" id="migration83.other-changes.performance">
+  <h3 class="title">Performance</h3>
+
+  <div class="sect3" id="migration83.other-changes.performance.dom">
+   <h4 class="title">DOM</h4>
+
+   <p class="para">
+    Looping over a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domnodelist.php" class="classname">DOMNodeList</a></span> now uses caching. Therefore
+    requesting items no longer takes quadratic time by default.
+   </p>
+
+   <p class="para">
+    Getting text content from nodes now avoids an allocation, resulting in a
+    performance gain.
+   </p>
+
+   <p class="para">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domchildnode.remove.php" class="methodname">DOMChildNode::remove()</a></span> now runs in O(1) performance.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.performance.standard">
+   <h4 class="title">Standard</h4>
+
+   <p class="para">
+    The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.file.php" class="function">file()</a></span> flags error check is now about 7% faster.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.other-changes.performance.spl">
+   <h4 class="title">SPL</h4>
+
+   <p class="para">
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.recursivedirectoryiterator.php" class="classname">RecursiveDirectoryIterator</a></span> now performs less I/O
+    when looping over a directory.
+   </p>
+  </div>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration82.other-changes.php" target="_blank">PHP 8.2</a></h1>
     </header>
@@ -60,6 +638,11 @@
    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionnamedtype.php" class="classname">ReflectionNamedType</a></span> with name <code class="literal">iterable</code>,
    however usage of <code class="literal">iterable</code> in union types will be
    converted to <code class="literal">array|Traversable</code>.
+  </p>
+
+  <p class="para">
+   The date format of sent cookies is now <code class="literal">'D, d M Y H:i:s \G\M\T'</code>;
+   previously it was <code class="literal">'D, d-M-Y H:i:s T'</code>.
   </p>
  </div>
 
@@ -158,7 +741,6 @@
     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlcodepointbreakiterator.php" class="classname">IntlCodePointBreakIterator</a></span>,
     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlpartsiterator.php" class="classname">IntlPartsIterator</a></span>,
     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a></span>,
-    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.php" class="classname">IntlCalendar</a></span>,
     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.collator.php" class="classname">Collator</a></span>,
     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intliterator.php" class="classname">IntlIterator</a></span>,
     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.uconverter.php" class="classname">UConverter</a></span>,
@@ -222,7 +804,7 @@
 
    <p class="para">
     <a target="_blank" href="https://www.php.net/manual/en/sqlite3.configuration.php#ini.sqlite3.defensive" class="link">sqlite3.defensive</a>
-    is now <strong><code>PHP_INI_USER</code></strong>.
+    is now <strong><code>INI_USER</code></strong>.
    </p>
   </div>
 
@@ -376,7 +958,7 @@
     Previously, <strong class="option unknown">-a</strong> without readline had the same behavior as
     calling <strong class="command">php</strong> without any arguments, apart from printing an additional
     <code class="literal">"Interactive mode enabled"</code> message.
-    This mode was <em class="emphasis">not</em> interactive.
+    This mode was <em>not</em> interactive.
    </p>
   </div>
 
@@ -1576,7 +2158,7 @@
   </p>
  </div>
 
- <div class="sect2" id="migration72.other-changes.opcache">
+ <div class="sect2" id="migration73.other-changes.opcache">
   <h3 class="title">OPcache</h3>
 
   <p class="para">
@@ -1831,10 +2413,7 @@
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #DD0000">'1b' </span><span style="color: #007700">+ </span><span style="color: #DD0000">'something'</span><span style="color: #007700">;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #DD0000">'1b' </span><span style="color: #007700">+ </span><span style="color: #DD0000">'something'</span><span style="color: #007700">;</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -1858,10 +2437,7 @@ Warning: A non-numeric value encountered in %s on line %d
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"\500"</span><span style="color: #007700">);</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"\500"</span><span style="color: #007700">);</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -2029,10 +2605,7 @@ string(1) "@"
   </p>
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// 'new', 'private', and 'for' were previously unusable<br></span><span style="color: #0000BB">Project</span><span style="color: #007700">::new(</span><span style="color: #DD0000">'Project Name'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">for</span><span style="color: #007700">(</span><span style="color: #DD0000">'purpose here'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">with</span><span style="color: #007700">(</span><span style="color: #DD0000">'username here'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// 'new', 'private', and 'for' were previously unusable<br></span><span style="color: #0000BB">Project</span><span style="color: #007700">::new(</span><span style="color: #DD0000">'Project Name'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">for</span><span style="color: #007700">(</span><span style="color: #DD0000">'purpose here'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">with</span><span style="color: #007700">(</span><span style="color: #DD0000">'username here'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>

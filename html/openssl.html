@@ -20,8 +20,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1706797420" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1706797420" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -58,7 +58,7 @@
     with servers with valid SSL certificates, as distributors generally
     configure OpenSSL to use known good CA bundles.
    </p>
-   
+
    <p class="para">
     The default CA bundle may be overridden on a global basis by setting
     either the openssl.cafile or openssl.capath configuration setting, or on a
@@ -147,10 +147,7 @@
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br>    </span><span style="color: #DD0000">'capture_session_meta' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">TRUE<br></span><span style="color: #007700">]]);<br> <br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">FALSE</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$meta </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_get_options</span><span style="color: #007700">(</span><span style="color: #0000BB">$ctx</span><span style="color: #007700">)[</span><span style="color: #DD0000">'ssl'</span><span style="color: #007700">][</span><span style="color: #DD0000">'session_meta'</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$meta</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br></span><span style="color: #DD0000">'capture_session_meta' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">TRUE<br></span><span style="color: #007700">]]);<br><br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">FALSE</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$meta </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_get_options</span><span style="color: #007700">(</span><span style="color: #0000BB">$ctx</span><span style="color: #007700">)[</span><span style="color: #DD0000">'ssl'</span><span style="color: #007700">][</span><span style="color: #DD0000">'session_meta'</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$meta</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -291,10 +288,7 @@ array(4) {
     <td class="seg"><code class="literal">sslv3://</code></td>
    </tr></tbody></table><div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">// Requiring TLS 1.0 or better when using file_get_contents():<br></span><span style="color: #0000BB">$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([<br>    </span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br>        </span><span style="color: #DD0000">'crypto_method' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLS_CLIENT</span><span style="color: #007700">,<br>    ],<br>]);<br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// Requiring TLS 1.1 or 1.2:<br></span><span style="color: #0000BB">$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([<br>    </span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br>        </span><span style="color: #DD0000">'crypto_method' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT </span><span style="color: #007700">|<br>                           </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</span><span style="color: #007700">,<br>    ],<br>]);<br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// Connecting using the tlsv1.2:// stream socket transport.<br></span><span style="color: #0000BB">$sock </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">'tlsv1.2://google.com:443/'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /><br></span><span style="color: #FF8000">// Requiring TLS 1.0 or better when using file_get_contents():<br></span><span style="color: #0000BB">$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([<br></span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br></span><span style="color: #DD0000">'crypto_method' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLS_CLIENT</span><span style="color: #007700">,<br>    ],<br>]);<br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// Requiring TLS 1.1 or 1.2:<br></span><span style="color: #0000BB">$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([<br></span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [<br></span><span style="color: #DD0000">'crypto_method' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT </span><span style="color: #007700">|<br></span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</span><span style="color: #007700">,<br>    ],<br>]);<br></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// Connecting using the tlsv1.2:// stream socket transport.<br></span><span style="color: #0000BB">$sock </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">'tlsv1.2://google.com:443/'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>
@@ -311,10 +305,7 @@ array(4) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_get_cert_locations</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_get_cert_locations</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -352,8 +343,8 @@ array(8) {
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-spki-verify.php" class="function">openssl_spki_verify()</a></span>,
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-spki-export-challenge.php" class="function">openssl_spki_export_challenge()</a></span>, and
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-spki-export.php" class="function">openssl_spki_export()</a></span> have been added to create, verify
-   export PEM public key and associated challenge from SPKAC's generated from
-   a <code class="literal">KeyGen</code> HTML5 element.
+   export <abbr title="Privacy-Enhanced Mail">PEM</abbr> public key and associated challenge from
+   SPKAC's generated from a <code class="literal">KeyGen</code> HTML5 element.
   </p>
 
   <dl><dt>
@@ -368,10 +359,7 @@ array(8) {
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
       <p class="para">The above example will output:</p>
@@ -397,10 +385,7 @@ SPKAC=MIIBXjCByDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA3L0IfUijj7+A8CPC8EmhcdNoe5
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_spki_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_spki_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
      </div>
@@ -420,10 +405,7 @@ SPKAC=MIIBXjCByDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA3L0IfUijj7+A8CPC8EmhcdNoe5
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$challenge </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_export_challenge</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">);<br>echo </span><span style="color: #0000BB">$challenge</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$challenge </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_export_challenge</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">);<br>echo </span><span style="color: #0000BB">$challenge</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
       <p class="para">The above example will output:</p>
@@ -444,15 +426,12 @@ challenge string
     <dd>
 
      <p class="para">
-      Exports the PEM formatted RSA public key from SPKAC.
+      Exports the <abbr title="Privacy-Enhanced Mail">PEM</abbr> formatted RSA public key from SPKAC.
      </p>
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br>echo </span><span style="color: #0000BB">openssl_spki_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();<br></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);<br>echo </span><span style="color: #0000BB">openssl_spki_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
       <p class="para">The above example will output:</p>

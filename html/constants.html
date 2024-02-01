@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Global Constants in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</title>
+        <title>New Global Constants in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Global Constants in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta name="title" content="New Global Constants in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
 
-        <meta property="og:title" content="New Global Constants in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta property="og:title" content="New Global Constants in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Global Constants in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta name="twitter:title" content="New Global Constants in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1706797420" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1706797420" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,315 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Global Constants in PHP 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</a></h1>
+        <h1><a href="index.html"> New Global Constants in PHP 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration83.constants.php" target="_blank">PHP 8.3</a></h1>
+    </header>
+
+    <div id="migration83.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration83.constants.curl">
+  <h3 class="title">cURL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLINFO_CAPATH</code></strong> (libcurl &gt;= 7.84.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLINFO_CAINFO</code></strong> (libcurl &gt;= 7.84.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_MIME_OPTIONS</code></strong> (libcurl &gt;= 7.81.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLMIMEOPT_FORMESCAPE</code></strong> (libcurl &gt;= 7.81.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_WS_OPTIONS</code></strong> (libcurl &gt;= 7.86.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLWS_RAW_MODE</code></strong> (libcurl &gt;= 7.86.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_SSH_HOSTKEYFUNCTION</code></strong> (libcurl &gt;= 7.84.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_PROTOCOLS_STR</code></strong> (libcurl &gt;= 7.85.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_REDIR_PROTOCOLS_STR</code></strong> (libcurl &gt;= 7.85.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_CA_CACHE_TIMEOUT</code></strong> (libcurl &gt;= 7.87.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_QUICK_EXIT</code></strong> (libcurl &gt;= 7.87.0)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLKHMATCH_OK</code></strong> (libcurl &gt;= 7.19.6)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLKHMATCH_MISMATCH</code></strong> (libcurl &gt;= 7.19.6)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLKHMATCH_MISSING</code></strong> (libcurl &gt;= 7.19.6)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLKHMATCH_LAST</code></strong> (libcurl &gt;= 7.19.6)
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.constants.intl">
+  <h3 class="title">Intl</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>MIXED_NUMBERS</code></strong>
+    (<span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.spoofchecker.php" class="classname">Spoofchecker</a></span>)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>HIDDEN_OVERLAY</code></strong>
+    (<span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.spoofchecker.php" class="classname">Spoofchecker</a></span>)</span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.constants.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>OPENSSL_CMS_OLDMIMETYPE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>PKCS7_NOOLDMIMETYPE</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.constants.pcntl">
+  <h3 class="title">PCNTL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>SIGINFO</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.constants.pdo-odbc">
+  <h3 class="title">PDO_ODBC</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>PDO_ODBC_TYPE</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.constants.posix">
+  <h3 class="title">Posix</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>POSIX_SC_ARG_MAX</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_SC_PAGESIZE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_SC_NPROCESSORS_CONF</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_SC_NPROCESSORS_ONLN</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_LINK_MAX</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_MAX_CANON</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_MAX_INPUT</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_NAME_MAX</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_PATH_MAX</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_PIPE_BUF</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_CHOWN_RESTRICTED</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_NO_TRUNC</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_ALLOC_SIZE_MIN</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>POSIX_PC_SYMLINK_MAX</code></strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.constants.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <p class="para">
+   The following socket options are now defined if they are supported:
+  </p>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara"><strong><code>SO_ATTACH_REUSEPORT_CBPF</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_DETACH_BPF</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_DETACH_FILTER</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TCP_QUICKACK</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_DONTFRAG</code></strong> (FreeBSD)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_MTU_DISCOVER</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_PMTUDISC_DO</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_PMTUDISC_DONT</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_PMTUDISC_WANT</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_PMTUDISC_PROBE</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_PMTUDISC_INTERFACE</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_PMTUDISC_OMIT</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>AF_DIVERT</code></strong> (FreeBSD)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SOL_UDPLITE</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>UDPLITE_RECV_CSCOV</code></strong></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>UDPLITE_SEND_CSCOV</code></strong></span>
+   </li>
+
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_RERROR</code></strong> (NetBSD)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_ZEROIZE</code></strong> (OpenBSD)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_SPLICE</code></strong> (OpenBSD)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>TCP_REPAIR</code></strong> (Linux)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>SO_REUSEPORT_LB</code></strong> (FreeBSD)</span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><strong><code>IP_BIND_ADDRESS_NO_PORT</code></strong> (Linux)</span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.constants.zip">
+  <h3 class="title">Zip</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::ER_DATA_LENGTH</code></strong> (libzip &gt;= 1.10)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::ER_NOT_ALLOWED</code></strong> (libzip &gt;= 1.10)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::AFL_RDONLY</code></strong> (libzip &gt;= 1.10)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::AFL_IS_TORRENTZIP</code></strong> (libzip &gt;= 1.10)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::AFL_WANT_TORRENTZIP</code></strong> (libzip &gt;= 1.10)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::AFL_CREATE_OR_KEEP_FILE_FOR_EMPTY_ARCHIVE</code></strong>
+     (libzip &gt;= 1.10)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::FL_OPEN_FILE_NOW</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::LENGTH_TO_END</code></strong> as default value for
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.addfile.php" class="function">ZipArchive::addFile()</a></span> and
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.replacefile.php" class="function">ZipArchive::replaceFile()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>ZipArchive::LENGTH_UNCHECKED</code></strong> (libzip &gt;= 1.10)
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration82.constants.php" target="_blank">PHP 8.2</a></h1>
     </header>
@@ -1369,7 +1673,7 @@
 
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <strong><code><a target="_blank" href="https://www.php.net/manual/en/" class="link">PREG_UNMATCHED_AS_NULL</a></code></strong>
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/pcre.constants.php#constant.preg-unmatched-as-null" class="link">PREG_UNMATCHED_AS_NULL</a></code></strong>
     </span>
    </li>
   </ul></div>
@@ -1754,17 +2058,17 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aez-128" class="link"><strong><code>ZipArchive::EM_AES_128</code></strong></a>
+     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aes-128" class="link"><strong><code>ZipArchive::EM_AES_128</code></strong></a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aez-192" class="link"><strong><code>ZipArchive::EM_AES_192</code></strong></a>
+     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aes-192" class="link"><strong><code>ZipArchive::EM_AES_192</code></strong></a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aes256" class="link"><strong><code>ZipArchive::EM_AES_256</code></strong></a>
+     <a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.em-aes-256" class="link"><strong><code>ZipArchive::EM_AES_256</code></strong></a>
     </span>
    </li>
   </ul></div>

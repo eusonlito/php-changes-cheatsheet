@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Backward Incompatible Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
+        <title>Backward Incompatible Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Backward Incompatible Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="title" content="Backward Incompatible Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
-        <meta property="og:title" content="Backward Incompatible Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta property="og:title" content="Backward Incompatible Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Backward Incompatible Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="twitter:title" content="Backward Incompatible Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1706797420" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1706797420" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,237 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Backward Incompatible Changes in PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
+        <h1><a href="index.html"> Backward Incompatible Changes in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration83.incompatible.php" target="_blank">PHP 8.3</a></h1>
+    </header>
+
+    <div id="migration83.incompatible" class="sect1">
+ <h2 class="title">Backward Incompatible Changes</h2>
+
+ <div class="sect2" id="migration83.incompatible.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration83.incompatible.core.overflowing-call-stack">
+
+   <h4 class="title">Programs that were very close to overflowing the call stack</h4>
+   <p class="para">
+    Programs that were very close to overflowing the call stack may now throw an
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> when using more than
+    zend.max_allowed_stack_size-zend.reserved_stack_size bytes of stack
+    (fiber.stack_size-zend.reserved_stack_size for fibers).
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.incompatible.core.proc-get-status-multiple-times">
+   <h4 class="title">Executing proc_get_status() multiple times</h4>
+   <p class="para">
+    Executing <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-get-status.php" class="function">proc_get_status()</a></span> multiple times will now always
+    return the right value on POSIX systems. Previously, only the first call
+    of the function returned the right value. Executing
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-close.php" class="function">proc_close()</a></span> after <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-get-status.php" class="function">proc_get_status()</a></span>
+    will now also return the right exit code. Previously this would return
+    <code class="literal">-1</code>.
+    Internally, this works by caching the result on POSIX systems.
+    If the previous behaviour is required, it is possible to check the
+    <code class="literal">"cached"</code> key in the array returned by
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.proc-get-status.php" class="function">proc_get_status()</a></span> to check whether the result was cached.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.incompatible.core.zend-max-execution-timers">
+   <h4 class="title">Zend Max Execution Timers</h4>
+   <p class="para">
+    Zend Max Execution Timers is now enabled by default for ZTS builds on
+    Linux.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.incompatible.core.traits-with-static-properties">
+   <h4 class="title">Uses of traits with static properties</h4>
+   <p class="para">
+    Uses of traits with static properties will now redeclare static properties
+    inherited from the parent class. This will create a separate static
+    property storage for the current class. This is analogous to adding the
+    static property to the class directly without traits.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.incompatible.core.negative-index-to-empty-array">
+   <h4 class="title">Assigning a negative index to an empty array</h4>
+   <p class="para">
+    Assigning a negative index <var class="varname">$n</var> to an empty array will now make sure that the
+    next index is <code class="code">$n+1</code> instead of <code class="literal">0</code>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.incompatible.core.class-constant-visibility-check">
+   <h4 class="title">Class constant visibility variance check</h4>
+   <p class="para">
+    Class constant visibility variance is now correctly checked when inherited
+    from interfaces.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration83.incompatible.core.weakmap-entries-maps-to-itself">
+   <h4 class="title">WeakMap entries whose key maps to itself</h4>
+   <p class="para">
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.weakmap.php" class="classname">WeakMap</a></span> entries whose key maps to itself (possibly
+    transitively) may now be removed during cycle collection if the key is not
+    reachable except by iterating over the WeakMap (reachability via iteration is
+    considered weak).
+    Previously, such entries would never be automatically removed.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration83.incompatible.date">
+  <h3 class="title">Date</h3>
+
+  <p class="para">
+   The DateTime extension has introduced Date extension specific exceptions
+   and errors under the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateerror.php" class="classname">DateError</a></span> and
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateexception.php" class="classname">DateException</a></span> hierarchies, instead of warnings and
+   generic exceptions. This improves error handling, at the expense
+   of having to check for errors and exceptions.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.incompatible.dom">
+  <h3 class="title">DOM</h3>
+
+  <p class="para">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domchildnode.after.php" class="methodname">DOMChildNode::after()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domchildnode.before.php" class="methodname">DOMChildNode::before()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domchildnode.replacewith.php" class="methodname">DOMChildNode::replaceWith()</a></span>
+   on a node that has no parent is now a no-op instead of a hierarchy
+   exception, which is the behaviour demanded by the DOM specification.
+  </p>
+
+  <p class="para">
+   Using the <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domparentnode.php" class="classname">DOMParentNode</a></span>
+   and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domchildnode.php" class="classname">DOMChildNode</a></span> methods without a document now
+   works instead of throwing a <strong><code>DOM_HIERARCHY_REQUEST_ERR</code></strong>
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domexception.php" class="classname">DOMException</a></span>.
+   This is in line with the behaviour demanded by the DOM specification.
+  </p>
+
+  <p class="para">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domdocument.createattributens.php" class="methodname">DOMDocument::createAttributeNS()</a></span> without specifying
+   a prefix would incorrectly create a default namespace, placing the element
+   inside the namespace instead of the attribute. This bug is now fixed.
+  </p>
+
+  <p class="para">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domdocument.createattributens.php" class="methodname">DOMDocument::createAttributeNS()</a></span> would previously
+   incorrectly throw a <strong><code>DOM_NAMESPACE_ERRNAMESPACE_ERR</code></strong>
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domexception.php" class="classname">DOMException</a></span> when the prefix was already used for a
+   different URI. It now correctly chooses a different prefix when there's a
+   prefix name conflict.
+  </p>
+
+  <p class="para">
+   New methods and properties were added to some DOM classes.
+   If a userland class inherits from these classes and declare a method or property
+   with the same name, the declarations must be compatible. Otherwise, a typical
+   compile error about incompatible declarations will be thrown.
+   See the <a target="_blank" href="https://www.php.net/manual/en/migration83.new-features.php#migration83.new-features.dom" class="link">list of new features</a>
+   and <a target="_blank" href="https://www.php.net/manual/en/migration83.new-functions.php#migration83.new-functions.dom" class="link">new functions</a> for
+   a list of the newly implemented methods and properties.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.incompatible.ffi">
+  <h3 class="title">FFI</h3>
+
+  <p class="para">
+   C functions that have a return type of <span class="type"><span class="type void">void</span></span> now return <strong><code>null</code></strong> instead of
+   returning the following object <code class="literal">object(FFI\CData:void) { }</code>
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.incompatible.opcache">
+  <h3 class="title">Opcache</h3>
+
+  <p class="para">
+   The <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.consistency-checks" class="link">opcache.consistency_checks</a>
+   INI directive was removed. This feature was broken with the tracing JIT,
+   as well as with inheritance cache, and has been disabled without a way to
+   enable it since PHP 8.1.18 and PHP 8.2.5.
+   Both the tracing JIT and inheritance cache may modify shm after the script
+   has been persisted by invalidating its checksum. The attempted fix skipped
+   over the modifiable pointers but was rejected due to complexity. For this
+   reason, it was decided to remove the feature instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.incompatible.phar">
+  <h3 class="title">Phar</h3>
+
+  <p class="para">
+   The type of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.phar.php" class="classname">Phar</a></span> class constants are now declared.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.incompatible.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="para">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.range.php" class="function">range()</a></span> function has had various changes:
+   </p><ul class="simplelist"><li class="member">A <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span> is now thrown when passing <span class="type">object</span>s,
+    <span class="type">resource</span>s, or <span class="type">array</span>s as the boundary inputs.</li>
+    <li class="member">A more descriptive <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span> is thrown when
+    passing <code class="literal">0</code> for <code class="parameter">$step</code>.</li>
+    <li class="member">A <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span> is now thrown when using a
+    negative <code class="parameter">$step</code> for increasing ranges.</li>
+    <li class="member">If <code class="parameter">$step</code> is a float that can be interpreted
+    as an int, it is now done so.</li>
+    <li class="member">A <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span> is now thrown if any argument
+    is infinity or NAN.</li>
+    <li class="member">An <strong><code>E_WARNING</code></strong> is now emitted if
+    <code class="parameter">$start</code> or <code class="parameter">$end</code> is the empty
+    string. The value continues to be cast to the value <code class="literal">0</code>.</li>
+    <li class="member">An <strong><code>E_WARNING</code></strong> is now emitted if
+    <code class="parameter">$start</code> or <code class="parameter">$end</code> has more than
+    one byte, only if it is a non-numeric string.</li>
+    <li class="member">An <strong><code>E_WARNING</code></strong> is now emitted if
+    <code class="parameter">$start</code> or <code class="parameter">$end</code> is cast to an
+    integer because the other boundary input is a number.
+    (e.g. <code class="code">range(5, 'z');</code>).</li>
+    <li class="member">An <strong><code>E_WARNING</code></strong> is now emitted if
+    <code class="parameter">$step</code> is a float when trying to generate a range of
+    characters, except if both boundary inputs are numeric strings (e.g.
+    <code class="code">range('5', '9', 0.5);</code> does not produce a warning).</li>
+    <li class="member"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.range.php" class="function">range()</a></span> now produce a list of characters if one
+    of the boundary inputs is a string digit instead of casting the other input
+    to int (e.g. <code class="code">range('9', 'A');</code>).</li>
+   </ul><div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />range</span><span style="color: #007700">(</span><span style="color: #DD0000">'9'</span><span style="color: #007700">, </span><span style="color: #DD0000">'A'</span><span style="color: #007700">);  </span><span style="color: #FF8000">// ["9", ":", ";", "&lt;", "=", "&gt;", "?", "@", "A"], as of PHP 8.3.0<br></span><span style="color: #0000BB">range</span><span style="color: #007700">(</span><span style="color: #DD0000">'9'</span><span style="color: #007700">, </span><span style="color: #DD0000">'A'</span><span style="color: #007700">);  </span><span style="color: #FF8000">// [9, 8, 7, 6, 5, 4, 3, 2, 1, 0], prior to PHP 8.3.0<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  
+
+  <p class="para">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.file.php" class="function">file()</a></span> flags error check now catches all invalid flags.
+   Notably <strong><code>FILE_APPEND</code></strong> was previously silently accepted.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration83.incompatible.SNMP">
+  <h3 class="title">SNMP</h3>
+
+  <p class="para">
+   The type of <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.snmp.php" class="classname">SNMP</a></span> class constants are now declared.
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration82.incompatible.php" target="_blank">PHP 8.2</a></h1>
     </header>
@@ -58,6 +284,11 @@
   <p class="para">
    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/datetimeimmutable.createfrommutable.php" class="methodname">DateTimeImmutable::createFromMutable()</a></span> now has a tentative
    return type of <span class="type"><span class="type static">static</span></span>, previously it was <span class="type"><a target="_blank" href="https://www.php.net/manual/en/class.datetimeimmutable.php" class="type DateTimeImmutable">DateTimeImmutable</a></span>.
+  </p>
+
+  <p class="para">
+   <code class="literal">number</code> symbols in <a target="_blank" href="https://www.php.net/manual/en/" class="link">relative formats</a>
+   no longer accept multiple signs, e.g. <code class="literal">+-2</code>.
   </p>
  </div>
 
@@ -131,6 +362,11 @@
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ksort.php" class="function">ksort()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.krsort.php" class="function">krsort()</a></span> now do numeric string
    comparison under <strong><code>SORT_REGULAR</code></strong> using the standard PHP 8 rules now.
   </p>
+
+  <p class="para">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.var-export.php" class="function">var_export()</a></span> no longer omits the leading backslash for exported classes,
+   i.e. these are now fully qualified.
+  </p>
  </div>
 
  <div class="sect2" id="migration82.incompatible.spl">
@@ -201,10 +437,7 @@
     inherited method will now share static variables with the parent method.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    public static function </span><span style="color: #0000BB">counter</span><span style="color: #007700">() {<br>        static </span><span style="color: #0000BB">$counter </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>        </span><span style="color: #0000BB">$counter</span><span style="color: #007700">++;<br>        return </span><span style="color: #0000BB">$counter</span><span style="color: #007700">;<br>    }<br>}<br>class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(1)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(2)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(3), previously int(1)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(4), previously int(2)<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    public static function </span><span style="color: #0000BB">counter</span><span style="color: #007700">() {<br>        static </span><span style="color: #0000BB">$counter </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$counter</span><span style="color: #007700">++;<br>        return </span><span style="color: #0000BB">$counter</span><span style="color: #007700">;<br>    }<br>}<br>class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(1)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(2)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(3), previously int(1)<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(4), previously int(2)<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -229,10 +462,7 @@
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">$container </span><span style="color: #007700">= </span><span style="color: #DD0000">"bowl"</span><span style="color: #007700">, </span><span style="color: #0000BB">$flavour</span><span style="color: #007700">)<br>{<br>    return </span><span style="color: #DD0000">"Making a </span><span style="color: #0000BB">$container</span><span style="color: #DD0000"> of </span><span style="color: #0000BB">$flavour</span><span style="color: #DD0000"> yogurt.\n"</span><span style="color: #007700">;<br>}<br>try<br>{<br>    echo </span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">flavour</span><span style="color: #007700">: </span><span style="color: #DD0000">"raspberry"</span><span style="color: #007700">);<br>}<br>catch (</span><span style="color: #0000BB">Error $e</span><span style="color: #007700">)<br>{<br>    echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">), </span><span style="color: #DD0000">' - '</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">$container </span><span style="color: #007700">= </span><span style="color: #DD0000">"bowl"</span><span style="color: #007700">, </span><span style="color: #0000BB">$flavour</span><span style="color: #007700">)<br>{<br>    return </span><span style="color: #DD0000">"Making a </span><span style="color: #0000BB">$container</span><span style="color: #DD0000"> of </span><span style="color: #0000BB">$flavour</span><span style="color: #DD0000"> yogurt.\n"</span><span style="color: #007700">;<br>}<br>try<br>{<br>    echo </span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">flavour</span><span style="color: #007700">: </span><span style="color: #DD0000">"raspberry"</span><span style="color: #007700">);<br>}<br>catch (</span><span style="color: #0000BB">Error $e</span><span style="color: #007700">)<br>{<br>    echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">), </span><span style="color: #DD0000">' - '</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
      <p class="para">Output of the above example in PHP 8.0:</p>
@@ -269,7 +499,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     inheritance validation.
     In case the return type cannot be declared for an overriding method due to
     PHP cross-version compatibility concerns,
-    a <code class="code">#[ReturnTypeWillChange]</code> attribute can be added to silence
+    a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.returntypewillchange.php" class="classname">ReturnTypeWillChange</a></span> attribute can be added to silence
     the deprecation notice.
    </p>
   </div>
@@ -430,7 +660,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
   <h3 class="title">OpenSSL</h3>
 
   <p class="para">
-   EC private keys will now be exported in PKCS#8 format rather than
+   EC private keys will now be exported in <abbr title="Public Key Cryptography Standards">PKCS</abbr>#8 format rather than
    traditional format, just like all other keys.
   </p>
   <p class="para">
@@ -507,7 +737,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
    now use <code class="literal">ENT_QUOTES | ENT_SUBSTITUTE</code> rather than
    <strong><code>ENT_COMPAT</code></strong> by default.
    This means that <code class="literal">'</code> is escaped to
-   <code class="literal">&amp;#039;</code> while previously nothing was done.
+   <code class="literal">'</code> while previously nothing was done.
    Additionally, malformed UTF-8 will be replaced by a Unicode substitution
    character, instead of resulting in an empty string.
   </p>
@@ -712,10 +942,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Replace<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() == </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br>        return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>    }<br>    </span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br><br></span><span style="color: #FF8000">// With<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (!(</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() &amp; </span><span style="color: #0000BB">$err_no</span><span style="color: #007700">)) {<br>        return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>    }<br>    </span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// Replace<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() == </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br>        return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>    }<br></span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br><br></span><span style="color: #FF8000">// With<br></span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {<br>    if (!(</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() &amp; </span><span style="color: #0000BB">$err_no</span><span style="color: #007700">)) {<br>        return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>    }<br></span><span style="color: #FF8000">// ...<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
      
@@ -746,10 +973,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// was previously interpreted as:<br></span><span style="color: #007700">echo (</span><span style="color: #DD0000">"Sum: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a</span><span style="color: #007700">) + </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// is now interpreted as:<br></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum:" </span><span style="color: #007700">. (</span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// was previously interpreted as:<br></span><span style="color: #007700">echo (</span><span style="color: #DD0000">"Sum: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a</span><span style="color: #007700">) + </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// is now interpreted as:<br></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum:" </span><span style="color: #007700">. (</span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
       
@@ -763,10 +987,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Replace<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">CONST_RESOLVING_TO_NULL</span><span style="color: #007700">) {}<br></span><span style="color: #FF8000">// With<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">CONST_RESOLVING_TO_NULL</span><span style="color: #007700">) {}<br></span><span style="color: #FF8000">// Or<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// Replace<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">CONST_RESOLVING_TO_NULL</span><span style="color: #007700">) {}<br></span><span style="color: #FF8000">// With<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">CONST_RESOLVING_TO_NULL</span><span style="color: #007700">) {}<br></span><span style="color: #FF8000">// Or<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
      
@@ -793,6 +1014,10 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
        <li class="member">
         Attempting to access unqualified constants which are undefined.
         Previously, unqualified constant accesses resulted in a warning and were interpreted as strings.
+       </li>
+       <li class="member">
+        Passing the wrong number of arguments to a non-variadic built-in
+        function will throw an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.argumentcounterror.php" class="classname">ArgumentCountError</a></span>.
        </li>
       </ul><p class="para">
       A number of notices have been converted into warnings:
@@ -846,10 +1071,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">new class extends </span><span style="color: #0000BB">ParentClass </span><span style="color: #007700">{};<br></span><span style="color: #FF8000">// -&gt; ParentClass@anonymous<br></span><span style="color: #007700">new class implements </span><span style="color: #0000BB">FirstInterface</span><span style="color: #007700">, </span><span style="color: #0000BB">SecondInterface </span><span style="color: #007700">{};<br></span><span style="color: #FF8000">// -&gt; FirstInterface@anonymous<br></span><span style="color: #007700">new class {};<br></span><span style="color: #FF8000">// -&gt; class@anonymous<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">new class extends </span><span style="color: #0000BB">ParentClass </span><span style="color: #007700">{};<br></span><span style="color: #FF8000">// -&gt; ParentClass@anonymous<br></span><span style="color: #007700">new class implements </span><span style="color: #0000BB">FirstInterface</span><span style="color: #007700">, </span><span style="color: #0000BB">SecondInterface </span><span style="color: #007700">{};<br></span><span style="color: #FF8000">// -&gt; FirstInterface@anonymous<br></span><span style="color: #007700">new class {};<br></span><span style="color: #FF8000">// -&gt; class@anonymous<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
      
@@ -864,10 +1086,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">X </span><span style="color: #007700">{<br>    use </span><span style="color: #0000BB">T1</span><span style="color: #007700">, </span><span style="color: #0000BB">T2 </span><span style="color: #007700">{<br>        </span><span style="color: #0000BB">func </span><span style="color: #007700">as </span><span style="color: #0000BB">otherFunc</span><span style="color: #007700">;<br>    }<br>    function </span><span style="color: #0000BB">func</span><span style="color: #007700">() {}<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">X </span><span style="color: #007700">{<br>    use </span><span style="color: #0000BB">T1</span><span style="color: #007700">, </span><span style="color: #0000BB">T2 </span><span style="color: #007700">{<br></span><span style="color: #0000BB">func </span><span style="color: #007700">as </span><span style="color: #0000BB">otherFunc</span><span style="color: #007700">;<br>    }<br>    function </span><span style="color: #0000BB">func</span><span style="color: #007700">() {}<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
      
@@ -885,10 +1104,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">trait </span><span style="color: #0000BB">MyTrait </span><span style="color: #007700">{<br>    abstract private function </span><span style="color: #0000BB">neededByTrait</span><span style="color: #007700">(): </span><span style="color: #0000BB">string</span><span style="color: #007700">;<br>}<br><br>class </span><span style="color: #0000BB">MyClass </span><span style="color: #007700">{<br>    use </span><span style="color: #0000BB">MyTrait</span><span style="color: #007700">;<br><br>    </span><span style="color: #FF8000">// Error, because of return type mismatch.<br>    </span><span style="color: #007700">private function </span><span style="color: #0000BB">neededByTrait</span><span style="color: #007700">(): </span><span style="color: #0000BB">int </span><span style="color: #007700">{ return </span><span style="color: #0000BB">42</span><span style="color: #007700">; }<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">trait </span><span style="color: #0000BB">MyTrait </span><span style="color: #007700">{<br>    abstract private function </span><span style="color: #0000BB">neededByTrait</span><span style="color: #007700">(): </span><span style="color: #0000BB">string</span><span style="color: #007700">;<br>}<br><br>class </span><span style="color: #0000BB">MyClass </span><span style="color: #007700">{<br>    use </span><span style="color: #0000BB">MyTrait</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// Error, because of return type mismatch.<br></span><span style="color: #007700">private function </span><span style="color: #0000BB">neededByTrait</span><span style="color: #007700">(): </span><span style="color: #0000BB">int </span><span style="color: #007700">{ return </span><span style="color: #0000BB">42</span><span style="color: #007700">; }<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
       
@@ -924,10 +1140,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">, </span><span style="color: #DD0000">"de_DE"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= </span><span style="color: #0000BB">3.14</span><span style="color: #007700">;<br>echo </span><span style="color: #0000BB">$f</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// Previously: 3,14<br>// Now:        3.14<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">, </span><span style="color: #DD0000">"de_DE"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= </span><span style="color: #0000BB">3.14</span><span style="color: #007700">;<br>echo </span><span style="color: #0000BB">$f</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// Previously: 3,14<br>// Now:        3.14<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
      
@@ -943,10 +1156,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Instead of:<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">{</span><span style="color: #0000BB">0</span><span style="color: #007700">};<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">{</span><span style="color: #DD0000">"key"</span><span style="color: #007700">};<br></span><span style="color: #FF8000">// Write:<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"key"</span><span style="color: #007700">];<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// Instead of:<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">{</span><span style="color: #0000BB">0</span><span style="color: #007700">};<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">{</span><span style="color: #DD0000">"key"</span><span style="color: #007700">};<br></span><span style="color: #FF8000">// Write:<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"key"</span><span style="color: #007700">];<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
       </div>
 
       
@@ -1256,7 +1466,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     <li class="member"><span class="methodname"><strong>DOMNamedNodeMap::removeNamedItemNS()</strong></span></li>
     <li class="member"><span class="methodname"><strong>DOMText::replaceWholeText()</strong></span></li>
     <li class="member"><span class="methodname"><strong>DOMNode::compareDocumentPosition()</strong></span></li>
-    <li class="member"><span class="methodname"><strong>DOMNode::isEqualNode()</strong></span></li>
+    <li class="member"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.isequalnode.php" class="methodname">DOMNode::isEqualNode()</a></span></li>
     <li class="member"><span class="methodname"><strong>DOMNode::getFeature()</strong></span></li>
     <li class="member"><span class="methodname"><strong>DOMNode::setUserData()</strong></span></li>
     <li class="member"><span class="methodname"><strong>DOMNode::getUserData()</strong></span></li>
@@ -1741,10 +1951,10 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.rewind.php" class="methodname">SplFixedArray::rewind()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.current.php" class="methodname">SplFixedArray::current()</a></span>,
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.key.php" class="methodname">SplFixedArray::key()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.next.php" class="methodname">SplFixedArray::next()</a></span>, and
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.valid.php" class="methodname">SplFixedArray::valid()</a></span> have been removed. In their place,
-     <span class="methodname"><strong>SplFixedArray::getIterator()</strong></span> has been added. Any code which uses explicit
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.getiterator.php" class="methodname">SplFixedArray::getIterator()</a></span> has been added. Any code which uses explicit
      iteration over SplFixedArray must now obtain an
      <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iterator.php" class="interfacename">Iterator</a></span> through
-     <span class="methodname"><strong>SplFixedArray::getIterator()</strong></span>. This means that
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.getiterator.php" class="methodname">SplFixedArray::getIterator()</a></span>. This means that
      <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.php" class="classname">SplFixedArray</a></span> is now safe to use in nested loops.
     </p>
    </li>
@@ -1926,10 +2136,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'protocol_version' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">]]);<br>echo </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.org'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'protocol_version' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">]]);<br>echo </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.org'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     
@@ -2102,16 +2309,16 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
   </div>
 
   <div class="sect3" id="migration74.incompatible.core.php-tag">
-   <h4 class="title"><code class="literal">&lt;?php</code> tag at end of file</h4>
+   <h4 class="title"><code class="literal"><?php </code> tag at end of file</code></h4>
 
    <p class="para">
-    <code class="literal">&lt;?php</code> at the end of the file (without trailing newline)
+    <code class="literal"><?php </code> at the end of the file (without trailing newline)
     will now be interpreted as an opening PHP tag. Previously it was interpreted
     either as a short opening tag followed by literal <code class="literal">php</code> and
     resulted in a syntax error (with <code class="literal">short_open_tag=1</code>)
-    or was interpreted as a literal <code class="literal">&lt;?php</code> string
+    or was interpreted as a literal <code class="literal"><?php </code> string
     (with <code class="literal">short_open_tag=0</code>).
-   </p>
+   </code></code></p>
   </div>
 
   <div class="sect3" id="migration74.incompatible.core.stream-wrappers">
@@ -2275,7 +2482,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
    In particular, an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> is thrown if the number of
    requested bytes is less than or equal to zero, and an <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.exception.php" class="classname">Exception</a></span>
    is thrown if sufficient randomness cannot be gathered.
-   The <code class="literal">$crypto_strong output</code> argument is guaranteed to always
+   The <code class="literal">$crypto_strong</code> output argument is guaranteed to always
    be <strong><code>true</code></strong> if the function does not throw, so explicitly checking it is not necessary.
   </p>
  </div>
@@ -2384,7 +2591,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
   <h3 class="title">Incoming Cookies</h3>
 
   <p class="para">
-   As of PHP 7.4.11, the <em class="emphasis">names</em> of incoming cookies are no
+   As of PHP 7.4.11, the <em>names</em> of incoming cookies are no
    longer url-decoded for security reasons.
   </p>
  </div>
@@ -2409,10 +2616,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     may cause syntax errors or change in interpretation. For example in:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$str </span><span style="color: #007700">= &lt;&lt;&lt;FOO<br></span><span style="color: #DD0000">abcdefg<br></span><span style="color: #007700">   FOO<br></span><span style="color: #0000BB">FOO</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$str </span><span style="color: #007700">= &lt;&lt;<foo></foo></span><span style="color: #DD0000">abcdefg<br></span><span style="color: #007700">   FOO<br></span><span style="color: #0000BB">FOO</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -2435,10 +2639,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     in other languages.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">while (</span><span style="color: #0000BB">$foo</span><span style="color: #007700">) {<br>    switch (</span><span style="color: #0000BB">$bar</span><span style="color: #007700">) {<br>      case </span><span style="color: #DD0000">"baz"</span><span style="color: #007700">:<br>         continue;<br>         </span><span style="color: #FF8000">// Warning: "continue" targeting switch is equivalent to<br>         //          "break". Did you mean to use "continue 2"?<br>   </span><span style="color: #007700">}<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">while (</span><span style="color: #0000BB">$foo</span><span style="color: #007700">) {<br>    switch (</span><span style="color: #0000BB">$bar</span><span style="color: #007700">) {<br>      case </span><span style="color: #DD0000">"baz"</span><span style="color: #007700">:<br>         continue;<br></span><span style="color: #FF8000">// Warning: "continue" targeting switch is equivalent to<br>         //          "break". Did you mean to use "continue 2"?<br></span><span style="color: #007700">}<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -2470,10 +2671,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     assigning a reference. This loophole has been fixed.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{<br>    public static </span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>}<br>class </span><span style="color: #0000BB">Test2 </span><span style="color: #007700">extends </span><span style="color: #0000BB">Test </span><span style="color: #007700">{ }<br><br></span><span style="color: #0000BB">Test2</span><span style="color: #007700">::</span><span style="color: #0000BB">$x </span><span style="color: #007700">= &amp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Test</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">, </span><span style="color: #0000BB">Test2</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// Previously: int(0), int(1)<br>// Now:        int(1), int(1)<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{<br>    public static </span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>}<br>class </span><span style="color: #0000BB">Test2 </span><span style="color: #007700">extends </span><span style="color: #0000BB">Test </span><span style="color: #007700">{ }<br><br></span><span style="color: #0000BB">Test2</span><span style="color: #007700">::</span><span style="color: #0000BB">$x </span><span style="color: #007700">= &amp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Test</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">, </span><span style="color: #0000BB">Test2</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// Previously: int(0), int(1)<br>// Now:        int(1), int(1)<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -2489,10 +2687,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     reference between the access and the use of the accessed value:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$ref </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] + (</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] = </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br></span><span style="color: #FF8000">// Previously: int(4), Now: int(3)<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$ref </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] + (</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] = </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br></span><span style="color: #FF8000">// Previously: int(4), Now: int(3)<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -2510,10 +2705,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     with non-integer keys. The following code worked in PHP 5.6-7.2 by accident.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">$args</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">);<br>}<br>function </span><span style="color: #0000BB">gen</span><span style="color: #007700">() {<br>    yield </span><span style="color: #0000BB">1.23 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">123</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">gen</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">$args</span><span style="color: #007700">) {<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">);<br>}<br>function </span><span style="color: #0000BB">gen</span><span style="color: #007700">() {<br>    yield </span><span style="color: #0000BB">1.23 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">123</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">gen</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
      </div>
 
     </div>
@@ -2670,7 +2862,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
   <h3 class="title">Incoming Cookies</h3>
 
   <p class="para">
-   As of PHP 7.3.23, the <em class="emphasis">names</em> of incoming cookies are no
+   As of PHP 7.3.23, the <em>names</em> of incoming cookies are no
    longer url-decoded for security reasons.
   </p>
  </div>
@@ -2695,10 +2887,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br><br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">number_format</span><span style="color: #007700">(-</span><span style="color: #0000BB">0.01</span><span style="color: #007700">)); </span><span style="color: #FF8000">// now outputs string(1) "0" instead of string(2) "-0"</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /><br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">number_format</span><span style="color: #007700">(-</span><span style="color: #0000BB">0.01</span><span style="color: #007700">)); </span><span style="color: #FF8000">// now outputs string(1) "0" instead of string(2) "-0"</span></span></code></div>
    </div>
 
   </div>
@@ -2720,10 +2909,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">// array to object<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= (object)</span><span style="color: #0000BB">$arr</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br>    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">,<br>    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'0'</span><span style="color: #007700">}, </span><span style="color: #FF8000">// now accessible<br>    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #007700">);</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /><br></span><span style="color: #FF8000">// array to object<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= (object)</span><span style="color: #0000BB">$arr</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">,<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'0'</span><span style="color: #007700">}, </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #007700">);</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -2746,10 +2932,7 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">// object to array<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new class {<br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    }<br>};<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= (array)</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br>    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">,<br>    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">], </span><span style="color: #FF8000">// now accessible<br>    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">] </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #007700">);</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /><br></span><span style="color: #FF8000">// object to array<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new class {<br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br>    {<br></span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    }<br>};<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= (array)</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">,<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">], </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">] </span><span style="color: #FF8000">// now accessible<br></span><span style="color: #007700">);</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -2788,10 +2971,7 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br><br>var_dump</span><span style="color: #007700">(<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">), </span><span style="color: #FF8000">// NULL is not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">), </span><span style="color: #FF8000">// integers are not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">), </span><span style="color: #FF8000">// strings are not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdclass</span><span style="color: #007700">), </span><span style="color: #FF8000">// objects not implementing the Countable interface are not countable<br>    </span><span style="color: #0000BB">count</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">]) </span><span style="color: #FF8000">// arrays are countable<br></span><span style="color: #007700">);</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /><br>var_dump</span><span style="color: #007700">(<br></span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">), </span><span style="color: #FF8000">// NULL is not countable<br></span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">), </span><span style="color: #FF8000">// integers are not countable<br></span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">), </span><span style="color: #FF8000">// strings are not countable<br></span><span style="color: #0000BB">count</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">), </span><span style="color: #FF8000">// objects not implementing the Countable interface are not countable<br></span><span style="color: #0000BB">count</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">]) </span><span style="color: #FF8000">// arrays are countable<br></span><span style="color: #007700">);</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -2997,7 +3177,7 @@ int(2)
   <h3 class="title">Incoming Cookies</h3>
 
   <p class="para">
-   As of PHP 7.2.34, the <em class="emphasis">names</em> of incoming cookies are no
+   As of PHP 7.2.34, the <em>names</em> of incoming cookies are no
    longer url-decoded for security reasons.
   </p>
  </div>
@@ -3022,10 +3202,7 @@ int(2)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">){}<br></span><span style="color: #0000BB">test</span><span style="color: #007700">();</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">){}<br></span><span style="color: #0000BB">test</span><span style="color: #007700">();</span></span></code></div>
    </div>
 
    <p class="para">The above example will output
@@ -3095,10 +3272,7 @@ Fatal error: Uncaught ArgumentCountError: Too few arguments to function test(), 
    </li>
   </ul><div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">(function () {<br>    </span><span style="color: #0000BB">$func </span><span style="color: #007700">= </span><span style="color: #DD0000">'func_num_args'</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">$func</span><span style="color: #007700">();<br>})();</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">(function () {<br></span><span style="color: #0000BB">$func </span><span style="color: #007700">= </span><span style="color: #DD0000">'func_num_args'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$func</span><span style="color: #007700">();<br>})();</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -3239,10 +3413,7 @@ Warning: Cannot call func_num_args() dynamically in %s on line %d
    an empty array.
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$a </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">] = </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$a </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">] = </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
     </div>
 
     <p class="para">Output of the above example in PHP 7.0:</p>
@@ -3307,10 +3478,7 @@ string(11) "          f"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$array </span><span style="color: #007700">= [];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$array </span><span style="color: #007700">= [];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 7.0:</p>
@@ -3380,10 +3548,7 @@ array(2) {
    instances will now more likely return <strong><code>false</code></strong> instead of <strong><code>true</code></strong>:
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">() == new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">() == new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
     </div>
 
    </div>
@@ -3531,10 +3696,7 @@ array(2) {
 
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">) {};<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$this</span><span style="color: #007700">) {};<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= function (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) {};</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">) {};<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$this</span><span style="color: #007700">) {};<br></span><span style="color: #0000BB">$f </span><span style="color: #007700">= function (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) {};</span></span></code></div>
     </div>
 
    </div>
@@ -3561,10 +3723,7 @@ array(2) {
 
    </p><div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">json_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">([</span><span style="color: #DD0000">'' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">])));</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">json_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">([</span><span style="color: #DD0000">'' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">])));</span></span></code></div>
    </div>
 
    <p class="para">The above example will output
@@ -3673,10 +3832,7 @@ object(stdClass)#1 (1) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// PHP 5 era code that will break.<br></span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) { ... }<br></span><span style="color: #0000BB">set_exception_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">'handler'</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// PHP 5 and 7 compatible.<br></span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">) { ... }<br><br></span><span style="color: #FF8000">// PHP 7 only.<br></span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">Throwable $e</span><span style="color: #007700">) { ... }<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// PHP 5 era code that will break.<br></span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) { ... }<br></span><span style="color: #0000BB">set_exception_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">'handler'</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// PHP 5 and 7 compatible.<br></span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">) { ... }<br><br></span><span style="color: #FF8000">// PHP 7 only.<br></span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">Throwable $e</span><span style="color: #007700">) { ... }<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>
@@ -3822,10 +3978,7 @@ object(stdClass)#1 (1) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">f</span><span style="color: #007700">() {<br>    </span><span style="color: #FF8000">// Valid in PHP 5 only.<br>    </span><span style="color: #007700">global $</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">;<br><br>    </span><span style="color: #FF8000">// Valid in PHP 5 and 7.<br>    </span><span style="color: #007700">global ${</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">};<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">f</span><span style="color: #007700">() {<br></span><span style="color: #FF8000">// Valid in PHP 5 only.<br></span><span style="color: #007700">global $</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// Valid in PHP 5 and 7.<br></span><span style="color: #007700">global ${</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">};<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>
@@ -3848,10 +4001,7 @@ object(stdClass)#1 (1) {
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[]) = [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[]) = [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
     </div>
 
     <p class="para">Output of the above example in PHP 5:</p>
@@ -3899,10 +4049,7 @@ array(3) {
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">list() = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br>list(,,) = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br>list(</span><span style="color: #0000BB">$x</span><span style="color: #007700">, list(), </span><span style="color: #0000BB">$y</span><span style="color: #007700">) = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">list() = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br>list(,,) = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br>list(</span><span style="color: #0000BB">$x</span><span style="color: #007700">, list(), </span><span style="color: #0000BB">$y</span><span style="color: #007700">) = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
     </div>
 
    </div>
@@ -3932,10 +4079,7 @@ array(3) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$array </span><span style="color: #007700">= [];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$array </span><span style="color: #007700">= [];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5:</p>
@@ -3976,10 +4120,7 @@ array(2) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">getArray</span><span style="color: #007700">() {<br>    return [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];<br>}<br><br>function </span><span style="color: #0000BB">squareArray</span><span style="color: #007700">(array &amp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">) {<br>    foreach (</span><span style="color: #0000BB">$a </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$v</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">$v </span><span style="color: #007700">**= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #FF8000">// Generates a warning in PHP 7.<br></span><span style="color: #0000BB">squareArray</span><span style="color: #007700">((</span><span style="color: #0000BB">getArray</span><span style="color: #007700">()));<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">getArray</span><span style="color: #007700">() {<br>    return [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];<br>}<br><br>function </span><span style="color: #0000BB">squareArray</span><span style="color: #007700">(array &amp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">) {<br>    foreach (</span><span style="color: #0000BB">$a </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$v</span><span style="color: #007700">) {<br></span><span style="color: #0000BB">$v </span><span style="color: #007700">**= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #FF8000">// Generates a warning in PHP 7.<br></span><span style="color: #0000BB">squareArray</span><span style="color: #007700">((</span><span style="color: #0000BB">getArray</span><span style="color: #007700">()));<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">The above example will output:</p>
@@ -4017,10 +4158,7 @@ Notice: Only variables should be passed by reference in /tmp/test.php on line 13
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">];<br>foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">current</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">));<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">];<br>foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">current</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">));<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5:</p>
@@ -4065,10 +4203,7 @@ int(0)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br>foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br>foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5:</p>
@@ -4128,10 +4263,7 @@ int(1)
   </p>
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">&gt;&gt; -</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">&gt;&gt; -</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
     <p class="para">Output of the above example in PHP 5:</p>
@@ -4175,10 +4307,7 @@ Stack trace:
   </p>
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">/</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">/</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">%</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">/</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">/</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">%</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5:</p>
@@ -4228,10 +4357,7 @@ PHP Fatal error:  Uncaught DivisionByZeroError: Modulo by zero in %s line %d
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"0x123" </span><span style="color: #007700">== </span><span style="color: #DD0000">"291"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">is_numeric</span><span style="color: #007700">(</span><span style="color: #DD0000">"0x123"</span><span style="color: #007700">));<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"0xe" </span><span style="color: #007700">+ </span><span style="color: #DD0000">"0x1"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"0x1"</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"0x123" </span><span style="color: #007700">== </span><span style="color: #DD0000">"291"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">is_numeric</span><span style="color: #007700">(</span><span style="color: #DD0000">"0x123"</span><span style="color: #007700">));<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"0xe" </span><span style="color: #007700">+ </span><span style="color: #DD0000">"0x1"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"0x1"</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5:</p>
@@ -4264,10 +4390,7 @@ string(3) "foo"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"0xffff"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$int </span><span style="color: #007700">= </span><span style="color: #0000BB">filter_var</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_VALIDATE_INT</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_FLAG_ALLOW_HEX</span><span style="color: #007700">);<br>if (</span><span style="color: #0000BB">false </span><span style="color: #007700">=== </span><span style="color: #0000BB">$int</span><span style="color: #007700">) {<br>    throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">"Invalid integer!"</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$int</span><span style="color: #007700">); </span><span style="color: #FF8000">// int(65535)<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"0xffff"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$int </span><span style="color: #007700">= </span><span style="color: #0000BB">filter_var</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_VALIDATE_INT</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_FLAG_ALLOW_HEX</span><span style="color: #007700">);<br>if (</span><span style="color: #0000BB">false </span><span style="color: #007700">=== </span><span style="color: #0000BB">$int</span><span style="color: #007700">) {<br>    throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">"Invalid integer!"</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$int</span><span style="color: #007700">); </span><span style="color: #FF8000">// int(65535)<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>
@@ -4509,10 +4632,7 @@ string(3) "foo"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">$c </span><span style="color: #007700">=&amp; new </span><span style="color: #0000BB">C</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">$c </span><span style="color: #007700">=&amp; new </span><span style="color: #0000BB">C</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5:</p>
@@ -4594,8 +4714,8 @@ Parse error: syntax error, unexpected 'new' (T_NEW) in /tmp/test.php on line 3
       <td><code class="code">%&gt;</code></td>
      </tr><tr><td><code class="code">&lt;%=</code></td>
       <td><code class="code">%&gt;</code></td>
-     </tr><tr><td><code class="code">&lt;script language="php"&gt;</code></td>
-      <td><code class="code">&lt;/script&gt;</code></td>
+     </tr><tr><td><code class="code"><script language="php"></script></code></td>
+      <td><code class="code"></code></td>
      </tr></tbody></table></div>
 
  <div class="sect3" id="migration70.incompatible.other.incompatible-this">
@@ -4610,10 +4730,7 @@ Parse error: syntax error, unexpected 'new' (T_NEW) in /tmp/test.php on line 3
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">test</span><span style="color: #007700">() { </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">); }<br>}<br><br></span><span style="color: #FF8000">// Note: Does NOT extend A<br></span><span style="color: #007700">class </span><span style="color: #0000BB">B </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">callNonStaticMethodOfA</span><span style="color: #007700">() { </span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">(); }<br>}<br><br>(new </span><span style="color: #0000BB">B</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">callNonStaticMethodOfA</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">test</span><span style="color: #007700">() { </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">); }<br>}<br><br></span><span style="color: #FF8000">// Note: Does NOT extend A<br></span><span style="color: #007700">class </span><span style="color: #0000BB">B </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">callNonStaticMethodOfA</span><span style="color: #007700">() { </span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">(); }<br>}<br><br>(new </span><span style="color: #0000BB">B</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">callNonStaticMethodOfA</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5.6:</p>
@@ -4648,10 +4765,7 @@ NULL
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">echo yield -</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// Was previously interpreted as<br></span><span style="color: #007700">echo (yield) - </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// And is now interpreted as<br></span><span style="color: #007700">echo yield (-</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br><br>yield </span><span style="color: #0000BB">$foo </span><span style="color: #007700">or die;<br></span><span style="color: #FF8000">// Was previously interpreted as<br></span><span style="color: #007700">yield (</span><span style="color: #0000BB">$foo </span><span style="color: #007700">or die);<br></span><span style="color: #FF8000">// And is now interpreted as<br></span><span style="color: #007700">(yield </span><span style="color: #0000BB">$foo</span><span style="color: #007700">) or die;<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">echo yield -</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// Was previously interpreted as<br></span><span style="color: #007700">echo (yield) - </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// And is now interpreted as<br></span><span style="color: #007700">echo yield (-</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br><br>yield </span><span style="color: #0000BB">$foo </span><span style="color: #007700">or die;<br></span><span style="color: #FF8000">// Was previously interpreted as<br></span><span style="color: #007700">yield (</span><span style="color: #0000BB">$foo </span><span style="color: #007700">or die);<br></span><span style="color: #FF8000">// And is now interpreted as<br></span><span style="color: #007700">(yield </span><span style="color: #0000BB">$foo</span><span style="color: #007700">) or die;<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>
@@ -4672,17 +4786,14 @@ NULL
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">//<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">) {<br></span><span style="color: #FF8000">//<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>
  </div>
 
  <div class="sect3" id="migration70.incompatible.other.func-parameter-modified">
-  <h4 class="title">Functions inspecting arguments report the <em class="emphasis">current</em> parameter value</h4>
+  <h4 class="title">Functions inspecting arguments report the <em>current</em> parameter value</h4>
 
   <p class="para">
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-arg.php" class="function">func_get_arg()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-args.php" class="function">func_get_args()</a></span>,
@@ -4693,10 +4804,7 @@ NULL
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">$x</span><span style="color: #007700">++;<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_arg</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">));<br>}<br></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);</span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">) {<br></span><span style="color: #0000BB">$x</span><span style="color: #007700">++;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_arg</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">));<br>}<br></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);</span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5:</p>
@@ -4725,10 +4833,7 @@ NULL
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">switch (</span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br>    default:<br>    break;<br>    default:<br>    break;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">switch (</span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br>    default:<br>    break;<br>    default:<br>    break;<br>}<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
   </div>
@@ -4861,10 +4966,7 @@ NULL
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br>    const </span><span style="color: #0000BB">ONE </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    public </span><span style="color: #0000BB">$array </span><span style="color: #007700">= [<br>        </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">ONE </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,<br>        </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,<br>        </span><span style="color: #DD0000">'quux'</span><span style="color: #007700">,<br>    ];<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((new </span><span style="color: #0000BB">C</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">array</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br>    const </span><span style="color: #0000BB">ONE </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    public </span><span style="color: #0000BB">$array </span><span style="color: #007700">= [<br></span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">ONE </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,<br></span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,<br></span><span style="color: #DD0000">'quux'</span><span style="color: #007700">,<br>    ];<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((new </span><span style="color: #0000BB">C</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">array</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
    </div>
 
    <p class="para">Output of the above example in PHP 5.5:</p>
@@ -4925,7 +5027,7 @@ array(3) {
     with servers with valid SSL certificates, as distributors generally
     configure OpenSSL to use known good CA bundles.
    </p>
-   
+
    <p class="para">
     The default CA bundle may be overridden on a global basis by setting
     either the openssl.cafile or openssl.capath configuration setting, or on a
@@ -5063,7 +5165,7 @@ array(3) {
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Old code:<br></span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// New code:<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">version_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">, </span><span style="color: #DD0000">'5.5.0-dev'</span><span style="color: #007700">, </span><span style="color: #DD0000">'&gt;='</span><span style="color: #007700">)) {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'Z5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>} else {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br></span><span style="color: #FF8000">// Old code:<br></span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// New code:<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">version_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">, </span><span style="color: #DD0000">'5.5.0-dev'</span><span style="color: #007700">, </span><span style="color: #DD0000">'&gt;='</span><span style="color: #007700">)) {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'Z5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>} else {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -5550,7 +5652,7 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">print </span><span style="color: #0000BB">10 </span><span style="color: #007700">% </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  Division by zero in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">print </span><span style="color: #0000BB">10 </span><span style="color: #007700">% </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  Division by zero in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5579,7 +5681,7 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>print </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Catchable fatal error:  Object of class foo could<br>   not be converted to string in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>print </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Catchable fatal error:  Object of class foo could<br>   not be converted to string in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5599,7 +5701,7 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">__toString</span><span style="color: #007700">() {<br>        throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">;<br>    }<br>}<br><br>try {<br>    print new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>    </span><span style="color: #FF8000">/* Fatal error:  Method foo::__toString() must<br>       not throw an exception in filename on line n */<br></span><span style="color: #007700">} catch(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">__toString</span><span style="color: #007700">() {<br>        throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">;<br>    }<br>}<br><br>try {<br>    print new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>    </span><span style="color: #FF8000">/* Fatal error:  Method foo::__toString() must<br>       not throw an exception in filename on line n */<br></span><span style="color: #007700">} catch(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5617,7 +5719,7 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">abstract class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    abstract static function </span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br>    </span><span style="color: #FF8000">/* Strict Standards:  Static function foo::bar()<br>       should not be abstract in filename on line n */<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">abstract class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    abstract static function </span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br>    </span><span style="color: #FF8000">/* Strict Standards:  Static function foo::bar()<br>       should not be abstract in filename on line n */<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5648,7 +5750,7 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* when allow_url_include is OFF (default) */<br></span><span style="color: #007700">include </span><span style="color: #DD0000">"data:;base64,PD9waHAgcGhwaW5mbygpOz8+"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  include(): URL file-access is disabled<br>   in the server configuration in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br></span><span style="color: #FF8000">/* when allow_url_include is OFF (default) */<br></span><span style="color: #007700">include </span><span style="color: #DD0000">"data:;base64,PD9waHAgcGhwaW5mbygpOz8+"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  include(): URL file-access is disabled<br>   in the server configuration in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5813,7 +5915,7 @@ array(3) {
       use the entire string as a needle</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DEF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//int(3)<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DAF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//bool(false)<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DEF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//int(3)<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DAF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//bool(false)<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5825,7 +5927,7 @@ array(3) {
      <p><strong>Example #2 An object with no properties is no longer considered "empty"</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">test </span><span style="color: #007700">{ }<br></span><span style="color: #0000BB">$t </span><span style="color: #007700">= new </span><span style="color: #0000BB">test</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$t</span><span style="color: #007700">)); </span><span style="color: #FF8000">// echo bool(false)<br><br></span><span style="color: #007700">if (</span><span style="color: #0000BB">$t</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// Will be executed<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">test </span><span style="color: #007700">{ }<br></span><span style="color: #0000BB">$t </span><span style="color: #007700">= new </span><span style="color: #0000BB">test</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$t</span><span style="color: #007700">)); </span><span style="color: #FF8000">// echo bool(false)<br><br></span><span style="color: #007700">if (</span><span style="color: #0000BB">$t</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// Will be executed<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5837,7 +5939,7 @@ array(3) {
      <p><strong>Example #3 In some cases classes must be declared before used</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">//works with no errors:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">a</span><span style="color: #007700">();<br>class </span><span style="color: #0000BB">a </span><span style="color: #007700">{<br>}<br><br><br></span><span style="color: #FF8000">//throws an error:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">b</span><span style="color: #007700">();<br><br>interface </span><span style="color: #0000BB">c</span><span style="color: #007700">{<br>}<br>class </span><span style="color: #0000BB">b </span><span style="color: #007700">implements </span><span style="color: #0000BB">c </span><span style="color: #007700">{<br>} <br><br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB"><?php <br><br></span><span style="color: #FF8000">//works with no errors:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">a</span><span style="color: #007700">();<br>class </span><span style="color: #0000BB">a </span><span style="color: #007700">{<br>}<br><br><br></span><span style="color: #FF8000">//throws an error:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">b</span><span style="color: #007700">();<br><br>interface </span><span style="color: #0000BB">c</span><span style="color: #007700">{<br>}<br>class </span><span style="color: #0000BB">b </span><span style="color: #007700">implements </span><span style="color: #0000BB">c </span><span style="color: #007700">{<br>} <br><br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>

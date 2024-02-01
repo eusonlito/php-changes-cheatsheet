@@ -4,24 +4,24 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Classes and Interfaces in PHP 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</title>
+        <title>New Classes and Interfaces in PHP 8.3, 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Classes and Interfaces in PHP 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta name="title" content="New Classes and Interfaces in PHP 8.3, 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
 
-        <meta property="og:title" content="New Classes and Interfaces in PHP 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta property="og:title" content="New Classes and Interfaces in PHP 8.3, 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Classes and Interfaces in PHP 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta name="twitter:title" content="New Classes and Interfaces in PHP 8.3, 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1672067879" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1672067879" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1706797420" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1706797420" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -35,11 +35,78 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Classes and Interfaces in PHP 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</a></h1>
+        <h1><a href="index.html"> New Classes and Interfaces in PHP 8.3, 8.1, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration83.new-classes.php" target="_blank">PHP 8.3</a></h1>
+    </header>
+
+    <div id="migration83.new-classes" class="sect1">
+ <h2 class="title">New Classes and Interfaces</h2>
+
+ <div class="sect2" id="migration83.new-classes.date">
+  <h3 class="title">Date</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateerror.php" class="classname">DateError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateobjecterror.php" class="classname">DateObjectError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.daterangeerror.php" class="classname">DateRangeError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateexception.php" class="classname">DateException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateinvalidoperationexception.php" class="classname">DateInvalidOperationException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateinvalidtimezoneexception.php" class="classname">DateInvalidTimeZoneException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datemalformedintervalstringexception.php" class="classname">DateMalformedIntervalStringException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datemalformedperiodstringexception.php" class="classname">DateMalformedPeriodStringException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datemalformedstringexception.php" class="classname">DateMalformedStringException</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-classes.random">
+  <h3 class="title">Random</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><strong class="classname">Random\IntervalBoundary</strong></span>
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration81.new-classes.php" target="_blank">PHP 8.1</a></h1>
     </header>

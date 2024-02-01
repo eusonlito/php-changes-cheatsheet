@@ -1,4 +1,3 @@
-/* vim: set et ts=4 sw=4 fdm=marker nocin: : */
 /*!
  * Bootstrap v2.3.2
  *
@@ -10,12 +9,15 @@
  */
 
 :root {
+  --font-family-sans-serif: "Fira Sans", "Source Sans Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-mono: "Fira Mono", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --dark-grey-color: #333;
   --dark-blue-color: #4F5B93;
   --medium-blue-color: #7A86B8;
   --light-blue-color: #E2E4EF;
   --dark-magenta-color: #793862;
   --medium-magenta-color: #AE508D;
+  --light-magenta-color: #CF82B1;
 }
 
 .clearfix {
@@ -294,15 +296,15 @@ textarea {
 }
 
 body, input, textarea {
-    font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-sans-serif);
   font-weight: 400;
 }
 code,
 pre.info,
 .docs .classsynopsis,
 .docs .classsynopsis code {
-  font: normal 0.875rem/1.5rem "Fira Mono", "Source Code Pro", monospace;
-  word-wrap: break-word;
+  font: normal 0.875rem/1.5rem var(--font-family-mono);
+  overflow-x: auto;
 }
 p code,
 li code,
@@ -384,9 +386,9 @@ blockquote {
 }
 
 abbr {
-    border-bottom:1px dotted;
     cursor: help;
 }
+
 a {
     text-decoration:none;
 }
@@ -549,6 +551,10 @@ dl dd {
     padding:0 1.5rem;
 }
 
+.php8-code.phpcode{
+    overflow-x: auto;
+}
+
 .phpcode, div.classsynopsis {
     text-align: left;
 }
@@ -660,6 +666,10 @@ body > footer a {
   display:inline-block;
   border-bottom:0;
 }
+body > footer a:hover,
+body > footer a:focus {
+    color:var(--light-magenta-color);
+}
 
 /* {{{ ElePHPants photo stream */
 
@@ -740,7 +750,7 @@ table.standard th.subr {
 #layout .cse .gsc-control-cse,
 #layout .gsc-control-cse,
 #layout .gsc-control-cse .gsc-table-result {
-    font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: var(--font-family-sans-serif);
     font-size: 1rem;
     margin: 0;
     padding: 0;
@@ -1152,11 +1162,11 @@ fieldset {
 }
 .content-box .md5sum:before {
     content: "md5: ";
-    font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: var(--font-family-sans-serif);
 }
 .content-box .sha256:before {
     content: "sha256: ";
-    font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: var(--font-family-sans-serif);
 }
 .content-box .releasedate {
     float: right;
@@ -1209,9 +1219,6 @@ header.title {
 
 /* {{{ General styles (p, parameters, initializers, ...) */
 
-.refsect1 .parameter {
-    cursor:pointer;
-}
 .refsect1 dt {
     height:1.5rem;
 }
@@ -1306,6 +1313,7 @@ div.tip p:first-child {
 .docs .example-contents.screen,
 .informalexample .literallayout {
     padding: .75rem;
+    overflow-x: auto;
 }
 
 .docs .classsynopsis,
@@ -1316,8 +1324,10 @@ div.tip p:first-child {
     margin-bottom: 1.5rem;
 }
 
-.docs .phpcode code {
+.phpcode code {
     display: block;
+    overflow-x: auto;
+    white-space: pre-wrap;
 }
 
 .docs .qandaentry dt .phpcode * {
@@ -1521,6 +1531,10 @@ div.soft-deprecation-notice blockquote.sidebar {
 #breadcrumbs a:link,
 #breadcrumbs a:visited {
     border-width:0;
+}
+#breadcrumbs a:hover,
+#breadcrumbs a:focus {
+    color:var(--light-magenta-color);
 }
 
 #breadcrumbs .next,
@@ -1870,6 +1884,11 @@ aside.tips div.inner {
   border: 0;
   padding: 10px;
 }
+
+.newsentry .newsimage img,
+.newsItem .newsImage img {
+    max-width: 350px;
+}
 /* }}} */
 
 /* {{{ Logo Downloads */
@@ -1880,8 +1899,6 @@ aside.tips div.inner {
 
 /* }}} */
 
-
-/* vim: set ts=2 sw=2 et: */
 
 :root {
   --background-color: var(--dark-grey-color);
@@ -1902,10 +1919,6 @@ html {
 }
 #layout-content:not(:only-child) {
   border-right:.25rem solid #666;
-}
-
-abbr {
-  border-color: var(--medium-blue-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2308,8 +2321,8 @@ aside.tips .panel > a:hover:after {
 }
 aside.tips a:hover,
 aside.tips a:focus {
-  color:var(--medium-magenta-color);
-  border-color:var(--medium-magenta-color);
+  color:var(--light-magenta-color);
+  border-color:var(--light-magenta-color);
 }
 
 .soft-deprecation-notice {
@@ -2338,8 +2351,12 @@ aside.tips a:focus {
   border-top-color:#666;
 }
 .layout-menu ul.child-menu-list li.current a {
-  color:var(--medium-magenta-color);
-  border-bottom-color:var(--medium-magenta-color);
+  color:var(--light-magenta-color);
+  border-bottom-color:var(--light-magenta-color);
+}
+.layout-menu ul.parent-menu-list li a:hover,
+.layout-menu ul.child-menu-list li a:hover {
+  color:var(--light-magenta-color);
 }
 .layout-menu ul.child-menu-list a {
   border-color: #666;
@@ -2488,4 +2505,3 @@ div.elephpants img:focus {
 .thanks__description {
   margin: 0
 }
-/* vim: set ts=2 sw=2 et: */
