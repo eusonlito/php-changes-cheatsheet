@@ -14,6 +14,16 @@ class HtmlGroup extends CommandAbstract
     protected string $name;
 
     /**
+     * @var array
+     */
+    protected array $files;
+
+    /**
+     * @var string
+     */
+    protected string $title;
+
+    /**
      * @param string $name
      *
      * @return void

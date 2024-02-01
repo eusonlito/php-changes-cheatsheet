@@ -21,7 +21,21 @@ class Dom
      */
     public function __construct(string $html)
     {
-        $this->load($html);
+        $this->load($this->encode($html));
+    }
+
+    /**
+     * @param string $html
+     *
+     * @return string
+     */
+    protected function encode(string $html): string
+    {
+        $html = htmlentities($html, ENT_COMPAT, 'UTF-8', false);
+        $html = mb_convert_encoding($html, 'UTF-8', mb_list_encodings());
+        $html = htmlspecialchars_decode($html);
+
+        return $html;
     }
 
     /**
@@ -37,7 +51,7 @@ class Dom
         $this->dom->recover = true;
         $this->dom->preserveWhiteSpace = false;
         $this->dom->substituteEntities = false;
-        $this->dom->loadHtml(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'), LIBXML_NOBLANKS | LIBXML_ERR_NONE);
+        $this->dom->loadHtml($html, LIBXML_NOBLANKS | LIBXML_ERR_NONE);
         $this->dom->encoding = 'utf-8';
 
         libxml_use_internal_errors(false);
