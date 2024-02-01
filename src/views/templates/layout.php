@@ -11,12 +11,17 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="<?= $title; ?>">
 
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta property="og:title" content="<?= $title; ?>">
+        <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
         <meta name="twitter:title" content="<?= $title; ?>">
+        <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 

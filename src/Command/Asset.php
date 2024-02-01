@@ -13,5 +13,6 @@ class Asset extends CommandAbstract
     {
         $this->command('AssetCss');
         $this->command('AssetFavicon');
+        $this->command('AssetImages');
     }
 }
