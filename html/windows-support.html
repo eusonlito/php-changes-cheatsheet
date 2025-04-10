@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Windows Support in PHP 8.3, 8.2, 7.4, 7.3, 7.1</title>
+        <title>Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Windows Support in PHP 8.3, 8.2, 7.4, 7.3, 7.1">
+        <meta name="title" content="Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="Windows Support in PHP 8.3, 8.2, 7.4, 7.3, 7.1">
+        <meta property="og:title" content="Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Windows Support in PHP 8.3, 8.2, 7.4, 7.3, 7.1">
+        <meta name="twitter:title" content="Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1706799624" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1706799624" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,38 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Windows Support in PHP 8.3, 8.2, 7.4, 7.3, 7.1</a></h1>
+        <h1><a href="index.html"> Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration84.windows-support.php" target="_blank">PHP 8.4</a></h1>
+    </header>
+
+    <div id="migration84.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration84.windows-support.core">
+  <h3 class="title">Core</h3>
+
+  <p class="simpara">
+   Building with Visual Studio now requires at least Visual Studio 2019.
+   However, Visual Studio 2022 is recommended.
+  </p>
+
+  <p class="simpara">
+   AVX(2) CPU support is now properly detected for MSVC builds.
+  </p>
+
+  <p class="simpara">
+   Native AVX-512 builds are now supported via the
+   <strong class="option configure">--enable-native-intrinsics=avx512</strong>
+   configure option.
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration83.windows-support.php" target="_blank">PHP 8.3</a></h1>
     </header>
@@ -117,7 +144,16 @@
  <div class="sect2" id="migration74.windows-support.other">
   <h3 class="title">CTRL handling</h3>
   <p class="para">
-   CTRL+C and CTRL+BREAK on console can be caught by setting a handler function
+   <kbd class="keycombo">
+    <kbd class="keycap">CTRL</kbd>
+    +<kbd class="keycap">C</kbd>
+   </kbd>
+   and
+   <kbd class="keycombo">
+    <kbd class="keycap">CTRL</kbd>
+    +<kbd class="keycap">BREAK</kbd>
+   </kbd>
+   on console can be caught by setting a handler function
    with <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sapi-windows-set-ctrl-handler.php" class="function">sapi_windows_set_ctrl_handler()</a></span>.
   </p>
   <p class="para">

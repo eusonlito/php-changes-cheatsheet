@@ -25,8 +25,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1706799624" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1706799624" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -117,9 +117,9 @@
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span> now accepts a new option,
-     <strong><code>JSON_UNESCAPED_LINE_TERMINATORS</code></strong>, to disable the
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/json.constants.php#constant.json-unescaped-line-terminators">JSON_UNESCAPED_LINE_TERMINATORS</a></code></strong>, to disable the
      escaping of U+2028 and U+2029 characters when
-     <strong><code>JSON_UNESCAPED_UNICODE</code></strong> is supplied.
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/json.constants.php#constant.json-unescaped-unicode">JSON_UNESCAPED_UNICODE</a></code></strong> is supplied.
     </span>
    </li>
   </ul></div>
@@ -155,9 +155,9 @@
     <span class="simpara">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-last-notice.php" class="function">pg_last_notice()</a></span> now accepts an optional parameter to
      specify an operation. This can be done with one of the following new
-     constants: <strong><code>PGSQL_NOTICE_LAST</code></strong>,
-     <strong><code>PGSQL_NOTICE_ALL</code></strong>, or
-     <strong><code>PGSQL_NOTICE_CLEAR</code></strong>.
+     constants: <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-notice-last">PGSQL_NOTICE_LAST</a></code></strong>,
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-notice-all">PGSQL_NOTICE_ALL</a></code></strong>, or
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-notice-clear">PGSQL_NOTICE_CLEAR</a></code></strong>.
     </span>
    </li>
    <li class="listitem">
@@ -180,7 +180,7 @@
   <h3 class="title">Session</h3>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-start.php" class="function">session_start()</a></span> now returns <strong><code>false</code></strong> and no longer
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-start.php" class="function">session_start()</a></span> now returns <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> and no longer
      initializes <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.session.php" class="classname">$_SESSION</a></var> when it failed to start the
      session.
     </span>
@@ -232,7 +232,7 @@
    <li class="listitem">
     <span class="simpara">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setlocale.php" class="function">setlocale()</a></span> function no longer accepts <code class="parameter">category</code>
-     passed as string. <strong><code>LC_*</code></strong> constants must be used instead.
+     passed as string. <strong><code><a target="_blank" href="https://www.php.net/manual/en/string.constants.php#constant.lc-ctype">LC_<span class="replaceable">*</span></a></code></strong> constants must be used instead.
     </span>
    </li>
    <li class="listitem">
@@ -279,7 +279,7 @@
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.crypt.php" class="function">crypt()</a></span> will now raise an
-     <strong><code>E_NOTICE</code></strong> error if the <code class="parameter">salt</code>
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-notice">E_NOTICE</a></code></strong> error if the <code class="parameter">salt</code>
      parameter is omitted.
     </span>
    </li>
@@ -304,8 +304,8 @@
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
      Uploads using the <code class="literal">@file</code> syntax are now only supported
-     if the <strong><code>CURLOPT_SAFE_UPLOAD</code></strong> option is set to
-     <strong><code>false</code></strong>. <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a></span> should be used instead.
+     if the <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-safe-upload">CURLOPT_SAFE_UPLOAD</a></code></strong> option is set to
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong>. <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a></span> should be used instead.
     </span>
    </li>
   </ul></div>
@@ -317,8 +317,8 @@
     <span class="simpara">
      The <code class="parameter">source</code> parameter of
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-create-iv.php" class="function">mcrypt_create_iv()</a></span> now defaults to
-     <strong><code>MCRYPT_DEV_URANDOM</code></strong> instead of
-     <strong><code>MCRYPT_DEV_RANDOM</code></strong>.
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/mcrypt.constants.php#constant.mcrypt-dev-urandom">MCRYPT_DEV_URANDOM</a></code></strong> instead of
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/mcrypt.constants.php#constant.mcrypt-dev-random">MCRYPT_DEV_RANDOM</a></code></strong>.
     </span>
    </li>
   </ul></div>
@@ -375,7 +375,7 @@
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.getattributens.php" class="methodname">XMLReader::getAttributeNs()</a></span> and
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.getattributeno.php" class="methodname">XMLReader::getAttributeNo()</a></span> now return <strong><code>null</code></strong> if
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.getattributeno.php" class="methodname">XMLReader::getAttributeNo()</a></span> now return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> if
      the attribute could not be found, like
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.getattribute.php" class="methodname">XMLReader::getAttribute()</a></span>.
     </span>

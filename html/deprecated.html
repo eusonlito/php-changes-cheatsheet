@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
+        <title>Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="title" content="Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta property="og:title" content="Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="twitter:title" content="Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1706799624" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1706799624" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,470 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Deprecated Features in PHP 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
+        <h1><a href="index.html"> Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration84.deprecated.php" target="_blank">PHP 8.4</a></h1>
+    </header>
+
+    <div id="migration84.deprecated" class="sect1">
+ <h2 class="title">Deprecated Features</h2>
+
+ <div class="sect2" id="migration84.deprecated.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration84.deprecated.core.implicitly-nullable-parameter">
+   
+   <h4 class="title">Implicitly nullable parameter</h4>
+
+   <p class="simpara">
+    A parameter's type is implicitly widened to accept <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">null</a></span>
+    if the default value for it is <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong>.
+   </p>
+
+   <p class="para">
+    The following code:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></span></code></div>
+     </div>
+
+    </div>
+    should be converted to:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1</span><span style="color: #007700">|</span><span style="color: #0000BB">null $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></span></code></div>
+     </div>
+
+    </div>
+    or
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(?</span><span style="color: #0000BB">T1 $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></span></code></div>
+     </div>
+
+    </div>
+   
+
+   <p class="para">
+    However, if such a parameter declaration is followed by a mandatory
+    parameter:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, </span><span style="color: #0000BB">T2 $b </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></span></code></div>
+     </div>
+
+    </div>
+    It must be converted to:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, </span><span style="color: #0000BB">T2</span><span style="color: #007700">|</span><span style="color: #0000BB">null $b</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></span></code></div>
+     </div>
+
+    </div>
+    or
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, ?</span><span style="color: #0000BB">T2 $b</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></span></code></div>
+     </div>
+
+    </div>
+    as optional parameter before required ones are deprecated.
+   
+  </div>
+
+  <div class="sect3">
+   
+   <h4 class="title">Raising zero to the power of negative number</h4>
+
+   <p class="simpara">
+    Raising a number to the power of a negative number is equivalent to taking
+    the reciprocal of the number raised to the positive opposite of the power.
+    That is, <code class="literal">10<sup class="superscript">-2</sup></code> is the same as
+    <code class="literal">1 / 10<sup class="superscript">2</sup></code>.
+    Therefore raising <code class="literal">0</code> to the power of a negative number
+    corresponds to dividing by <code class="literal">0</code>, i.e.
+    <code class="literal">0<sup class="superscript">-2</sup></code> is the same as
+    <code class="literal">1 / 0<sup class="superscript">2</sup></code>, or
+    <code class="literal">1 / 0</code>. Thus, this behavior has been deprecated.
+   </p>
+
+   <p class="simpara">
+    This affects the exponentiation operator <code class="literal">**</code>
+    and the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pow.php" class="function">pow()</a></span> function.
+   </p>
+
+   <p class="simpara">
+    If the IEEE 754 semantics are desired one should use the new
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fpow.php" class="function">fpow()</a></span> function.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration84.deprecated.core.underscore-class-name">
+   
+   <h4 class="title">Using underscore <code class="literal">_</code> as class name</h4>
+
+   <p class="para">
+    Naming a class <code class="literal">_</code> is now deprecated:
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">_ </span><span style="color: #007700">{}</span></span></code></div>
+     </div>
+
+    </div>
+   
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    </p><p class="para">
+     Classes whose names start with an underscore are <em>not</em>
+     deprecated:
+     </p><div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">class </span><span style="color: #0000BB">_MyClass </span><span style="color: #007700">{}</span></span></code></div>
+      </div>
+
+     </div>
+    
+   </blockquote>
+  </div>
+
+  <div class="sect3">
+   
+   <h4 class="title">
+    Using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.trigger-error.php" class="function">trigger_error()</a></span> with
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-user-error">E_USER_ERROR</a></code></strong>
+   </h4>
+
+   <p class="simpara">
+    Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.trigger-error.php" class="function">trigger_error()</a></span> with
+    <code class="parameter">error_level</code> being equal to
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-user-error">E_USER_ERROR</a></code></strong> is now deprecated.
+   </p>
+
+   <p class="simpara">
+    Such usages should be replaced by either throwing an exception,
+    or calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exit.php" class="function">exit()</a></span>, whichever is more appropriate.
+   </p>
+  </div>
+
+  <div class="sect3">
+   
+   <h4 class="title">
+    The <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-strict">E_STRICT</a></code></strong> constant
+   </h4>
+
+   <p class="simpara">
+    Because the <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-strict">E_STRICT</a></code></strong> error level was removed,
+    this constant is now deprecated.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.curl">
+  <h3 class="title">cURL</h3>
+
+  <p class="simpara">
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-binarytransfer">CURLOPT_BINARYTRANSFER</a></code></strong> constant is now deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.date">
+  <h3 class="title">Date</h3>
+
+  <p class="simpara">
+   The <code class="code"> DatePeriod::__construct(string $isostr, int $options = 0)</code>
+   signature has been deprecated.
+   Use <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/dateperiod.createfromiso8601string.php" class="methodname">DatePeriod::createFromISO8601String()</a></span> instead.
+  </p>
+
+  
+  <p class="simpara">
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/datetime.constants.php#constant.sunfuncs-ret-timestamp">SUNFUNCS_RET_TIMESTAMP</a></code></strong>,
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/datetime.constants.php#constant.sunfuncs-ret-string">SUNFUNCS_RET_STRING</a></code></strong>,
+   and <strong><code><a target="_blank" href="https://www.php.net/manual/en/datetime.constants.php#constant.sunfuncs-ret-double">SUNFUNCS_RET_DOUBLE</a></code></strong> constants are now deprecated.
+   This follows from the deprecation of the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunset.php" class="function">date_sunset()</a></span> and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-sunrise.php" class="function">date_sunrise()</a></span> functions in PHP 8.1.0.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.dba">
+  <h3 class="title">DBA</h3>
+
+  
+  <p class="simpara">
+   Passing <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> or <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-key-split.php" class="function">dba_key_split()</a></span> is now
+   deprecated.
+   It would always return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> in those cases.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.dom">
+  <h3 class="title">DOM</h3>
+
+  
+  <p class="simpara">
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/dom.constants.php#constant.dom-php-err">DOM_PHP_ERR</a></code></strong> constant is now deprecated.
+  </p>
+
+  
+  <p class="para">
+   The following properties have been formally deprecated:
+   </p><ul class="simplelist"><li><span class="property"><a target="_blank" href="https://www.php.net/manual/en/class.domdocument.php#domdocument.props.actualencoding">DOMDocument::$actualEncoding</a></span></li>
+    <li><span class="property"><a target="_blank" href="https://www.php.net/manual/en/class.domdocument.php#domdocument.props.config">DOMDocument::$config</a></span></li>
+    <li><span class="property"><a target="_blank" href="https://www.php.net/manual/en/class.domentity.php#domentity.props.actualencoding">DOMEntity::$actualEncoding</a></span></li>
+    <li><span class="property"><a target="_blank" href="https://www.php.net/manual/en/class.domentity.php#domentity.props.encoding">DOMEntity::$encoding</a></span></li>
+    <li><span class="property"><a target="_blank" href="https://www.php.net/manual/en/class.domentity.php#domentity.props.version">DOMEntity::$version</a></span></li>
+   </ul></div>
+
+ <div class="sect2" id="migration84.deprecated.core.hash">
+  <h3 class="title">Hash</h3>
+
+  
+  <p class="simpara">
+   Passing invalid options to hash functions is now deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.intl">
+  <h3 class="title">Intl</h3>
+
+  <p class="simpara">
+   Calling <span class="function"><strong>intlcal_set()</strong></span> or
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.set.php" class="methodname">IntlCalendar::set()</a></span>
+   with more than two arguments is deprecated.
+   Use either <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.setdate.php" class="methodname">IntlCalendar::setDate()</a></span> or
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.setdatetime.php" class="methodname">IntlCalendar::setDateTime()</a></span> instead.
+  </p>
+
+  <p class="simpara">
+   Calling <span class="function"><strong>intlgregcal_create_instance()</strong></span> or
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlgregoriancalendar.construct.php" class="methodname">IntlGregorianCalendar::__construct()</a></span>
+   with more than two arguments is deprecated.
+   Use either <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlgregoriancalendar.createfromdate.php" class="methodname">IntlGregorianCalendar::createFromDate()</a></span> or
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlgregoriancalendar.createfromdatetime.php" class="methodname">IntlGregorianCalendar::createFromDateTime()</a></span> instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.ldap">
+  <h3 class="title">LDAP</h3>
+
+  <p class="simpara">
+   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-connect.php" class="function">ldap_connect()</a></span>
+   with more than two arguments is deprecated.
+   Use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-connect-wallet.php" class="function">ldap_connect_wallet()</a></span> instead.
+  </p>
+
+  <p class="simpara">
+   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-exop.php" class="function">ldap_exop()</a></span>
+   with more than four arguments is deprecated.
+   Use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-exop-sync.php" class="function">ldap_exop_sync()</a></span> instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.mysqli">
+  <h3 class="title">MySQLi</h3>
+
+  
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.ping.php" class="function">mysqli_ping()</a></span> function and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli.ping.php" class="methodname">mysqli::ping()</a></span> method
+   are now deprecated as the reconnect feature was removed in PHP 8.2.0.
+  </p>
+
+  
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.kill.php" class="function">mysqli_kill()</a></span> function and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli.kill.php" class="methodname">mysqli::kill()</a></span> method
+   are now deprecated.
+   If this functionality is needed a SQL <code class="literal">KILL</code> command
+   can be used instead.
+  </p>
+
+  
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.refresh.php" class="function">mysqli_refresh()</a></span> function and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli.refresh.php" class="methodname">mysqli::refresh()</a></span> method
+   are now deprecated.
+   If this functionality is needed a SQL <code class="literal">FLUSH</code> command
+   can be used instead.
+   All <strong><code><a target="_blank" href="https://www.php.net/manual/en/mysqli.constants.php#constant.mysqli-refresh-grant">MYSQLI_REFRESH_<span class="replaceable">*</span></a></code></strong>
+   constants have been deprecated as well.
+  </p>
+
+  
+  <p class="simpara">
+   Passing the <code class="parameter">mode</code> parameter to
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.store-result.php" class="function">mysqli_store_result()</a></span> explicitly has been deprecated.
+   As the <strong><code><a target="_blank" href="https://www.php.net/manual/en/mysqli.constants.php#constant.mysqli-store-result-copy-data">MYSQLI_STORE_RESULT_COPY_DATA</a></code></strong> constant was
+   only used in conjunction with this function it has also been deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.pdo-pgsql">
+  <h3 class="title">PDO_PGSQL</h3>
+
+  <p class="simpara">
+   Using escaped question marks (<code class="literal">??</code>) inside
+   dollar-quoted strings is deprecated.
+   Because PDO_PGSQL now has its own SQL parser with dollar-quoted strings
+   support, it is no longer necessary to escape question marks inside them.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.pgsql">
+  <h3 class="title">PGSQL</h3>
+
+  <p class="simpara">
+   The 2 arguments signature of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-result.php" class="function">pg_fetch_result()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-prtlen.php" class="function">pg_field_prtlen()</a></span>, and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-is-null.php" class="function">pg_field_is_null()</a></span> is now deprecated.
+   Use the 3 arguments signature with <code class="parameter">row</code> set to
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.random">
+  <h3 class="title">Random</h3>
+
+  
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.lcg-value.php" class="function">lcg_value()</a></span> is now deprecated,
+   as the function is broken in multiple ways.
+   Use <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/random-randomizer.getfloat.php" class="methodname">Random\Randomizer::getFloat()</a></span> instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <p class="simpara">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionmethod.construct.php" class="methodname">ReflectionMethod::__construct()</a></span>
+   with one arguments is deprecated.
+   Use <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionmethod.createfrommethodname.php" class="methodname">ReflectionMethod::createFromMethodName()</a></span> instead.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.session">
+  <h3 class="title">Session</h3>
+
+  <p class="simpara">
+   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-set-save-handler.php" class="function">session_set_save_handler()</a></span>
+   with more than two arguments is deprecated.
+   Use the two arguments signature instead.
+  </p>
+
+  
+  <p class="simpara">
+   Changing the value of the
+   <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.sid-length" class="link"><code class="literal">session.sid_length</code></a> and
+   <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.sid-bits-per-character" class="link"><code class="literal">session.sid_bits_per_character</code></a>
+   INI settings is deprecated.
+   Update the session storage backend to accept 32 character hexadecimal
+   session IDs and stop changing these two INI settings instead.
+  </p>
+
+  
+  <p class="simpara">
+   Changing the value of the
+   <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.use-only-cookies" class="link"><code class="literal">session.use_only_cookies</code></a>,
+   <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.use-trans-sid" class="link"><code class="literal">session.use_trans_sid</code></a>,
+   <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.trans-sid-tags" class="link"><code class="literal">session.trans_sid_tags</code></a>,
+   <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.trans-sid-hosts" class="link"><code class="literal">session.trans_sid_hosts</code></a>, and
+   <a target="_blank" href="https://www.php.net/manual/en/session.configuration.php#ini.session.referer-check" class="link"><code class="literal">session.referer_check</code></a>
+   INI settings is deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/session.constants.php#constant.sid">SID</a></code></strong> constant is also deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.soap">
+  <h3 class="title">SOAP</h3>
+
+  
+  <p class="simpara">
+   Passing an <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> to
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/soapserver.addfunction.php" class="methodname">SoapServer::addFunction()</a></span> is now deprecated.
+   If all PHP functions need to be provided flatten the array returned by
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-defined-functions.php" class="function">get_defined_functions()</a></span>.
+  </p>
+
+  
+  <p class="simpara">
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/soap.constants.php#constant.soap-functions-all">SOAP_FUNCTIONS_ALL</a></code></strong> constant is now deprecated.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.spl">
+  <h3 class="title">SPL</h3>
+
+  <p class="simpara">
+   The <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.wakeup.php" class="methodname">SplFixedArray::__wakeup()</a></span> method is now
+   deprecated, as it implements
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.serialize.php" class="methodname">SplFixedArray::__serialize()</a></span> and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfixedarray.unserialize.php" class="methodname">SplFixedArray::__unserialize()</a></span>
+   which need to be overwritten instead.
+  </p>
+
+  
+  <p class="simpara">
+   Using the default value for the <code class="parameter">escape</code> parameter for the
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.setcsvcontrol.php" class="methodname">SplFileObject::setCsvControl()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fputcsv.php" class="methodname">SplFileObject::fputcsv()</a></span>, and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fgetcsv.php" class="methodname">SplFileObject::fgetcsv()</a></span> is now deprecated.
+   
+   It must be passed explicitly either positionally or via named arguments.
+   This does not apply to <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fputcsv.php" class="methodname">SplFileObject::fputcsv()</a></span>
+   and <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fgetcsv.php" class="methodname">SplFileObject::fgetcsv()</a></span> if
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.setcsvcontrol.php" class="methodname">SplFileObject::setCsvControl()</a></span> was used to set a
+   new default value.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="simpara">
+   Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-set-option.php" class="function">stream_context_set_option()</a></span>
+   with two arguments is deprecated.
+   Use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-set-options.php" class="function">stream_context_set_options()</a></span> instead.
+  </p>
+
+  
+  <p class="simpara">
+   Unserializing strings using the uppercase <code class="literal">S</code> tag
+   with <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unserialize.php" class="function">unserialize()</a></span> is deprecated.
+  </p>
+
+  
+  <p class="simpara">
+   Using the default value for the <code class="parameter">escape</code> parameter for the
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fputcsv.php" class="function">fputcsv()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fgetcsv.php" class="function">fgetcsv()</a></span>, and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-getcsv.php" class="function">str_getcsv()</a></span>  is now deprecated.
+   
+   It must be passed explicitly either positionally or via named arguments.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration84.deprecated.core.xml">
+  <h3 class="title">XML</h3>
+
+  
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xml-set-object.php" class="function">xml_set_object()</a></span> function has been deprecated.
+  </p>
+
+  
+  <p class="simpara">
+   Passing non-<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.callable.php" class="type callable">callable</a></span> strings to the
+   <span class="function"><strong>xml_set_()</strong><span class="replaceable">*</span></span>
+   functions is now deprecated.
+  </p>
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration83.deprecated.php" target="_blank">PHP 8.3</a></h1>
     </header>
@@ -63,7 +522,7 @@
     operator (<code class="literal">++</code>) on empty, non-numeric,
     or non-alphanumeric strings is now deprecated.
     Moreover, incrementing non-numeric strings is soft deprecated.
-    That means no <strong><code>E_DEPRECATED</code></strong> diagnostic is emitted,
+    That means no <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-deprecated">E_DEPRECATED</a></code></strong> diagnostic is emitted,
     but this feature should not be used when producing new code.
     The new <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-increment.php" class="function">str_increment()</a></span> function should be used instead.
    </p>
@@ -113,7 +572,7 @@
    constant instead is recommended.
   </p>
   <p class="para">
-   The <strong><code>NumberFormatter::TYPE_CURRENCY</code></strong> constant has been deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.numberformatter.php#numberformatter.constants.type-currency">NumberFormatter::TYPE_CURRENCY</a></code></strong> constant has been deprecated.
   </p>
  </div>
 
@@ -142,7 +601,7 @@
 
   <p class="para">
    Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/phar.setstub.php" class="methodname">Phar::setStub()</a></span> with a
-   <span class="type">resource</span> and a <code class="parameter">$length</code>
+   <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="type resource">resource</a></span> and a <code class="parameter">$length</code>
    is now deprecated. Such calls should be replaced by:
    <code class="code">$phar-&gt;setStub(stream_get_contents($resource));</code>
   </p>
@@ -152,7 +611,7 @@
   <h3 class="title">Random</h3>
 
   <p class="para">
-   The <strong><code>MT_RAND_PHP</code></strong> Mt19937 variant is deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/random.constants.php#constant.mt-rand-php">MT_RAND_PHP</a></code></strong> Mt19937 variant is deprecated.
    
   </p>
  </div>
@@ -163,7 +622,7 @@
   <p class="para">
    Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.setvalue.php" class="methodname">ReflectionProperty::setValue()</a></span> with only one
    parameter is deprecated.
-   To set static properties, pass <strong><code>null</code></strong> as the first parameter.
+   To set static properties, pass <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> as the first parameter.
   </p>
  </div>
 
@@ -174,9 +633,9 @@
    The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.assert-options.php" class="function">assert_options()</a></span> function is now deprecated.
   </p>
   <p class="para">
-   The <strong><code>ASSERT_ACTIVE</code></strong>, <strong><code>ASSERT_BAIL</code></strong>,
-   <strong><code>ASSERT_CALLBACK</code></strong>, <strong><code>ASSERT_EXCEPTION</code></strong>,
-   and <strong><code>ASSERT_WARNING</code></strong> constants have been deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/info.constants.php#constant.assert-active">ASSERT_ACTIVE</a></code></strong>, <strong><code><a target="_blank" href="https://www.php.net/manual/en/info.constants.php#constant.assert-bail">ASSERT_BAIL</a></code></strong>,
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/info.constants.php#constant.assert-callback">ASSERT_CALLBACK</a></code></strong>, <strong><code><a target="_blank" href="https://www.php.net/manual/en/info.constants.php#constant.assert-exception">ASSERT_EXCEPTION</a></code></strong>,
+   and <strong><code><a target="_blank" href="https://www.php.net/manual/en/info.constants.php#constant.assert-warning">ASSERT_WARNING</a></code></strong> constants have been deprecated.
   </p>
 
   <p class="para">
@@ -202,7 +661,7 @@
   <h3 class="title">Zip</h3>
 
   <p class="para">
-   The <strong><code>ZipArchive::FL_RECOMPRESS</code></strong> constant is deprecated
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/zip.constants.php#ziparchive.constants.fl-recompress">ZipArchive::FL_RECOMPRESS</a></code></strong> constant is deprecated
    and will be removed in a future version of libzip.
   </p>
  </div>
@@ -228,12 +687,12 @@
     Usage of the <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.get" class="link">__get()</a>/<a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.php#object.set" class="link">__set()</a> magic methods is not affected by this change.
     A dynamic properties deprecation warning can be addressed by:
 
-    </p><ul class="simplelist"><li class="member">Declaring the property (preferred).</li>
-     <li class="member">
+    </p><ul class="simplelist"><li>Declaring the property (preferred).</li>
+     <li>
       Adding the <code class="code">#[\AllowDynamicProperties]</code> attribute to the class
       (which also applies to all child classes).
      </li>
-     <li class="member">
+     <li>
       Using a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.weakmap.php" class="classname">WeakMap</a></span> if additional data needs to be
       associated with an object which one does not own.
      </li>
@@ -247,14 +706,14 @@
     (but are accepted by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func.php" class="function">call_user_func()</a></span>) are deprecated.
 
     In particular:
-    </p><ul class="simplelist"><li class="member"><code class="code">"self::method"</code></li>
-     <li class="member"><code class="code">"parent::method"</code></li>
-     <li class="member"><code class="code">"static::method"</code></li>
-     <li class="member"><code class="code">["self", "method"]</code></li>
-     <li class="member"><code class="code">["parent", "method"]</code></li>
-     <li class="member"><code class="code">["static", "method"]</code></li>
-     <li class="member"><code class="code">["Foo", "Bar::method"]</code></li>
-     <li class="member"><code class="code">[new Foo, "Bar::method"]</code></li>
+    </p><ul class="simplelist"><li><code class="code">"self::method"</code></li>
+     <li><code class="code">"parent::method"</code></li>
+     <li><code class="code">"static::method"</code></li>
+     <li><code class="code">["self", "method"]</code></li>
+     <li><code class="code">["parent", "method"]</code></li>
+     <li><code class="code">["static", "method"]</code></li>
+     <li><code class="code">["Foo", "Bar::method"]</code></li>
+     <li><code class="code">[new Foo, "Bar::method"]</code></li>
     </ul>
 
     This does not affect normal method callables such as
@@ -337,7 +796,7 @@
   </div>
 
   <div class="sect3" id="migration81.deprecated.core.null-not-nullable-internal">
-   <h4 class="title">Passing <strong><code>null</code></strong> to non-nullable parameters of built-in functions</h4>
+   <h4 class="title">Passing <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> to non-nullable parameters of built-in functions</h4>
 
    <p class="para">
     Scalar types for built-in functions are nullable by default.
@@ -354,13 +813,13 @@
   </div>
 
   <div class="sect3" id="migration81.deprecated.core.implicit-float-conversion">
-   <h4 class="title">Implicit incompatible <span class="type">float</span> to <span class="type">int</span> conversions</h4>
+   <h4 class="title">Implicit incompatible <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.float.php" class="type float">float</a></span> to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> conversions</h4>
 
    <p class="para">
-    The implicit conversion of <span class="type">float</span> to <span class="type">int</span> which
+    The implicit conversion of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.float.php" class="type float">float</a></span> to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> which
     leads to a loss in precision is now deprecated.
-    This affects <span class="type">array</span> keys, <span class="type">int</span> type declarations in coercive mode,
-    and operators working on <span class="type">int</span>s.
+    This affects <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span> keys, <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> type declarations in coercive mode,
+    and operators working on <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span>s.
 
     </p><div class="informalexample">
      <div class="example-contents">
@@ -382,16 +841,16 @@
   </div>
 
   <div class="sect3" id="migration81.deprecated.core.magic-sleep">
-   <h4 class="title">Returning a non-<span class="type">array</span> from <span class="function"><strong>__sleep()</strong></span></h4>
+   <h4 class="title">Returning a non-<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span> from <span class="function"><strong>__sleep()</strong></span></h4>
 
    <p class="para">
-    Returning a value which is not an <span class="type">array</span> from
+    Returning a value which is not an <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span> from
     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.sleep" class="link">__sleep()</a> now generates a diagnostic.
    </p>
   </div>
 
   <div class="sect3" id="migration81.deprecated.core.void-by-ref">
-   <h4 class="title">Returning by reference from a <span class="type"><span class="type void">void</span></span> function</h4>
+   <h4 class="title">Returning by reference from a <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.void.php" class="type void">void</a></span></span> function</h4>
 
    <p class="para">
     </p><div class="informalexample">
@@ -401,17 +860,17 @@
 
     </div>
     Such a function is contradictory, and already emits the following
-    <strong><code>E_NOTICE</code></strong> when called:
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-notice">E_NOTICE</a></code></strong> when called:
     <code class="literal">Only variable references should be returned by reference</code>.
    
   </div>
 
   <div class="sect3" id="migration81.deprecated.core.autovivification-false">
-   <h4 class="title">Autovivification from <strong><code>false</code></strong></h4>
+   <h4 class="title">Autovivification from <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong></h4>
    <p class="para">
-    Autovivification is the process of creating a new <span class="type">array</span> when
+    Autovivification is the process of creating a new <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span> when
     appending to a value.
-    Autovivification is prohibited from scalar values, <strong><code>false</code></strong> however
+    Autovivification is prohibited from scalar values, <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> however
     was an exception. This is now deprecated.
 
     </p><div class="informalexample">
@@ -423,7 +882,7 @@
    
    <blockquote class="note"><p><strong class="note">Note</strong>: 
     </p><p class="para">
-     Autovivification from <strong><code>null</code></strong> and undefined values is still allowed:
+     Autovivification from <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> and undefined values is still allowed:
      </p><div class="informalexample">
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #FF8000">// From undefined<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #DD0000">'some value'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'doesNotExist'</span><span style="color: #007700">][] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// From null<br></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span></span></code></div>
@@ -447,7 +906,7 @@
     In the future, the argument will be interpreted as a string instead
     of an ASCII codepoint.
     Depending on the intended behavior, the argument should either be
-    cast to <span class="type">string</span> or an explicit call to
+    cast to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span> or an explicit call to
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.chr.php" class="function">chr()</a></span> should be made.
     All <code class="literal">ctype_*()</code> functions are affected.
    </p>
@@ -479,8 +938,8 @@
   <h3 class="title">Filter</h3>
 
   <p class="para">
-   The <strong><code>FILTER_SANITIZE_STRING</code></strong> and
-   <strong><code>FILTER_SANITIZE_STRIPPED</code></strong> filters are deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong> and
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-sanitize-stripped">FILTER_SANITIZE_STRIPPED</a></code></strong> filters are deprecated.
   </p>
   <p class="para">
    The <a target="_blank" href="https://www.php.net/manual/en/filter.configuration.php#ini.filter.default" class="link">filter.default</a>
@@ -516,7 +975,7 @@
   <h3 class="title">IMAP</h3>
 
   <p class="para">
-   The <strong><code>NIL</code></strong> constant has been deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/imap.constants.php#constant.nil">NIL</a></code></strong> constant has been deprecated.
    Use <code class="literal">0</code> instead.
   </p>
  </div>
@@ -526,9 +985,9 @@
 
   <p class="para">
    Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intlcalendar.roll.php" class="methodname">IntlCalendar::roll()</a></span> with a
-   <span class="type">bool</span> argument is deprecated.
+   <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span> argument is deprecated.
    Use <code class="literal">1</code> and <code class="literal">-1</code> instead of
-   <strong><code>true</code></strong> and <strong><code>false</code></strong> respectively.
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.true">true</a></code></strong> and <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> respectively.
   </p>
  </div>
 
@@ -545,9 +1004,9 @@
   <h3 class="title">MySQLi</h3>
 
   <p class="para">
-   The <span class="property">mysqli_driver::$driver_version</span> property
+   The <span class="property"><a target="_blank" href="https://www.php.net/manual/en/class.mysqli-driver.php#mysqli-driver.props.driver-version">mysqli_driver::$driver_version</a></span> property
    has been deprecated.
-   It was meaningless and outdated, use <strong><code>PHP_VERSION_ID</code></strong>
+   It was meaningless and outdated, use <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-version-id">PHP_VERSION_ID</a></code></strong>
    instead.
   </p>
 
@@ -587,7 +1046,7 @@
   <h3 class="title">PDO</h3>
 
   <p class="para">
-   The <strong><code>PDO::FETCH_SERIALIZE</code></strong> fetch mode has been deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.php#pdo.constants.fetch-serialize">PDO::FETCH_SERIALIZE</a></code></strong> fetch mode has been deprecated.
   </p>
  </div>
 
@@ -618,8 +1077,8 @@
    Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.key.php" class="function">key()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.current.php" class="function">current()</a></span>,
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.next.php" class="function">next()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.prev.php" class="function">prev()</a></span>,
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.reset.php" class="function">reset()</a></span>, or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.end.php" class="function">end()</a></span>
-   on <span class="type">object</span>s is deprecated.
-   Either convert the <span class="type">object</span> to an <span class="type">array</span> using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-mangled-object-vars.php" class="function">get_mangled_object_vars()</a></span>
+   on <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.object.php" class="type object">object</a></span>s is deprecated.
+   Either convert the <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.object.php" class="type object">object</a></span> to an <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span> using <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-mangled-object-vars.php" class="function">get_mangled_object_vars()</a></span>
    first, or use the methods provided by a class that implements
    <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.iterator.php" class="interfacename">Iterator</a></span>, such as <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a></span>, instead.
   </p>
@@ -631,8 +1090,8 @@
   </p>
 
   <p class="para">
-   The <strong><code>FILE_BINARY</code></strong> and
-   <strong><code>FILE_TEXT</code></strong> constants have been deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/filesystem.constants.php#constant.file-binary">FILE_BINARY</a></code></strong> and
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/filesystem.constants.php#constant.file-text">FILE_TEXT</a></code></strong> constants have been deprecated.
    They never had any effect.
   </p>
  </div>
@@ -675,7 +1134,7 @@
    <li class="listitem">
     <p class="para">
      Calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-defined-functions.php" class="function">get_defined_functions()</a></span> with <code class="parameter">exclude_disabled</code>
-     explicitly set to <strong><code>false</code></strong> is deprecated and no longer has an effect.
+     explicitly set to <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> is deprecated and no longer has an effect.
      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-defined-functions.php" class="function">get_defined_functions()</a></span> will never include disabled functions.
     </p>
    </li>
@@ -712,7 +1171,7 @@
    </li>
    <li class="listitem">
     <p class="para">
-     The <strong><code>ENCHANT_MYSPELL</code></strong> and <strong><code>ENCHANT_ISPELL</code></strong> constants are
+     The <strong><code><a target="_blank" href="https://www.php.net/manual/en/enchant.constants.php#constant.enchant-myspell">ENCHANT_MYSPELL</a></code></strong> and <strong><code><a target="_blank" href="https://www.php.net/manual/en/enchant.constants.php#constant.enchant-ispell">ENCHANT_ISPELL</a></code></strong> constants are
      deprecated.
     </p>
    </li>
@@ -725,7 +1184,7 @@
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-disable-entity-loader.php" class="function">libxml_disable_entity_loader()</a></span> has been deprecated. As libxml 2.9.0 is now
    required, external entity loading is guaranteed to be disabled by default, and this function is
    no longer needed to protect against XXE attacks, unless the (still vulnerable)
-   <strong><code>LIBXML_NOENT</code></strong> is used.
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/libxml.constants.php#constant.libxml-noent">LIBXML_NOENT</a></code></strong> is used.
    In that case, it is recommended to refactor the code using
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-set-external-entity-loader.php" class="function">libxml_set_external_entity_loader()</a></span> to suppress loading of external entities.
   </p>
@@ -736,8 +1195,8 @@
 
   <ul class="itemizedlist"><li class="listitem">
     <p class="para">
-     The constant <strong><code>PGSQL_LIBPQ_VERSION_STR</code></strong> now has the same value as
-     <strong><code>PGSQL_LIBPQ_VERSION</code></strong>, and thus is deprecated.
+     The constant <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-libpq-version-str">PGSQL_LIBPQ_VERSION_STR</a></code></strong> now has the same value as
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-libpq-version">PGSQL_LIBPQ_VERSION</a></code></strong>, and thus is deprecated.
     </p>
    </li>
    <li class="listitem">
@@ -746,30 +1205,30 @@
      See the following list for which functions should be used instead:
     </p>
     <p class="para">
-     </p><ul class="simplelist"><li class="member"><span class="function"><strong>pg_errormessage()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-last-error.php" class="function">pg_last_error()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_numrows()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-num-rows.php" class="function">pg_num_rows()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_numfields()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-num-fields.php" class="function">pg_num_fields()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_cmdtuples()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-affected-rows.php" class="function">pg_affected_rows()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_fieldname()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-name.php" class="function">pg_field_name()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_fieldsize()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-size.php" class="function">pg_field_size()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_fieldtype()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-type.php" class="function">pg_field_type()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_fieldnum()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-num.php" class="function">pg_field_num()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_result()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-result.php" class="function">pg_fetch_result()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_fieldprtlen()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-prtlen.php" class="function">pg_field_prtlen()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_fieldisnull()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-is-null.php" class="function">pg_field_is_null()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_freeresult()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-free-result.php" class="function">pg_free_result()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_getlastoid()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-last-oid.php" class="function">pg_last_oid()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_locreate()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-create.php" class="function">pg_lo_create()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_lounlink()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-unlink.php" class="function">pg_lo_unlink()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_loopen()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-open.php" class="function">pg_lo_open()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_loclose()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-close.php" class="function">pg_lo_close()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_loread()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-read.php" class="function">pg_lo_read()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_lowrite()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-write.php" class="function">pg_lo_write()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_loreadall()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-read-all.php" class="function">pg_lo_read_all()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_loimport()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-import.php" class="function">pg_lo_import()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_loexport()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-export.php" class="function">pg_lo_export()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_setclientencoding()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-set-client-encoding.php" class="function">pg_set_client_encoding()</a></span></li>
-      <li class="member"><span class="function"><strong>pg_clientencoding()</strong></span> -&gt; <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-client-encoding.php" class="function">pg_client_encoding()</a></span></li>
+     </p><ul class="simplelist"><li><span class="function"><strong>pg_errormessage()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-last-error.php" class="function">pg_last_error()</a></span></li>
+      <li><span class="function"><strong>pg_numrows()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-num-rows.php" class="function">pg_num_rows()</a></span></li>
+      <li><span class="function"><strong>pg_numfields()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-num-fields.php" class="function">pg_num_fields()</a></span></li>
+      <li><span class="function"><strong>pg_cmdtuples()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-affected-rows.php" class="function">pg_affected_rows()</a></span></li>
+      <li><span class="function"><strong>pg_fieldname()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-name.php" class="function">pg_field_name()</a></span></li>
+      <li><span class="function"><strong>pg_fieldsize()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-size.php" class="function">pg_field_size()</a></span></li>
+      <li><span class="function"><strong>pg_fieldtype()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-type.php" class="function">pg_field_type()</a></span></li>
+      <li><span class="function"><strong>pg_fieldnum()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-num.php" class="function">pg_field_num()</a></span></li>
+      <li><span class="function"><strong>pg_result()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-result.php" class="function">pg_fetch_result()</a></span></li>
+      <li><span class="function"><strong>pg_fieldprtlen()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-prtlen.php" class="function">pg_field_prtlen()</a></span></li>
+      <li><span class="function"><strong>pg_fieldisnull()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-field-is-null.php" class="function">pg_field_is_null()</a></span></li>
+      <li><span class="function"><strong>pg_freeresult()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-free-result.php" class="function">pg_free_result()</a></span></li>
+      <li><span class="function"><strong>pg_getlastoid()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-last-oid.php" class="function">pg_last_oid()</a></span></li>
+      <li><span class="function"><strong>pg_locreate()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-create.php" class="function">pg_lo_create()</a></span></li>
+      <li><span class="function"><strong>pg_lounlink()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-unlink.php" class="function">pg_lo_unlink()</a></span></li>
+      <li><span class="function"><strong>pg_loopen()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-open.php" class="function">pg_lo_open()</a></span></li>
+      <li><span class="function"><strong>pg_loclose()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-close.php" class="function">pg_lo_close()</a></span></li>
+      <li><span class="function"><strong>pg_loread()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-read.php" class="function">pg_lo_read()</a></span></li>
+      <li><span class="function"><strong>pg_lowrite()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-write.php" class="function">pg_lo_write()</a></span></li>
+      <li><span class="function"><strong>pg_loreadall()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-read-all.php" class="function">pg_lo_read_all()</a></span></li>
+      <li><span class="function"><strong>pg_loimport()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-import.php" class="function">pg_lo_import()</a></span></li>
+      <li><span class="function"><strong>pg_loexport()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-lo-export.php" class="function">pg_lo_export()</a></span></li>
+      <li><span class="function"><strong>pg_setclientencoding()</strong></span> → <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-set-client-encoding.php" class="function">pg_set_client_encoding()</a></span></li>
+      <li><span class="function"><strong>pg_clientencoding()</strong></span> -&gt; <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-client-encoding.php" class="function">pg_client_encoding()</a></span></li>
      </ul></li>
   </ul></div>
 
@@ -778,7 +1237,7 @@
 
   <ul class="itemizedlist"><li class="listitem">
     <p class="para">
-     Sort comparison functions that return <strong><code>true</code></strong> or <strong><code>false</code></strong> will now throw a deprecation warning, and
+     Sort comparison functions that return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.true">true</a></code></strong> or <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> will now throw a deprecation warning, and
      should be replaced with an implementation that returns an integer less than, equal to, or greater
      than zero.
     </p>
@@ -822,7 +1281,7 @@
     <p class="para">
      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionfunction.isdisabled.php" class="methodname">ReflectionFunction::isDisabled()</a></span> is deprecated, as it is no longer
      possible to create a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionfunction.php" class="classname">ReflectionFunction</a></span> for a disabled function. This
-     method now always returns <strong><code>false</code></strong>.
+     method now always returns <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong>.
     </p>
    </li>
    <li class="listitem">
@@ -955,7 +1414,7 @@
 
    <p class="para">
     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-gpc.php" class="function">get_magic_quotes_gpc()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-runtime.php" class="function">get_magic_quotes_runtime()</a></span>
-    functions are deprecated. They always return <strong><code>false</code></strong>.
+    functions are deprecated. They always return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong>.
    </p>
   </div>
 
@@ -1030,8 +1489,8 @@
   <h3 class="title">Filter</h3>
 
   <p class="para">
-   <strong><code>FILTER_SANITIZE_MAGIC_QUOTES</code></strong> is deprecated,
-   use <strong><code>FILTER_SANITIZE_ADD_SLASHES</code></strong> instead.
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-sanitize-magic-quotes">FILTER_SANITIZE_MAGIC_QUOTES</a></code></strong> is deprecated,
+   use <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-sanitize-add-slashes">FILTER_SANITIZE_ADD_SLASHES</a></code></strong> instead.
   </p>
  </div>
 
@@ -1110,7 +1569,7 @@
 
    <p class="para">
     The declaration of case-insensitive constants has been deprecated. Passing
-    <strong><code>true</code></strong> as the third argument to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.define.php" class="function">define()</a></span> will now generate a
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.true">true</a></code></strong> as the third argument to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.define.php" class="function">define()</a></span> will now generate a
     deprecation warning. The use of case-insensitive constants with a case that
     differs from the declaration is also deprecated.
    </p>
@@ -1180,9 +1639,9 @@
 
   <p class="para">
    The explicit usage of the constants
-   <strong><code>FILTER_FLAG_SCHEME_REQUIRED</code></strong> and
-   <strong><code>FILTER_FLAG_HOST_REQUIRED</code></strong> is now deprecated; both are
-   implied for <strong><code>FILTER_VALIDATE_URL</code></strong> anyway.
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-flag-scheme-required">FILTER_FLAG_SCHEME_REQUIRED</a></code></strong> and
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-flag-host-required">FILTER_FLAG_HOST_REQUIRED</a></code></strong> is now deprecated; both are
+   implied for <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-validate-url">FILTER_VALIDATE_URL</a></code></strong> anyway.
   </p>
  </div>
 
@@ -1278,8 +1737,8 @@
   <p class="para">
    Unquoted strings that are non-existent global constants are taken to be
    strings of themselves. This behaviour used to emit an
-   <strong><code>E_NOTICE</code></strong>, but will now emit an
-   <strong><code>E_WARNING</code></strong>. In the next major version of PHP, an
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-notice">E_NOTICE</a></code></strong>, but will now emit an
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-warning">E_WARNING</a></code></strong>. In the next major version of PHP, an
    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span> exception will be thrown instead.
   </p>
 
@@ -1302,15 +1761,15 @@
  </div>
 
  <div class="sect2" id="migration72.deprecated.INTL_IDNA_VARIANT_2003-variant">
-  <h3 class="title"><strong><code>INTL_IDNA_VARIANT_2003</code></strong> variant</h3>
+  <h3 class="title"><strong><code><a target="_blank" href="https://www.php.net/manual/en/intl.constants.php#constant.intl-idna-variant-2003">INTL_IDNA_VARIANT_2003</a></code></strong> variant</h3>
 
   <p class="para">
    The Intl extension has deprecated the
-   <strong><code>INTL_IDNA_VARIANT_2003</code></strong> variant, which is currently
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/intl.constants.php#constant.intl-idna-variant-2003">INTL_IDNA_VARIANT_2003</a></code></strong> variant, which is currently
    being used as the default for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.idn-to-ascii.php" class="function">idn_to_ascii()</a></span> and
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.idn-to-utf8.php" class="function">idn_to_utf8()</a></span>. PHP 7.4 will see these defaults changed to
-   <strong><code>INTL_IDNA_VARIANT_UTS46</code></strong>, and the next major version of
-   PHP will remove <strong><code>INTL_IDNA_VARIANT_2003</code></strong> altogether.
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/intl.constants.php#constant.intl-idna-variant-uts46">INTL_IDNA_VARIANT_UTS46</a></code></strong>, and the next major version of
+   PHP will remove <strong><code><a target="_blank" href="https://www.php.net/manual/en/intl.constants.php#constant.intl-idna-variant-2003">INTL_IDNA_VARIANT_2003</a></code></strong> altogether.
   </p>
  </div>
 
@@ -1360,7 +1819,7 @@
   <h3 class="title"><code class="literal">(unset)</code> cast</h3>
 
   <p class="para">
-   Casting any expression to this type will always result in <strong><code>null</code></strong>, and so
+   Casting any expression to this type will always result in <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong>, and so
    this superfluous casting type has now been deprecated.
   </p>
  </div>
@@ -1477,7 +1936,7 @@
   <p class="para">
    PHP 4 style constructors (methods that have the same name as the class they
    are defined in) are deprecated, and will be removed in the future. PHP 7
-   will emit <strong><code>E_DEPRECATED</code></strong> if a PHP 4 constructor is the
+   will emit <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-deprecated">E_DEPRECATED</a></code></strong> if a PHP 4 constructor is the
    only constructor defined within a class. Classes that implement a
    <span class="function"><strong>__construct()</strong></span> method are unaffected.
   </p>
@@ -1567,8 +2026,8 @@ I am not static!
 
   <p class="para">
    Methods called from an incompatible context are now deprecated, and will
-   generate <strong><code>E_DEPRECATED</code></strong> errors when invoked instead of
-   <strong><code>E_STRICT</code></strong>. Support for these calls will be removed in
+   generate <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-deprecated">E_DEPRECATED</a></code></strong> errors when invoked instead of
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-strict">E_STRICT</a></code></strong>. Support for these calls will be removed in
    a future version of PHP.
   </p>
 
@@ -1596,14 +2055,14 @@ B
 
   <p class="para">
    <code class="literal">always_populate_raw_post_data</code>
-   will now generate an <strong><code>E_DEPRECATED</code></strong> error when
+   will now generate an <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-deprecated">E_DEPRECATED</a></code></strong> error when
    <var class="varname">$HTTP_RAW_POST_DATA</var> is populated.
    New code should use
    <a target="_blank" href="https://www.php.net/manual/en/wrappers.php.php#wrappers.php.input" class="link"><code class="literal">php://input</code></a>
    instead of <var class="varname">$HTTP_RAW_POST_DATA</var>, which will be removed
    in a future release. You can opt in for the new behaviour (in which
    <var class="varname">$HTTP_RAW_POST_DATA</var> is never defined hence no
-   <strong><code>E_DEPRECATED</code></strong> error will be generated) by setting
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-deprecated">E_DEPRECATED</a></code></strong> error will be generated) by setting
    <code class="literal">always_populate_raw_post_data</code>
    to <code class="literal">-1</code>.
   </p>
