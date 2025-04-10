@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>New Error Messages in PHP 5.2</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="New Error Messages in PHP 5.2">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="New Error Messages in PHP 5.2">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="New Error Messages in PHP 5.2">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> New Error Messages in PHP 5.2</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration52.error-messages.php" target="_blank">PHP 5.2</a></h1>
+    </header>
+
+    <div id="migration52.error-messages" class="section">
+  <h2 class="title">New Error Messages</h2>
+  <p class="para">
+   Below are the new error messages that have not been discussed 
+   elsewhere in this document.
+  </p>
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.zval-typedef">
+    <p><strong>Example #1 In PHP Core</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">echo </span><span style="color: #DD0000">" "</span><span style="color: #007700">;<br></span><span style="color: #0000BB">session_regenerate_id</span><span style="color: #007700">();<br></span><span style="color: #FF8000">/*  Warning:  session_regenerate_id(): Cannot regenerate<br>    session id - headers already sent in filename on line n */<br><br></span><span style="color: #0000BB">str_word_count</span><span style="color: #007700">(</span><span style="color: #DD0000">"string"</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  str_word_count(): Invalid format value 4<br>   in filename on line n */<br><br></span><span style="color: #0000BB">strripos</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"f"</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Notice:  strripos(): Offset is greater than the<br>   length of haystack string in filename on line n */<br><br></span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"f"</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Notice:  strrpos(): Offset is greater than the<br>   length of haystack string in filename on line n */<br><br>/* As of PHP 5.2.1, when allow_url_include is OFF (default) */<br></span><span style="color: #007700">include </span><span style="color: #DD0000">"php://input"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  include(): URL file-access is disabled<br>   in the server configuration in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.pass-by-ref">
+    <p><strong>Example #2 <a target="_blank" href="https://www.php.net/manual/en/language.oop5.html" class="link">Object Oriented Code</a> in PHP Core</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">interface </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>}<br>class </span><span style="color: #0000BB">bar </span><span style="color: #007700">implements </span><span style="color: #0000BB">foo</span><span style="color: #007700">, </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>}<br></span><span style="color: #FF8000">/* Fatal error: Class bar cannot implement previously<br>   implemented interface foo in filename on line n */<br><br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    public </span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br>    function </span><span style="color: #0000BB">__get</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br>    {<br>        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$bar </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Notice: Indirect modification of overloaded property<br>   foo::$prop has no effect in filename on line n */<br><br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">implements </span><span style="color: #0000BB">iterator </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">current</span><span style="color: #007700">() {<br>    }<br>    public function </span><span style="color: #0000BB">next</span><span style="color: #007700">() {<br>    }<br>    public function </span><span style="color: #0000BB">key</span><span style="color: #007700">() {<br>    }<br>    public function </span><span style="color: #0000BB">valid</span><span style="color: #007700">() {<br>    }<br>    public function </span><span style="color: #0000BB">rewind</span><span style="color: #007700">() {<br>    }<br>}<br><br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br>foreach(</span><span style="color: #0000BB">$foo </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$ref</span><span style="color: #007700">) {}<br></span><span style="color: #FF8000">/* Fatal error: An iterator cannot be used with foreach<br>   by reference in filename on line n */<br><br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    private function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() {<br>    }<br>}<br>class </span><span style="color: #0000BB">bar </span><span style="color: #007700">extends </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() {<br>        </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">();<br>        </span><span style="color: #FF8000">/* Fatal error:  Cannot call private<br>           foo::__construct() in filename on line n */<br>    </span><span style="color: #007700">}<br>}<br>new </span><span style="color: #0000BB">bar</span><span style="color: #007700">;<br><br><br></span><span style="color: #0000BB">stream_filter_register</span><span style="color: #007700">(</span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"class"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  stream_filter_register(): Filter name<br>   cannot be empty in filename on line n */<br><br><br></span><span style="color: #0000BB">stream_filter_register</span><span style="color: #007700">(</span><span style="color: #DD0000">"filter"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  stream_filter_register(): Class name<br>   cannot be empty in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.variable-scopes">
+    <p><strong>Example #3 In the <a target="_blank" href="https://www.php.net/manual/en/ref.bzip2.html" class="link">bzip2</a> Extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br>bzopen</span><span style="color: #007700">(</span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  bzopen(): filename cannot be empty<br>   in filename on line n */<br><br></span><span style="color: #0000BB">bzopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"a"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  bzopen(): 'a' is not a valid mode for<br>   bzopen(). Only 'w' and 'r' are supported in<br>   filename on line n */<br><br></span><span style="color: #0000BB">$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">bzopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  bzopen(): cannot read from a stream<br>   opened in write only mode in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.create-long">
+    <p><strong>Example #4 In the <a target="_blank" href="https://www.php.net/manual/en/ref.datetime.html" class="link">datetime</a> Extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br>strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"today"</span><span style="color: #007700">, </span><span style="color: #DD0000">"now"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  strtotime() expects parameter 2 to be<br>   long, string given in filename on line n */<br><br>/* As of PHP 5.2.1 */<br></span><span style="color: #007700">new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdclass</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Fatal error: Uncaught exception 'Exception' with<br>   message 'DateTime::__construct() expects parameter<br>   1 to be string, object given' in filename:n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.array-add-assoc">
+    <p><strong>Example #5 In the <a target="_blank" href="https://www.php.net/manual/en/ref.dbase.html" class="link">dBase</a> Extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br>dbase_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, -</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning: Invalid access mode -1 in filename on line n */<br><br>/* As of PHP 5.2.1 */<br></span><span style="color: #0000BB">dbase_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning: The filename cannot be empty in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.array-add-indexed">
+    <p><strong>Example #6 In the <a target="_blank" href="https://www.php.net/manual/en/ref.mcrypt.html" class="link">mcrypt</a> Extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br>$key </span><span style="color: #007700">= </span><span style="color: #DD0000">"this is a secret key"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$td </span><span style="color: #007700">= </span><span style="color: #0000BB">mcrypt_module_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'tripledes'</span><span style="color: #007700">, </span><span style="color: #DD0000">''</span><span style="color: #007700">, </span><span style="color: #DD0000">'ecb'</span><span style="color: #007700">, </span><span style="color: #DD0000">''</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$iv </span><span style="color: #007700">= </span><span style="color: #0000BB">mcrypt_create_iv </span><span style="color: #007700">(</span><span style="color: #0000BB">mcrypt_enc_get_iv_size</span><span style="color: #007700">(</span><span style="color: #0000BB">$td</span><span style="color: #007700">),<br>                        </span><span style="color: #0000BB">MCRYPT_RAND</span><span style="color: #007700">);<br></span><span style="color: #0000BB">mcrypt_generic_init</span><span style="color: #007700">(</span><span style="color: #0000BB">$td</span><span style="color: #007700">, </span><span style="color: #0000BB">$key</span><span style="color: #007700">, </span><span style="color: #0000BB">$iv</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$encrypted_data </span><span style="color: #007700">= </span><span style="color: #0000BB">mcrypt_generic</span><span style="color: #007700">(</span><span style="color: #0000BB">$td</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning: mcrypt_generic(): An empty string was<br>   passed in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.phpinfo">
+    <p><strong>Example #7 In the <a target="_blank" href="https://www.php.net/manual/en/ref.oci8.html" class="link">oci8</a> Extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br>oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"pass"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db"</span><span style="color: #007700">, </span><span style="color: #DD0000">"bogus_charset"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning: Invalid character set name:<br>   bogus_charset in filename on line n */<br><br></span><span style="color: #0000BB">$oci </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"pass"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">oci_password_change</span><span style="color: #007700">(</span><span style="color: #0000BB">$oci</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"old"</span><span style="color: #007700">, </span><span style="color: #DD0000">"new"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning: username cannot be empty in filename<br>   on line n */<br><br></span><span style="color: #0000BB">oci_password_change</span><span style="color: #007700">(</span><span style="color: #0000BB">$oci</span><span style="color: #007700">, </span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"new"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning: old password cannot be empty in filename<br>   on line n */<br><br></span><span style="color: #0000BB">oci_password_change</span><span style="color: #007700">(</span><span style="color: #0000BB">$oci</span><span style="color: #007700">, </span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"old"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning: new password cannot be empty in filename<br>   on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.exec-info">
+    <p><strong>Example #8 In the <a target="_blank" href="https://www.php.net/manual/en/ref.spl.html" class="link">SPL</a> Extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br>$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">SplFileObject</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fgetcsv</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  SplFileObject::fgetcsv(): delimiter must<br>   be a character in filename on line n */<br><br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fgetcsv</span><span style="color: #007700">(</span><span style="color: #DD0000">","</span><span style="color: #007700">, </span><span style="color: #DD0000">"foo"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Warning:  SplFileObject::fgetcsv(): enclosure must<br>   be a character in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="internals2.ze1.zendapi.example.call-user-func">
+    <p><strong>Example #9 In the <a target="_blank" href="https://www.php.net/manual/en/ref.sem.html" class="link">Semaphore</a> (sysvmsg) extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br></span><span style="color: #FF8000">/* Warning:  maximum size of the message has to be<br>   greater then zero in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="example-6940">
+    <p><strong>Example #10 A 5.2.1+ <a target="_blank" href="https://www.php.net/manual/en/ref.zip.html" class="link">Zip</a> Example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br>$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'archive.zip'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCommentName</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">, </span><span style="color: #DD0000">'comment'</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Notice:  ZipArchive::setCommentName(): Empty string<br>   as entry name in filename on line n */<br><br>/* As of PHP 5.2.1 */<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCommentName</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* Notice:  ZipArchive::getCommentName(): Empty string<br>   as entry name in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div></article>    </main>
+</section>    </body>
+</html>

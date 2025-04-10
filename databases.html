@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Changes in database support in PHP 5.1, 5.0</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Changes in database support in PHP 5.1, 5.0">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="Changes in database support in PHP 5.1, 5.0">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Changes in database support in PHP 5.1, 5.0">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> Changes in database support in PHP 5.1, 5.0</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration51.databases.php" target="_blank">PHP 5.1</a></h1>
+    </header>
+
+    <div id="migration51.databases" class="section">
+  <h2 class="title">Changes in database support</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.html#migration51.databases-pdo" class="link">PDO overview</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.html#migration51.databases-mysql" class="link">Changes in MySQL support</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.databases.html#migration51.databases-sqlite" class="link">Changes in SQLite support</a>
+    </p>
+   </li>
+  </ul><div class="section" id="migration51.databases-pdo">
+   <h2 class="title">PDO overview</h2>
+   <p class="para">
+    <a target="_blank" href="https://www.php.net/manual/en/intro.pdo.html" class="link">PHP Data Objects (PDO)</a> were introduced as a
+    PECL extension under PHP 5.0, and became part of the core PHP distribution
+    in PHP 5.1.x. The PDO extension provides a consistent interface for database
+    access, and is used alongside database-specific PDO drivers. Each driver
+    may also have database-specific functions of its own, but basic data
+    access functionality such as issuing queries and fetching data is covered
+    by PDO functions, using the driver named in
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/pdo.construct.html" class="function">PDO::__construct()</a></span>.
+   </p>
+   <p class="para">
+    Note that the PDO extension, and its drivers, are intended to be built as
+    shared extensions. This will enable straightforward driver upgrades from
+    PECL, without forcing you to rebuild all of PHP.
+   </p>
+   <p class="para">
+    At the point of the PHP 5.1.x release, PDO is more than ready for widespread
+    testing and could be adopted in most situations. However, it is important
+    to understand that PDO and its drivers are comparatively young and may be
+    missing certain database-specific features; evaluate PDO carefully before
+    you use it in new projects.
+   </p>
+   <p class="para">
+    Legacy code will generally rely on the pre-existing database extensions,
+    which are still maintained.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.databases-mysql">
+   <h2 class="title">Changes in MySQL support</h2>
+   <p class="para">
+    In PHP 4, MySQL 3 support was built-in. With the release of PHP 5.0 there
+    were two MySQL extensions, named 'mysql' and 'mysqli', which were designed
+    to support MySQL &lt; 4.1 and MySQL 4.1 and up, respectively. With the
+    introduction of PDO, which provides a very fast interface to all the
+    database APIs supported by PHP, the PDO_MYSQL driver can support any of
+    the current versions (MySQL 3, 4 or 5) in PHP code written for PDO,
+    depending on the MySQL library version used during compilation. The older
+    MySQL extensions remain in place for reasons of back compatibility, but
+    are not enabled by default.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.databases-sqlite">
+   <h2 class="title">Changes in SQLite support</h2>
+   <p class="para">
+    In PHP 5.0.x, SQLite 2 support was provided by the built-in sqlite
+    extension, which was also available as a PECL extension in PHP 4.3 and PHP
+    4.4. With the introduction of PDO, the sqlite extension doubles up to act
+    as a 'sqlite2' driver for PDO; it is due to this that the sqlite extension
+    in PHP 5.1.x has a dependency upon the PDO extension.
+   </p>
+   <p class="para">
+    PHP 5.1.x ships with a number of alternative interfaces to sqlite:
+   </p>
+   <p class="para">
+    The sqlite extension provides the "classic" sqlite procedural/OO API that
+    you may have used in prior versions of PHP. It also provides the PDO
+    'sqlite2' driver, which allows you to access legacy SQLite 2 databases
+    using the PDO API.
+   </p>
+   <p class="para">
+    PDO_SQLITE provides the 'sqlite' version 3 driver. SQLite version 3 is
+    vastly superior to SQLite version 2, but the file formats of the two
+    versions are not compatible.
+   </p>
+   <p class="para">
+    If your SQLite-based project is already written and working against
+    earlier PHP versions, then you can continue to use ext/sqlite without
+    problems, but will need to explicitly enable both PDO and sqlite. New
+    projects should use PDO and the 'sqlite' (version 3) driver, as this is
+    faster than SQLite 2, has improved locking concurrency, and supports both
+    prepared statements and binary columns natively.
+   </p>
+   <p class="para">
+    You must enable PDO to use the SQLite extension. If you want to build the
+    PDO extension as a shared extension, then the SQLite extension must also
+    be built shared. The same holds true for any extension that provides a PDO
+    driver 
+   </p>
+  </div>
+ </div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration5.databases.php" target="_blank">PHP 5.0</a></h1>
+    </header>
+
+    <div id="migration5.databases" class="section">
+   <h2 class="title">Databases</h2>
+   <p class="para">
+    There were some changes in PHP 5 regarding databases (MySQL and SQLite).
+   </p>
+   <p class="para">
+    In PHP 5 the MySQL client libraries are not bundled, because of license
+    and maintenance problems. MySQL is supported with the only
+    change being that MySQL support is no longer enabled by 
+    <em class="emphasis">default</em> in PHP 5.  This essentially means that
+    PHP doesn't include the <strong class="option configure">--with-mysql</strong>
+    option in the <a target="_blank" href="https://www.php.net/manual/en/configuration.html" class="link">configure</a> line so 
+    that you must now manually do this when compiling PHP. Windows users will 
+    need to edit <var class="filename">php.ini</var> and enable the <var class="filename">php_mysql.dll</var>
+    DLL as in PHP 4 no such DLL existed, it was simply built into your Windows
+    PHP binaries.
+   </p>
+   <p class="para">
+    There is also a new extension, <a target="_blank" href="https://www.php.net/manual/en/ref.mysqli.html" class="link">MySQLi (Improved
+     MySQL)</a>, which is designed to work with MySQL 4.1 and above.
+   </p>
+   <p class="para">
+    Since PHP 5, the <a target="_blank" href="https://www.php.net/manual/en/ref.sqlite.html" class="link">SQLite</a> extension is
+    built-in PHP. SQLite is an embeddable SQL database engine and is not a
+    client library used to connect to a big database server (like MySQL or
+    PostgreSQL). The SQLite library reads and writes directly to and from the
+    database files on disk.
+   </p>
+  </div></article>    </main>
+</section>    </body>
+</html>

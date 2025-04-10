@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Class and object changes in PHP 5.1, 5.0</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Class and object changes in PHP 5.1, 5.0">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="Class and object changes in PHP 5.1, 5.0">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Class and object changes in PHP 5.1, 5.0">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> Class and object changes in PHP 5.1, 5.0</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration51.oop.php" target="_blank">PHP 5.1</a></h1>
+    </header>
+
+    <div id="migration51.oop" class="section">
+  <h2 class="title">Class and object changes</h2>
+  <ul class="itemizedlist"><li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.oop.html#migration51.oop-functions" class="link"><code class="literal">instanceof</code>,
+      <code class="literal">is_a()</code>, <code class="literal">is_subclass_of()</code> and
+      <code class="literal">catch</code></a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.oop.html#migration51.oop-methods" class="link">Abstract private methods</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.oop.html#migration51.oop-modifiers" class="link">Access modifiers in
+      interfaces</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.oop.html#migration51.oop-inheritance" class="link">Changes in inheritance
+      rules</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a target="_blank" href="https://www.php.net/manual/en/migration51.oop.html#migration51.oop-constants" class="link">Class constants</a>
+    </p>
+   </li>
+  </ul><div class="section" id="migration51.oop-functions">
+   <h2 class="title"><code class="literal">instanceof</code>, <code class="literal">is_a()</code>,
+    <code class="literal">is_subclass_of()</code> and <code class="literal">catch</code></h2>
+   <p class="para">
+    In PHP 5.0, <code class="literal">is_a()</code> was deprecated and replaced by the
+    <code class="literal">instanceof</code> operator. There were some issues with the
+    initial implementation of <code class="literal">instanceof</code>, which relied on
+    <code class="literal">__autoload()</code> to search for missing classes.
+    If the class was not present, <code class="literal">instanceof</code> would throw
+    a fatal <strong><code>E_ERROR</code></strong> due to the failure of
+    <code class="literal">__autoload()</code> to discover that class. The same behaviour
+    occurred in the <code class="literal">catch</code> operator and the
+    <code class="literal">is_subclass_of()</code> function, for the same reason.
+   </p>
+   <p class="para">
+    None of these functions or operators call <code class="literal">__autoload()</code>
+    in PHP 5.1.x, and the <code class="literal">class_exists()</code> workarounds used
+    in code written for PHP 5.0.x, while not problematic in any way, are no
+    longer necessary.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.oop-methods">
+   <h2 class="title">Abstract private methods</h2>
+   <p class="para">
+    Abstract private methods were supported between PHP 5.0.0 and PHP 5.0.4,
+    but were then disallowed on the grounds that the behaviours of
+    <code class="literal">private</code> and <code class="literal">abstract</code> are mutually
+    exclusive.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.oop-modifiers">
+   <h2 class="title">Access modifiers in interfaces</h2>
+   <p class="para">
+    Under PHP 5.0, function declarations in interfaces were treated in exactly
+    the same way as function declarations in classes. This has not been the
+    case since October 2004, at which point only the <code class="literal">public</code>
+    access modifier was allowed in interface function declarations. Since
+    April 2005 - which pre-dates the PHP 5.0b1 release - the
+    <code class="literal">static</code> modifier has also been allowed. However, the
+    <code class="literal">protected</code> and <code class="literal">private</code> modifiers will
+    now throw an <strong><code>E_ERROR</code></strong>, as will
+    <code class="literal">abstract</code>. Note that this change should not affect your
+    existing code, as none of these modifiers makes sense in the context of
+    interfaces anyway.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.oop-inheritance">
+   <h2 class="title">Changes in inheritance rules</h2>
+   <p class="para">
+    Under PHP 5.0, it was possible to have a function declaration in a derived
+    class that did not match the declaration of the same function in the base
+    class, e.g.
+   </p>
+   <div class="informalexample">
+    <p class="para">
+     This code will cause an <strong><code>E_STRICT</code></strong> error to be emitted
+     under PHP 5.1.x.
+    </p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">Base </span><span style="color: #007700">{<br>    function &amp;</span><span style="color: #0000BB">return_by_ref</span><span style="color: #007700">() {<br>        </span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>        return </span><span style="color: #0000BB">$r</span><span style="color: #007700">;<br>    }<br>}<br><br>class </span><span style="color: #0000BB">Derived </span><span style="color: #007700">extends </span><span style="color: #0000BB">Base </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">return_by_ref</span><span style="color: #007700">() {<br>        return </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>    }<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="migration51.oop-constants">
+   <h2 class="title">Class constants</h2>
+   <p class="para">
+    Under PHP 5.0.x, the following code was valid:
+   </p>
+   <div class="informalexample">
+    <p class="para">
+     Under PHP 5.1.x, redefinition of a class constant will throw a fatal
+     <strong><code>E_ERROR</code></strong>.
+    </p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">test </span><span style="color: #007700">{<br>    const </span><span style="color: #0000BB">foobar </span><span style="color: #007700">= </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br>    const </span><span style="color: #0000BB">foobar </span><span style="color: #007700">= </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+ </div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration5.oop.php" target="_blank">PHP 5.0</a></h1>
+    </header>
+
+    <div id="migration5.oop" class="section">
+   <h2 class="title">New Object Model</h2>
+   <p class="para">
+    In PHP 5 there is a new Object Model. PHP's handling of objects has been
+    completely rewritten, allowing for better performance and more features.
+    In previous versions of PHP, objects were handled like primitive types
+    (for instance integers and strings). The drawback of this method was that
+    semantically the whole object was copied when a variable was assigned, or
+    passed as a parameter to a method. In the new approach, objects are
+    referenced by handle, and not by value (one can think of a handle as an
+    object's identifier).
+   </p>
+   <p class="para">
+    Many PHP programmers aren't even aware of the copying quirks of the old
+    object model and, therefore, the majority of PHP applications will work
+    out of the box, or with very few modifications.
+   </p>
+   <p class="para">
+    The new Object Model is documented at the <a target="_blank" href="https://www.php.net/manual/en/language.oop5.html" class="link">Language Reference</a>.
+   </p>
+   <p class="para">
+    In PHP 5, function with the name of a class is called as a constructor
+    only if defined in the same class. In PHP 4, it is called also if defined
+    in the parent class.
+   </p>
+   <p class="para">
+    See also the <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.ze1-compatibility-mode" class="link">
+    zend.ze1_compatibility_mode</a> directive for compatibility with 
+    PHP 4. 
+   </p>
+  </div></article>    </main>
+</section>    </body>
+</html>

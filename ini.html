@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Changes to INI file handling in PHP 5.5, 5.4, 5.3</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Changes to INI file handling in PHP 5.5, 5.4, 5.3">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="Changes to INI file handling in PHP 5.5, 5.4, 5.3">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Changes to INI file handling in PHP 5.5, 5.4, 5.3">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> Changes to INI file handling in PHP 5.5, 5.4, 5.3</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration55.ini.php" target="_blank">PHP 5.5</a></h1>
+    </header>
+
+    <div id="migration55.ini" class="sect1">
+  <h2 class="title">Changes to INI file handling</h2>
+
+  <div class="sect2" id="migrations55.ini.intl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl</a></h3>
+
+   <p class="para">
+    The <code class="literal">intl.use_exceptions</code> configuration directive has
+    been added, which controls the behaviour of intl when global errors occur
+    in conjunction with the already extant <code class="literal">intl.error_level</code>
+    configuration directive.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.ini.mysqlnd">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mysqlnd.html" class="link">MySQLnd</a></h3>
+
+   <p class="para">
+    The <a target="_blank" href="https://www.php.net/manual/en/mysqlnd.config.html#ini.mysqlnd.sha256-server-public-key" class="link">mysqlnd.sha256_server_public_key</a>
+    configuration directive has been added to allow
+    <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">mysqli</a> to use the new MySQL
+    authentication protocol.
+   </p>
+  </div>
+ </div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration54.ini.php" target="_blank">PHP 5.4</a></h1>
+    </header>
+
+    <div id="migration54.ini" class="section">
+  <h2 class="title">Changes to INI file handling</h2>
+  <p class="simpara">
+   The following <var class="filename">php.ini</var> directives have been removed:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-globals" class="link">register_globals</a> and
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>,
+     and <a target="_blank" href="https://www.php.net/manual/en/sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.allow-call-time-pass-reference" class="link">allow_call_time_pass_reference</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/network.configuration.html#ini.define-syslog-variables" class="link">define_syslog_variables</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/misc.configuration.html#ini.syntax-highlighting" class="link">highlight.bg</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.bug-compat-42" class="link">session.bug_compat_42</a> and
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.bug-compat-warn" class="link">session.bug_compat_warn</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     mbstring.script_encoding
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.y2k-compliance" class="link">y2k_compliance</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/ini.sect.safe-mode.html#ini.safe-mode-gid" class="link">safe_mode_gid</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/ini.sect.safe-mode.html#ini.safe-mode-include-dir" class="link">safe_mode_include_dir</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/ini.sect.safe-mode.html#ini.safe-mode-allowed-env-vars" class="link">safe_mode_allowed_env_vars</a>, and
+     <a target="_blank" href="https://www.php.net/manual/en/ini.sect.safe-mode.html#ini.safe-mode-protected-env-vars" class="link">safe_mode_protected_env_vars</a>
+    </span>
+   </li>
+  </ul><p class="simpara">
+   The following <var class="filename">php.ini</var> directives have been added:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/readline.configuration.html#ini.cli.pager" class="link">cli.pager</a> and
+     <a target="_blank" href="https://www.php.net/manual/en/readline.configuration.html#ini.cli.prompt" class="link">cli.prompt</a> for CLI SAPI using readline
+     in interactive mode.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/features.commandline.ini.html#ini.cli-server.color" class="link">cli_server.color</a>
+     to enable the built-in development web server to use ANSI color coding 
+     in terminal output.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/info.configuration.html#ini.max-input-vars" class="link">max_input_vars</a>
+     - specifies how many GET/POST/COOKIE input variables may be accepted.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.multibyte" class="link">zend.multibyte</a>
+     - to control the new multibyte support.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a>
+     - This value will be used unless a "declare(encoding=...)" directive
+     appears at the top of the script.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.signal-check" class="link">zend.signal_check</a>
+     - to check for replaced signal handlers on shutdown.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.upload-progress.enabled" class="link">session.upload_progress.enabled</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.upload-progress.cleanup" class="link">session.upload_progress.cleanup</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.upload-progress.prefix" class="link">session.upload_progress.prefix</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.upload-progress.name" class="link">session.upload_progress.name</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.upload-progress.freq" class="link">session.upload_progress.freq</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.upload-progress.min-freq" class="link">session.upload_progress.min_freq</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.enable-post-data-reading" class="link">enable_post_data_reading</a>
+     - When it's disabled, the POST data is not read (and processed)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.windows-show-crt-warning" class="link">windows_show_crt_warning</a>
+     - This directive shows the Windows CRT warnings when enabled. These
+     warnings were displayed by default until now.
+    </span>
+   </li>
+   </ul><p class="simpara">
+   The following <var class="filename">php.ini</var> directives have been changed:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.entropy-file" class="link">session.entropy_file</a>
+     now defaults to /dev/random or /dev/urandom depending on what has been
+     guessed at compile time.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.entropy-length" class="link">session.entropy_length</a>
+     now defaults to 32.
+    </span>
+   </li>
+   </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration53.ini.php" target="_blank">PHP 5.3</a></h1>
+    </header>
+
+    <div id="migration53.ini" class="section">
+  <h2 class="title">Changes to INI file handling</h2>
+  <p class="simpara">
+   PHP 5.3.0 has significantly improved performance and parsing of INI files,
+   and adds several new syntax features.
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     The standard <var class="filename">php.ini</var> files have been re-organized and renamed. 
+     <code class="literal">php.ini-development</code> contains settings recommended
+     for use in development environments. <code class="literal">php.ini-production</code>
+     contains settings recommended for use in production environments.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     There is now support for two special sections:
+     <code class="literal">[PATH=/opt/httpd/www.example.com/]</code> and 
+     <code class="literal">[HOST=www.example.com]</code>. Directives set in these 
+     sections cannot be overridden by user-defined INI files or at 
+     runtime. More information about these sections can be found 
+     <a target="_blank" href="https://www.php.net/manual/en/ini.sections.html" class="link">here</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend-extension-debug" class="link">zend_extension_debug</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend-extension-debug-ts" class="link">zend_extension_debug_ts</a>
+     and <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend-extension-ts" class="link">zend_extension_ts</a> have
+     been removed. Use the
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend-extension" class="link">zend_extension</a> directive to
+     load all Zend Extensions.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.ze1-compatibility-mode" class="link">zend.ze1_compatibility_mode</a>
+     has been removed. If this INI directive is set to On, an
+     <strong><code>E_ERROR</code></strong> error is emitted at startup.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     It is now possible to use the full path to load modules using the 
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.extension" class="link">extension</a> directive.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">"ini-variables"</code> can now be used almost anywhere in a
+     <var class="filename">php.ini</var> file.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.open-basedir" class="link">open_basedir</a> restrictions may now
+     be tighted at runtime, and the directive is now PHP_INI_ALL.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     It is now possible to use alphanumeric or variable indices in INI option
+     arrays.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-cfg-var.html" class="function">get_cfg_var()</a></span> is now able to return "array" INI options.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Two new mail directives:
+     <a target="_blank" href="https://www.php.net/manual/en/mail.configuration.html#ini.mail.add-x-header" class="link">mail.add_x_header</a> and
+     <a target="_blank" href="https://www.php.net/manual/en/mail.configuration.html#ini.mail.log" class="link">mail.log</a>, have been added.
+    </span>
+   </li>
+  </ul><p class="simpara">
+   The following new ini directives have been added:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <code class="literal">user_ini.filename</code> and
+     <code class="literal">user_ini.cache_ttl</code> have been added to control the use
+     of <a target="_blank" href="https://www.php.net/manual/en/configuration.file.per-user.html" class="link">user INI files</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.exit-on-timeout" class="link">exit_on_timeout</a> has been added
+     to force Apache 1.x children to exit if a PHP execution timeout occurs.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added <code class="literal">mbstring.http_output_conv_mimetype</code>. 
+     This directive specifies the regex pattern of content types for which 
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-output-handler.html" class="function">mb_output_handler()</a></span> is activated.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.request-order" class="link">request_order</a>.
+     Allows controlling which external variables will be available in
+     <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.request.html" class="classname">$_REQUEST</a></var>.
+    </span>
+   </li>
+  </ul><p class="simpara">
+   The following ini directives have new default values:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.use-only-cookies" class="link">session.use_only_cookies</a>
+     is now set to <code class="literal">"1"</code> (enabled) by default.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.html#ini.oci8.default-prefetch" class="link">oci8.default_prefetch</a>
+     has changed from <code class="literal">"10"</code> to <code class="literal">"100"</code>.
+    </span>
+   </li>
+  </ul></div></article>    </main>
+</section>    </body>
+</html>

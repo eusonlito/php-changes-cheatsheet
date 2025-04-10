@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration84.new-classes.php" target="_blank">PHP 8.4</a></h1>
+    </header>
+
+    <div id="migration84.new-classes" class="sect1">
+ <h2 class="title">New Classes, Enums, and Interfaces</h2>
+
+ <div class="sect2" id="migration84.new-classes.core">
+  <h3 class="title">Core</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.deprecated.php" class="classname">Deprecated</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.requestparsebodyexception.php" class="classname">RequestParseBodyException</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.bcmath">
+  <h3 class="title">BCMath</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.bcmath-number.php" class="classname">BcMath\Number</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.dba">
+  <h3 class="title">DBA</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dba-connection.php" class="classname">Dba\Connection</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.dom">
+  <h3 class="title">DOM</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-htmldocument.php" class="classname">Dom\HTMLDocument</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-xmldocument.php" class="classname">Dom\XMLDocument</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-document.php" class="classname">Dom\Document</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-parentnode.php" class="classname">Dom\ParentNode</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-childnode.php" class="classname">Dom\ChildNode</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-implementation.php" class="classname">Dom\Implementation</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-node.php" class="classname">Dom\Node</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-nodelist.php" class="classname">Dom\NodeList</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-namednodemap.php" class="classname">Dom\NamedNodeMap</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-dtdnamednodemap.php" class="classname">Dom\DtdNamedNodeMap</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-htmlcollection.php" class="classname">Dom\HTMLCollection</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/enum.dom-adjacentposition.php" class="classname">Dom\AdjacentPosition</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-element.php" class="classname">Dom\Element</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-htmlelement.php" class="classname">Dom\HTMLElement</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-attr.php" class="classname">Dom\Attr</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-characterdata.php" class="classname">Dom\CharacterData</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-text.php" class="classname">Dom\Text</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-cdatasection.php" class="classname">Dom\CDATASection</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-processinginstruction.php" class="classname">Dom\ProcessingInstruction</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-comment.php" class="classname">Dom\Comment</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-documenttype.php" class="classname">Dom\DocumentType</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-documentfragment.php" class="classname">Dom\DocumentFragment</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-entity.php" class="classname">Dom\Entity</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-entityreference.php" class="classname">Dom\EntityReference</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-notation.php" class="classname">Dom\Notation</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-tokenlist.php" class="classname">Dom\TokenList</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-namespaceinfo.php" class="classname">Dom\NamespaceInfo</a></span></li>
+   <li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-xpath.php" class="classname">Dom\XPath</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.odbc">
+  <h3 class="title">ODBC</h3>
+  <ul class="simplelist"><li><span class="classname"><strong class="classname">Odbc\Connection</strong></span></li>
+   <li><span class="classname"><strong class="classname">Odbc\Result</strong></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.pcntl">
+  <h3 class="title">PCNTL</h3>
+  <ul class="simplelist"><li><span class="classname"><strong class="classname">Pcntl\QosClass</strong></span> (macOS only)</li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.pdo-dblib">
+  <h3 class="title">PDO_DBLIB</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php" class="classname">Pdo\DbLib</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.pdo-firebird">
+  <h3 class="title">PDO_FIREBIRD</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdo-firebird.php" class="classname">Pdo\Firebird</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.pdo-mysql">
+  <h3 class="title">PDO_MYSQL</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php" class="classname">Pdo\Mysql</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.pdo-odbc">
+  <h3 class="title">PDO_ODBC</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdo-odbc.php" class="classname">Pdo\Odbc</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.pdo-pgsql">
+  <h3 class="title">PDO_PGSQL</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdo-pgsql.php" class="classname">Pdo\Pgsql</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.pdo-sqlite">
+  <h3 class="title">PDO_SQLITE</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdo-sqlite.php" class="classname">Pdo\Sqlite</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.reflection">
+  <h3 class="title">Reflection</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionconstant.php" class="classname">ReflectionConstant</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.soap">
+  <h3 class="title">SOAP</h3>
+  <ul class="simplelist"><li><span class="classname"><strong class="classname">Soap\Url</strong></span></li>
+   <li><span class="classname"><strong class="classname">Soap\Sdl</strong></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration84.new-classes.standard">
+  <h3 class="title">Standard</h3>
+
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/enum.roundingmode.php" class="classname">RoundingMode</a></span></li>
+   <li><span class="classname"><strong class="classname">StreamBucket</strong></span></li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration83.new-classes.php" target="_blank">PHP 8.3</a></h1>
+    </header>
+
+    <div id="migration83.new-classes" class="sect1">
+ <h2 class="title">New Classes and Interfaces</h2>
+
+ <div class="sect2" id="migration83.new-classes.date">
+  <h3 class="title">Date</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateerror.php" class="classname">DateError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateobjecterror.php" class="classname">DateObjectError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.daterangeerror.php" class="classname">DateRangeError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateexception.php" class="classname">DateException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateinvalidoperationexception.php" class="classname">DateInvalidOperationException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dateinvalidtimezoneexception.php" class="classname">DateInvalidTimeZoneException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datemalformedintervalstringexception.php" class="classname">DateMalformedIntervalStringException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datemalformedperiodstringexception.php" class="classname">DateMalformedPeriodStringException</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.datemalformedstringexception.php" class="classname">DateMalformedStringException</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration83.new-classes.random">
+  <h3 class="title">Random</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/enum.random-intervalboundary.php" class="classname">Random\IntervalBoundary</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration81.new-classes.php" target="_blank">PHP 8.1</a></h1>
+    </header>
+
+    <div id="migration81.new-classes" class="sect1">
+ <h2 class="title">New Classes and Interfaces</h2>
+
+ <div class="sect2" id="migration81.new-classes.curl">
+  <h3 class="title">cURL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlstringfile.php" class="classname">CURLStringFile</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.fileinfo">
+  <h3 class="title">FileInfo</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.finfo.php" class="classname">finfo</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.ftp">
+  <h3 class="title">FTP</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ftp-connection.php" class="classname">FTP\Connection</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.imap">
+  <h3 class="title">IMAP</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.imap-connection.php" class="classname">IMAP\Connection</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.intl">
+  <h3 class="title">Intl</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intldatepatterngenerator.php" class="classname">IntlDatePatternGenerator</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.ldap">
+  <h3 class="title">LDAP</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ldap-connection.php" class="classname">LDAP\Connection</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ldap-result.php" class="classname">LDAP\Result</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.ldap-result-entry.php" class="classname">LDAP\ResultEntry</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.pgsql">
+  <h3 class="title">PgSQL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pgsql-connection.php" class="classname">PgSql\Connection</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pgsql-lob.php" class="classname">PgSql\Lob</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pgsql-result.php" class="classname">PgSql\Result</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.spell">
+  <h3 class="title">PSpell</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pspell-config.php" class="classname">PSpell\Config</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pspell-dictionary.php" class="classname">PSpell\Dictionary</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration81.new-classes.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionfiber.php" class="classname">ReflectionFiber</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration80.new-classes.php" target="_blank">PHP 8.0</a></h1>
+    </header>
+
+    <div id="migration80.new-classes" class="sect1">
+ <h2 class="title">New Classes and Interfaces</h2>
+
+ <div class="sect2" id="migration80.new-classes.curl">
+  <h3 class="title">cURL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlhandle.php" class="classname">CurlHandle</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlmultihandle.php" class="classname">CurlMultiHandle</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlsharehandle.php" class="classname">CurlShareHandle</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.enchant">
+  <h3 class="title">Enchant</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.enchantbroker.php" class="classname">EnchantBroker</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.enchantdictionary.php" class="classname">EnchantDictionary</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.gd">
+  <h3 class="title">GD</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.gdimage.php" class="classname">GdImage</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslasymmetrickey.php" class="classname">OpenSSLAsymmetricKey</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificate.php" class="classname">OpenSSLCertificate</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.opensslcertificatesigningrequest.php" class="classname">OpenSSLCertificateSigningRequest</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.shmop">
+  <h3 class="title">Shmop</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.shmop.php" class="classname">Shmop</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.addressinfo.php" class="classname">AddressInfo</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.socket.php" class="classname">Socket</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.sysv">
+  <h3 class="title">Systen V</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sysvmessagequeue.php" class="classname">SysvMessageQueue</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sysvsemaphore.php" class="classname">SysvSemaphore</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sysvsharedmemory.php" class="classname">SysvSharedMemory</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.xmlparser">
+  <h3 class="title">XML Parser</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.xmlparser.php" class="classname">XMLParser</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.xmlwriter">
+  <h3 class="title">XMLWriter</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.xmlwriter.php" class="classname">XMLWriter</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration80.new-classes.zlib">
+  <h3 class="title">Zlib</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.deflatecontext.php" class="classname">DeflateContext</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.inflatecontext.php" class="classname">InflateContext</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration74.new-classes.php" target="_blank">PHP 7.4</a></h1>
+    </header>
+
+    <div id="migration74.new-classes" class="sect1">
+ <h2 class="title">New Classes and Interfaces</h2>
+
+ <div class="sect2" id="migration74.new-classes.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionreference.php" class="classname">ReflectionReference</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration70.classes.php" target="_blank">PHP 7.0</a></h1>
+    </header>
+
+    <div id="migration70.classes" class="sect1">
+ <h2 class="title">New Classes and Interfaces</h2>
+
+ <div class="sect2" id="migration70.classes.intl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.php" class="link">Intl</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlchar.php" class="classname">IntlChar</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.classes.reflection">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.php" class="link">Reflection</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectiongenerator.php" class="classname">ReflectionGenerator</a></span>
+    </span>
+   </li>
+  </ul><ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectiontype.php" class="classname">ReflectionType</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.classes.session">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.session.php" class="link">Session Handling</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.sessionupdatetimestamphandlerinterface.php" class="classname">SessionUpdateTimestampHandlerInterface</a></span>
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration70.classes.exception-hierarchy">
+  <h3 class="title">Exception Hierarchy</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.throwable.php" class="classname">Throwable</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="classname">Error</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="classname">TypeError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.parseerror.php" class="classname">ParseError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.assertionerror.php" class="classname">AssertionError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arithmeticerror.php" class="classname">ArithmeticError</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.divisionbyzeroerror.php" class="classname">DivisionByZeroError</a></span>
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration55.classes.php" target="_blank">PHP 5.5</a></h1>
+    </header>
+
+    <div id="migration55.classes" class="sect1">
+  <h2 class="title">New Classes and Interfaces</h2>
+
+  <div class="sect2" id="migration55.classes.curl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.curl.html" class="link">cURL</a></h3>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.curlfile.html" class="classname">CURLFile</a>
+     </span>
+    </li>
+   </ul></div>
+  
+  <div class="sect2" id="migration55.classes.datetime">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">Date and Time</a></h3>
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.datetimeimmutable.html" class="classname">DateTimeImmutable</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.datetimeinterface.html" class="classname">DateTimeInterface</a>
+     </span>
+    </li>
+   </ul></div>
+  
+  <div class="sect2" id="migration55.classes.intl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlgregoriancalendar.html" class="classname">IntlGregorianCalendar</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.intltimezone.html" class="classname">IntlTimeZone</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlbreakiterator.html" class="classname">IntlBreakIterator</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlrulebasedbreakiterator.html" class="classname">IntlRuleBasedBreakIterator</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcodepointbreakiterator.html" class="classname">IntlCodePointBreakIterator</a>
+     </span>
+    </li>
+   </ul></div>
+ </div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration54.classes.php" target="_blank">PHP 5.4</a></h1>
+    </header>
+
+    <div id="migration54.classes" class="section">
+  <h2 class="title">New Classes and Interfaces</h2>
+  <p class="simpara">
+   The following classes were introduced in PHP 5.4.0:
+  </p>
+  <p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.callbackfilteriterator.html" class="classname">CallbackFilterIterator</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.recursivecallbackfilteriterator.html" class="classname">RecursiveCallbackFilterIterator</a>
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.html" class="link">Reflection</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.reflectionzendextension.html" class="classname">ReflectionZendExtension</a>
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.json.html" class="link">Json</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.jsonserializable.html" class="classname">JsonSerializable</a>
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.session.html" class="link">Session</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.sessionhandler.html" class="classname">SessionHandler</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.sessionhandlerinterface.html" class="classname">SessionHandlerInterface</a>
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.snmp.html" class="link">Snmp</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.snmp.html" class="classname">SNMP</a>
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.transliterator.html" class="classname">Transliterator</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.spoofchecker.html" class="classname">Spoofchecker</a>
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration53.classes.php" target="_blank">PHP 5.3</a></h1>
+    </header>
+
+    <div id="migration53.classes" class="section">
+  <h2 class="title">New Classes</h2>
+  <p class="simpara">
+   The following classes were introduced in PHP 5.3.0:
+  </p>
+
+  <p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">Date/Time</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.dateinterval.html" class="classname">DateInterval</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.dateperiod.html" class="classname">DatePeriod</a>
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.phar.html" class="link">Phar</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.phar.html" class="classname">Phar</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.phardata.html" class="classname">PharData</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.pharexception.html" class="classname">PharException</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.pharfileinfo.html" class="classname">PharFileInfo</a>
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.filesystemiterator.html" class="classname">FilesystemIterator</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.globiterator.html" class="classname">GlobIterator</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.multipleiterator.html" class="classname">MultipleIterator</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.recursivetreeiterator.html" class="classname">RecursiveTreeIterator</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.spldoublylinkedlist.html" class="classname">SplDoublyLinkedList</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.html" class="classname">SplFixedArray</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splheap.html" class="classname">SplHeap</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splmaxheap.html" class="classname">SplMaxHeap</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splminheap.html" class="classname">SplMinHeap</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splpriorityqueue.html" class="classname">SplPriorityQueue</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splqueue.html" class="classname">SplQueue</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/class.splstack.html" class="classname">SplStack</a>
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration52.classes.php" target="_blank">PHP 5.2</a></h1>
+    </header>
+
+    <div id="migration52.classes" class="section">
+  <h2 class="title">New Classes</h2>
+  <p class="para">
+   The following classes were introduced in PHP 5.2.0:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ref.datetime.html" class="link">DateTime</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ref.datetime.html" class="link">DateTimeZone</a>
+    </span>
+   </li>
+
+   <li class="listitem">
+    <span class="simpara">
+     RegexIterator - extends <a target="_blank" href="https://www.php.net/manual/en/class.filteriterator.html" class="classname">FilterIterator</a>;
+     implements <a target="_blank" href="https://www.php.net/manual/en/class.iterator.html" class="classname">Iterator</a>, <a target="_blank" href="https://www.php.net/manual/en/class.traversable.html" class="classname">Traversable</a>,
+     <a target="_blank" href="https://www.php.net/manual/en/class.outeriterator.html" class="classname">OuterIterator</a>
+    </span>
+    <span class="simpara">
+     Constants:
+    </span>
+    <ul class="itemizedlist"><li class="listitem">
+      <span class="simpara">
+       <strong><code>RegexIterator::ALL_MATCHES</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RegexIterator::GET_MATCH</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RegexIterator::MATCH</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RegexIterator::REPLACE</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RegexIterator::SPLIT</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RegexIterator::USE_KEY</code></strong>
+      </span>
+     </li>
+    </ul><span class="simpara">
+     Properties:
+    </span>
+    <ul class="itemizedlist"><li class="listitem">
+      <span class="simpara">
+       public <span class="property">replacement</span>
+      </span>
+     </li>
+    </ul><span class="simpara">
+     Methods:
+    </span>
+    <ul class="itemizedlist"><li class="listitem">
+      <span class="simpara">
+       RegexIterator::__construct(Iterator it, string regex [, int mode [, int flags [, int preg_flags]]])
+       - Create an <code class="literal">RegexIterator</code> from another iterator and a regular expression
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RegexIterator::accept()
+       - Match (string)current() against regular expression
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RegexIterator::getFlags()
+       - Returns current operation flags
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RegexIterator::getMode()
+       - Returns current operation mode
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RegexIterator::getPregFlags()
+       - Returns current PREG flags (if in use or <strong><code>NULL</code></strong>)
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RegexIterator::setFlags(int new_flags)
+       - Set operation flags
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RegexIterator::setMode(int new_mode)
+       - Set new operation mode
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RegexIterator::setPregFlags(int new_flags)
+       - Set PREG flags
+      </span>
+     </li>
+    </ul></li>
+
+   <li class="listitem">
+    <span class="simpara">
+     RecursiveRegexIterator
+    </span>
+    <span class="simpara">
+     Constants:
+    </span>
+    <ul class="itemizedlist"><li class="listitem">
+      <span class="simpara">
+       <strong><code>RecursiveRegexIterator::ALL_MATCHES</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RecursiveRegexIterator::GET_MATCH</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RecursiveRegexIterator::MATCH</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RecursiveRegexIterator::REPLACE</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RecursiveRegexIterator::SPLIT</code></strong>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>RecursiveRegexIterator::USE_KEY</code></strong>
+      </span>
+     </li>
+    </ul><span class="simpara">
+     Methods:
+    </span>
+    <ul class="itemizedlist"><li class="listitem">
+      <span class="simpara">
+       RecursiveRegexIterator::__construct(RecursiveIterator it, string regex [, int mode [, int flags [, int preg_flags]]])
+       - Create an <code class="literal">RecursiveRegexIterator</code> from another recursive iterator and
+       a regular expression
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       RecursiveRegexIterator RecursiveRegexIterator::getChildren()
+       - Return the inner iterator's children contained in a
+       <code class="literal">RecursiveRegexIterator</code>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bool RecursiveRegexIterator::hasChildren()
+       - Check whether the inner iterator's current element has children
+      </span>
+     </li>
+    </ul></li>
+  </ul></div></article>    </main>
+</section>    </body>
+</html>

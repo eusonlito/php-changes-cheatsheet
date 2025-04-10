@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Error Reporting in PHP 5.2</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Error Reporting in PHP 5.2">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="Error Reporting in PHP 5.2">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Error Reporting in PHP 5.2">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> Error Reporting in PHP 5.2</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration52.errorrep.php" target="_blank">PHP 5.2</a></h1>
+    </header>
+
+    <div id="migration52.errorrep" class="section">
+  <h2 class="title">Error Reporting</h2>
+  <p class="para">
+   Some of the existing <strong><code>E_ERROR</code></strong> conditions have been
+   converted to something that can be caught with a user-defined error
+   handler.  If an <a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.html" class="link"><strong><code>E_RECOVERABLE_ERROR</code></strong></a>
+   is not handled, it will behave in the same way as
+   <strong><code>E_ERROR</code></strong> behaves in all versions of PHP.  Errors of
+   this type are logged as <code class="literal">Catchable fatal error</code>.
+  </p>
+  <p class="para">
+   This change means that the value of the <strong><code>E_ALL</code></strong>
+   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> constant is 
+   now 6143, where the previous value was 2047. Because PHP constants have 
+   no meaning outside of PHP, in some cases the integer value is used 
+   instead so these will need to be adjusted. So for example by
+   setting the error_reporting mode from either the
+   <a target="_blank" href="https://www.php.net/manual/en/apache.configuration.html" class="link">httpd.conf</a> or the
+   <var class="filename">.htaccess</var> files, the value has to be changed
+   accordingly.  The same applies when the numeric values are used
+   rather than the constants in PHP scripts.
+  </p>
+  <p class="para">
+   As a side-effect of a change made to prevent duplicate error messages when
+   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> is
+   <code class="literal">On</code>, it is now necessary to return <strong><code>FALSE</code></strong> from
+   user defined error handlers in order to populate
+   <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.phperrormsg.html" class="classname">$php_errormsg</a></var>.  This
+   provides a fine-grain control over the levels of messages stored.
+  </p>
+ </div></article>    </main>
+</section>    </body>
+</html>

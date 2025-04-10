@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Changed Functions in PHP 5.4, 5.3, 5.2</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Changed Functions in PHP 5.4, 5.3, 5.2">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="Changed Functions in PHP 5.4, 5.3, 5.2">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Changed Functions in PHP 5.4, 5.3, 5.2">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> Changed Functions in PHP 5.4, 5.3, 5.2</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration54.parameters.php" target="_blank">PHP 5.4</a></h1>
+    </header>
+
+    <div id="migration54.parameters" class="section">
+  <h2 class="title">Changed Functions</h2>
+  <p class="simpara">
+   Several functions were given new, optional parameters in PHP 5.4:
+  </p>
+  <p class="simpara">PHP Core:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Added the optional <code class="parameter">limit</code> parameter to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.debug-backtrace.html" class="function">debug_backtrace()</a></span>
+     and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.debug-print-backtrace.html" class="function">debug_print_backtrace()</a></span>, to limit the amount of stack frames returned.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.is-link.html" class="function">is_link()</a></span> now works properly for symbolic links on Windows Vista
+     or later. Earlier systems do not support symbolic links.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.parse-url.html" class="function">parse_url()</a></span> now recognizes the host when a scheme is omitted, 
+     and a leading component separator is present. As of PHP 5.4.7.
+    </span>
+   </li>
+  </ul><p class="simpara">OpenSSL:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Added a no padding option to the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-encrypt.html" class="function">openssl_encrypt()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-decrypt.html" class="function">openssl_decrypt()</a></span>
+     functions.
+    </span>
+   </li>
+  </ul><p class="simpara">Intl:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.idn-to-ascii.html" class="function">idn_to_ascii()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.idn-to-utf8.html" class="function">idn_to_utf8()</a></span> now take two extra
+     parameters, one indicating the variant (IDNA 2003 or UTS #46) and another, passed by reference,
+     to return details about the operation in case UTS #46 is chosen.
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration53.parameters.php" target="_blank">PHP 5.3</a></h1>
+    </header>
+
+    <div id="migration53.parameters" class="section">
+  <h2 class="title">New Parameters</h2>
+  <p class="simpara">
+   Several functions were given new, optional parameters in PHP 5.3:
+  </p>
+  <p class="simpara">PHP Core:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.clearstatcache.html" class="function">clearstatcache()</a></span>
+     - Added <code class="parameter">clear_realpath_cache</code> and
+     <code class="parameter">filename</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.copy.html" class="function">copy()</a></span>
+     - Added a stream context parameter, <code class="parameter">context</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.fgetcsv.html" class="function">fgetcsv()</a></span>
+     - Added <code class="parameter">escape</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ini-get-all.html" class="function">ini_get_all()</a></span>
+     - Added <code class="parameter">details</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.nl2br.html" class="function">nl2br()</a></span>
+     - Added <code class="parameter">is_xhtml</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.parse-ini-file.html" class="function">parse_ini_file()</a></span>
+     - Added <code class="parameter">scanner_mode</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.round.html" class="function">round()</a></span>
+     - Added <code class="parameter">mode</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-context-create.html" class="function">stream_context_create()</a></span>
+     - Added <code class="parameter">params</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strstr.html" class="function">strstr()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stristr.html" class="function">stristr()</a></span> 
+     - Added <code class="parameter">before_needle</code>.
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.json.html" class="link">json</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.html" class="function">json_encode()</a></span>
+     - Added <code class="parameter">options</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-decode.html" class="function">json_decode()</a></span>
+     - Added <code class="parameter">depth</code>.
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.stream.html" class="link">Streams</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-select.html" class="function">stream_select()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-set-blocking.html" class="function">stream_set_blocking()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-set-timeout.html" class="function">stream_set_timeout()</a></span>, and
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-set-write-buffer.html" class="function">stream_set_write_buffer()</a></span> now work with user-space
+     stream wrappers.
+    </span>
+   </li>
+  </ul><p class="simpara"><a target="_blank" href="https://www.php.net/manual/en/book.sybase.html" class="link">sybase_ct</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sybase-connect.html" class="function">sybase_connect()</a></span>
+     - Added <code class="parameter">new</code>.
+    </span>
+   </li>
+  </ul><p class="simpara">
+   New method parameters in PHP 5.3.0:
+  </p>
+  <p class="simpara">PHP Core:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/exception.construct.html" class="methodname">Exception::__construct()</a></span>
+     - Added <code class="parameter">previous</code>.
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration52.parameters.php" target="_blank">PHP 5.2</a></h1>
+    </header>
+
+    <div id="migration52.parameters" class="section">
+  <h2 class="title">New Parameters</h2>
+  <p class="para">
+   Some functions were given new, optional, parameters in PHP 5.2.x:
+  </p>
+
+  <p class="para">PHP Core:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span>
+     - added <code class="parameter">double_encode</code> in PHP 5.2.3.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>
+     - added <code class="parameter">double_encode</code> in PHP 5.2.3.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.base64-decode.html" class="function">base64_decode()</a></span>
+     - added <code class="parameter">strict</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setcookie.html" class="function">setcookie()</a></span>
+     - added <code class="parameter">httponly</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setrawcookie.html" class="function">setrawcookie()</a></span>
+     - added <code class="parameter">httponly</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>
+     - added <code class="parameter">httponly</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.memory-get-usage.html" class="function">memory_get_usage()</a></span>
+     - added <code class="parameter">real_usage</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-loaded-extensions.html" class="function">get_loaded_extensions()</a></span>
+     - added <code class="parameter">zend_extensions</code> in PHP 5.2.4
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.curl.html" class="link">curl</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-multi-info-read.html" class="function">curl_multi_info_read()</a></span>
+     - added <code class="parameter">msgs_in_queue</code>
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.datetime.html" class="link">datetime</a></p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date.html" class="function">date()</a></span>
+     - added "u" (milliseconds) format character in PHP 5.2.2
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.imap.html" class="link">imap</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-open.html" class="function">imap_open()</a></span>
+     - added <code class="parameter">n_retries</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imap-reopen.html" class="function">imap_reopen()</a></span>
+     - added <code class="parameter">n_retries</code>
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.mbstring.html" class="link">mbstring</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-strrpos.html" class="function">mb_strrpos()</a></span>
+     - added <code class="parameter">offset</code>
+    </span>
+    <div class="warning"><strong class="warning">Warning</strong>
+     <p class="simpara">
+      The <code class="parameter">offset</code> parameter was put in the position
+      the <code class="parameter">encoding</code> parameter used to be.
+      Backward compatibility has been
+      provided by allowing <code class="parameter">encoding</code> to be specified
+      as the third parameter.  Using this backward compatibility mode is
+      not recommended because it will be removed in a future release of PHP.
+     </p>
+    </div>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.ming.html" class="link">ming</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/swfmovie.streammp3.html" class="function">SWFMovie::streamMP3()</a></span>
+     - added <code class="parameter">skip</code> in PHP 5.2.1
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.openssl.html" class="link">openssl</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-verify.html" class="function">openssl_verify()</a></span>
+     - added <code class="parameter">signature_algo</code>
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.pgsql.html" class="link">pgsql</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-escape-bytea.html" class="function">pg_escape_bytea()</a></span>
+     - added <code class="parameter">connection</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-escape-string.html" class="function">pg_escape_string()</a></span>
+     - added <code class="parameter">connection</code>
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.simplexml.html" class="link">simplexml</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/simplexmlelement.construct.html" class="function">SimpleXMLElement::__construct()</a></span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/simplexmlelement.attributes.html" class="function">SimpleXMLElement::attributes()</a></span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/simplexmlelement.children.html" class="function">SimpleXMLElement::children()</a></span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.simplexml-load-file.html" class="function">simplexml_load_file()</a></span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.simplexml-load-string.html" class="function">simplexml_load_string()</a></span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.spl.html" class="link">spl</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     array iterator_to_array(Traversable it [, bool use_keys = true])
+     - added <code class="parameter">use_keys</code> in PHP 5.2.1
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/book.xmlreader.html" class="link">xmlreader</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.open.html" class="function">XMLReader::open()</a></span>
+     - added <code class="parameter">encoding</code>
+     and <code class="parameter">options</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.xml.html" class="function">XMLReader::XML()</a></span>
+     - added <code class="parameter">encoding</code>
+     and <code class="parameter">options</code>
+    </span>
+   </li>
+  </ul><p class="para"><a target="_blank" href="https://www.php.net/manual/en/ref.xmlwriter.html" class="link">XMLWriter</a>:</p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-write-element.html" class="function">xmlwriter_write_element()</a></span>
+     - the <code class="parameter">content</code> became optional in PHP 5.2.3
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xmlwriter-write-element-ns.html" class="function">xmlwriter_write_element_ns()</a></span>
+     - the <code class="parameter">content</code> became optional in PHP 5.2.3
+    </span>
+   </li>
+  </ul></div></article>    </main>
+</section>    </body>
+</html>

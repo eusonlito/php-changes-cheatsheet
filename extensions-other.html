@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Other changes to extensions in PHP 5.5, 5.4, 5.3</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Other changes to extensions in PHP 5.5, 5.4, 5.3">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="Other changes to extensions in PHP 5.5, 5.4, 5.3">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Other changes to extensions in PHP 5.5, 5.4, 5.3">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> Other changes to extensions in PHP 5.5, 5.4, 5.3</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration55.extensions-other.php" target="_blank">PHP 5.5</a></h1>
+    </header>
+
+    <div id="migration55.extensions-other" class="sect1">
+  <h2 class="title">Other changes to extensions</h2>
+
+  <div class="sect2" id="migration55.extensions-other.intl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl</a></h3>
+
+   <p class="para">
+    The <a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">intl</a> extension now requires ICU 4.0
+    or later.
+   </p>
+  </div>
+ </div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration54.extensions-other.php" target="_blank">PHP 5.4</a></h1>
+    </header>
+
+    <div id="migration54.extensions-other" class="section">
+  <h2 class="title">Other changes to extensions</h2>
+  <p class="simpara">
+   Changes in extension behavior, and new features:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">mysqli</a>
+     - <a target="_blank" href="https://www.php.net/manual/en/class.mysqli-result.html" class="classname">mysqli_result</a> now implements <a target="_blank" href="https://www.php.net/manual/en/class.traversable.html" class="link">Traversable</a>
+    </span>
+   </li>
+  </ul><ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.html" class="link">pdo_mysql</a>
+     - Removed support for linking with MySQL client libraries older than 4.1
+    </span>
+   </li>
+  </ul><ul class="itemizedlist"><li class="listitem">
+  <span class="simpara">
+   The MySQL extensions <a target="_blank" href="https://www.php.net/manual/en/book.mysql.html" class="link">mysql</a>,
+   <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">mysqli</a> and <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.html" class="link">PDO_mysql</a>
+   use <a target="_blank" href="https://www.php.net/manual/en/book.mysqlnd.html" class="link">mysqlnd</a> as the default library now. It is still possible to use
+   libmysqlclient by specifying a path to the configure options.
+    </span>
+  </li>
+  </ul><ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.mysqlnd.html" class="link">mysqlnd</a>
+     - Added named pipes support
+    </span>
+   </li>
+  </ul></div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration53.extensions-other.php" target="_blank">PHP 5.3</a></h1>
+    </header>
+
+    <div id="migration53.extensions-other" class="section">
+  <h2 class="title">Other changes to extensions</h2>
+  <p class="simpara">
+   The following extensions can no longer be disabled during build
+   configuration:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.pcre.html" class="link">PCRE</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.reflection.html" class="link">Reflection</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL</a>
+    </span>
+   </li>
+  </ul><p class="simpara">
+   Changes in extension behaviour, and new features:
+  </p>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">Date and Time</a>
+     - The TZ environment variable is no longer used to guess the timezone
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.curl.html" class="link">cURL</a>
+     - cURL now supports SSH
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.network.html" class="link">Network</a>
+     - <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dns-check-record.html" class="function">dns_check_record()</a></span> now returns an extra "entries"
+     index, containing the TXT elements.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">Hash</a>
+     - The SHA-224 and salsa hash algorithms are now supported.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.mbstring.html" class="link">mbstring</a>
+     - Now supports CP850 encoding.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.oci8.html" class="link">OCI8</a>
+     - A call to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-close.html" class="function">oci_close()</a></span> on a persistent connection, or a
+     variable referencing a persistent connection going out of scope, will now
+     roll back any uncommitted transaction. To avoid unexpected behavior,
+     explicitly issue a commit or roll back as needed. The old behavior can be
+     enabled with the INI directive
+     <a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.html#ini.oci8.old-oci-close-semantics" class="link">oci8.old_oci_close_semantics</a>.
+    </span>
+    <span class="simpara">
+     Database Resident Connection Pooling (DRCP) and Fast Application 
+     Notification (FAN) are now supported.
+    </span>
+    <span class="simpara">
+     Oracle External Authentication is now supported (except on Windows).
+    </span>
+    <span class="simpara">
+     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-bind-by-name.html" class="function">oci_bind_by_name()</a></span> function now supports SQLT_AFC
+     (aka the CHAR datatype).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.openssl.html" class="link">OpenSSL</a>
+     - OpenSSL digest and cipher functions are now supported. It is also 
+     now possible to access the internal values of DSA, RSA and DH keys.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.session.html" class="link">Session</a>
+     - Sessions will no longer store session-files in <code class="literal">"/tmp"</code>
+     when <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.open-basedir" class="link">open_basedir</a> restrictions
+     apply, unless <code class="literal">"/tmp"</code> is explicitly added to the list of
+     allowed paths.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.soap.html" class="link">SOAP</a>
+     Now supports sending user supplied HTTP headers.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">MySQLi</a>
+     Now supports persistent connections, by prepending the hostname with 
+     <code class="literal">"p:"</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a target="_blank" href="https://www.php.net/manual/en/book.image.html" class="link">Image Processing and GD</a>
+     The "JPG Support" index returned from <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gd-info.html" class="function">gd_info()</a></span> has
+     been renamed to "JPEG Support".
+    </span>
+   </li>
+
+
+  </ul></div></article>    </main>
+</section>    </body>
+</html>

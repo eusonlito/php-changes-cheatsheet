@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Changed functions in PHP 7.1, 7.0, 5.6, 5.5</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="Lito && Óscar Otero">
+        <meta name="title" content="Changed functions in PHP 7.1, 7.0, 5.6, 5.5">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta property="og:title" content="Changed functions in PHP 7.1, 7.0, 5.6, 5.5">
+        <meta property="og:image" content="./images/social.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
+        <meta name="twitter:site" content="@lito_ordes">
+        <meta name="twitter:creator" content="@lito_ordes">
+        <meta name="twitter:title" content="Changed functions in PHP 7.1, 7.0, 5.6, 5.5">
+        <meta name="twitter:image" content="./images/social.png">
+
+        <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body class="docs">
+        <section class="info-wrapper">
+    <nav id="head-nav" class="navbar">
+        <h1><a href="index.html"> Changed functions in PHP 7.1, 7.0, 5.6, 5.5</a></h1>
+    </nav>
+
+    <main class="info-main">
+        <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration71.changed-functions.php" target="_blank">PHP 7.1</a></h1>
+    </header>
+
+    <div id="migration71.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration71.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+  
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getopt.php" class="function">getopt()</a></span> has an optional third parameter that exposes
+     the index of the next element in the argument vector list to be processed.
+     This is done via a by-ref parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getenv.php" class="function">getenv()</a></span> no longer requires its parameter. If the
+     parameter is omitted, then the current environment variables will be
+     returned as an associative array.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-headers.php" class="function">get_headers()</a></span> now has an additional parameter to enable
+     for the passing of custom stream contexts.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.output-reset-rewrite-vars.php" class="function">output_reset_rewrite_vars()</a></span> no longer resets session
+     URL rewrite variables.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.parse-url.php" class="function">parse_url()</a></span> is now more restrictive and supports
+     RFC3986.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> now accepts an optional third parameter to
+     specify the offset to begin unpacking from.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.filesystem">
+  <h3 class="title">File System</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.file-get-contents.php" class="function">file_get_contents()</a></span> now accepts a negative seek offset
+     if the stream is seekable.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.tempnam.php" class="function">tempnam()</a></span> now emits a notice when falling back to the
+     system's temp directory.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.json">
+  <h3 class="title">JSON</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.php" class="function">json_encode()</a></span> now accepts a new option,
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/json.constants.php#constant.json-unescaped-line-terminators">JSON_UNESCAPED_LINE_TERMINATORS</a></code></strong>, to disable the
+     escaping of U+2028 and U+2029 characters when
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/json.constants.php#constant.json-unescaped-unicode">JSON_UNESCAPED_UNICODE</a></code></strong> is supplied.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.mbstring">
+  <h3 class="title">Multibyte String</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-ereg.php" class="function">mb_ereg()</a></span> now rejects illegal byte sequences.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mb-ereg-replace.php" class="function">mb_ereg_replace()</a></span> now rejects illegal byte sequences.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.pdo">
+  <h3 class="title">PDO</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.lastinsertid.php" class="methodname">PDO::lastInsertId()</a></span> for PostgreSQL will now trigger an error
+     when <code class="literal">nextval</code> has not been called for the current
+     session (the postgres connection).
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.pgsql">
+  <h3 class="title">PostgreSQL</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-last-notice.php" class="function">pg_last_notice()</a></span> now accepts an optional parameter to
+     specify an operation. This can be done with one of the following new
+     constants: <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-notice-last">PGSQL_NOTICE_LAST</a></code></strong>,
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-notice-all">PGSQL_NOTICE_ALL</a></code></strong>, or
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/pgsql.constants.php#constant.pgsql-notice-clear">PGSQL_NOTICE_CLEAR</a></code></strong>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-all.php" class="function">pg_fetch_all()</a></span> now accepts an optional second parameter
+     to specify the result type (similar to the third parameter of
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-array.php" class="function">pg_fetch_array()</a></span>).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-select.php" class="function">pg_select()</a></span> now accepts an optional fourth parameter to
+     specify the result type (similar to the third parameter of
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-fetch-array.php" class="function">pg_fetch_array()</a></span>).
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration71.changed-functions.session">
+  <h3 class="title">Session</h3>
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-start.php" class="function">session_start()</a></span> now returns <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> and no longer
+     initializes <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.session.php" class="classname">$_SESSION</a></var> when it failed to start the
+     session.
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration70.changed-functions.php" target="_blank">PHP 7.0</a></h1>
+    </header>
+
+    <div id="migration70.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration70.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+  
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.debug-zval-dump.php" class="function">debug_zval_dump()</a></span> now prints "int" instead of "long",
+     and "float" instead of "double"
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dirname.php" class="function">dirname()</a></span> now optionally takes a second parameter,
+     <code class="parameter">depth</code>, to get the name of the directory
+     <code class="parameter">depth</code> levels up from the current directory.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getrusage.php" class="function">getrusage()</a></span> is now supported on Windows.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mktime.php" class="function">mktime()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gmmktime.php" class="function">gmmktime()</a></span> functions
+     no longer accept <code class="parameter">is_dst</code> parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace.php" class="function">preg_replace()</a></span> function no longer supports
+     "\e" (<strong><code>PREG_REPLACE_EVAL</code></strong>). <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace-callback.php" class="function">preg_replace_callback()</a></span>
+     should be used instead.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setlocale.php" class="function">setlocale()</a></span> function no longer accepts <code class="parameter">category</code>
+     passed as string. <strong><code><a target="_blank" href="https://www.php.net/manual/en/string.constants.php#constant.lc-ctype">LC_<span class="replaceable">*</span></a></code></strong> constants must be used instead.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.exec.php" class="function">exec()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.system.php" class="function">system()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.passthru.php" class="function">passthru()</a></span>
+     functions have NULL byte protection now.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-open.php" class="function">shmop_open()</a></span> now returns a resource instead of an int,
+     which has to be passed to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-size.php" class="function">shmop_size()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-write.php" class="function">shmop_write()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-read.php" class="function">shmop_read()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-close.php" class="function">shmop_close()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shmop-delete.php" class="function">shmop_delete()</a></span>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.substr.php" class="function">substr()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.iconv-substr.php" class="function">iconv_substr()</a></span> now return an empty string,
+     if string is equal to start characters long.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xml-parser-free.php" class="function">xml_parser_free()</a></span> is no longer sufficient to free the
+     parser resource, if it references an object and this object references that
+     parser resource. In this case it is necessary to additionally unset the $parser.
+    </span>
+   </li>
+  </ul></div>
+
+
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration56.changed-functions.php" target="_blank">PHP 5.6</a></h1>
+    </header>
+
+    <div id="migration56.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration56.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.crypt.php" class="function">crypt()</a></span> will now raise an
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-notice">E_NOTICE</a></code></strong> error if the <code class="parameter">salt</code>
+     parameter is omitted.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.substr-compare.php" class="function">substr_compare()</a></span> will now accept <code class="literal">0</code>
+     for its <code class="parameter">length</code> parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unserialize.php" class="function">unserialize()</a></span> will now fail if passed serialised data
+     that has been manipulated to attempt to instantiate an object without
+     calling its constructor.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.curl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.curl.php" class="link">cURL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     Uploads using the <code class="literal">@file</code> syntax are now only supported
+     if the <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-safe-upload">CURLOPT_SAFE_UPLOAD</a></code></strong> option is set to
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong>. <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlfile.php" class="classname">CURLFile</a></span> should be used instead.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.mcrypt">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mcrypt.php" class="link">Mcrypt</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     The <code class="parameter">source</code> parameter of
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-create-iv.php" class="function">mcrypt_create_iv()</a></span> now defaults to
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/mcrypt.constants.php#constant.mcrypt-dev-urandom">MCRYPT_DEV_URANDOM</a></code></strong> instead of
+     <strong><code><a target="_blank" href="https://www.php.net/manual/en/mcrypt.constants.php#constant.mcrypt-dev-random">MCRYPT_DEV_RANDOM</a></code></strong>.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.openssl">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.openssl.php" class="link">OpenSSL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-socket-enable-crypto.php" class="function">stream_socket_enable_crypto()</a></span> now allows the
+     <code class="parameter">crypto_type</code> parameter to be optional if the
+     stream's SSL context includes the new <code class="parameter">crypto_type</code>
+     option.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.pgsql">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.pgsql.php" class="link">PostgreSQL</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-insert.php" class="function">pg_insert()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-select.php" class="function">pg_select()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-update.php" class="function">pg_update()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-delete.php" class="function">pg_delete()</a></span> are no
+     longer experimental.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-send-execute.php" class="function">pg_send_execute()</a></span>,
+     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-send-prepare.php" class="function">pg_send_prepare()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-send-query.php" class="function">pg_send_query()</a></span>
+     and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-send-query-params.php" class="function">pg_send_query_params()</a></span> will no longer block until
+     query write completion if the underlying socket stream for the database
+     connection is set to non-blocking mode.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.reflection">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.reflection.php" class="link">Reflection</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.newinstancewithoutconstructor.php" class="methodname">ReflectionClass::newInstanceWithoutConstructor()</a></span>
+     now allows non-final internal classes to be
+     instantiated.
+    </span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration56.changed-functions.xmlreader">
+  <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.xmlreader.php" class="link">XMLReader</a></h3>
+
+  <ul class="itemizedlist"><li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.getattributens.php" class="methodname">XMLReader::getAttributeNs()</a></span> and
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.getattributeno.php" class="methodname">XMLReader::getAttributeNo()</a></span> now return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> if
+     the attribute could not be found, like
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xmlreader.getattribute.php" class="methodname">XMLReader::getAttribute()</a></span>.
+    </span>
+   </li>
+  </ul></div>
+</div></article><article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration55.changed-functions.php" target="_blank">PHP 5.5</a></h1>
+    </header>
+
+    <div id="migration55.changed-functions" class="sect1">
+  <h2 class="title">Changed Functions</h2>
+
+  <div class="sect2" id="migration55.changed-functions.core">
+   <h3 class="title">PHP Core</h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-error-handler.html" class="function">set_error_handler()</a></span> can now be called with <strong><code>NULL</code></strong> as
+      an argument to reset the error handler.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      When called with <strong><code>NULL</code></strong>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-error-handler.html" class="function">set_error_handler()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-exception-handler.html" class="function">set_exception_handler()</a></span> now return the previous error
+      or exception handler, respectively.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.html" class="function">json_encode()</a></span> now accepts <code class="parameter">depth</code>
+      parameter.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      The behaviour of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> with the "a" and "A" format codes has
+      changed.
+      <a target="_blank" href="https://www.php.net/manual/en/migration55.incompatible.html#migration55.incompatible.pack" class="link">Detailed notes on these changes are available.</a>
+     </span>
+    </li>
+   </ul></div>
+
+  <div class="sect2" id="migration55.changed-functions.intl">
+   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">intl</a></h3>
+
+   <ul class="itemizedlist"><li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.html" class="methodname">MessageFormatter::format()</a></span> and related functions
+      now accept named arguments and mixed numeric and named arguments when PHP
+      is linked to ICU 4.8 or later.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.html" class="methodname">MessageFormatter::format()</a></span> and related functions
+      no longer error when an insufficient number of arguments have been
+      provided. Instead, the placeholders will not be substituted.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.format.html" class="methodname">MessageFormatter::format()</a></span> and
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/messageformatter.parse.html" class="methodname">MessageFormatter::parse()</a></span> are no longer limited to
+      second precision when dealing with times.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.create.html" class="methodname">IntlDateFormatter::__construct()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.create.html" class="function">datefmt_create()</a></span> now accept
+      <a target="_blank" href="https://www.php.net/manual/en/class.intltimezone.html" class="classname">IntlTimeZone</a> and
+      <a target="_blank" href="https://www.php.net/manual/en/class.datetimezone.html" class="classname">DateTimeZone</a> objects for the
+      <code class="parameter">timezone</code> argument, and
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> objects for the
+      <code class="parameter">calendar</code> argument. Furthermore, if the time zone
+      is omitted and the <code class="parameter">calendar</code> doesn't specify a time
+      zone, PHP's default time zone from
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span> is now used instead of the
+      default ICU time zone.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendar.html" class="methodname">IntlDateFormatter::getCalendar()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.getcalendar.html" class="function">datefmt_get_calendar()</a></span> return false if the
+      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.html" class="classname">IntlDateFormatter</a> object was created with an
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> instance instead of one of the
+      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.html" class="classname">IntlDateFormatter</a> constants.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.setcalendar.html" class="methodname">IntlDateFormatter::setCalendar()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.setcalendar.html" class="function">datefmt_set_calendar()</a></span> now accept
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> objects in addition to the
+      <a target="_blank" href="https://www.php.net/manual/en/class.intldateformatter.html" class="classname">IntlDateFormatter</a> constants.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.format.html" class="methodname">IntlDateFormatter::format()</a></span> and
+      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.format.html" class="function">datefmt_format()</a></span> now accept
+      <a target="_blank" href="https://www.php.net/manual/en/class.intlcalendar.html" class="classname">IntlCalendar</a> objects.
+     </span>
+    </li>
+   </ul></div>
+ </div></article>    </main>
+</section>    </body>
+</html>
