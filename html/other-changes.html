@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Other Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
+        <title>Other Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Other Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="title" content="Other Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="Other Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta property="og:title" content="Other Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Other Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
+        <meta name="twitter:title" content="Other Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,616 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Other Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
+        <h1><a href="index.html"> Other Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.other-changes.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.other-changes" class="sect1">
+ <h2 class="title">Other Changes</h2>
+
+ <div class="sect2" id="migration85.other-changes.core">
+  <h3 class="title">Core changes</h3>
+
+  <div class="sect3" id="migration85.other-changes.core.core">
+   <h4 class="title">Core</h4>
+
+   <p class="simpara">
+    The high resolution timer (<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hrtime.php" class="function">hrtime()</a></span>) on macOS now
+    uses the recommended
+    <code class="code">clock_gettime_nsec_np(CLOCK_UPTIME_RAW)</code> API instead of
+    <code class="code">mach_absolute_time()</code>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.core.cgi-cli">
+   <h4 class="title">CGI/CLI</h4>
+
+   <p class="simpara">
+    The <strong class="option unknown">-z</strong> or <strong class="option unknown">--zend-extension</strong> option
+    has been removed as it was non-functional.
+    Use <strong class="option unknown">-d zend_extension=[path]</strong> instead.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.core.pdo-odbc">
+   <h4 class="title">PDO_ODBC</h4>
+
+   <p class="simpara">
+    The fetch behaviour for larger columns has been changed. Rather than
+    fetching 256 byte blocks, PDO_ODBC will try to fetch a larger block size;
+    currently, this is the page size minus string overhead. Drivers that
+    return SQL_NO_TOTAL in SQLGetData are also better handled as well.
+    This should improve compatibility and performance.
+    
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.other-changes.sapi">
+  <h3 class="title">Changes in SAPI Modules</h3>
+
+  <div class="sect3" id="migration85.other-changes.sapi.cli">
+   <h4 class="title">CLI</h4>
+
+   <p class="simpara">
+    Trying to set a process title that is too long with
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.cli-set-process-title.php" class="function">cli_set_process_title()</a></span> will now fail instead of
+    silently truncating the given title.
+   </p>
+
+   <p class="simpara">
+    Added a new <strong class="option unknown">--ini=diff</strong> option to print INI settings
+    changed from the builtin default.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.sapi.fpm">
+   <h4 class="title">FPM</h4>
+
+   <p class="simpara">
+    FPM with httpd ProxyPass optionally decodes the full script path. Added
+    fastcgi.script_path_encoded
+    INI setting to prevent this new behavior.
+   </p>
+
+   <p class="simpara">
+    FPM access log limit now respects <a target="_blank" href="https://www.php.net/manual/en/install.fpm.configuration.php#log-limit" class="link">log_limit</a> value.
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.other-changes.functions">
+  <h3 class="title">Changed Functions</h3>
+
+  <div class="sect3" id="migration85.other-changes.functions.intl">
+   <h4 class="title">Intl</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-extract.php" class="function">grapheme_extract()</a></span> properly assigns
+    <code class="parameter">$next</code> value when skipping over invalid starting bytes.
+    Previously there were cases where it would point to the start of the
+    grapheme boundary instead of the end.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrorcode.php" class="function">transliterator_get_error_code()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrormessage.php" class="function">transliterator_get_error_message()</a></span>,
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrorcode.php" class="methodname">TransLiterator::getErrorCode()</a></span>,
+    and <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/transliterator.geterrormessage.php" class="methodname">TransLiterator::getErrorMessage()</a></span>
+    have dropped <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> from the return type union. Returning <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong>
+    was actually never possible.
+   </p>
+
+   <p class="simpara">
+    The following functions now support a <code class="parameter">$locale</code> argument:
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-strpos.php" class="function">grapheme_strpos()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-stripos.php" class="function">grapheme_stripos()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-strrpos.php" class="function">grapheme_strrpos()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-strripos.php" class="function">grapheme_strripos()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-substr.php" class="function">grapheme_substr()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-strstr.php" class="function">grapheme_strstr()</a></span> and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-stristr.php" class="function">grapheme_stristr()</a></span>
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.ldap">
+   <h4 class="title">LDAP</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-get-option.php" class="function">ldap_get_option()</a></span> now accepts a <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> connection,
+    like <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-set-option.php" class="function">ldap_set_option()</a></span>, to allow retrieval of global
+    options.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.libxml">
+   <h4 class="title">libxml</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.libxml-set-external-entity-loader.php" class="function">libxml_set_external_entity_loader()</a></span> now has a formal
+    return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.openssl">
+   <h4 class="title">OpenSSL</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-public-encrypt.php" class="function">openssl_public_encrypt()</a></span> and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-private-decrypt.php" class="function">openssl_private_decrypt()</a></span> have a new parameter
+    <code class="parameter">$digest_algo</code> that allows specifying the hash
+    digest algorithm for OAEP padding.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-sign.php" class="function">openssl_sign()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-verify.php" class="function">openssl_verify()</a></span>
+    have a new parameter <code class="parameter">$padding</code> to allow using more
+    secure RSA PSS padding.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-cms-encrypt.php" class="function">openssl_cms_encrypt()</a></span> <code class="parameter">$cipher_algo</code>
+    parameter can be a string with the cipher name.
+    That allows to use more algorithms including AES GCM cipher algorithms for
+    auth enveloped data.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.pcntl">
+   <h4 class="title">PCNTL</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-exec.php" class="function">pcntl_exec()</a></span> now has a formal return type of
+    <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type false">false</a></span>.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-waitid.php" class="function">pcntl_waitid()</a></span> takes an additional resource_usage
+    argument to gather various platform specific metrics about the child process.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.pdo-pgsql">
+   <h4 class="title">PDO_PGSQL</h4>
+
+   <p class="simpara">
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.copyfromarray.php" class="methodname">Pdo\Pgsql::copyFromArray()</a></span> now supports <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span> inputs.
+   </p>
+
+   <p class="simpara">
+    <span class="methodname"><strong>Pdo\Pgsql::setAttribute()</strong></span> and
+    <span class="methodname"><strong>Pdo\Pgsql::prepare()</strong></span> support setting
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.php#pdo.constants.attr-prefetch">PDO::ATTR_PREFETCH</a></code></strong> to 0 which enters lazy fetch mode.
+    In this mode, statements cannot be run in parallel.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.pgsql">
+   <h4 class="title">PostgreSQL</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-copy-from.php" class="function">pg_copy_from()</a></span> now supports <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.iterable.php" class="type iterable">iterable</a></span> inputs.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pg-connect.php" class="function">pg_connect()</a></span> checks if the connection_string argument
+    contains any null byte.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><strong>pg_close_stmt()</strong></span> checks if the statement_name argument
+    contains any null byte.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.posix">
+   <h4 class="title">POSIX</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-ttyname.php" class="function">posix_ttyname()</a></span> sets last_error to EBADF when encountering
+    an invalid file descriptor.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-isatty.php" class="function">posix_isatty()</a></span> raises an <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-warning">E_WARNING</a></code></strong>
+    message when encountering an invalid file descriptor.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-fpathconf.php" class="function">posix_fpathconf()</a></span> checks invalid file descriptors and
+    sets last_error to EBADF and raises an <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-warning">E_WARNING</a></code></strong> message.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.reflection">
+   <h4 class="title">Reflection</h4>
+
+   <p class="simpara">
+    The output of <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.tostring.php" class="methodname">ReflectionClass::__toString()</a></span> for
+    enums has changed to better indicate that the class is an enum, and that
+    the enum cases are enum cases rather than normal class constants.
+   </p>
+
+   <p class="simpara">
+    The output of <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.tostring.php" class="methodname">ReflectionProperty::__toString()</a></span> for
+    properties with hooks has changed to indicate what hooks the property has,
+    whether those hooks are final, and whether the property is virtual.
+    This also affects the output of <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.tostring.php" class="methodname">ReflectionClass::__toString()</a></span>
+    when a class contains hooked properties.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.sockets">
+   <h4 class="title">Sockets</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-create.php" class="function">socket_create()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-bind.php" class="function">socket_bind()</a></span> can
+    create <strong><code>AF_PACKET</code></strong> family sockets.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-getsockname.php" class="function">socket_getsockname()</a></span> gets the interface index and its
+    string representation with <strong><code>AF_PACKET</code></strong> socket.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.functions.zlib">
+   <h4 class="title">Zlib</h4>
+
+   <p class="simpara">
+    The <code class="parameter">$use_include_path</code> argument for the
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gzfile.php" class="function">gzfile()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gzopen.php" class="function">gzopen()</a></span> and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.readgzfile.php" class="function">readgzfile()</a></span> functions has been changed
+    from <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
+   </p>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gzfile.php" class="function">gzfile()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gzopen.php" class="function">gzopen()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.readgzfile.php" class="function">readgzfile()</a></span> functions
+    now respect the default stream context.
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.other-changes.extensions">
+  <h3 class="title">Other Changes to Extensions</h3>
+
+  <div class="sect3" id="migration85.other-changes.extensions.curl">
+   <h4 class="title">cURL</h4>
+
+   <p class="simpara">
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-setopt.php" class="function">curl_setopt()</a></span> with
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong> option's value
+    no longer is treated as boolean but integer to handle
+    <strong><code>CURLFOLLOW_OBEYCODE</code></strong> and
+    <strong><code>CURLFOLLOW_FIRSTONLY</code></strong>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.fileinfo">
+   <h4 class="title">Fileinfo</h4>
+
+   <p class="simpara">
+    Upgraded file from 5.45 to 5.46.
+   </p>
+
+   <p class="simpara">
+    The return type of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.finfo-close.php" class="function">finfo_close()</a></span> has been changed to
+    <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span>, rather than <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.intl">
+   <h4 class="title">Intl</h4>
+
+   <p class="simpara">
+    Intl's internal error mechanism has been modernized so that it
+    indicates more accurately which call site caused what error.
+    Moreover, some ext/date exceptions have been wrapped inside a
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.intlexception.php" class="classname">IntlException</a></span> now.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.lexbor">
+   <h4 class="title">Lexbor</h4>
+
+   <p class="simpara">
+    An always enabled lexbor extension is added. It contains the lexbor
+    library that was separated from <a target="_blank" href="https://www.php.net/manual/en/book.dom.php" class="link">ext/dom</a>
+    for being reused among other extensions.
+    The new extension is not directly exposed to userland.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.opcache">
+   <h4 class="title">Opcache</h4>
+
+   <p class="simpara">
+    The <a target="_blank" href="https://www.php.net/manual/en/book.opcache.php" class="link">Opcache extension</a> is now always
+    built into the PHP binary and is always loaded.
+    The INI directives <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.enable" class="link">opcache.enable</a>
+    and <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.enable-cli" class="link">opcache.enable_cli</a> are
+    still honored.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.pcre">
+   <h4 class="title">PCRE</h4>
+
+   <p class="simpara">
+    Upgraded pcre2lib from 10.44 to 10.46.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.pdo-sqlite">
+   <h4 class="title">PDO_Sqlite</h4>
+
+   <p class="simpara">
+    Increased minimum release version support from 3.7.7 to 3.7.17.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.readline">
+   <h4 class="title">Readline</h4>
+
+   <p class="simpara">
+    The return types of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.readline-add-history.php" class="function">readline_add_history()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.readline-clear-history.php" class="function">readline_clear_history()</a></span>,
+    and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.readline-callback-handler-install.php" class="function">readline_callback_handler_install()</a></span> have been
+    changed to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span>, rather than <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.extensions.reflection">
+   <h4 class="title">Reflection</h4>
+
+   <p class="simpara">
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.reflectionconstant.php" class="classname">ReflectionConstant</a></span> is no longer final.
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.other-changes.ini">
+  <h3 class="title">Changes to INI File Handling</h3>
+
+  <div class="sect3" id="migration85.other-changes.ini.core">
+   <h4 class="title">Core</h4>
+
+   <p class="simpara">
+    Added fatal_error_backtraces to control whether fatal errors should include
+    a backtrace.
+    
+   </p>
+
+   <p class="simpara">
+    Added startup-only max_memory_limit INI setting to control the maximum
+    memory_limit that may be configured at startup or runtime. Exceeding this
+    value emits a warning, unless set to -1, and sets memory_limit to the
+    current max_memory_limit instead.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.ini.opcache">
+   <h4 class="title">Opcache</h4>
+
+   <p class="simpara">
+    Added opcache.file_cache_read_only to support a read-only
+    <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.file-cache" class="link">opcache.file_cache</a> directory,
+    for use with read-only file systems (e.g. read-only Docker containers).
+    Best used with <code class="literal">opcache.validate_timestamps=0</code>,
+    <code class="literal">opcache.enable_file_override=1</code>,
+    and <code class="literal">opcache.file_cache_consistency_checks=0</code>.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <span class="simpara">
+     A cache generated with a different build of PHP, a different file
+     path, or different settings (including which extensions are loaded), may be
+     ignored.
+    </span>
+   </p></blockquote>
+
+   <p class="simpara">
+    The default value of
+    <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit-hot-loop" class="link">opcache.jit_hot_loop</a> is
+    now 61 (a prime) to prevent it from being a multiple of loop iteration
+    counts.
+    It is recommended that this parameter is set to a prime number.
+   </p>
+
+   <p class="simpara">
+    Changing <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.memory-consumption" class="link">opcache.memory_consumption</a>
+    when OPcache SHM is already set up will now correctly report a failure
+    instead of silently doing nothing and showing misleading values in PHPInfo.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.ini.openssl">
+   <h4 class="title">OpenSSL</h4>
+
+   <p class="simpara">
+    Added openssl.libctx
+    to select the OpenSSL library context type.
+    Either custom libctx for each thread can be used or a single global (default)
+    libctx is used.
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.other-changes.performance">
+  <h3 class="title">Performance</h3>
+
+  <div class="sect3" id="migration85.other-changes.performance.core">
+   <h4 class="title">Core</h4>
+
+   <p class="simpara">
+    Remove OPcodes for identity comparisons against booleans, particularly
+    for the <code class="code">match(true)</code> pattern.
+   </p>
+
+   <p class="simpara">
+    Add OPcode specialization for <code class="code">=== []</code> and
+    <code class="code">!== []</code> comparisons.
+   </p>
+
+   <p class="simpara">
+    Creating exception objects is now much faster.
+   </p>
+
+   <p class="simpara">
+    The parts of the code that used SSE2 have been adapted to use SIMD
+    with ARM NEON as well.
+   </p>
+
+   <p class="simpara">
+    Introduced the TAILCALL VM, enabled by default when compiling with Clang&gt;=19
+    on x86_64 or aarch64. The TAILCALL VM is as fast as the HYBRID VM used when
+    compiling with GCC. This makes PHP binaries built with Clang&gt;=19 as fast as
+    binaries built with GCC. The performance of the CALL VM, used with other
+    compilers, has also improved considerably.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.performance.intl">
+   <h4 class="title">Intl</h4>
+
+   <p class="simpara">
+    Now avoids creating extra string copies when converting strings
+    for use in the collator.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.performance.mbstring">
+   <h4 class="title">MBString</h4>
+
+   <p class="simpara">
+    The parts of the code that used SSE2 have been adapted to use SIMD
+    with ARM NEON as well.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.performance.opcache">
+   <h4 class="title">Opcache</h4>
+
+   <p class="simpara">
+    Improved performance of fetching TLS variables in JIT'ed code in non-Glibc
+    builds.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.performance.reflection">
+   <h4 class="title">Reflection</h4>
+
+   <p class="para">
+    Improved performance of the following methods:
+    </p><ul class="simplelist"><li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.getvalue.php" class="methodname">ReflectionProperty::getValue()</a></span></li>
+     <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.getrawvalue.php" class="methodname">ReflectionProperty::getRawValue()</a></span></li>
+     <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.isinitialized.php" class="methodname">ReflectionProperty::isInitialized()</a></span></li>
+     <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.isinitialized.php" class="methodname">ReflectionProperty::isInitialized()</a></span></li>
+     <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.setvalue.php" class="methodname">ReflectionProperty::setValue()</a></span></li>
+     <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.setrawvalue.php" class="methodname">ReflectionProperty::setRawValue()</a></span></li>
+    </ul></div>
+
+  <div class="sect3" id="migration85.other-changes.performance.spl">
+   <h4 class="title">SPL</h4>
+
+   <p class="simpara">
+    Improved performance of dimension accessors and methods of
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.splfixedarray.php" class="classname">SplFixedArray</a></span>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.performance.standard">
+   <h4 class="title">Standard</h4>
+
+   <p class="simpara">
+    Improved performance of array functions with callbacks
+    (<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-find.php" class="function">array_find()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-filter.php" class="function">array_filter()</a></span>,
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-map.php" class="function">array_map()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.usort.php" class="function">usort()</a></span>, ...).
+   </p>
+
+   <p class="simpara">
+    Improved performance of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.urlencode.php" class="function">urlencode()</a></span> and
+    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.rawurlencode.php" class="function">rawurlencode()</a></span>.
+   </p>
+
+   <p class="simpara">
+    Improved <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.php" class="function">unpack()</a></span> performance with nameless
+    repetitions by avoiding creating temporary strings and reparsing them.
+   </p>
+
+   <p class="simpara">
+    Improved <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.php" class="function">pack()</a></span> performance.
+   </p>
+
+   <p class="simpara">
+    Minor improvements in <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-chunk.php" class="function">array_chunk()</a></span> performance.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.other-changes.performance.xml">
+   <h4 class="title">XML</h4>
+
+   <p class="simpara">
+    Improved <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.xmlreader.php" class="classname">XMLReader</a></span> property access performance.
+   </p>
+
+   <p class="simpara">
+    Improved <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.xmlwriter.php" class="classname">XMLWriter</a></span> performance and reduced memory
+    consumption.
+   </p>
+
+  </div>
+
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.other-changes.php" target="_blank">PHP 8.4</a></h1>
     </header>
@@ -161,7 +766,7 @@
 
    <p class="simpara">
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.trigger-error.php" class="function">trigger_error()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.user-error.php" class="function">user_error()</a></span>
-    now have a return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span> instead of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
+    now have a return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span> instead of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
    </p>
   </div>
 
@@ -170,7 +775,7 @@
 
    <p class="simpara">
     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domdocument.registernodeclass.php" class="methodname">DOMDocument::registerNodeClass()</a></span>
-    now has a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span> instead of
+    now has a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span> instead of
     <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
     It could only ever return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.true">true</a></code></strong> in practice.
    </p>
@@ -181,7 +786,7 @@
 
    <p class="simpara">
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.hash-update.php" class="function">hash_update()</a></span>
-    now has a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span> instead of
+    now has a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span> instead of
     <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
     It could only ever return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.true">true</a></code></strong> in practice.
    </p>
@@ -389,7 +994,7 @@
    <p class="para">
     The
     <span class="simplelist"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/phar.setalias.php" class="methodname">Phar::setAlias()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/phar.setdefaultstub.php" class="methodname">Phar::setDefaultStub()</a></span></span>
-    methods now have a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span>
+    methods now have a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span>
     instead of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
    </p>
   </div>
@@ -427,7 +1032,7 @@
    <h4 class="title">Sodium</h4>
 
    <p class="simpara">
-    The <span class="function"><strong>sodium_crypto_aead_aes256gcm_()</strong><span class="replaceable">*</span></span>
+    The <span class="function">sodium_crypto_aead_aes256gcm_<span class="replaceable">*</span></span>
     functions are now available on aarch64 CPUs with the ARM cryptographic
     extensions.
    </p>
@@ -439,7 +1044,7 @@
    <p class="para">
     The
     <span class="simplelist"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splpriorityqueue.insert.php" class="methodname">SplPriorityQueue::insert()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splpriorityqueue.recoverfromcorruption.php" class="methodname">SplPriorityQueue::recoverFromCorruption()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splheap.insert.php" class="methodname">SplHeap::insert()</a></span>, <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splheap.recoverfromcorruption.php" class="methodname">SplHeap::recoverFromCorruption()</a></span></span>
-    methods now have a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span>
+    methods now have a tentative return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span>
     instead of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
    </p>
 
@@ -956,7 +1561,7 @@
 
    <p class="para">
     Changed <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domcharacterdata.appenddata.php" class="methodname">DOMCharacterData::appendData()</a></span> tentative
-    return type to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span>.
+    return type to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span>.
    </p>
 
    <p class="para">
@@ -1076,7 +1681,7 @@
    <p class="para">
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.field-seek.php" class="function">mysqli_field_seek()</a></span> and
     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/mysqli-result.field-seek.php" class="methodname">mysqli_result::field_seek()</a></span> now specify the return
-    type as <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span> instead of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
+    type as <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span> instead of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
    </p>
   </div>
 
@@ -1442,17 +2047,17 @@
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-open.php" class="function">dba_open()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-popen.php" class="function">dba_popen()</a></span>
     now have the following enforced signature:
     </p><div class="methodsynopsis dc-description">
-     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-open.php" class="methodname">dba_open</a></span>(<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span> <code class="parameter">$path</code></span>,<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span> <code class="parameter">$mode</code></span>,<br>    <span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">?</a></span><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span></span> <code class="parameter">$handler</code><span class="initializer"> = <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong></span></span>,<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$permission</code><span class="initializer"> = 0644</span></span>,<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$map_size</code><span class="initializer"> = 0</span></span>,<br>    <span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">?</a></span><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span></span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong></span></span><br>): <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="type resource">resource</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type false">false</a></span></span></div>
+     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-open.php" class="methodname">dba_open</a></span>(<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span> <code class="parameter">$path</code></span>,<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span> <code class="parameter">$mode</code></span>,<br>    <span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">?</a></span><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span></span> <code class="parameter">$handler</code><span class="initializer"> = <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong></span></span>,<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$permission</code><span class="initializer"> = 0644</span></span>,<br>    <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$map_size</code><span class="initializer"> = 0</span></span>,<br>    <span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">?</a></span><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span></span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong></span></span><br>): <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="type resource">resource</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type false">false</a></span></span></div>
 
    
    <p class="para">
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="function">dba_fetch()</a></span>'s optional skip argument is now at the end
     in line with PHP userland semantics. Its signature is now:
-    </p><div class="methodsynopsis dc-description"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="methodname">dba_fetch</a></span>(<span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="type resource">resource</a></span> <code class="parameter">$handle</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$skip</code></span>): <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type false">false</a></span></span></div>
+    </p><div class="methodsynopsis dc-description"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="methodname">dba_fetch</a></span>(<span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="type resource">resource</a></span> <code class="parameter">$handle</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$skip</code></span>): <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type false">false</a></span></span></div>
 
 
     The overloaded signature:
-    <div class="methodsynopsis dc-description"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="methodname">dba_fetch</a></span>(<span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$skip</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="type resource">resource</a></span> <code class="parameter">$handle</code></span>): <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type false">false</a></span></span></div>
+    <div class="methodsynopsis dc-description"><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/function.dba-fetch.php" class="methodname">dba_fetch</a></span>(<span class="methodparam"><span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.php" class="type array">array</a></span></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.php" class="type int">int</a></span> <code class="parameter">$skip</code></span>, <span class="methodparam"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.resource.php" class="type resource">resource</a></span> <code class="parameter">$handle</code></span>): <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type false">false</a></span></span></div>
 
     is still accepted, but it is recommended to use the new standard variant.
    

@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
+        <title>Deprecated Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="title" content="Deprecated Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta property="og:title" content="Deprecated Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="twitter:title" content="Deprecated Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,492 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Deprecated Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
+        <h1><a href="index.html"> Deprecated Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.deprecated.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.deprecated" class="sect1">
+ <h2 class="title">Deprecated Features</h2>
+
+ <div class="sect2" id="migration85.deprecated.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration85.deprecated.core.changes-to-user-output-handler">
+   <h4 class="title">Changes to user output handler</h4>
+   
+
+   <p class="simpara">
+    Trying to produce output (e.g. with <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.echo.php" class="function">echo</a></span>) within
+    a user output handler is deprecated.
+    The deprecation warning will bypass the handler producing the output to
+    ensure it is visible; if there are nested output handlers the next
+    one will still be used.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.non-canonical-cast-names">
+   <h4 class="title">Non-canonical cast names</h4>
+   
+
+   <p class="simpara">
+    Non-canonical cast names <code class="literal">(boolean)</code>,
+    <code class="literal">(integer)</code>, <code class="literal">(double)</code>,
+    and <code class="literal">(binary)</code> have been deprecated,
+    use <code class="literal">(bool)</code>, <code class="literal">(int)</code>,
+    <code class="literal">(float)</code>, and <code class="literal">(string)</code> respectively.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.case-statements-with-semicolon">
+   <h4 class="title">Terminating case statements with a semicolon</h4>
+   
+
+   <p class="simpara">
+    Terminating case statements with a semicolon instead of a colon has
+    been deprecated.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.the-backtick-operator">
+   <h4 class="title">The backtick operator</h4>
+   
+
+   <p class="simpara">
+    <a target="_blank" href="https://www.php.net/manual/en/language.operators.execution.php" class="link">The backtick operator</a>
+    as an alias for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.shell-exec.php" class="function">shell_exec()</a></span> has been deprecated.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.return-null-from-debuginfo">
+   <h4 class="title">Returning null from __debugInfo()</h4>
+   
+
+   <p class="simpara">
+    Returning <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> from
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#language.oop5.magic.debuginfo" class="link">__debugInfo()</a>
+    has been deprecated. Return an empty array instead.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.return-memleaks-ini-directive">
+   <h4 class="title">report_memleaks INI directive</h4>
+   
+
+   <p class="simpara">
+    The <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.report-memleaks" class="link">report_memleaks</a> INI directive
+    has been deprecated.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.constant-redeclaration">
+   <h4 class="title">Constant redeclaration</h4>
+   
+
+   <p class="simpara">
+    Constant redeclaration has been deprecated.
+    Note that this already generated a warning and will continue to do so.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.closure-binding-issues">
+   <h4 class="title">Closure binding issues</h4>
+   
+
+   <p class="para">
+    The following closure binding issues, which already emit an
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-warning">E_WARNING</a></code></strong>, are now deprecated:
+
+    </p><ul class="simplelist"><li>Binding an instance to a static closure.</li>
+     <li>Binding methods to objects that are not instances of the class
+      (or subclass) that the method is defined.</li>
+     <li>Unbinding $this from a method.</li>
+     <li>Unbinding $this from a closure that uses `$this`.</li>
+     <li>Binding a closure to the scope of an internal class.</li>
+     <li>Rebinding the scope of a closure created from a function or method.</li>
+    </ul></div>
+
+  <div class="sect3" id="migration85.deprecated.core.sleep-and-wakeup-magic-methods">
+   <h4 class="title">__sleep() and __wakeup() magic methods</h4>
+   
+   
+
+   <p class="simpara">
+    The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.sleep" class="link">__sleep()</a> and
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.wakeup" class="link">__wakeup()</a> magic methods
+    have been soft-deprecated.
+    The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.serialize" class="link">__serialize()</a> and
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.php#object.unserialize" class="link">__unserialize()</a> magic
+    methods should be used instead, or at the same time if compatibility
+    with PHP 7 is required.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.using-null-as-an-array-offset">
+   <h4 class="title">Using null as an array offset</h4>
+   
+
+   <p class="simpara">
+    Using <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> as an array offset or when calling <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-key-exists.php" class="function">array_key_exists()</a></span>
+    is now deprecated. Instead an empty string should be used.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.incrementing-non-numeric-strings">
+   <h4 class="title">Incrementing non-numeric strings</h4>
+   
+
+   <p class="simpara">
+    Incrementing non-numeric strings is now deprecated.
+    Instead the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.str-increment.php" class="function">str_increment()</a></span> function should be used.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.deprecated.core.register-argc-argv-directive">
+   <h4 class="title">register_argc_argv INI directive</h4>
+   
+
+   <p class="simpara">
+    Deriving <code class="code">$_SERVER['argc']</code> and <code class="code">$_SERVER['argv']</code>
+    from the query string for non-CLI SAPIs has been deprecated.
+    Configure <code class="literal">register_argc_argv=0</code> and switch to either
+    <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.get.php" class="classname">$_GET</a></var> or <code class="code">$_SERVER['QUERY_STRING']</code>
+    to access the information, after verifying that the usage is safe.
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.curl">
+  <h3 class="title">cURL</h3>
+
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-close.php" class="function">curl_close()</a></span> function has been deprecated,
+   as <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlhandle.php" class="classname">CurlHandle</a></span> objects are freed automatically.
+   
+  </p>
+
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-close.php" class="function">curl_share_close()</a></span> function has been deprecated,
+   as <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlsharehandle.php" class="classname">CurlShareHandle</a></span> objects are freed automatically.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.date">
+  <h3 class="title">Date</h3>
+
+  <p class="simpara">
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/datetime.constants.php#constant.date-rfc7231">DATE_RFC7231</a></code></strong> and
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.datetimeinterface.php#datetimeinterface.constants.rfc7231">DateTimeInterface::RFC7231</a></code></strong> constants have been deprecated.
+   This is because the associated timezone is ignored and always uses GMT.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.fileinfo">
+  <h3 class="title">FileInfo</h3>
+
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.finfo-close.php" class="function">finfo_close()</a></span> function has been deprecated.
+   As <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.finfo.php" class="classname">finfo</a></span> objects are freed automatically.
+   
+  </p>
+
+  <p class="simpara">
+   The <code class="parameter">$context</code> parameter of the
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.finfo-buffer.php" class="function">finfo_buffer()</a></span> function has been deprecated
+   as it is ignored.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.gd">
+  <h3 class="title">GD</h3>
+
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagedestroy.php" class="function">imagedestroy()</a></span> function has been deprecated,
+   as <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.gdimage.php" class="classname">GdImage</a></span> objects are freed automatically.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.hash">
+  <h3 class="title">Hash</h3>
+
+  <p class="simpara">
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/mhash.constants.php#constant.mhash-adler32">MHASH_<span class="replaceable">*</span></a></code></strong> constants have
+   been deprecated.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.intl">
+  <h3 class="title">Intl</h3>
+
+  <p class="simpara">
+   The <a target="_blank" href="https://www.php.net/manual/en/intl.configuration.php#ini.intl.error-level" class="link">intl.error_level</a> INI setting
+   has been deprecated.
+   Errors should either be checked manually or exceptions should be enabled by
+   using the <a target="_blank" href="https://www.php.net/manual/en/intl.configuration.php#ini.intl.use-exceptions" class="link">intl.use_exceptions</a>
+   INI setting.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.ldap">
+  <h3 class="title">LDAP</h3>
+
+  <p class="para">
+   Specific Oracle Instant Client calls and constants have been deprecated.
+
+   List of affected calls:
+   </p><ul class="simplelist"><li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-connect.php" class="function">ldap_connect()</a></span> with wallet support</li>
+    <li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-connect-wallet.php" class="function">ldap_connect_wallet()</a></span></li>
+   </ul>
+
+   List of affected constants:
+   <ul class="simplelist"><li><strong><code>GSLC_SSL_NO_UATH</code></strong></li>
+    <li><strong><code>GSLC_SSL_ONEWAY_UATH</code></strong></li>
+    <li><strong><code>GSLC_SSL_TWOWAY_UATH</code></strong></li>
+   </ul></div>
+
+ <div class="sect2" id="migration85.deprecated.mysqli">
+  <h3 class="title">MySQLi</h3>
+
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-execute.php" class="function">mysqli_execute()</a></span> alias function has been deprecated.
+   Use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli-stmt.execute.php" class="function">mysqli_stmt_execute()</a></span> instead.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <p class="simpara">
+   The <code class="parameter">$key_length</code> parameter for
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.openssl-pkey-derive.php" class="function">openssl_pkey_derive()</a></span> has been deprecated.
+   This is because it is either ignored, or truncates the key, which can be
+   a security vulnerability.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.pdo">
+  <h3 class="title">PDO</h3>
+
+  <p class="simpara">
+   The <code class="literal">"uri:"</code> DSN scheme has been deprecated due to security concerns with
+   DSNs coming from remote URIs.
+   
+  </p>
+
+  <p class="para">
+   Driver specific constants in the PDO class have been deprecated.
+   List of affected constants and their replacement:
+
+   </p><ul class="simplelist"><li><strong><code>PDO::DBLIB_ATTR_CONNECTION_TIMEOUT</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php#pdo-dblib.constants.attr-connection-timeout">Pdo\Dblib::ATTR_CONNECTION_TIMEOUT</a></code></strong></li>
+    <li><strong><code>PDO::DBLIB_ATTR_QUERY_TIMEOUT</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php#pdo-dblib.constants.attr-query-timeout">Pdo\Dblib::ATTR_QUERY_TIMEOUT</a></code></strong></li>
+    <li><strong><code>PDO::DBLIB_ATTR_STRINGIFY_UNIQUEIDENTIFIER</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php#pdo-dblib.constants.attr-stringify-uniqueidentifier">Pdo\Dblib::ATTR_STRINGIFY_UNIQUEIDENTIFIER</a></code></strong></li>
+    <li><strong><code>PDO::DBLIB_ATTR_VERSION</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php#pdo-dblib.constants.attr-version">Pdo\Dblib::ATTR_VERSION</a></code></strong></li>
+    <li><strong><code>PDO::DBLIB_ATTR_TDS_VERSION</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php#pdo-dblib.constants.attr-tds-version">Pdo\Dblib::ATTR_TDS_VERSION</a></code></strong></li>
+    <li><strong><code>PDO::DBLIB_ATTR_SKIP_EMPTY_ROWSETS</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php#pdo-dblib.constants.attr-skip-empty-rowsets">Pdo\Dblib::ATTR_SKIP_EMPTY_ROWSETS</a></code></strong></li>
+    <li><strong><code>PDO::DBLIB_ATTR_DATETIME_CONVERT</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-dblib.php#pdo-dblib.constants.attr-datetime-convert">Pdo\Dblib::ATTR_DATETIME_CONVERT</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-firebird.php#pdo.constants.fb-attr-date-format">PDO::FB_ATTR_DATE_FORMAT</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-firebird.php#pdo-firebird.constants.attr-date-format">Pdo\Firebird::ATTR_DATE_FORMAT</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-firebird.php#pdo.constants.fb-attr-time-format">PDO::FB_ATTR_TIME_FORMAT</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-firebird.php#pdo-firebird.constants.attr-time-format">Pdo\Firebird::ATTR_TIME_FORMAT</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-firebird.php#pdo.constants.fb-attr-timestamp-format">PDO::FB_ATTR_TIMESTAMP_FORMAT</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-firebird.php#pdo-firebird.constants.attr-timestamp-format">Pdo\Firebird::ATTR_TIMESTAMP_FORMAT</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-use-buffered-query">PDO::MYSQL_ATTR_USE_BUFFERED_QUERY</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-use-buffered-query">Pdo\Mysql::ATTR_USE_BUFFERED_QUERY</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-local-infile">PDO::MYSQL_ATTR_LOCAL_INFILE</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-local-infile">Pdo\Mysql::ATTR_LOCAL_INFILE</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-local-infile-directory">PDO::MYSQL_ATTR_LOCAL_INFILE_DIRECTORY</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-local-infile-directory">Pdo\Mysql::ATTR_LOCAL_INFILE_DIRECTORY</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-init-command">PDO::MYSQL_ATTR_INIT_COMMAND</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-init-command">Pdo\Mysql::ATTR_INIT_COMMAND</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-max-buffer-size">PDO::MYSQL_ATTR_MAX_BUFFER_SIZE</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-max-buffer-size">Pdo\Mysql::ATTR_MAX_BUFFER_SIZE</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-read-default-file">PDO::MYSQL_ATTR_READ_DEFAULT_FILE</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-read-default-file">Pdo\Mysql::ATTR_READ_DEFAULT_FILE</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-read-default-group">PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-read-default-group">Pdo\Mysql::ATTR_READ_DEFAULT_GROUP</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-compress">PDO::MYSQL_ATTR_COMPRESS</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-compress">Pdo\Mysql::ATTR_COMPRESS</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-direct-query">PDO::MYSQL_ATTR_DIRECT_QUERY</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-direct-query">Pdo\Mysql::ATTR_DIRECT_QUERY</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-found-rows">PDO::MYSQL_ATTR_FOUND_ROWS</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-found-rows">Pdo\Mysql::ATTR_FOUND_ROWS</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-ignore-space">PDO::MYSQL_ATTR_IGNORE_SPACE</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-ignore-space">Pdo\Mysql::ATTR_IGNORE_SPACE</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-ssl-key">PDO::MYSQL_ATTR_SSL_KEY</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-ssl-key">Pdo\Mysql::ATTR_SSL_KEY</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-ssl-cert">PDO::MYSQL_ATTR_SSL_CERT</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-ssl-cert">Pdo\Mysql::ATTR_SSL_CERT</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-ssl-ca">PDO::MYSQL_ATTR_SSL_CA</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-ssl-ca">Pdo\Mysql::ATTR_SSL_CA</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-ssl-capath">PDO::MYSQL_ATTR_SSL_CAPATH</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-ssl-capath">Pdo\Mysql::ATTR_SSL_CAPATH</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-ssl-cipher">PDO::MYSQL_ATTR_SSL_CIPHER</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-ssl-cipher">Pdo\Mysql::ATTR_SSL_CIPHER</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-ssl-verify-server-cert">PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-ssl-verify-server-cert">Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-server-public-key">PDO::MYSQL_ATTR_SERVER_PUBLIC_KEY</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-server-public-key">Pdo\Mysql::ATTR_SERVER_PUBLIC_KEY</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-multi-statements">PDO::MYSQL_ATTR_MULTI_STATEMENTS</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-mysql.php#pdo-mysql.constants.attr-multi-statements">Pdo\Mysql::ATTR_MULTI_STATEMENTS</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-odbc.php#pdo.constants.odbc-attr-use-cursor-library">PDO::ODBC_ATTR_USE_CURSOR_LIBRARY</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-odbc.php#pdo-odbc.constants.attr-use-cursor-library">Pdo\Odbc::ATTR_USE_CURSOR_LIBRARY</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-odbc.php#pdo.constants.odbc-attr-assume-utf8">PDO::ODBC_ATTR_ASSUME_UTF8</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-odbc.php#pdo-odbc.constants.attr-assume-utf8">Pdo\Odbc::ATTR_ASSUME_UTF8</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-odbc.php#pdo.constants.odbc-sql-use-if-needed">PDO::ODBC_SQL_USE_IF_NEEDED</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-odbc.php#pdo-odbc.constants.sql-use-if-needed">Pdo\Odbc::SQL_USE_IF_NEEDED</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-odbc.php#pdo.constants.odbc-sql-use-driver">PDO::ODBC_SQL_USE_DRIVER</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-odbc.php#pdo-odbc.constants.sql-use-driver">Pdo\Odbc::SQL_USE_DRIVER</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-odbc.php#pdo.constants.odbc-sql-use-odbc">PDO::ODBC_SQL_USE_ODBC</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-odbc.php#pdo-odbc.constants.sql-use-odbc">Pdo\Odbc::SQL_USE_ODBC</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/ref.pdo-pgsql.php#pdo.constants.pgsql-attr-disable-prepares">PDO::PGSQL_ATTR_DISABLE_PREPARES</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-pgsql.php#pdo-pgsql.constants.attr-disable-prepares">Pdo\Pgsql::ATTR_DISABLE_PREPARES</a></code></strong></li>
+    <li><strong><code>PDO::SQLITE_ATTR_EXTENDED_RESULT_CODES</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-sqlite.php#pdo-sqlite.constants.attr-extended-result-codes">Pdo\Sqlite::ATTR_EXTENDED_RESULT_CODES</a></code></strong></li>
+    <li><strong><code>PDO::SQLITE_ATTR_OPEN_FLAGS</code></strong> =&gt; <strong><code>Pdo\Sqlite::OPEN_FLAGS</code></strong></li>
+    <li><strong><code>PDO::SQLITE_ATTR_READONLY_STATEMENT</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-sqlite.php#pdo-sqlite.constants.attr-readonly-statement">Pdo\Sqlite::ATTR_READONLY_STATEMENT</a></code></strong></li>
+    <li><strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.php#pdo.constants.sqlite-deterministic">PDO::SQLITE_DETERMINISTIC</a></code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-sqlite.php#pdo-sqlite.constants.deterministic">Pdo\Sqlite::DETERMINISTIC</a></code></strong></li>
+    <li><strong><code>PDO::SQLITE_OPEN_READONLY</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-sqlite.php#pdo-sqlite.constants.open-readonly">Pdo\Sqlite::OPEN_READONLY</a></code></strong></li>
+    <li><strong><code>PDO::SQLITE_OPEN_READWRITE</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-sqlite.php#pdo-sqlite.constants.open-readwrite">Pdo\Sqlite::OPEN_READWRITE</a></code></strong></li>
+    <li><strong><code>PDO::SQLITE_OPEN_CREATE</code></strong> =&gt; <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.pdo-sqlite.php#pdo-sqlite.constants.open-create">Pdo\Sqlite::OPEN_CREATE</a></code></strong></li>
+   </ul><p class="para">
+   Driver specific methods in the PDO class have been deprecated.
+   List of affected methods and their replacement:
+
+   </p><ul class="simplelist"><li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlcopyfromarray.php" class="methodname">PDO::pgsqlCopyFromArray()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.copyfromarray.php" class="methodname">Pdo\Pgsql::copyFromArray()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlcopyfromfile.php" class="methodname">PDO::pgsqlCopyFromFile()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.copyfromfile.php" class="methodname">Pdo\Pgsql::copyFromFile()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlcopytoarray.php" class="methodname">PDO::pgsqlCopyToArray()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.copytoarray.php" class="methodname">Pdo\Pgsql::copyToArray()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlcopytofile.php" class="methodname">PDO::pgsqlCopyToFile()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.copytofile.php" class="methodname">Pdo\Pgsql::copyToFile()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlgetnotify.php" class="methodname">PDO::pgsqlGetNotify()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.getnotify.php" class="methodname">Pdo\Pgsql::getNotify()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqlgetpid.php" class="methodname">PDO::pgsqlGetPid()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.getpid.php" class="methodname">Pdo\Pgsql::getPid()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqllobcreate.php" class="methodname">PDO::pgsqlLOBCreate()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.lobcreate.php" class="methodname">Pdo\Pgsql::lobCreate()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqllobopen.php" class="methodname">PDO::pgsqlLOBOpen()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.lobopen.php" class="methodname">Pdo\Pgsql::lobOpen()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.pgsqllobunlink.php" class="methodname">PDO::pgsqlLOBUnlink()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-pgsql.lobunlink.php" class="methodname">Pdo\Pgsql::lobUnlink()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.sqlitecreateaggregate.php" class="methodname">PDO::sqliteCreateAggregate()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-sqlite.createaggregate.php" class="methodname">Pdo\Sqlite::createAggregate()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.sqlitecreatecollation.php" class="methodname">PDO::sqliteCreateCollation()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-sqlite.createcollation.php" class="methodname">Pdo\Sqlite::createCollation()</a></span></li>
+    <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.sqlitecreatefunction.php" class="methodname">PDO::sqliteCreateFunction()</a></span> =&gt; <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-sqlite.createfunction.php" class="methodname">Pdo\Sqlite::createFunction()</a></span></li>
+   </ul></div>
+
+ <div class="sect2" id="migration85.deprecated.pdo-pgsql">
+  <h3 class="title">PDO_PGSQL</h3>
+
+  <p class="para">
+   Constants related to transaction states have been deprecated as this feature is unavailable with PDO:
+
+   </p><ul class="simplelist"><li><strong><code>PDO::PGSQL_TRANSACTION_IDLE</code></strong></li>
+    <li><strong><code>PDO::PGSQL_TRANSACTION_ACTIVE</code></strong></li>
+    <li><strong><code>PDO::PGSQL_TRANSACTION_INTRANS</code></strong></li>
+    <li><strong><code>PDO::PGSQL_TRANSACTION_INERROR</code></strong></li>
+    <li><strong><code>PDO::PGSQL_TRANSACTION_UNKNOWN</code></strong></li>
+   </ul></div>
+
+ <div class="sect2" id="migration85.deprecated.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <p class="simpara">
+    The <code class="code">setAccessible()</code> methods of various Reflection objects have been
+    deprecated, as those no longer have an effect.
+    
+  </p>
+
+  <p class="simpara">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionclass.getconstant.php" class="methodname">ReflectionClass::getConstant()</a></span> for constants
+   that do not exist has been deprecated.
+   
+  </p>
+
+  <p class="simpara">
+   Calling <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionproperty.getdefaultvalue.php" class="methodname">ReflectionProperty::getDefaultValue()</a></span> for
+   properties without default values has been deprecated.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.spl">
+  <h3 class="title">SPL</h3>
+
+  <p class="simpara">
+   Unregistering all autoloaders by passing the
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-autoload-call.php" class="function">spl_autoload_call()</a></span> function as a callback argument to
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-autoload-unregister.php" class="function">spl_autoload_unregister()</a></span> has been deprecated.
+   Instead if this is needed, one should iterate over the return value of
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-autoload-functions.php" class="function">spl_autoload_functions()</a></span> and call
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-autoload-unregister.php" class="function">spl_autoload_unregister()</a></span> on each value.
+   
+  </p>
+
+  <p class="simpara">
+   The <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.contains.php" class="methodname">SplObjectStorage::contains()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.attach.php" class="methodname">SplObjectStorage::attach()</a></span>, and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.detach.php" class="methodname">SplObjectStorage::detach()</a></span> methods have been deprecated
+   in favour of <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.offsetexists.php" class="methodname">SplObjectStorage::offsetExists()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.offsetset.php" class="methodname">SplObjectStorage::offsetSet()</a></span>, and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splobjectstorage.offsetunset.php" class="methodname">SplObjectStorage::offsetUnset()</a></span> respectively.
+   
+  </p>
+
+  <p class="simpara">
+   Using <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a></span> and
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayiterator.php" class="classname">ArrayIterator</a></span> with objects has been deprecated.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-set-timeout.php" class="function">socket_set_timeout()</a></span> alias function has been deprecated.
+   Use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-set-timeout.php" class="function">stream_set_timeout()</a></span> instead.
+   
+  </p>
+
+  <p class="simpara">
+   Passing <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.readdir.php" class="function">readdir()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.rewinddir.php" class="function">rewinddir()</a></span>, and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.closedir.php" class="function">closedir()</a></span>
+   to use the last opened directory has been deprecated.
+   Provide the last opened directory explicitly instead.
+   
+  </p>
+
+  <p class="simpara">
+   Passing integers outside the interval <code class="literal">[0, 255]</code> to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.chr.php" class="function">chr()</a></span>
+   is now deprecated.
+   This is because a byte can only hold a value within this interval.
+   
+  </p>
+
+  <p class="simpara">
+   Passing a string which is not a single byte to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ord.php" class="function">ord()</a></span>
+   is now deprecated, this is indicative of a bug.
+   
+  </p>
+
+  <p class="simpara">
+   The locally predefined variable
+   <a target="_blank" href="https://www.php.net/manual/en/reserved.variables.httpresponseheader.php" class="link">$http_response_header</a>
+   is deprecated. Instead one should call the
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.http-get-last-response-headers.php" class="function">http_get_last_response_headers()</a></span> function.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.deprecated.xml">
+  <h3 class="title">XML</h3>
+
+  <p class="simpara">
+   The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.xml-parser-free.php" class="function">xml_parser_free()</a></span> function has been deprecated,
+   as <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.xmlparser.php" class="classname">XMLParser</a></span> objects are freed automatically.
+   
+  </p>
+
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.deprecated.php" target="_blank">PHP 8.4</a></h1>
     </header>
@@ -498,7 +979,7 @@
   
   <p class="simpara">
    Passing non-<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.callable.php" class="type callable">callable</a></span> strings to the
-   <span class="function"><strong>xml_set_()</strong><span class="replaceable">*</span></span>
+   <span class="function">xml_set_<span class="replaceable">*</span></span>
    functions is now deprecated.
   </p>
  </div>
@@ -1046,7 +1527,7 @@
   <h3 class="title">PDO</h3>
 
   <p class="para">
-   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.php#pdo.constants.fetch-serialize">PDO::FETCH_SERIALIZE</a></code></strong> fetch mode has been deprecated.
+   The <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-serialize">PDO::FETCH_SERIALIZE</a></code></strong> fetch mode has been deprecated.
   </p>
  </div>
 

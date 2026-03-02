@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</title>
+        <title>New Classes and Interfaces in PHP 8.5, 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta name="title" content="New Classes and Interfaces in PHP 8.5, 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta property="og:title" content="New Classes and Interfaces in PHP 8.5, 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
+        <meta name="twitter:title" content="New Classes and Interfaces in PHP 8.5, 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,48 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Classes, Enums, and Interfaces in PHP 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</a></h1>
+        <h1><a href="index.html"> New Classes and Interfaces in PHP 8.5, 8.4, 8.3, 8.1, 8.0, 7.4, 7.0, 5.5, 5.4, 5.3, 5.2</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.new-classes.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.new-classes" class="sect1">
+ <h2 class="title">New Classes and Interfaces</h2>
+
+ <div class="sect2" id="migration85.new-classes.core">
+  <h3 class="title">Core</h3>
+  <ul class="simplelist"><li><span class="classname"><strong class="classname">NoDiscard</strong></span></li>
+   <li><span class="classname"><strong class="classname">DelayedTargetValidation</strong></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-classes.curl">
+  <h3 class="title">Curl</h3>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlsharepersistenthandle.php" class="classname">CurlSharePersistentHandle</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-classes.filter">
+  <h3 class="title">Filter</h3>
+  <ul class="simplelist"><li><span class="classname"><strong class="classname">Filter\FilterException</strong></span></li>
+   <li><span class="classname"><strong class="classname">Filter\FilterFailedException</strong></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-classes.uri">
+  <h3 class="title">URI</h3>
+  <ul class="simplelist"><li><span class="classname"><strong class="classname">Uri\UriException</strong></span></li>
+   <li><span class="classname"><strong class="classname">Uri\InvalidUriException</strong></span></li>
+   <li><span class="classname"><strong class="classname">Uri\UriComparisonMode</strong></span></li>
+   <li><span class="classname"><strong class="classname">Uri\Rfc3986\Uri</strong></span></li>
+   <li><span class="classname"><strong class="classname">Uri\WhatWg\InvalidUrlException</strong></span></li>
+   <li><span class="classname"><strong class="classname">Uri\WhatWg\UrlValidationErrorType</strong></span></li>
+   <li><span class="classname"><strong class="classname">Uri\WhatWg\UrlValidationError</strong></span></li>
+   <li><span class="classname"><strong class="classname">Uri\WhatWg\Url</strong></span></li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.new-classes.php" target="_blank">PHP 8.4</a></h1>
     </header>
@@ -108,7 +145,7 @@
 
  <div class="sect2" id="migration84.new-classes.pcntl">
   <h3 class="title">PCNTL</h3>
-  <ul class="simplelist"><li><span class="classname"><strong class="classname">Pcntl\QosClass</strong></span> (macOS only)</li>
+  <ul class="simplelist"><li><span class="classname"><a target="_blank" href="https://www.php.net/manual/en/enum.pcntl-qosclass.php" class="classname">Pcntl\QosClass</a></span> (macOS only)</li>
   </ul></div>
 
  <div class="sect2" id="migration84.new-classes.pdo-dblib">

@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1</title>
+        <title>Windows Support in PHP 8.5, 8.4, 8.3, 8.2, 7.4, 7.3, 7.1</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
+        <meta name="title" content="Windows Support in PHP 8.5, 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
+        <meta property="og:title" content="Windows Support in PHP 8.5, 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
+        <meta name="twitter:title" content="Windows Support in PHP 8.5, 8.4, 8.3, 8.2, 7.4, 7.3, 7.1">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,87 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Windows Support in PHP 8.4, 8.3, 8.2, 7.4, 7.3, 7.1</a></h1>
+        <h1><a href="index.html"> Windows Support in PHP 8.5, 8.4, 8.3, 8.2, 7.4, 7.3, 7.1</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.windows-support.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.windows-support" class="sect1">
+ <h2 class="title">Windows Support</h2>
+
+ <div class="sect2" id="migration85.windows-support.core">
+  <h3 class="title">Core</h3>
+
+  <p class="simpara">
+   The configuration variables <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-version">PHP_VERSION</a></code></strong>,
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-minor-version">PHP_MINOR_VERSION</a></code></strong>, and
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-release-version">PHP_RELEASE_VERSION</a></code></strong> are now always numbers.
+   Previously, they have been strings for buildconf builds.
+  </p>
+
+  <p class="simpara">
+   <strong class="command">phpize</strong> builds now reflect the source tree in the
+   build dir (as it already worked for in-tree builds); some extension
+   builds (especially when using Makefile.frag.w32) may need adjustments.
+  </p>
+
+  <p class="simpara">
+   <strong class="option configure">--enable-sanitizer</strong> is now supported
+   for MSVC builds.  This enables ASan and debug assertions, and is supported
+   as of MSVC 16.10 and Windows 10.
+  </p>
+
+  <p class="simpara">
+   The <strong class="option configure">--with-uncritical-warn-choke</strong>
+   configuration option for clang builds is no longer supported.
+   Select warnings to suppress via CFLAGS instead.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.windows-support.com">
+  <h3 class="title">COM</h3>
+
+  <p class="simpara">
+   The extension is now build shared by default; previously it defaulted to a
+   static extension, although the official Windows binaries built a shared
+   extension.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.windows-support.ffi">
+  <h3 class="title">FFI</h3>
+
+  <p class="simpara">
+   It is no longer necessary to specify the library when using
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ffi.cdef.php" class="methodname">FFI::cdef()</a></span> and <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/ffi.load.php" class="methodname">FFI::load()</a></span>.
+   However, this convenience feature should not be used in production.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.windows-support.streams">
+  <h3 class="title">Streams</h3>
+
+  <p class="simpara">
+   If only pipe streams are contained in the <code class="parameter">$read</code>
+   array, and the <code class="parameter">$write</code> and
+   <code class="parameter">$except</code> arrays are empty,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-select.php" class="function">stream_select()</a></span> now behaves similar to POSIX systems,
+   i.e. the function only returns if at least one pipe is ready to be read,
+   or after the timeout expires.
+   Previously, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-select.php" class="function">stream_select()</a></span> returned immediately,
+   reporting all streams as ready to read.
+  </p>
+
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.windows-support.php" target="_blank">PHP 8.4</a></h1>
     </header>

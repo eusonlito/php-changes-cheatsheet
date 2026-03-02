@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Functions in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
+        <title>New Functions in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Functions in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="title" content="New Functions in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="New Functions in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta property="og:title" content="New Functions in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Functions in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="twitter:title" content="New Functions in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,118 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Functions in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
+        <h1><a href="index.html"> New Functions in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.new-functions.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.new-functions" class="sect1">
+ <h2 class="title">New Functions</h2>
+
+ <div class="sect2" id="migration85.new-functions.core">
+  <h3 class="title">Core</h3>
+
+  <ul class="simplelist"><li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-error-handler.php" class="function">get_error_handler()</a></span></li>
+   <li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-exception-handler.php" class="function">get_exception_handler()</a></span></li>
+   <li>
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/closure.getcurrent.php" class="methodname">Closure::getCurrent()</a></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.curl">
+  <h3 class="title">Curl</h3>
+
+  <ul class="simplelist"><li><span class="function"><strong>curl_multi_get_handles()</strong></span></li>
+   <li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-share-init-persistent.php" class="function">curl_share_init_persistent()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.dom">
+  <h3 class="title">DOM</h3>
+  <ul class="simplelist"><li>
+    <span class="methodname"><strong>Dom\Element::getElementsByClassName()</strong></span>
+   </li>
+   <li>
+    <span class="methodname"><strong>Dom\Element::insertAdjacentHTML()</strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.enchant">
+  <h3 class="title">Enchant</h3>
+  <ul class="simplelist"><li><span class="function"><strong>enchant_dict_remove_from_session()</strong></span></li>
+   <li><span class="function"><strong>enchant_dict_remove()</strong></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.intl">
+  <h3 class="title">Intl</h3>
+  <ul class="simplelist"><li>
+    <span class="methodname"><strong>Locale::isRightToLeft()</strong></span>
+   </li>
+   <li><span class="function"><strong>locale_is_right_to_left()</strong></span></li>
+   
+   <li><span class="function"><strong>grapheme_levenshtein()</strong></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.opcache">
+  <h3 class="title">Opcache</h3>
+
+  <ul class="simplelist"><li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.opcache-is-script-cached-in-file-cache.php" class="function">opcache_is_script_cached_in_file_cache()</a></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.pdo-sqlite">
+  <h3 class="title">PDO_SQLITE</h3>
+  <ul class="simplelist"><li>
+    <span class="methodname"><strong>Pdo\Sqlite::setAuthorizer()</strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.pgsql">
+  <h3 class="title">PGSQL</h3>
+
+  <ul class="simplelist"><li><span class="function"><strong>pg_close_stmt()</strong></span></li>
+   <li><span class="function"><strong>pg_service()</strong></span></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <ul class="simplelist"><li>
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionconstant.getfilename.php" class="methodname">ReflectionConstant::getFileName()</a></span>
+   </li>
+   <li>
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionconstant.getextension.php" class="methodname">ReflectionConstant::getExtension()</a></span>
+   </li>
+   <li>
+    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionconstant.getextensionname.php" class="methodname">ReflectionConstant::getExtensionName()</a></span>
+   </li>
+   
+   <li>
+    <span class="methodname"><strong>ReflectionConstant::getAttributes()</strong></span>
+   </li>
+   <li>
+    <span class="methodname"><strong>ReflectionProperty::getMangledName()</strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.sqlite">
+  <h3 class="title">Sqlite</h3>
+
+  <ul class="simplelist"><li>
+    <span class="methodname"><strong>Sqlite3Stmt::busy()</strong></span>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.new-functions.standard">
+  <h3 class="title">Standard</h3>
+
+  <ul class="simplelist"><li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-first.php" class="function">array_first()</a></span></li>
+   <li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-last.php" class="function">array_last()</a></span></li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.new-functions.php" target="_blank">PHP 8.4</a></h1>
     </header>
@@ -101,9 +208,6 @@
    <li>
     <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domxpath.quote.php" class="methodname">DOMXPath::quote()</a></span>
    </li>
-   <li>
-    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/domnode.comparedocumentposition.php" class="methodname">DOMNode::compareDocumentPosition()</a></span>
-   </li>
   </ul></div>
 
  <div class="sect2" id="migration84.new-functions.hash">
@@ -116,14 +220,14 @@
  <div class="sect2" id="migration84.new-functions.intl">
   <h3 class="title">Intl</h3>
   <ul class="simplelist"><li>
-    <span class="methodname"><strong>IntlDateFormatter::getIanaID()</strong></span>
+    <span class="methodname"><strong>IntlTimeZone::getIanaID()</strong></span>
    </li>
    <li><span class="function"><strong>intltz_get_iana_id()</strong></span></li>
    <li>
     <span class="methodname"><strong>IntlDateFormatter::parseToCalendar()</strong></span>
    </li>
    <li>
-    <span class="methodname"><strong>SpoofChecker::setAllowedChars()</strong></span>
+    <span class="methodname"><strong>Spoofchecker::setAllowedChars()</strong></span>
    </li>
    
    <li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.grapheme-str-split.php" class="function">grapheme_str_split()</a></span></li>
@@ -142,7 +246,7 @@
 
  <div class="sect2" id="migration84.new-functions.opcache">
   <h3 class="title">Opcache</h3>
-  <ul class="simplelist"><li><span class="function"><strong>opcache_jit_blacklist()</strong></span></li>
+  <ul class="simplelist"><li><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.opcache-jit-blacklist.php" class="function">opcache_jit_blacklist()</a></span></li>
   </ul></div>
 
  <div class="sect2" id="migration84.new-functions.pcntl">
@@ -225,8 +329,8 @@
  <div class="sect2" id="migration84.new-functions.sodium">
   <h3 class="title">Sodium</h3>
 
-  <ul class="simplelist"><li><span class="function"><strong>sodium_crypto_aead_aegis128l_()</strong><span class="replaceable">*</span></span></li>
-   <li><span class="function"><strong>sodium_crypto_aead_aegis256l_()</strong><span class="replaceable">*</span></span></li>
+  <ul class="simplelist"><li><span class="function">sodium_crypto_aead_aegis128l_<span class="replaceable">*</span></span></li>
+   <li><span class="function">sodium_crypto_aead_aegis256l_<span class="replaceable">*</span></span></li>
   </ul></div>
 
  <div class="sect2" id="migration84.new-functions.spl">

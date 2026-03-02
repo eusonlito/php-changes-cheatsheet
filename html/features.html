@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
+        <title>New Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="title" content="New Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="New Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta property="og:title" content="New Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
+        <meta name="twitter:title" content="New Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,463 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Features in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
+        <h1><a href="index.html"> New Features in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.new-features.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.new-features" class="sect1">
+ <h2 class="title">New Features</h2>
+
+ <div class="sect2" id="migration85.new-features.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration85.new-features.core.pipe-operator">
+   <h4 class="title">Pipe Operator</h4>
+
+   <p class="simpara">
+    Added the <a target="_blank" href="https://www.php.net/manual/en/language.operators.functional.php" class="link">pipe
+    (<code class="literal">|&gt;</code>) operator</a>.
+    
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br />$result </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hello World" </span><span style="color: #007700">|&gt; </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(...);<br>print </span><span style="color: #0000BB">$result </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Prints "11"</span></span></code></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.closures-in-constexpr">
+   <h4 class="title">Closure in constant expressions</h4>
+
+   <p class="para">
+    Added support for <a target="_blank" href="https://www.php.net/manual/en/class.closure.php" class="link">Closures</a> and
+    <a target="_blank" href="https://www.php.net/manual/en/functions.first_class_callable_syntax.php" class="link">first class callables</a>
+    in constant expressions. This includes:
+
+    </p><ul class="simplelist"><li>Attribute parameters.</li>
+     <li>Default values of properties and parameters.</li>
+     <li>Constants and Class Constants.</li>
+    </ul></div>
+
+  <div class="sect3" id="migration85.new-features.core.nodiscard-attribute">
+   <h4 class="title">#[\NoDiscard] attribute</h4>
+
+   <p class="simpara">
+    Added the <span class="classname"><strong class="classname">NoDiscard</strong></span> attribute to indicate that a
+    function's return value is important and should be consumed.
+    
+   </p>
+
+   <p class="simpara">
+    Also, added the <code class="literal">(void)</code> cast to indicate that not using a value is intentional.
+    The <code class="literal">(void)</code> cast has no effect on the program's execution by itself, but
+    it can be used to suppress warnings emitted by <code class="code">#[\NoDiscard]</code> and possibly
+    also diagnostics emitted by external IDEs or static analysis tools.
+    
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /><br></span><span style="color: #007700">#[</span><span style="color: #0000BB">\NoDiscard</span><span style="color: #007700">]<br>function </span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #0000BB">string $a</span><span style="color: #007700">, </span><span style="color: #0000BB">string $b</span><span style="color: #007700">): </span><span style="color: #0000BB">string </span><span style="color: #007700">{<br>     return </span><span style="color: #0000BB">$a </span><span style="color: #007700">. </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #FF8000">// Warning: The return value of function concat() should either be used or<br>// intentionally ignored by casting it as (void) in xxx.php<br></span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// No warning, because the return value is consumed by the assignment.<br></span><span style="color: #0000BB">$results </span><span style="color: #007700">= </span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// No warning, because the (void) cast is used.<br></span><span style="color: #007700">(</span><span style="color: #0000BB">void</span><span style="color: #007700">)</span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);</span></span></code></div>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.attributes-on-constants">
+   <h4 class="title">Attributes on Constants</h4>
+
+   <p class="simpara">
+    Added support for attributes on compile-time non-class constants
+    (e.g. <code class="code">const MY_CONST = 1;</code> rather than
+    <code class="code">define('MY_CONST', 1);</code>).
+    
+   </p>
+
+   <p class="simpara">
+    The <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.deprecated.php" class="classname">Deprecated</a></span> attribute can now be used on constants.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.delayedtargetvalidation-attribute">
+   <h4 class="title"><code class="code">#[\DelayedTargetValidation]</code> attribute</h4>
+
+   <p class="simpara">
+    The new <span class="classname"><strong class="classname">DelayedTargetValidation</strong></span> attribute can be used
+    to suppress compile-time errors from core (or extension) attributes that are
+    used on invalid targets. These errors are instead reported at runtime if and
+    when <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionattribute.newinstance.php" class="methodname">ReflectionAttribute::newInstance()</a></span> is called.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.override-for-properties">
+   <h4 class="title"><code class="code">#[\Override]</code> for properties</h4>
+
+   <p class="simpara">
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.override.php" class="classname">Override</a></span> attribute can now be applied to properties.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.static-aviz">
+   <h4 class="title">Static Asymmetric Visibility</h4>
+
+   <p class="simpara">
+    Added <a target="_blank" href="https://www.php.net/manual/en/language.oop5.visibility.php#language.oop5.visibility-members-aviz" class="link">asymmetric
+    visibility</a> support for static properties.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.backtraces-for-fatal-errors">
+   <h4 class="title">Backtraces for Fatal Errors</h4>
+
+   <p class="simpara">
+    Fatal Errors (such as an exceeded maximum execution time) now include a
+    backtrace.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.final-property-promotion">
+   <h4 class="title">Constructor promotion for final property</h4>
+
+   <p class="simpara">
+    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion" class="link">Constructor
+    property promotion</a> can now be used for final properties.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.casts-in-constexpr">
+   <h4 class="title">Casts in constant expressions</h4>
+
+   <p class="simpara">
+    Added support for casts in constant expressions.
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB"><?php <br /></span><span style="color: #007700">const </span><span style="color: #0000BB">T1 </span><span style="color: #007700">= (int) </span><span style="color: #0000BB">0.3</span><span style="color: #007700">; </span><span style="color: #FF8000">// Previously: "Fatal error: Constant expression contains invalid operations"<br></span><span style="color: #007700">print </span><span style="color: #0000BB">T1 </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Prints "0"</span></span></code></div>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.clone-function">
+   <h4 class="title">Clone function</h4>
+
+   <p class="simpara">
+    The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.cloning.php" class="link">clone language construct</a>
+    is now a function and supports reassigning (readonly) properties during
+    cloning via the new <span class="property">$withProperties</span> parameter.
+    
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.curl">
+  <h3 class="title">cURL</h3>
+
+  <p class="simpara">
+   Added support for
+   <a target="_blank" href="https://www.php.net/manual/en/class.curlsharepersistenthandle.php" class="link">share handles</a>
+   that are persisted across multiple PHP requests, safely allowing for
+   more effective connection reuse.
+   
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code>CURLINFO_USED_PROXY</code></strong> (libcurl &gt;= 8.7.0),
+   <strong><code>CURLINFO_HTTPAUTH_USED</code></strong>,
+   and <strong><code>CURLINFO_PROXYAUTH_USED</code></strong> (libcurl &gt;= 8.12.0)
+   to the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span> function.
+   When <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span> returns an array, the same information
+   is available as <code class="literal">"used_proxy"</code>,
+   <code class="literal">"httpauth_used"</code>, and <code class="literal">"proxyauth_used"</code>
+   keys.
+   <strong><code>CURLINFO_USED_PROXY</code></strong> gets zero set if no proxy was used in the
+   previous transfer or a non-zero value if a proxy was used.
+   <strong><code>CURLINFO_HTTPAUTH_USED</code></strong> and
+   <strong><code>CURLINFO_PROXYAUTH_USED</code></strong> get bitmasks
+   indicating the HTTP and proxy authentication methods that were
+   used in the previous request.
+   See <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlauth-any">CURLAUTH_<span class="replaceable">*</span></a></code></strong> constants for
+   possible values.
+  </p>
+
+  <p class="simpara">
+   Added <strong><code>CURLOPT_INFILESIZE_LARGE</code></strong> Curl option, which is a safe
+   replacement for <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-infilesize">CURLOPT_INFILESIZE</a></code></strong>. On certain systems,
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-infilesize">CURLOPT_INFILESIZE</a></code></strong> only accepts a 32-bit signed integer as
+   the file size (2.0 GiB) even on 64-bit systems.
+   <strong><code>CURLOPT_INFILESIZE_LARGE</code></strong> accepts the largest integer value
+   the system can handle.
+  </p>
+
+  <p class="simpara">
+   Added <strong><code>CURLFOLLOW_OBEYCODE</code></strong>,
+   <strong><code>CURLFOLLOW_FIRSTONLY</code></strong> and <strong><code>CURLFOLLOW_ALL</code></strong>
+   values for <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong>
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-setopt.php" class="function">curl_setopt()</a></span> option.
+   <strong><code>CURLFOLLOW_OBEYCODE</code></strong> to follow more strictly in regard to
+   redirect if they are allowed.
+   <strong><code>CURLFOLLOW_FIRSTONLY</code></strong> to follow only the first redirect thus
+   if there is any follow up redirect, it won't go any further.
+   <strong><code>CURLFOLLOW_ALL</code></strong> is equivalent to setting
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/curl.constants.php#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong> to true.
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code>CURLINFO_CONN_ID</code></strong> (libcurl &gt;= 8.2.0)
+   to the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span> function. This constant allows retrieving
+   the unique ID of the connection used by a cURL transfer. It is primarily
+   useful when connection reuse or connection pooling logic is needed in
+   PHP-level applications. When <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span> returns an array,
+   this value is available as the <code class="literal">"conn_id"</code> key.
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code>CURLINFO_QUEUE_TIME_T</code></strong> (libcurl &gt;= 8.6.0)
+   to the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span> function. This constant allows
+   retrieving the time (in microseconds) that the request spent in libcurl’s
+   connection queue before it was sent.
+   This value can also be retrieved by passing
+   <strong><code>CURLINFO_QUEUE_TIME_T</code></strong> to the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.curl-getinfo.php" class="function">curl_getinfo()</a></span>
+   <code class="parameter">option</code> parameter.
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code>CURLOPT_SSL_SIGNATURE_ALGORITHMS</code></strong> to
+   specify the signature algorithms to use for TLS.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.dom">
+  <h3 class="title">DOM</h3>
+
+  <p class="simpara">
+   Added <span class="property">Dom\Element::$outerHTML</span>.
+  </p>
+
+  <p class="simpara">
+   Added <span class="property">$children</span> property to
+   <span class="interfacename"><a target="_blank" href="https://www.php.net/manual/en/class.dom-parentnode.php" class="interfacename">Dom\ParentNode</a></span> implementations.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.exif">
+  <h3 class="title">EXIF</h3>
+
+  <p class="simpara">
+   Added support for <code class="literal">OffsetTime*</code> Exif tags.
+  </p>
+
+  <p class="simpara">
+   Added support for HEIF/HEIC.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.filter">
+  <h3 class="title">Filter</h3>
+
+  <p class="simpara">
+   Added new <strong><code>FILTER_THROW_ON_FAILURE</code></strong> flag which can be
+   passed to the filter functions and will force an exception to be triggered
+   when validation fails.
+   The new flag cannot be combined with
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/filter.constants.php#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>; trying to do so will result
+   in a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> being thrown.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.intl">
+  <h3 class="title">Intl</h3>
+
+  <p class="simpara">
+   Added class constants <strong><code>NumberFormatter::CURRENCY_ISO</code></strong>,
+   <strong><code>NumberFormatter::CURRENCY_PLURAL</code></strong>,
+   <strong><code>NumberFormatter::CASH_CURRENCY</code></strong>,
+   and <strong><code>NumberFormatter::CURRENCY_STANDARD</code></strong>
+   for various currency-related number formats.
+  </p>
+
+  <p class="simpara">
+   Added <span class="methodname"><strong>Locale::addLikelySubtags()</strong></span> and
+   <span class="methodname"><strong>Locale::minimizeSubtags()</strong></span> to handle likely tags
+   on a given locale.
+  </p>
+
+  <p class="simpara">
+   Added <span class="classname"><strong class="classname">IntlListFormatter</strong></span> class to format, order,
+   and punctuate a list of items with a given locale,
+   <strong><code>IntlListFormatter::TYPE_AND</code></strong>,
+   <strong><code>IntlListFormatter::TYPE_OR</code></strong>,
+   <strong><code>IntlListFormatter::TYPE_UNITS</code></strong> operands and
+   <strong><code>IntlListFormatter::WIDTH_WIDE</code></strong>,
+   <strong><code>IntlListFormatter::WIDTH_SHORT</code></strong> and
+   <strong><code>IntlListFormatter::WIDTH_NARROW</code></strong> widths.
+   It is supported from icu 67.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.pdo-sqlite">
+  <h3 class="title">PDO_Sqlite</h3>
+
+  <p class="simpara">
+   Added class constant <strong><code>Pdo\Sqlite::ATTR_BUSY_STATEMENT</code></strong>.
+  </p>
+
+  <p class="simpara">
+   Added class constants <strong><code>Pdo\Sqlite::ATTR_EXPLAIN_STATEMENT</code></strong>,
+   <strong><code>Pdo\Sqlite::EXPLAIN_MODE_PREPARED</code></strong>,
+   <strong><code>Pdo\Sqlite::EXPLAIN_MODE_EXPLAIN</code></strong>,
+   <strong><code>Pdo\Sqlite::EXPLAIN_MODE_EXPLAIN_QUERY_PLAN</code></strong>.
+  </p>
+
+  <p class="simpara">
+   Added <strong><code>Pdo\Sqlite::ATTR_TRANSACTION_MODE</code></strong> connection attribute
+   with possible values <strong><code>Pdo\Sqlite::TRANSACTION_MODE_DEFERRED</code></strong>,
+   <strong><code>Pdo\Sqlite::TRANSACTION_MODE_IMMEDIATE</code></strong>,
+   and <strong><code>Pdo\Sqlite::TRANSACTION_MODE_EXCLUSIVE</code></strong>,
+   allowing to configure the transaction mode to use when calling beginTransaction().
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.session">
+  <h3 class="title">Session</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-set-cookie-params.php" class="function">session_set_cookie_params()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-get-cookie-params.php" class="function">session_get_cookie_params()</a></span>,
+   and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-start.php" class="function">session_start()</a></span> now support partitioned cookies via the
+   <code class="literal">"partitioned"</code> key.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.soap">
+  <h3 class="title">SOAP</h3>
+
+  <p class="simpara">
+   Enumeration cases are now dumped in <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/soapclient.gettypes.php" class="methodname">SoapClient::__getTypes()</a></span>.
+  </p>
+
+  <p class="simpara">
+   Added support for Soap 1.2 Reason Text xml:lang attribute.
+  </p>
+
+  <p class="simpara">
+   The signature of <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/soapfault.construct.php" class="methodname">SoapFault::__construct()</a></span> and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/soapserver.fault.php" class="methodname">SoapServer::fault()</a></span> therefore
+   now have an optional <code class="parameter">$lang</code> parameter.
+   This support solves compatibility with .NET SOAP clients.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mail.php" class="function">mail()</a></span> now returns the actual sendmail error and detects
+   if the sendmail process was terminated unexpectedly.
+   In such cases, a warning is emitted and the function returns false.
+   Previously, these errors were silently ignored.
+   This change affects only the sendmail transport.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span> now supports HEIF/HEIC images.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span> now supports SVG images when ext-libxml
+   is also loaded.
+   Similarly, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.image-type-to-extension.php" class="function">image_type_to_extension()</a></span> and
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.image-type-to-mime-type.php" class="function">image_type_to_mime_type()</a></span>
+   now also handle IMAGETYPE_SVG.
+  </p>
+
+  <p class="simpara">
+   The array returned by <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span> now has two additional entries:
+   <code class="literal">"width_unit"</code> and <code class="literal">"height_unit"</code> to indicate in
+   which units the dimensions are expressed. These units are px by default. They are not
+   necessarily the same (just to give one example: one may be cm and the other may be px).
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setcookie.php" class="function">setcookie()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setrawcookie.php" class="function">setrawcookie()</a></span> now support the
+   <code class="literal">"partitioned"</code> key.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.uri">
+  <h3 class="title">URI</h3>
+
+  <p class="simpara">
+   An always enabled uri extension is added that can be used for handling
+   URIs and URLs according to RFC 3986 and WHATWG URL.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.xsl">
+  <h3 class="title">XSL</h3>
+
+  <p class="simpara">
+   The <code class="parameter">$namespace</code> argument of <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.getparameter.php" class="methodname">XSLTProcessor::getParameter()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.setparameter.php" class="methodname">XSLTProcessor::setParameter()</a></span> and
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/xsltprocessor.removeparameter.php" class="methodname">XSLTProcessor::removeParameter()</a></span> now actually works
+   instead of being treated as empty.
+   This only works if the <code class="parameter">$name</code> argument does not use Clark notation and is not a
+   QName because in those cases the namespace is taken from the namespace href or
+   prefix respectively.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.zlib">
+  <h3 class="title">Zlib</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.flock.php" class="function">flock()</a></span> is now supported on zlib streams. Previously,
+   this always failed to perform any locking action.
+  </p>
+
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.new-features.php" target="_blank">PHP 8.4</a></h1>
     </header>
@@ -777,13 +1229,13 @@
    <h4 class="title">Type System Improvements</h4>
 
    <p class="para">
-    It is now possible to use <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">null</a></span> and <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type false">false</a></span>
+    It is now possible to use <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">null</a></span> and <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type false">false</a></span>
     as stand-alone types.
     
    </p>
 
    <p class="para">
-    The <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type true">true</a></span> type has been added.
+    The <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type true">true</a></span> type has been added.
     
    </p>
 

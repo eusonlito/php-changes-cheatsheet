@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Backward Incompatible Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
+        <title>Backward Incompatible Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="Backward Incompatible Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="title" content="Backward Incompatible Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="Backward Incompatible Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta property="og:title" content="Backward Incompatible Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="Backward Incompatible Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
+        <meta name="twitter:title" content="Backward Incompatible Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,587 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> Backward Incompatible Changes in PHP 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
+        <h1><a href="index.html"> Backward Incompatible Changes in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.incompatible.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.incompatible" class="sect1">
+ <h2 class="title">Backward Incompatible Changes</h2>
+
+ <div class="sect2" id="migration85.incompatible.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration85.incompatible.core.array-callable-alias">
+   <h4 class="title"><code class="literal">"array"</code> and <code class="literal">"callable"</code> alias name</h4>
+
+   <p class="simpara">
+    It is no longer possible to use <code class="literal">"array"</code>
+    and <code class="literal">"callable"</code> as class alias names
+    in <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.class-alias.php" class="function">class_alias()</a></span>
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.loosely-comparing-object">
+   <h4 class="title">Loosely comparing uncomparable objects</h4>
+
+   <p class="simpara">
+    Loosely comparing uncomparable objects (e.g. enums,
+    <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.curlhandle.php" class="classname">CurlHandle</a></span> and other internal classes) to booleans
+    was previously inconsistent. If compared to a boolean literal
+    <code class="code">$object == true</code>, it would behave the same way as
+    <code class="code">(bool)$object</code>. If compared to a statically unknown value
+    <code class="code">$object == $true</code>, it would always return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong>.
+    This behavior was consolidated to always follow the behavior of
+    <code class="code">(bool)$object</code>.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.gc-collect-cycles">
+   <h4 class="title">Return value of gc_collect_cycles</h4>
+
+   <p class="simpara">
+    The return value of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gc-collect-cycles.php" class="function">gc_collect_cycles()</a></span> no longer includes
+    strings and resources that were indirectly collected through cycles.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.substitute-final-subclasses">
+   <h4 class="title">Substitute static keyword in final subclass</h4>
+
+   <p class="simpara">
+    It is now allowed to substitute <span class="type">static</span> with <span class="type">self</span> or the concrete class name
+    in final subclasses.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.tick-handlers">
+   <h4 class="title">Tick handlers</h4>
+
+   <p class="simpara">
+    The tick handlers are now deactivated after all shutdown functions,
+    destructors have run and the output handlers have been cleaned up.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.trait-binding">
+   <h4 class="title">Traits binding</h4>
+
+   <p class="simpara">
+    Traits are now bound before the parent class. This is a subtle behavioral
+    change, but should more closely match user expectations.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.errors-compilation-and-linking">
+   <h4 class="title">Errors during compilation and class linking</h4>
+
+   <p class="simpara">
+    Errors emitted during compilation and class linking are now always delayed
+    and handled after compilation or class linking. Fatal errors emitted during
+    compilation or class linking cause any delayed errors to be handled
+    immediately, without calling user-defined error handlers.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.exception-by-userdefined-handler">
+   <h4 class="title">Exceptions thrown by user-defined error handler</h4>
+
+   <p class="simpara">
+    Exceptions thrown by user-defined error handlers when handling class linking
+    errors are not promoted to fatal errors anymore and do not prevent linking.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.attribute-during-compilation">
+   <h4 class="title">Attribute apply error during compilation</h4>
+
+   <p class="simpara">
+    Applying <code class="code">#[\Attribute]</code> to an abstract class, enum, interface, or trait
+    triggers an error during compilation. Previously, the attribute could be
+    added, but when <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionattribute.newinstance.php" class="methodname">ReflectionAttribute::newInstance()</a></span>
+    was called an error would be thrown.
+    The error can be delayed from compilation to runtime using the new
+    <code class="code">#[\DelayedTargetValidation]</code> attribute.
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.disable-ini-setting">
+   <h4 class="title">disable_classes INI setting</h4>
+
+   <p class="simpara">
+    The <a target="_blank" href="https://www.php.net/manual/en/ini.core.php#ini.disable-classes" class="link">disable_classes</a> INI setting
+    has been removed as it causes various engine assumptions to be broken.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.destruct-non-array-values">
+   <h4 class="title">Destructuring non-array values</h4>
+
+   <p class="simpara">
+    Destructuring non-array values (other than <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong>) using <code class="literal">[]</code> or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.list.php" class="function">list()</a></span> now
+    emits a warning.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.incompatible.core.warning-related-to-cast">
+   <h4 class="title">Warnings related to cast</h4>
+
+   <p class="simpara">
+    A warning is now emitted when casting floats (or strings that look like
+    floats) to int if they cannot be represented as one. This affects explicit
+    int casts and implicit int casts.
+    
+   </p>
+
+   <p class="simpara">
+    A warning is now emitted when casting NAN to other types.
+    
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.bzip2">
+  <h3 class="title">Bzip2</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.bzcompress.php" class="function">bzcompress()</a></span> now throws a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span>
+   when <code class="parameter">$block_size</code> is not between 1 and 9.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.bzcompress.php" class="function">bzcompress()</a></span> now throws a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="classname">ValueError</a></span>
+   when <code class="parameter">$work_factor</code> is not between 0 and 250.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.dom">
+  <h3 class="title">DOM</h3>
+
+  <p class="simpara">
+   Cloning a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domnamednodemap.php" class="classname">DOMNamedNodeMap</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.domnodelist.php" class="classname">DOMNodeList</a></span>, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-namednodemap.php" class="classname">Dom\NamedNodeMap</a></span>,
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-nodelist.php" class="classname">Dom\NodeList</a></span>, <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-htmlcollection.php" class="classname">Dom\HTMLCollection</a></span>,
+   and <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.dom-dtdnamednodemap.php" class="classname">Dom\DtdNamedNodeMap</a></span> now fails.
+   This never actually resulted in a working object, therefore no impact is expected.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.fileinfo">
+  <h3 class="title">FileInfo</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.finfo-file.php" class="function">finfo_file()</a></span> and <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/finfo.file.php" class="methodname">finfo::file()</a></span>
+   now throws a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> instead of a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="exceptionname">TypeError</a></span> when <code class="parameter">$filename</code>
+   contains nul bytes.
+   This aligns the type of Error thrown to be consistent with the rest of
+   the language.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.intl">
+  <h3 class="title">Intl</h3>
+
+  <p class="simpara">
+   The extension now requires at least ICU 57.1.
+  </p>
+
+  <p class="simpara">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="methodname">IntlDateFormatter::setTimeZone()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.php" class="function">datefmt_set_timezone()</a></span>
+   now throws an <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.intlexception.php" class="exceptionname">IntlException</a></span> on uninitialised
+   classes/clone failures.
+  </p>
+
+  <p class="simpara">
+   All <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.locale.php" class="classname">Locale</a></span> methods now throw a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> when the locale argument contain null bytes.
+  </p>
+
+  <p class="simpara">
+   The behaviour of <strong><code><a target="_blank" href="https://www.php.net/manual/en/class.collator.php#collator.constants.sort-regular">Collator::SORT_REGULAR</a></code></strong> with respect to
+   handling numeric strings is now aligned with the behaviour of
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/array.constants.php#constant.sort-regular">SORT_REGULAR</a></code></strong> in ext/standard.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.ldap">
+  <h3 class="title">LDAP</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-get-option.php" class="function">ldap_get_option()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ldap-set-option.php" class="function">ldap_set_option()</a></span>
+   now throw a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> when passing an invalid option.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.mbstring">
+  <h3 class="title">MBString</h3>
+
+  <p class="simpara">
+   Unicode data tables have been updated to Unicode 17.0
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.mysqli">
+  <h3 class="title">MySQLi</h3>
+
+  <p class="simpara">
+   Calling the mysqli constructor on an already-constructed object
+   is now no longer possible and throws an <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="exceptionname">Error</a></span>.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.odbc">
+  <h3 class="title">ODBC</h3>
+
+  <p class="simpara">
+   ODBC now assumes that at least ODBC 3.5 functionality is available.
+   The ODBCVER definition and build system flags to control it have been removed.
+  </p>
+
+  <p class="simpara">
+   ODBC no longer has build flags to build against specific drivers (except
+   for DB2) and removes special cases for those drivers. It is strongly
+   recommended to use a driver manager like iODBC or unixODBC on non-Windows.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.opcache">
+  <h3 class="title">Opcache</h3>
+
+  <p class="simpara">
+   The Opcache extension is now always built into the PHP binary and is always
+   loaded.
+   The INI directives <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.enable" class="link">opcache.enable</a>
+   and <a target="_blank" href="https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.enable-cli" class="link">opcache.enable_cli</a> are still
+   honored.
+  </p>
+
+  <p class="simpara">
+   The <strong class="option configure">--enable-opcache</strong>/<strong class="option configure">--disable-opcache</strong>
+   configure flags have been removed, and the build does not produce <var class="filename">opcache.so</var>
+   or <var class="filename">php_opcache.dll</var> objects anymore.
+  </p>
+
+  <p class="simpara">
+   Using <code class="literal">zend_extension=opcache.so</code> or
+   <code class="literal">zend_extension=php_opcache.dll</code> INI directives
+   will emit a warning.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.pcntl">
+  <h3 class="title">PCNTL</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-exec.php" class="function">pcntl_exec()</a></span> now throws <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span>
+   when entries of the <code class="parameter">$args</code> parameter contain null bytes.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pcntl-exec.php" class="function">pcntl_exec()</a></span> now throws <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span>
+   when entries or keys of the <code class="parameter">$env_vars</code> parameter
+   contain null bytes.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.pcre">
+  <h3 class="title">PCRE</h3>
+
+  <p class="simpara">
+   The extension is compiled without semi-deprecated
+   PCRE2_EXTRA_ALLOW_LOOKAROUND_BSK compile option.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.pdo">
+  <h3 class="title">PDO</h3>
+
+  <p class="simpara">
+   The constructor arguments set in conjunction with
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-class">PDO::FETCH_CLASS</a></code></strong> now follow the usual CUFA
+   (<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func-array.php" class="function">call_user_func_array()</a></span>) semantics.
+   This means string keys will act like a named argument.
+   Moreover, automatic wrapping for by-value arguments passed to a by-ref
+   parameter has been removed, and the usual <strong><code><a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.php#constant.e-warning">E_WARNING</a></code></strong>
+   about this is now emitted.
+   To pass a variable by-ref to a constructor argument use the general
+   array value reference assignment: <code class="code">$ctor_args = [&amp;$valByRef]</code>
+  </p>
+
+  <p class="simpara">
+   Attempting to call <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdostatement.setfetchmode.php" class="methodname">PDOStatement::setFetchMode()</a></span> during
+   a call to <span class="methodname"><strong>PDO::fetch()</strong></span>,
+   <span class="methodname"><strong>PDO::fetchObject()</strong></span>,
+   <span class="methodname"><strong>PDO::fetchAll()</strong></span>, for example using tricks such as
+   passing the statement object as a constructor argument when fetching into an
+   object, will now throw an <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.error.php" class="exceptionname">Error</a></span>.
+  </p>
+
+  <p class="simpara">
+   The value of the constants <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-group">PDO::FETCH_GROUP</a></code></strong>,
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-unique">PDO::FETCH_UNIQUE</a></code></strong>,
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-classtype">PDO::FETCH_CLASSTYPE</a></code></strong>,
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-props-late">PDO::FETCH_PROPS_LATE</a></code></strong>, and
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-serialize">PDO::FETCH_SERIALIZE</a></code></strong> have changed.
+  </p>
+
+  <p class="simpara">
+   A <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> is now thrown if
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-props-late">PDO::FETCH_PROPS_LATE</a></code></strong> is used with a fetch mode
+   different than <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-class">PDO::FETCH_CLASS</a></code></strong>, consistent with
+   other fetch flags.
+  </p>
+
+  <p class="simpara">
+   A <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> is now thrown if
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-into">PDO::FETCH_INTO</a></code></strong> is used as a fetch mode in
+   <span class="methodname"><strong>PDO::fetchAll()</strong></span>,
+   similar to <strong><code><a target="_blank" href="https://www.php.net/manual/en/pdo.constants.fetch-modes.php#pdo.constants.fetch-lazy">PDO::FETCH_LAZY</a></code></strong>.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.pdo-firebird">
+  <h3 class="title">PDO_FIREBIRD</h3>
+
+  <p class="simpara">
+   A <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> is now thrown when trying to set a cursor
+   name that is too long on a <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.pdostatement.php" class="classname">PDOStatement</a></span> resulting from
+   the Firebird driver.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.pdo-sqlite">
+  <h3 class="title">PDO_SQLITE</h3>
+
+  <p class="simpara">
+   SQLite <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.quote.php" class="methodname">PDO::quote()</a></span> will now throw an exception
+   or emit a warning, depending on the error mode, if the string contains
+   a null byte.
+  </p>
+
+  <p class="simpara">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo.sqlitecreatecollation.php" class="methodname">PDO::sqliteCreateCollation()</a></span> will now throw an
+   exception if the callback has the wrong return type, making it more
+   in line with <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/pdo-sqlite.createcollation.php" class="methodname">Pdo\Sqlite::createCollation()</a></span> behavior.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.posix">
+  <h3 class="title">POSIX</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-kill.php" class="function">posix_kill()</a></span> now throws a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> when the process_id argument is
+   lower or greater than what the platform supports (signed integer or
+   long range), <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-setpgid.php" class="function">posix_setpgid()</a></span> now throws a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> when the process_id or
+   the process_group_id is lower than zero or greater than what the platform
+   supports.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.posix-setrlimit.php" class="function">posix_setrlimit()</a></span> now throws a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> when the hard_limit or
+   soft_limit arguments are lower than -1 or if soft_limit is greater than
+   hard_limit.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <p class="simpara">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/reflectionattribute.newinstance.php" class="methodname">ReflectionAttribute::newInstance()</a></span> can now throw
+   errors for internal attributes if the attribute was applied on an invalid
+   target and the error was delayed from compile time to runtime via the
+   #[\DelayedTargetValidation] attribute.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.session">
+  <h3 class="title">Session</h3>
+
+  <p class="simpara">
+   Attempting to write session data where <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.session.php" class="classname">$_SESSION</a></var> has a key
+   containing the pipe character (<code class="literal">|</code>) will now emit a warning
+   instead of silently failing.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-start.php" class="function">session_start()</a></span> is stricter in regard to the options
+   argument. It now throws a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> if
+   the array is not a hashmap, or a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="exceptionname">TypeError</a></span>
+   if the read_and_close value is not a valid type compatible with int.
+  </p>
+
+  <p class="simpara">
+   Passing an integer <code class="literal">0</code> as the <code class="parameter">locales</code>
+   argument to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.setlocale.php" class="function">setlocale()</a></span> is no longer supported and now throws
+   a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="exceptionname">TypeError</a></span>.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.simplexml">
+  <h3 class="title">SimpleXML</h3>
+
+  <p class="simpara">
+   Passing an XPath expression that returns something other than a node set
+   to <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/simplexmlelement.xpath.php" class="methodname">SimpleXMLElement::xpath()</a></span> will now emit a warning
+   and return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong>, instead of silently failing and returning an empty array.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.snmp">
+  <h3 class="title">SNMP</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmpget.php" class="function">snmpget()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmpset.php" class="function">snmpset()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmp2-get.php" class="function">snmp2_get()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmp2-set.php" class="function">snmp2_set()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmp3-get.php" class="function">snmp3_get()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.snmp3-set.php" class="function">snmp3_set()</a></span>
+   and <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/snmp.construct.php" class="methodname">SNMP::__construct()</a></span> now throw a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> when the hostname
+   is too large, contains any null byte or if the port is given
+   when negative or greater than 65535, timeout and retries values
+   are lower than -1 or too large.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.soap">
+  <h3 class="title">SOAP</h3>
+
+  <p class="simpara">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/soapclient.dorequest.php" class="methodname">SoapClient::__doRequest()</a></span> now accepts a new,
+   optional <code class="parameter">$uriParserClass</code> parameter accepting
+   string or <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> arguments.
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> represents the original (<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.parse-url.php" class="function">parse_url()</a></span>) based
+   method, while the new backends will be used when passing either
+   <span class="classname"><strong class="classname">Uri\Rfc3986\Uri</strong></span> or <span class="classname"><strong class="classname">Uri\WhatWg\Url</strong></span>.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-create-listen.php" class="function">socket_create_listen()</a></span>,
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-bind.php" class="function">socket_bind()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-sendto.php" class="function">socket_sendto()</a></span>
+   now throw a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> if the port is lower
+   than 0 or greater than 65535, and also if any of the hints array entries are
+   indexed numerically.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-addrinfo-lookup.php" class="function">socket_addrinfo_lookup()</a></span> now throws a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="exceptionname">TypeError</a></span> if any of the hints values cannot
+   be cast to int and can throw a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> if
+   any of these values overflow.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-set-option.php" class="function">socket_set_option()</a></span> with
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/sockets.constants.php#constant.mcast-leave-group">MCAST_LEAVE_GROUP</a></code></strong>/<strong><code><a target="_blank" href="https://www.php.net/manual/en/sockets.constants.php#constant.mcast-leave-source-group">MCAST_LEAVE_SOURCE_GROUP</a></code></strong>
+   options now throw an exception if the value isn't a valid object or array.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.socket-set-option.php" class="function">socket_set_option()</a></span> with multicast context now throws a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> when the created socket is not of
+   <strong><code><a target="_blank" href="https://www.php.net/manual/en/sockets.constants.php#constant.af-inet">AF_INET</a></code></strong>/<strong><code><a target="_blank" href="https://www.php.net/manual/en/sockets.constants.php#constant.af-inet6">AF_INET6</a></code></strong> family.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.spl">
+  <h3 class="title">SPL</h3>
+
+  <p class="simpara">
+   <span class="classname"><a target="_blank" href="https://www.php.net/manual/en/class.arrayobject.php" class="classname">ArrayObject</a></span> no longer accepts enums, as modifying the
+   <span class="property">$name</span> or <span class="property">$value</span> properties can break
+   engine assumptions.
+  </p>
+
+  <p class="simpara">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fwrite.php" class="methodname">SplFileObject::fwrite()</a></span>'s parameter
+   <code class="parameter">$length</code> is now nullable.
+   The default value changed from <code class="literal">0</code> to <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong>.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="simpara">
+   Using a printf-family function with a formatter that did not specify the
+   precision previously incorrectly reset the precision instead of treating
+   it as a precision of 0.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.incompatible.tidy">
+  <h3 class="title">Tidy</h3>
+
+  <p class="simpara">
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/tidy.construct.php" class="methodname">tidy::__construct()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/tidy.parsefile.php" class="methodname">tidy::parseFile()</a></span>,
+   <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/tidy.parsestring.php" class="methodname">tidy::parseString()</a></span> now throws a
+   <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> if the configuration contains an
+   invalid value or attempts to set a read-only internal entry,
+   and a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.typeerror.php" class="exceptionname">TypeError</a></span> if a configuration key is not a
+   string.
+  </p>
+
+ </div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.incompatible.php" target="_blank">PHP 8.4</a></h1>
     </header>
@@ -271,7 +847,7 @@
    <h4 class="title">Gettext</h4>
 
    <p class="para">
-    <span class="simplelist"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.bind-textdomain-codeset.php" class="function">bind_textdomain_codeset()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.textdomain.php" class="function">textdomain()</a></span>, <span class="function"><strong>d()</strong><span class="replaceable">*</span><a target="_blank" href="https://www.php.net/manual/en/function.gettext.php" class="function">gettext()</a></span></span>
+    <span class="simplelist"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.bind-textdomain-codeset.php" class="function">bind_textdomain_codeset()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.textdomain.php" class="function">textdomain()</a></span>, <span class="function">d<span class="replaceable">*</span>gettext</span></span>
     now throw a <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> if
     <code class="parameter">domain</code> is the empty string.
    </p>
@@ -831,7 +1407,7 @@ nodeData: 3
   <h3 class="title">XML</h3>
 
   <p class="simpara">
-   The <span class="function"><strong>xml_set_()</strong><span class="replaceable">*</span><strong>_handler()</strong></span>
+   The <span class="function">xml_set_<span class="replaceable">*</span>_handler</span>
    functions now declare and check for an effective
    signature of <span class="type"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.callable.php" class="type callable">callable</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span>|<span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.null.php" class="type null">null</a></span></span> for the
    <code class="parameter">handler</code> parameters.
@@ -1203,7 +1779,7 @@ nodeData: 3
     <li><span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.fpassthru.php" class="methodname">SplFileObject::fpassthru()</a></span></li>
    </ul><p class="para">
    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/splfileobject.haschildren.php" class="methodname">SplFileObject::hasChildren()</a></span> now has a tentative
-   return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.value.php" class="type false">false</a></span>, previously it was <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
+   return type of <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.singleton.php" class="type false">false</a></span>, previously it was <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.php" class="type bool">bool</a></span>.
   </p>
 
   <p class="para">

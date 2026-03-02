@@ -4,29 +4,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title>New Global Constants in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</title>
+        <title>New Global Constants in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="author" content="Lito && Óscar Otero">
-        <meta name="title" content="New Global Constants in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta name="title" content="New Global Constants in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
 
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
-        <meta property="og:title" content="New Global Constants in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta property="og:title" content="New Global Constants in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
         <meta property="og:image" content="./images/social.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="https://eusonlito.github.io/php-changes-cheatsheet">
         <meta name="twitter:site" content="@lito_ordes">
         <meta name="twitter:creator" content="@lito_ordes">
-        <meta name="twitter:title" content="New Global Constants in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
+        <meta name="twitter:title" content="New Global Constants in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6">
         <meta name="twitter:image" content="./images/social.png">
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1744308666" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1744308666" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1772441402" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1772441402" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -40,11 +40,166 @@
     <body class="docs">
         <section class="info-wrapper">
     <nav id="head-nav" class="navbar">
-        <h1><a href="index.html"> New Global Constants in PHP 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</a></h1>
+        <h1><a href="index.html"> New Global Constants in PHP 8.5, 8.4, 8.3, 8.2, 8.1, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6</a></h1>
     </nav>
 
     <main class="info-main">
         <article id="layout-content" class="info-version">
+    <header class="info-version-header">
+        <h1><a href="https://www.php.net/manual/en/migration85.constants.php" target="_blank">PHP 8.5</a></h1>
+    </header>
+
+    <div id="migration85.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration85.constants.core">
+  <h3 class="title">Core</h3>
+
+  <ul class="simplelist"><li>
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-build-date">PHP_BUILD_DATE</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.php-build-provider">PHP_BUILD_PROVIDER</a></code></strong>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.curl">
+  <h3 class="title">cURL</h3>
+
+  <ul class="simplelist"><li>
+    <strong><code>CURLINFO_USED_PROXY</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLINFO_HTTPAUTH_USED</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLINFO_PROXYAUTH_USED</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLINFO_CONN_ID</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLINFO_QUEUE_TIME_T</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLOPT_INFILESIZE_LARGE</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLFOLLOW_ALL</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLFOLLOW_OBEYCODE</code></strong>
+   </li>
+   <li>
+    <strong><code>CURLFOLLOW_FIRSTONLY</code></strong>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.filter">
+  <h3 class="title">Filter</h3>
+
+  <ul class="simplelist"><li>
+    <strong><code>FILTER_THROW_ON_FAILURE</code></strong>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.intl">
+  <h3 class="title">Intl</h3>
+
+  <ul class="simplelist"><li>
+    <strong><code>DECIMAL_COMPACT_SHORT</code></strong>
+   </li>
+   <li>
+    <strong><code>DECIMAL_COMPACT_LONG</code></strong>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <ul class="simplelist"><li><strong><code>OPENSSL_PKCS1_PSS_PADDING</code></strong></li>
+   <li><strong><code>PKCS7_NOSMIMECAP</code></strong></li>
+   <li><strong><code>PKCS7_CRLFEOL</code></strong></li>
+   <li><strong><code>PKCS7_NOCRL</code></strong></li>
+   <li><strong><code>PKCS7_NO_DUAL_CONTENT</code></strong></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.posix">
+  <h3 class="title">POSIX</h3>
+
+  <ul class="simplelist"><li><strong><code>POSIX_SC_OPEN_MAX</code></strong></li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <ul class="simplelist"><li>
+    <strong><code>IPPROTO_ICMP</code></strong>
+   </li>
+   <li>
+    <strong><code>IPPROTO_ICMPV6</code></strong>
+   </li>
+   <li>
+    <strong><code>TCP_FUNCTION_BLK</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_FUNCTION_ALIAS</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_REUSPORT_LB_NUMA</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_REUSPORT_LB_NUMA_NODOM</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_REUSPORT_LB_NUMA_CURDOM</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_BBR_ALGORITHM</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>AF_PACKET</code></strong> (Linux only)
+   </li>
+   <li>
+    <strong><code>IP_BINDANY</code></strong> (FreeBSD/NetBSD/OpenBSD only)
+   </li>
+   <li>
+    <strong><code>SO_BUSY_POLL</code></strong> (Linux only)
+   </li>
+   <li>
+    <strong><code>UDP_SEGMENT</code></strong> (Linux only)
+   </li>
+   <li>
+    <strong><code>SHUT_RD</code></strong>
+   </li>
+   <li>
+    <strong><code>SHUT_WR</code></strong>
+   </li>
+   <li>
+    <strong><code>SHUT_RDWR</code></strong>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.tokenizer">
+  <h3 class="title">Tokenizer</h3>
+  <ul class="simplelist"><li>
+    <strong><code>T_VOID_CAST</code></strong>
+   </li>
+   <li>
+    <strong><code>T_PIPE</code></strong>
+   </li>
+  </ul></div>
+
+ <div class="sect2" id="migration85.constants.standard">
+  <h3 class="title">Standard</h3>
+
+  <ul class="simplelist"><li>
+    <strong><code>IMAGETYPE_SVG</code></strong>
+    when libxml is loaded.
+   </li>
+  </ul></div>
+
+</div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
         <h1><a href="https://www.php.net/manual/en/migration84.constants.php" target="_blank">PHP 8.4</a></h1>
     </header>
