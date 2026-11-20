@@ -61,23 +61,23 @@ class Dom
 
     /**
      * @param string $query
-     * @param \DOMElement $node = null
+     * @param \DOMElement|null $node
      *
      * @return \DOMNodeList
      */
-    public function query(string $query, DOMElement $node = null): DOMNodeList
+    public function query(string $query, ?DOMElement $node = null): DOMNodeList
     {
         return (new DOMXpath($this->dom))->query($query, $node);
     }
 
     /**
      * @param string $query
-     * @param \DOMElement $node = null
+     * @param \DOMElement|null $node
      * @param int $item = 0
      *
      * @return ?\DOMElement
      */
-    public function queryItem(string $query, DOMElement $node = null, int $item = 0): ?DOMElement
+    public function queryItem(string $query, ?DOMElement $node = null, int $item = 0): ?DOMElement
     {
         return $this->query($query, $node)->item($item);
     }

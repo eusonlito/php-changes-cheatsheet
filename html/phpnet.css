@@ -610,38 +610,6 @@ pre.info {
 #results_nav_list li.current {
     font-weight: bolder;
 }
-/* Footer styling */
-
-body > footer {
-  clear: both;
-  overflow: auto;
-  line-height:3rem;
-}
-body > footer .footer-content {
-  margin: 1.5rem auto 0 ;
-  padding:0 1.5rem;
-  -moz-box-sizing:border-box;
-  box-sizing:border-box;
-}
-
-body > footer ul {
-    margin:0;
-    padding:0;
-}
-
-body > footer .footmenu li {
-  display: inline-block;
-  margin:0 0.75rem;
-}
-body > footer a {
-  display:inline-block;
-  border-bottom:0;
-}
-body > footer a:hover,
-body > footer a:focus {
-    color:var(--light-magenta-color);
-}
-
 /* {{{ ElePHPants photo stream */
 
 div.elephpants {
@@ -783,19 +751,49 @@ fieldset {
 .content-header .changelog {
     color:#369;
 }
-.content-box .md5sum, .content-box .sha256 {
+.content-box .sha256,
+.downloads .sha256,
+.downloads .sbom {
     display: block;
     font: normal 0.875rem/1.5rem "Fira Mono", "Source Code Pro", monospace;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.content-box .md5sum:before {
-    content: "md5: ";
-    font-family: var(--font-family-sans-serif);
-}
-.content-box .sha256:before {
+.content-box .sha256:before,
+.downloads .sha256:before {
     content: "sha256: ";
     font-family: var(--font-family-sans-serif);
+}
+.content-box .sha256-row,
+.downloads .sha256-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.content-box .sha256-row .sha256,
+.downloads .sha256-row .sha256 {
+    min-width: 0;
+}
+.content-box .sha256-copy,
+.downloads .sha256-copy {
+    border: 1px solid var(--dark-blue-color);
+    border-radius: 30px;
+    background-color: var(--dark-blue-color);
+    color: #fff;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    cursor: pointer;
+    min-width: 4.25rem;
+    text-align: center;
+    white-space: nowrap;
+}
+.content-box .sha256-copy:hover,
+.content-box .sha256-copy:focus,
+.downloads .sha256-copy:hover,
+.downloads .sha256-copy:focus {
+    border-color: var(--dark-magenta-color);
+    background-color: var(--dark-magenta-color);
 }
 .content-box .releasedate {
     float: right;
@@ -973,7 +971,6 @@ div.tip p:first-child {
 .docs .qandaentry dt .phpcode * {
     font-weight: normal;
 }
-
 /* }}} */
 
 
@@ -992,15 +989,20 @@ div.tip p:first-child {
     width: 100%;
     margin:0 0 1.5rem;
 }
+
 .doctable thead tr,
 .segmentedlist thead tr {
     border:1px solid;
 }
+
 .doctable tr,
 .segmentedlist tr {
     border:1px solid;
 }
 
+.doctable caption {
+  line-height: 2rem;
+}
 /* }}} */
 
 /* {{{ lists */
@@ -1222,8 +1224,7 @@ div.soft-deprecation-notice blockquote.sidebar {
   #breadcrumbs-inner,
   #goto div,
   #trick div,
-  #layout,
-  body > footer .footer-content {
+  #layout {
     width:1170px;
   }
 }
@@ -1233,8 +1234,7 @@ div.soft-deprecation-notice blockquote.sidebar {
   #breadcrumbs-inner,
   #goto div,
   #trick div,
-  #layout,
-  body > footer .footer-content {
+  #layout {
     width:1440px;
   }
 }
@@ -1307,29 +1307,95 @@ div.soft-deprecation-notice blockquote.sidebar {
 
 #goto {
   display: none;
-  background-color: var(--dark-grey-color);
-  height: 100%;
-  width: 100%;
-  opacity: 0.9;
   position: fixed;
-  top: 64px;
+  inset: 0;
   z-index: 5000;
   color: #E6E6E6;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 0 1rem 1rem;
+  background-color: rgba(0, 0, 0, 0.65);
 }
-#goto .search .results {
-  text-shadow: 0 2px 3px #555;
-  font-size: 2rem;
-  line-height: 1;
+#goto div {
+  width: auto;
 }
-#goto .search .results :focus {
-  font-size: 2rem;
-  line-height: 1.2;
+#goto .search {
+  width: min(100%, 52rem);
+  margin: 0 auto;
+  padding: 0.625rem clamp(1rem, 3vw, 1.75rem) 1rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  background-color: var(--dark-grey-color);
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.35);
 }
 #goto .search .text {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
   color: #222;
-  text-shadow: 0 2px 3px #555;
-  font-size: 10rem;
-  line-height: .7;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+#goto .search .text::placeholder {
+  color: #777;
+  opacity: 1;
+}
+#goto .search .text:focus {
+  outline: none;
+  box-shadow: none;
+}
+#goto .search .results {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+#goto .search .results ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#goto .search .results ul:empty::before {
+  content: "No matching pages found";
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+#goto .search .text:placeholder-shown ~ .results ul:empty::before {
+  content: none;
+}
+#goto .search .results li + li {
+  margin-top: 0.25rem;
+}
+#goto .search .results a {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  overflow-wrap: anywhere;
+  color: #E6E6E6;
+  text-decoration: none;
+  border-bottom: 0;
+  border-radius: 0.5rem;
+}
+#goto .search .results a:hover,
+#goto .search .results a:focus {
+  color: #fff;
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: -2px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+@media (min-width: 992px) {
+  #goto {
+    padding-top: 1rem;
+  }
+
+  #goto .search {
+    padding-top: 1.125rem;
+  }
 }
 #trick {
     display: none;
@@ -1337,7 +1403,10 @@ div.soft-deprecation-notice blockquote.sidebar {
     height: 100%;
     width: 100%;
     position: fixed;
-    top: 64px;
+    top: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     z-index: 5000;
 }
 #goto div,
@@ -1350,6 +1419,14 @@ div.soft-deprecation-notice blockquote.sidebar {
 #trick dl {
     display: inline-block;
     vertical-align: top;
+}
+#trick dt {
+    margin: .5rem 0 .25rem;
+    line-height: 1.4;
+}
+#trick dd {
+    margin: 0 0 .75rem 1rem;
+    line-height: 1.6;
 }
 #trick a {
     color: #E6E6E6;
@@ -1487,6 +1564,11 @@ td {
     display: block;
   }
 
+  /* Prevent table titles from breaking into multiple lines */
+  table caption {
+    display: inline;
+  }
+
   /* Hide the table headers */
   thead tr {
     position: absolute;
@@ -1503,6 +1585,7 @@ td {
     border-bottom: 1px solid #eee;
     position: relative;
   }
+
   td:before {
     left: -.50rem;
     top: -0.3rem;
@@ -1988,7 +2071,7 @@ div.warning a:focus {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 5001;
 
   justify-content: center;
 
@@ -2525,7 +2608,7 @@ div.elephpants img:focus {
 .headsup {
   position: relative;
   padding:.25rem 0;
-  height:1.5rem;
+  height: auto;
   box-shadow: 0 2px 4px 0px rgba(0,0,0,.2);
   background-color: var(--dark-magenta-color);
   color:#fff;

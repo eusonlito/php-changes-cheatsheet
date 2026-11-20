@@ -2,7 +2,8 @@
 
 ## Build Requirements:
 
-- PHP 7.4
+- PHP 7.4 or later with the DOM and mbstring extensions
+- Enable the PHP cURL extension to download up to 8 migration pages at once with `php command Cache` or `php command All`. Without cURL, the pages download sequentially.
 
 ## Installation:
 
