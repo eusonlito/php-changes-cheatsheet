@@ -31,11 +31,8 @@ class Dom
      */
     protected function encode(string $html): string
     {
-        $html = htmlentities($html, ENT_COMPAT, 'UTF-8', false);
-        $html = mb_convert_encoding($html, 'UTF-8', mb_list_encodings());
-        $html = htmlspecialchars_decode($html);
-
-        return $html;
+        // Tell the legacy HTML parser about UTF-8 without decoding escaped PHP examples.
+        return mb_encode_numericentity($html, [0x80, 0x10ffff, 0, 0xffffff], 'UTF-8');
     }
 
     /**

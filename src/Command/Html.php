@@ -11,23 +11,31 @@ class Html extends CommandAbstract
      */
     public function handle(): void
     {
-        $this->clean();
         $this->create();
+        $groups = $this->groups();
 
-        foreach ($this->groups() as $name) {
+        foreach ($groups as $name) {
             $this->group($name);
         }
 
         $this->index();
         $this->all();
+        $this->fileWrite($this->path('.nojekyll'), '');
+        $this->clean(array_merge($groups, ['index', 'all']));
     }
 
     /**
      * @return void
      */
-    protected function clean(): void
+    protected function clean(array $pages): void
     {
-        DirectoryFilesystem::rmdir($this->path(), '*.html');
+        foreach (['*.html', '*.md'] as $pattern) {
+            foreach (DirectoryFilesystem::files($this->path(), $pattern) as $file) {
+                if (!in_array(pathinfo($file, PATHINFO_FILENAME), $pages, true)) {
+                    unlink($file);
+                }
+            }
+        }
     }
 
     /**
@@ -69,7 +77,7 @@ class Html extends CommandAbstract
      */
     protected function groups(): array
     {
-        return array_map(fn ($file) => $this->fileCode($file), DirectoryFilesystem::files(static::PATH_CACHE_CHUNK));
+        return array_unique(array_map(fn ($file) => $this->fileCode($file), DirectoryFilesystem::files(static::PATH_CACHE_CHUNK)));
     }
 
     /**

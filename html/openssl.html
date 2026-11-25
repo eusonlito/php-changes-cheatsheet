@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="OpenSSL changes in PHP 5.6">
 
+        <link rel="alternate" type="text/markdown" href="openssl.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="OpenSSL changes in PHP 5.6">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598825" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598825" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -110,7 +112,7 @@
   <p class="para">
    The default ciphers used by PHP have been updated to a more secure list
    based on the
-   <a target="_blank" href="https://www.php.net/manual/en/https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Ciphersuite" class="link external">» Mozilla cipher recommendations</a>,
+   <a target="_blank" href="https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Ciphersuite" class="link external">» Mozilla cipher recommendations</a>,
    with two additional exclusions: anonymous Diffie-Hellman ciphers, and RC4.
   </p>
 
@@ -158,14 +160,15 @@
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [
     </span><span style="color: #DD0000">'capture_session_meta' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">TRUE
 </span><span style="color: #007700">]]);
  
 </span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://google.com/'</span><span style="color: #007700">, </span><span style="color: #0000BB">FALSE</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);
 </span><span style="color: #0000BB">$meta </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_get_options</span><span style="color: #007700">(</span><span style="color: #0000BB">$ctx</span><span style="color: #007700">)[</span><span style="color: #DD0000">'ssl'</span><span style="color: #007700">][</span><span style="color: #DD0000">'session_meta'</span><span style="color: #007700">];
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$meta</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -290,7 +293,9 @@ array(4) {
     <td class="seg"><code class="literal">sslv3://</code></td>
    </tr></tbody></table><div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Requiring TLS 1.0 or better when using file_get_contents():
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #FF8000">// Requiring TLS 1.0 or better when using file_get_contents():
 </span><span style="color: #0000BB">$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([
     </span><span style="color: #DD0000">'ssl' </span><span style="color: #007700">=&gt; [
         </span><span style="color: #DD0000">'crypto_method' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_TLS_CLIENT</span><span style="color: #007700">,
@@ -310,7 +315,7 @@ array(4) {
 </span><span style="color: #FF8000">// Connecting using the tlsv1.2:// stream socket transport.
 </span><span style="color: #0000BB">$sock </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">'tlsv1.2://google.com:443/'</span><span style="color: #007700">);
 
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -327,8 +332,9 @@ array(4) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_get_cert_locations</span><span style="color: #007700">());
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_get_cert_locations</span><span style="color: #007700">());
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -379,11 +385,12 @@ array(8) {
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
 </span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);
 
 </span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       <p class="simpara">The above example will output:</p>
@@ -405,12 +412,13 @@ SPKAC=MIIBXjCByDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA3L0IfUijj7+A8CPC8EmhcdNoe5
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
 </span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);
 
 </span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">openssl_spki_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">));
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      </div>
@@ -426,13 +434,14 @@ SPKAC=MIIBXjCByDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA3L0IfUijj7+A8CPC8EmhcdNoe5
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
 </span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);
 
 </span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);
 </span><span style="color: #0000BB">$challenge </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_export_challenge</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">);
 echo </span><span style="color: #0000BB">$challenge</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       <p class="simpara">The above example will output:</p>
@@ -454,12 +463,13 @@ challenge string
 
      <div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$pkey </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">();
 </span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret passphrase'</span><span style="color: #007700">);
 
 </span><span style="color: #0000BB">$spkac </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">, </span><span style="color: #DD0000">'challenge string'</span><span style="color: #007700">);
 echo </span><span style="color: #0000BB">openssl_spki_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       <p class="simpara">The above example will output:</p>

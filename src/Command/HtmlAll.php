@@ -3,10 +3,9 @@
 namespace App\Command;
 
 use DOMElement;
-use App\Console\Message as MessageConsole;
+use App\View\Page;
 use App\Filesystem\Directory as DirectoryFilesystem;
 use App\Html\Dom as DomHtml;
-use App\View\Template as TemplateView;
 
 class HtmlAll extends CommandAbstract
 {
@@ -17,7 +16,7 @@ class HtmlAll extends CommandAbstract
      */
     public function handle(): void
     {
-        $this->store($this->html());
+        Page::write($this->path('all'), 'PHP changes cheatsheet', $this->html());
     }
 
     /**
@@ -62,7 +61,7 @@ class HtmlAll extends CommandAbstract
             $html .= $this->htmlNode($dom, $node);
         }
 
-        return $this->htmlLayout($html);
+        return $html;
     }
 
     /**
@@ -82,33 +81,5 @@ class HtmlAll extends CommandAbstract
         $dom = $this->dom($this->path($link));
 
         return $dom->toHtml($dom->queryItem('//section[@class="info-wrapper"]'));
-    }
-
-    /**
-     * @param string $html
-     *
-     * @return string
-     */
-    protected function htmlLayout(string $html): string
-    {
-        return TemplateView::get('layout', [
-            'class' => 'docs',
-            'title' => 'PHP changes cheatsheet',
-            'content' => $html
-        ]);
-    }
-
-    /**
-     * @param string $html
-     *
-     * @return void
-     */
-    protected function store(string $html): void
-    {
-        $target = $this->path('all').'.html';
-
-        MessageConsole::echo(sprintf("Generating <color:green>%s</color> HTML page\n", $this->removePathBase($target)));
-
-        $this->fileWrite($target, $html);
     }
 }

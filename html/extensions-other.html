@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="Other changes to extensions in PHP 5.5, 5.4, 5.3">
 
+        <link rel="alternate" type="text/markdown" href="extensions-other.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="Other changes to extensions in PHP 5.5, 5.4, 5.3">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598824" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598824" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -52,23 +54,23 @@
     <main class="info-main">
         <article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration55.extensions-other.php" target="_blank">PHP 5.5</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration55.extensions-other.php" target="_blank">PHP 5.5</a></h1>
     </header>
 
     <div id="migration55.extensions-other" class="sect1">
   <h2 class="title">Other changes to extensions</h2>
 
   <div class="sect2" id="migration55.extensions-other.intl">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">Intl</a></h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.intl.html" class="link">Intl</a></h3>
 
    <p class="para">
-    The <a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">intl</a> extension now requires ICU 4.0
+    The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.intl.html" class="link">intl</a> extension now requires ICU 4.0
     or later.
    </p>
   </div>
  </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration54.extensions-other.php" target="_blank">PHP 5.4</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration54.extensions-other.php" target="_blank">PHP 5.4</a></h1>
     </header>
 
     <div id="migration54.extensions-other" class="section">
@@ -78,33 +80,33 @@
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">mysqli</a>
-     - <a target="_blank" href="https://www.php.net/manual/en/class.mysqli-result.html" class="classname">mysqli_result</a> now implements <a target="_blank" href="https://www.php.net/manual/en/class.traversable.html" class="link">Traversable</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysqli.html" class="link">mysqli</a>
+     - <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/class.mysqli-result.html" class="classname">mysqli_result</a> now implements <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/class.traversable.html" class="link">Traversable</a>
     </span>
    </li>
   </ul><ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.html" class="link">pdo_mysql</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ref.pdo-mysql.html" class="link">pdo_mysql</a>
      - Removed support for linking with MySQL client libraries older than 4.1
     </span>
    </li>
   </ul><ul class="itemizedlist"><li class="listitem">
   <span class="simpara">
-   The MySQL extensions <a target="_blank" href="https://www.php.net/manual/en/book.mysql.html" class="link">mysql</a>,
-   <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">mysqli</a> and <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.html" class="link">PDO_mysql</a>
-   use <a target="_blank" href="https://www.php.net/manual/en/book.mysqlnd.html" class="link">mysqlnd</a> as the default library now. It is still possible to use
+   The MySQL extensions <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysql.html" class="link">mysql</a>,
+   <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysqli.html" class="link">mysqli</a> and <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ref.pdo-mysql.html" class="link">PDO_mysql</a>
+   use <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysqlnd.html" class="link">mysqlnd</a> as the default library now. It is still possible to use
    libmysqlclient by specifying a path to the configure options.
     </span>
   </li>
   </ul><ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.mysqlnd.html" class="link">mysqlnd</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysqlnd.html" class="link">mysqlnd</a>
      - Added named pipes support
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration53.extensions-other.php" target="_blank">PHP 5.3</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration53.extensions-other.php" target="_blank">PHP 5.3</a></h1>
     </header>
 
     <div id="migration53.extensions-other" class="section">
@@ -115,17 +117,17 @@
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.pcre.html" class="link">PCRE</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.pcre.html" class="link">PCRE</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.reflection.html" class="link">Reflection</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.reflection.html" class="link">Reflection</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.spl.html" class="link">SPL</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.spl.html" class="link">SPL</a>
     </span>
    </li>
   </ul><p class="simpara">
@@ -133,44 +135,44 @@
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">Date and Time</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.datetime.html" class="link">Date and Time</a>
      - The TZ environment variable is no longer used to guess the timezone
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.curl.html" class="link">cURL</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.curl.html" class="link">cURL</a>
      - cURL now supports SSH
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.network.html" class="link">Network</a>
-     - <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dns-check-record.html" class="function">dns_check_record()</a></span> now returns an extra "entries"
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.network.html" class="link">Network</a>
+     - <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.dns-check-record.html" class="function">dns_check_record()</a></span> now returns an extra "entries"
      index, containing the TXT elements.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">Hash</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.hash.html" class="link">Hash</a>
      - The SHA-224 and salsa hash algorithms are now supported.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.mbstring.html" class="link">mbstring</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mbstring.html" class="link">mbstring</a>
      - Now supports CP850 encoding.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.oci8.html" class="link">OCI8</a>
-     - A call to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-close.html" class="function">oci_close()</a></span> on a persistent connection, or a
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.oci8.html" class="link">OCI8</a>
+     - A call to <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.oci-close.html" class="function">oci_close()</a></span> on a persistent connection, or a
      variable referencing a persistent connection going out of scope, will now
      roll back any uncommitted transaction. To avoid unexpected behavior,
      explicitly issue a commit or roll back as needed. The old behavior can be
      enabled with the INI directive
-     <a target="_blank" href="https://www.php.net/manual/en/oci8.configuration.html#ini.oci8.old-oci-close-semantics" class="link">oci8.old_oci_close_semantics</a>.
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/oci8.configuration.html#ini.oci8.old-oci-close-semantics" class="link">oci8.old_oci_close_semantics</a>.
     </span>
     <span class="simpara">
      Database Resident Connection Pooling (DRCP) and Fast Application 
@@ -180,43 +182,43 @@
      Oracle External Authentication is now supported (except on Windows).
     </span>
     <span class="simpara">
-     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.oci-bind-by-name.html" class="function">oci_bind_by_name()</a></span> function now supports SQLT_AFC
+     The <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.oci-bind-by-name.html" class="function">oci_bind_by_name()</a></span> function now supports SQLT_AFC
      (aka the CHAR datatype).
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.openssl.html" class="link">OpenSSL</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.openssl.html" class="link">OpenSSL</a>
      - OpenSSL digest and cipher functions are now supported. It is also 
      now possible to access the internal values of DSA, RSA and DH keys.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.session.html" class="link">Session</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.session.html" class="link">Session</a>
      - Sessions will no longer store session-files in <code class="literal">"/tmp"</code>
-     when <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.open-basedir" class="link">open_basedir</a> restrictions
+     when <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.open-basedir" class="link">open_basedir</a> restrictions
      apply, unless <code class="literal">"/tmp"</code> is explicitly added to the list of
      allowed paths.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.soap.html" class="link">SOAP</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.soap.html" class="link">SOAP</a>
      Now supports sending user supplied HTTP headers.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">MySQLi</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysqli.html" class="link">MySQLi</a>
      Now supports persistent connections, by prepending the hostname with 
      <code class="literal">"p:"</code>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/book.image.html" class="link">Image Processing and GD</a>
-     The "JPG Support" index returned from <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.gd-info.html" class="function">gd_info()</a></span> has
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.image.html" class="link">Image Processing and GD</a>
+     The "JPG Support" index returned from <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.gd-info.html" class="function">gd_info()</a></span> has
      been renamed to "JPEG Support".
     </span>
    </li>

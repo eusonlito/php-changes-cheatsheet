@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="Other Changes in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
 
+        <link rel="alternate" type="text/markdown" href="other-changes.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="Other Changes in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598825" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598825" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -703,7 +705,7 @@
 
    <p class="simpara">
     FPM with httpd
-    <a target="_blank" href="https://www.php.net/manual/en/https://httpd.apache.org/docs/current/mod/mod_proxy.html#proxypass" class="link external">» <code class="literal">ProxyPass</code></a>
+    <a target="_blank" href="https://httpd.apache.org/docs/current/mod/mod_proxy.html#proxypass" class="link external">» <code class="literal">ProxyPass</code></a>
     can optionally decode the full script path as of PHP 8.5.0.
     The new <a target="_blank" href="https://www.php.net/manual/en/install.fpm.configuration.php#ini.fastcgi.script-path-encoded" class="link">fastcgi.script_path_encoded</a>
     <code class="literal">INI</code> setting controls this behavior; it defaults to <code class="literal">1</code> to preserve
@@ -2106,9 +2108,9 @@
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.highlight-file.php" class="function">highlight_file()</a></span> has changed.
     Whitespace between outer HTML tags is removed. Newlines and spaces
     are no longer converted to HTML entities. The whole HTML is now wrapped in a
-    <code class="literal"><pre></pre></code> tag. The outer <code class="literal"><span></span></code>
-    tag has been merged with the <code class="literal"><code></code> tag.
-   </code></p>
+    <code class="literal">&lt;pre&gt;</code> tag. The outer <code class="literal">&lt;span&gt;</code>
+    tag has been merged with the <code class="literal">&lt;code&gt;</code> tag.
+   </p>
 
   </div>
 
@@ -4184,7 +4186,7 @@
   <h3 class="title">Tidy</h3>
 
   <p class="para">
-   Building against <a target="_blank" href="https://www.php.net/manual/en/https://github.com/petdance/tidyp" class="link external">» tidyp</a> is now also
+   Building against <a target="_blank" href="https://github.com/petdance/tidyp" class="link external">» tidyp</a> is now also
    supported transparently. Since tidyp offers no API to get the release date,
    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/tidy.getrelease.php" class="function">tidy_get_release()</a></span> and <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/tidy.getrelease.php" class="methodname">tidy::getRelease()</a></span>
    return <code class="literal">'unknown'</code> in this case.
@@ -4349,7 +4351,8 @@
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #DD0000">'1b' </span><span style="color: #007700">+ </span><span style="color: #DD0000">'something'</span><span style="color: #007700">;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #DD0000">'1b' </span><span style="color: #007700">+ </span><span style="color: #DD0000">'something'</span><span style="color: #007700">;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4373,7 +4376,8 @@ Warning: A non-numeric value encountered in %s on line %d
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"\500"</span><span style="color: #007700">);</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"\500"</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4525,9 +4529,10 @@ string(1) "@"
   </p>
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// 'new', 'private', and 'for' were previously unusable
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// 'new', 'private', and 'for' were previously unusable
 </span><span style="color: #0000BB">Project</span><span style="color: #007700">::new(</span><span style="color: #DD0000">'Project Name'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">for</span><span style="color: #007700">(</span><span style="color: #DD0000">'purpose here'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">with</span><span style="color: #007700">(</span><span style="color: #DD0000">'username here'</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>

@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="Deprecated Features in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
+        <link rel="alternate" type="text/markdown" href="deprecated.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="Deprecated Features in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598824" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598824" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -96,14 +98,15 @@
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">getConfig</span><span style="color: #007700">(): array
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">getConfig</span><span style="color: #007700">(): array
 {
     try {
         return </span><span style="color: #0000BB">loadConfig</span><span style="color: #007700">(); </span><span style="color: #FF8000">// throws if the file is missing
     </span><span style="color: #007700">} finally {
         return []; </span><span style="color: #FF8000">// Deprecated: the exception is gone, the caller just gets []
     </span><span style="color: #007700">}
-}</span></span></code></pre></div>
+}</span></code></pre></div>
     </div>
 
    </div>
@@ -1128,21 +1131,24 @@
     The following code:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></code></pre></div>
      </div>
 
     </div>
     should be converted to:
     <div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1</span><span style="color: #007700">|</span><span style="color: #0000BB">null $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1</span><span style="color: #007700">|</span><span style="color: #0000BB">null $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></code></pre></div>
      </div>
 
     </div>
     or
     <div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(?</span><span style="color: #0000BB">T1 $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(?</span><span style="color: #0000BB">T1 $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}</span></code></pre></div>
      </div>
 
     </div>
@@ -1153,21 +1159,24 @@
     parameter:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, </span><span style="color: #0000BB">T2 $b </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, </span><span style="color: #0000BB">T2 $b </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></code></pre></div>
      </div>
 
     </div>
     It must be converted to:
     <div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, </span><span style="color: #0000BB">T2</span><span style="color: #007700">|</span><span style="color: #0000BB">null $b</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, </span><span style="color: #0000BB">T2</span><span style="color: #007700">|</span><span style="color: #0000BB">null $b</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></code></pre></div>
      </div>
 
     </div>
     or
     <div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, ?</span><span style="color: #0000BB">T2 $b</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">T1 $a</span><span style="color: #007700">, ?</span><span style="color: #0000BB">T2 $b</span><span style="color: #007700">, </span><span style="color: #0000BB">T3 $c</span><span style="color: #007700">) {}</span></code></pre></div>
      </div>
 
     </div>
@@ -1210,7 +1219,8 @@
     Naming a class <code class="literal">_</code> is now deprecated:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">_ </span><span style="color: #007700">{}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">_ </span><span style="color: #007700">{}</span></code></pre></div>
      </div>
 
     </div>
@@ -1222,7 +1232,8 @@
      deprecated:
      </p><div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">_MyClass </span><span style="color: #007700">{}</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">_MyClass </span><span style="color: #007700">{}</span></code></pre></div>
       </div>
 
      </div>
@@ -1865,10 +1876,11 @@
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">));
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">));
 </span><span style="color: #FF8000">// Deprecated: Passing null to parameter #2 ($needle) of type string
 //             is deprecated
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -1886,10 +1898,11 @@
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $a </span><span style="color: #007700">= [];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$a </span><span style="color: #007700">= [];
 </span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">15.5</span><span style="color: #007700">]; </span><span style="color: #FF8000">// deprecated, as key value loses the 0.5 component
 </span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">15.0</span><span style="color: #007700">]; </span><span style="color: #FF8000">// ok, as 15.0 == 15
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -1921,8 +1934,9 @@
    <p class="para">
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">test</span><span style="color: #007700">(): </span><span style="color: #0000BB">void </span><span style="color: #007700">{}
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">test</span><span style="color: #007700">(): </span><span style="color: #0000BB">void </span><span style="color: #007700">{}
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -1942,9 +1956,10 @@
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $arr </span><span style="color: #007700">= </span><span style="color: #0000BB">false</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$arr </span><span style="color: #007700">= </span><span style="color: #0000BB">false</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -1954,13 +1969,14 @@
      Autovivification from <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.null">null</a></code></strong> and undefined values is still allowed:
      </p><div class="informalexample">
       <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// From undefined
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// From undefined
 </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #DD0000">'some value'</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'doesNotExist'</span><span style="color: #007700">][] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;
 </span><span style="color: #FF8000">// From null
 </span><span style="color: #0000BB">$arr </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[] = </span><span style="color: #0000BB">2</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      </div>
@@ -2190,9 +2206,10 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">= [], </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Before
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">= [], </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Before
 </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {}      </span><span style="color: #FF8000">// After
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -2203,9 +2220,10 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">A $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Still allowed
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">A $a </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {} </span><span style="color: #FF8000">// Still allowed
 </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">A $a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {}       </span><span style="color: #FF8000">// Recommended
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -2322,11 +2340,12 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Replace
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Replace
 </span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">, fn(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$a </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// With
 </span><span style="color: #0000BB">usort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">, fn(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$a </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
  
     
@@ -2350,7 +2369,8 @@
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// iterate using the procedural API
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// iterate using the procedural API
 </span><span style="color: #0000BB">assert</span><span style="color: #007700">(</span><span style="color: #0000BB">is_resource</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">));
 while (</span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">zip_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">)) {
     echo </span><span style="color: #0000BB">zip_entry_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$entry</span><span style="color: #007700">);
@@ -2361,7 +2381,7 @@ while (</span><span style="color: #0000BB">$entry </span><span style="color: #00
 for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">statIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">); </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {
     echo </span><span style="color: #0000BB">$entry</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">];
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -2410,10 +2430,11 @@ for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">
     in the expected behaviour in most cases.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php 1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">;   </span><span style="color: #FF8000">// deprecated
 </span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: </span><span style="color: #0000BB">3</span><span style="color: #007700">) ? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">; </span><span style="color: #FF8000">// ok
 </span><span style="color: #0000BB">1 </span><span style="color: #007700">? </span><span style="color: #0000BB">2 </span><span style="color: #007700">: (</span><span style="color: #0000BB">3 </span><span style="color: #007700">? </span><span style="color: #0000BB">4 </span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// ok
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2632,12 +2653,13 @@ for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">
    convert it to string instead:
    </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// ReflectionClass::export(Foo::class, false) is:
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// ReflectionClass::export(Foo::class, false) is:
 </span><span style="color: #007700">echo new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
 
 </span><span style="color: #FF8000">// $str = ReflectionClass::export(Foo::class, true) is:
 </span><span style="color: #0000BB">$str </span><span style="color: #007700">= (string) new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2846,12 +2868,14 @@ for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">NONEXISTENT</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">NONEXISTENT</span><span style="color: #007700">);
 
 </span><span style="color: #FF8000">/* Output:
 Warning: Use of undefined constant NONEXISTENT - assumed 'NONEXISTENT' (this will throw an Error in a future version of PHP) in %s on line %d
 string(11) "NONEXISTENT"
-*/</span></span></code></pre></div>
+*/</span></code></pre></div>
    </div>
 
   </div>
@@ -3050,12 +3074,13 @@ string(11) "NONEXISTENT"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{
     function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {
         echo </span><span style="color: #DD0000">'I am the constructor'</span><span style="color: #007700">;
     }
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -3078,14 +3103,15 @@ Deprecated: Methods with the same name as their class will not be constructors i
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{
     function </span><span style="color: #0000BB">bar</span><span style="color: #007700">() {
         echo </span><span style="color: #DD0000">'I am not static!'</span><span style="color: #007700">;
     }
 }
 
 </span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">bar</span><span style="color: #007700">();
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -3156,7 +3182,8 @@ I am not static!
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
     function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">); }
 }
 
@@ -3165,7 +3192,7 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
 }
 
 (new </span><span style="color: #0000BB">B</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">f</span><span style="color: #007700">();
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -3240,47 +3267,47 @@ B
   </ul></div>
 </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration55.deprecated.php" target="_blank">PHP 5.5</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration55.deprecated.php" target="_blank">PHP 5.5</a></h1>
     </header>
 
     <div id="migration55.deprecated" class="sect1">
   <h2 class="title">Deprecated features in PHP 5.5.x</h2>
 
   <div class="sect2" id="migration55.deprecated.mysql">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mysql.html" class="link">ext/mysql</a> deprecation</h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysql.html" class="link">ext/mysql</a> deprecation</h3>
 
    <p class="para">
-    The <a target="_blank" href="https://www.php.net/manual/en/book.mysql.html" class="link">original MySQL extension</a> is now
+    The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysql.html" class="link">original MySQL extension</a> is now
     deprecated, and will generate <strong><code>E_DEPRECATED</code></strong> errors
     when connecting to a database. Instead, use the
-    <a target="_blank" href="https://www.php.net/manual/en/book.mysqli.html" class="link">MySQLi</a> or
-    <a target="_blank" href="https://www.php.net/manual/en/ref.pdo-mysql.html" class="link">PDO_MySQL</a> extensions.
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mysqli.html" class="link">MySQLi</a> or
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ref.pdo-mysql.html" class="link">PDO_MySQL</a> extensions.
    </p>
   </div>
 
   <div class="sect2" id="migration55.deprecated.preg-replace-e">
-   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace.html" class="function">preg_replace()</a></span> <code class="literal">/e</code> modifier</h3>
+   <h3 class="title"><span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-replace.html" class="function">preg_replace()</a></span> <code class="literal">/e</code> modifier</h3>
 
    <p class="para">
-    The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace.html" class="function">preg_replace()</a></span> <code class="literal">/e</code> modifier is
+    The <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-replace.html" class="function">preg_replace()</a></span> <code class="literal">/e</code> modifier is
     now deprecated. Instead, use the
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> function.
+    <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> function.
    </p>
   </div>
 
   <div class="sect2" id="migration55.deprecated.intl">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.intl.html" class="link">intl</a> deprecations</h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.intl.html" class="link">intl</a> deprecations</h3>
 
    <p class="para">
-    <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezoneid.html" class="methodname">IntlDateFormatter::setTimeZoneID()</a></span> and
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezoneid.html" class="function">datefmt_set_timezone_id()</a></span> are now deprecated. Instead,
-    use the <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.html" class="methodname">IntlDateFormatter::setTimeZone()</a></span> method and
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/intldateformatter.settimezone.html" class="function">datefmt_set_timezone()</a></span> function, respectively.
+    <span class="methodname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/intldateformatter.settimezoneid.html" class="methodname">IntlDateFormatter::setTimeZoneID()</a></span> and
+    <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/intldateformatter.settimezoneid.html" class="function">datefmt_set_timezone_id()</a></span> are now deprecated. Instead,
+    use the <span class="methodname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/intldateformatter.settimezone.html" class="methodname">IntlDateFormatter::setTimeZone()</a></span> method and
+    <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/intldateformatter.settimezone.html" class="function">datefmt_set_timezone()</a></span> function, respectively.
    </p>
   </div>
 
   <div class="sect2" id="migration55.deprecated.mcrypt">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.mcrypt.html" class="link">mcrypt</a> deprecations</h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.mcrypt.html" class="link">mcrypt</a> deprecations</h3>
 
    <p class="simpara">
     The following functions have been deprecated:
@@ -3288,28 +3315,28 @@ B
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-cbc.html" class="function">mcrypt_cbc()</a></span>
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mcrypt-cbc.html" class="function">mcrypt_cbc()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-cfb.html" class="function">mcrypt_cfb()</a></span>
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mcrypt-cfb.html" class="function">mcrypt_cfb()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-ecb.html" class="function">mcrypt_ecb()</a></span>
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mcrypt-ecb.html" class="function">mcrypt_ecb()</a></span>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-ofb.html" class="function">mcrypt_ofb()</a></span>
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mcrypt-ofb.html" class="function">mcrypt_ofb()</a></span>
      </span>
     </li>
    </ul></div>
  </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration54.deprecated.php" target="_blank">PHP 5.4</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration54.deprecated.php" target="_blank">PHP 5.4</a></h1>
     </header>
 
     <div id="migration54.deprecated" class="section">
@@ -3319,12 +3346,12 @@ B
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-list-dbs.html" class="function">mysql_list_dbs()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysql-list-dbs.html" class="function">mysql_list_dbs()</a></span>
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration53.deprecated.php" target="_blank">PHP 5.3</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration53.deprecated.php" target="_blank">PHP 5.3</a></h1>
     </header>
 
     <div id="migration53.deprecated" class="section">
@@ -3346,37 +3373,37 @@ B
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/network.configuration.html#ini.define-syslog-variables" class="link">define_syslog_variables</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/network.configuration.html#ini.define-syslog-variables" class="link">define_syslog_variables</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-globals" class="link">register_globals</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.register-globals" class="link">register_globals</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a>
     </span>
    </li>
    <li class="listitem">
@@ -3389,111 +3416,111 @@ B
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-method.html" class="function">call_user_method()</a></span> (use
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func.html" class="function">call_user_func()</a></span> instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.call-user-method.html" class="function">call_user_method()</a></span> (use
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.call-user-func.html" class="function">call_user_func()</a></span> instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-method-array.html" class="function">call_user_method_array()</a></span> (use
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func-array.html" class="function">call_user_func_array()</a></span> instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.call-user-method-array.html" class="function">call_user_method_array()</a></span> (use
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.call-user-func-array.html" class="function">call_user_func_array()</a></span> instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.define-syslog-variables.html" class="function">define_syslog_variables()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.define-syslog-variables.html" class="function">define_syslog_variables()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.dl.html" class="function">dl()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.dl.html" class="function">dl()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ereg.html" class="function">ereg()</a></span> (use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-match.html" class="function">preg_match()</a></span> instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.ereg.html" class="function">ereg()</a></span> (use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-match.html" class="function">preg_match()</a></span> instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ereg-replace.html" class="function">ereg_replace()</a></span> (use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace.html" class="function">preg_replace()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.ereg-replace.html" class="function">ereg_replace()</a></span> (use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-replace.html" class="function">preg_replace()</a></span>
      instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.eregi.html" class="function">eregi()</a></span> (use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-match.html" class="function">preg_match()</a></span> with the
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.eregi.html" class="function">eregi()</a></span> (use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-match.html" class="function">preg_match()</a></span> with the
      <code class="literal">'i'</code> modifier instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.eregi-replace.html" class="function">eregi_replace()</a></span> (use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-replace.html" class="function">preg_replace()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.eregi-replace.html" class="function">eregi_replace()</a></span> (use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-replace.html" class="function">preg_replace()</a></span>
      with the <code class="literal">'i'</code> modifier instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mcrypt-generic-end.html" class="function">mcrypt_generic_end()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mcrypt-generic-end.html" class="function">mcrypt_generic_end()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a></span> and its alias,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.magic-quotes-runtime.html" class="function">magic_quotes_runtime()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a></span> and its alias,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.magic-quotes-runtime.html" class="function">magic_quotes_runtime()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-register.html" class="function">session_register()</a></span> (use the <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.session.html" class="classname">$_SESSION</a></var>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.session-register.html" class="function">session_register()</a></span> (use the <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.session.html" class="classname">$_SESSION</a></var>
      superglobal instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-unregister.html" class="function">session_unregister()</a></span> (use the
-     <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.session.html" class="classname">$_SESSION</a></var> superglobal instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.session-unregister.html" class="function">session_unregister()</a></span> (use the
+     <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.session.html" class="classname">$_SESSION</a></var> superglobal instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-is-registered.html" class="function">session_is_registered()</a></span> (use the
-     <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.session.html" class="classname">$_SESSION</a></var> superglobal instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.session-is-registered.html" class="function">session_is_registered()</a></span> (use the
+     <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.session.html" class="classname">$_SESSION</a></var> superglobal instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-socket-blocking.html" class="function">set_socket_blocking()</a></span> (use
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.stream-set-blocking.html" class="function">stream_set_blocking()</a></span> instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.set-socket-blocking.html" class="function">set_socket_blocking()</a></span> (use
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.stream-set-blocking.html" class="function">stream_set_blocking()</a></span> instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.split.html" class="function">split()</a></span> (use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-split.html" class="function">preg_split()</a></span> instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.split.html" class="function">split()</a></span> (use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-split.html" class="function">preg_split()</a></span> instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spliti.html" class="function">spliti()</a></span> (use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.preg-split.html" class="function">preg_split()</a></span> with the
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.spliti.html" class="function">spliti()</a></span> (use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.preg-split.html" class="function">preg_split()</a></span> with the
      <code class="literal">'i'</code> modifier instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.sql-regcase.html" class="function">sql_regcase()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.sql-regcase.html" class="function">sql_regcase()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-db-query.html" class="function">mysql_db_query()</a></span> (use
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-select-db.html" class="function">mysql_select_db()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-query.html" class="function">mysql_query()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysql-db-query.html" class="function">mysql_db_query()</a></span> (use
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysql-select-db.html" class="function">mysql_select_db()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysql-query.html" class="function">mysql_query()</a></span>
      instead)
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-escape-string.html" class="function">mysql_escape_string()</a></span> (use
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> instead)
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysql-escape-string.html" class="function">mysql_escape_string()</a></span> (use
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> instead)
     </span>
    </li>
    <li class="listitem">
@@ -3504,7 +3531,7 @@ B
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <code class="parameter">is_dst</code> parameter to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mktime.html" class="function">mktime()</a></span>.
+     The <code class="parameter">is_dst</code> parameter to <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mktime.html" class="function">mktime()</a></span>.
      Use the new timezone handling functions instead.
     </span>
    </li>
@@ -3514,7 +3541,7 @@ B
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
      Assigning the return value of
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.basic.html#language.oop5.basic.new" class="link">new</a> by reference is now
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.basic.html#language.oop5.basic.new" class="link">new</a> by reference is now
      deprecated.
     </span>
    </li>

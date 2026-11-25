@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="<?= $title; ?>">
 
+        <link rel="alternate" type="text/markdown" href="<?= $markdown; ?>" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="<?= $title; ?>">

@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="Backward Incompatible Changes in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
 
+        <link rel="alternate" type="text/markdown" href="incompatible.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="Backward Incompatible Changes in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3, 5.2, 5.0">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598823" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598823" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -90,7 +92,8 @@
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">#[</span><span style="color: #0000BB">\AllowDynamicProperties</span><span style="color: #007700">]
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">#[</span><span style="color: #0000BB">\AllowDynamicProperties</span><span style="color: #007700">]
 class </span><span style="color: #0000BB">Example
 </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">__isset</span><span style="color: #007700">(</span><span style="color: #0000BB">string $name</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
@@ -108,7 +111,7 @@ class </span><span style="color: #0000BB">Example
 </span><span style="color: #0000BB">$example </span><span style="color: #007700">= new </span><span style="color: #0000BB">Example</span><span style="color: #007700">();
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$example</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo </span><span style="color: #007700">?? </span><span style="color: #DD0000">'default'</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// As of PHP 8.6.0: string(14) "from __isset()"
-// Prior to PHP 8.6.0: string(12) "from __get()"</span></span></code></pre></div>
+// Prior to PHP 8.6.0: string(12) "from __get()"</span></code></pre></div>
     </div>
 
    </div>
@@ -146,9 +149,10 @@ class </span><span style="color: #0000BB">Example
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #DD0000">"\f hello \f"</span><span style="color: #007700">));
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #DD0000">"\f hello \f"</span><span style="color: #007700">));
 </span><span style="color: #FF8000">// As of PHP 8.6.0: string(5) "hello"
-// Prior to PHP 8.6.0: string(9) "\f hello \f"</span></span></code></pre></div>
+// Prior to PHP 8.6.0: string(9) "\f hello \f"</span></code></pre></div>
     </div>
 
    </div>
@@ -259,24 +263,25 @@ class </span><span style="color: #0000BB">Example
     <code class="literal">&gt;</code> immediately following a format code as an
     endianness modifier rather than as the first character of the element
     name.
-    Formats such as <code class="literal">"s<value> now produce the key
-    <code class="literal">"value"</code> instead of <code class="literal">"<value>, and
+    Formats such as <code class="literal">"s&lt;value"</code> now produce the key
+    <code class="literal">"value"</code> instead of <code class="literal">"&lt;value"</code>, and
     <code class="literal">"C&gt;name"</code> raises a
     <span class="exceptionname"><a target="_blank" href="https://www.php.net/manual/en/class.valueerror.php" class="exceptionname">ValueError</a></span> because the <code class="literal">C</code>
     format code accepts no endianness modifier.
     A name starting with these characters is unaffected when a repeater
-    precedes it, as in <code class="literal">"s1<value>.
+    precedes it, as in <code class="literal">"s1&lt;value"</code>.
     See also the
     <a target="_blank" href="https://www.php.net/manual/en/migration86.new-features.php#migration86.new-features.core.pack-unpack-endianness" class="link">new
     endianness modifiers</a>.
     
-   </value></code></value></code></value></code></p>
+   </p>
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'s<value><span style="color: #007700">, </span><span style="color: #DD0000">"\x01\x00"</span><span style="color: #007700">));
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'s&lt;value'</span><span style="color: #007700">, </span><span style="color: #DD0000">"\x01\x00"</span><span style="color: #007700">));
 </span><span style="color: #FF8000">// As of PHP 8.6.0: ["value" =&gt; 1]
-// Prior to PHP 8.6.0: ["<value> 1]</value></span></value></span></span></code></pre></div>
+// Prior to PHP 8.6.0: ["&lt;value" =&gt; 1]</span></code></pre></div>
     </div>
 
    </div>
@@ -2117,7 +2122,7 @@ class </span><span style="color: #0000BB">Example
    As a consequence, this means <code class="literal">{,3}</code> is now recognized
    as a quantifier instead of as text.
    Furthermore, the meaning of some character classes in UCP mode has changed.
-   Consult the <a target="_blank" href="https://www.php.net/manual/en/https://github.com/PCRE2Project/pcre2/blob/master/NEWS" class="link external">» PCRE2 Changelog</a>
+   Consult the <a target="_blank" href="https://github.com/PCRE2Project/pcre2/blob/master/NEWS" class="link external">» PCRE2 Changelog</a>
    for a full changelog.
   </p>
  </div>
@@ -2192,7 +2197,9 @@ class </span><span style="color: #0000BB">Example
    For example:
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $xmlString </span><span style="color: #007700">= </span><span style="color: #DD0000">"<root><a><b>1</b><b>2</b><b>3</b></a></root>"</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$xmlString </span><span style="color: #007700">= </span><span style="color: #DD0000">"&lt;root&gt;&lt;a&gt;&lt;b&gt;1&lt;/b&gt;&lt;b&gt;2&lt;/b&gt;&lt;b&gt;3&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;"</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$xml </span><span style="color: #007700">= </span><span style="color: #0000BB">simplexml_load_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlString</span><span style="color: #007700">);
 
 </span><span style="color: #0000BB">$nodes </span><span style="color: #007700">= </span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">b</span><span style="color: #007700">;
@@ -2200,7 +2207,7 @@ foreach (</span><span style="color: #0000BB">$nodes </span><span style="color: #
     echo </span><span style="color: #DD0000">"nodeData: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$nodeData </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
 
     </span><span style="color: #0000BB">$xml </span><span style="color: #007700">= </span><span style="color: #0000BB">$nodes</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">asXml</span><span style="color: #007700">();
-}</span></span></code></pre></div>
+}</span></code></pre></div>
     </div>
 
     <p class="simpara">
@@ -2522,9 +2529,10 @@ nodeData: 3
     to int (e.g. <code class="code">range('9', 'A');</code>).</li>
    </ul><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php range</span><span style="color: #007700">(</span><span style="color: #DD0000">'9'</span><span style="color: #007700">, </span><span style="color: #DD0000">'A'</span><span style="color: #007700">);  </span><span style="color: #FF8000">// ["9", ":", ";", "&lt;", "=", "&gt;", "?", "@", "A"], as of PHP 8.3.0
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+range</span><span style="color: #007700">(</span><span style="color: #DD0000">'9'</span><span style="color: #007700">, </span><span style="color: #DD0000">'A'</span><span style="color: #007700">);  </span><span style="color: #FF8000">// ["9", ":", ";", "&lt;", "=", "&gt;", "?", "@", "A"], as of PHP 8.3.0
 </span><span style="color: #0000BB">range</span><span style="color: #007700">(</span><span style="color: #DD0000">'9'</span><span style="color: #007700">, </span><span style="color: #DD0000">'A'</span><span style="color: #007700">);  </span><span style="color: #FF8000">// [9, 8, 7, 6, 5, 4, 3, 2, 1, 0], prior to PHP 8.3.0
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
     </div>
 
    </div>
@@ -2730,7 +2738,8 @@ nodeData: 3
     inherited method will now share static variables with the parent method.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
     public static function </span><span style="color: #0000BB">counter</span><span style="color: #007700">() {
         static </span><span style="color: #0000BB">$counter </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;
         </span><span style="color: #0000BB">$counter</span><span style="color: #007700">++;
@@ -2742,7 +2751,7 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(2)
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(3), previously int(1)
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">counter</span><span style="color: #007700">()); </span><span style="color: #FF8000">// int(4), previously int(2)
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2767,7 +2776,8 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">$container </span><span style="color: #007700">= </span><span style="color: #DD0000">"bowl"</span><span style="color: #007700">, </span><span style="color: #0000BB">$flavour</span><span style="color: #007700">)
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">makeyogurt</span><span style="color: #007700">(</span><span style="color: #0000BB">$container </span><span style="color: #007700">= </span><span style="color: #DD0000">"bowl"</span><span style="color: #007700">, </span><span style="color: #0000BB">$flavour</span><span style="color: #007700">)
 {
     return </span><span style="color: #DD0000">"Making a </span><span style="color: #0000BB">$container</span><span style="color: #DD0000"> of </span><span style="color: #0000BB">$flavour</span><span style="color: #DD0000"> yogurt.\n"</span><span style="color: #007700">;
 }
@@ -2779,7 +2789,7 @@ catch (</span><span style="color: #0000BB">Error $e</span><span style="color: #0
 {
     echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">), </span><span style="color: #DD0000">' - '</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
      <p class="simpara">Output of the above example in PHP 8.0:</p>
@@ -3054,7 +3064,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
    now use <code class="literal">ENT_QUOTES | ENT_SUBSTITUTE</code> rather than
    <strong><code><a target="_blank" href="https://www.php.net/manual/en/string.constants.php#constant.ent-compat">ENT_COMPAT</a></code></strong> by default.
    This means that <code class="literal">'</code> is escaped to
-   <code class="literal">'</code> while previously nothing was done.
+   <code class="literal">&amp;#039;</code> while previously nothing was done.
    Additionally, malformed UTF-8 will be replaced by a Unicode substitution
    character, instead of resulting in an empty string.
   </p>
@@ -3259,7 +3269,8 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Replace
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Replace
 </span><span style="color: #007700">function </span><span style="color: #0000BB">my_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$err_no</span><span style="color: #007700">, </span><span style="color: #0000BB">$err_msg</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$linenum</span><span style="color: #007700">) {
     if (</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">() == </span><span style="color: #0000BB">0</span><span style="color: #007700">) {
         return </span><span style="color: #0000BB">false</span><span style="color: #007700">;
@@ -3274,7 +3285,7 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
     }
     </span><span style="color: #FF8000">// ...
 </span><span style="color: #007700">}
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      
@@ -3305,12 +3316,13 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;
 </span><span style="color: #FF8000">// was previously interpreted as:
 </span><span style="color: #007700">echo (</span><span style="color: #DD0000">"Sum: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a</span><span style="color: #007700">) + </span><span style="color: #0000BB">$b</span><span style="color: #007700">;
 </span><span style="color: #FF8000">// is now interpreted as:
 </span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum:" </span><span style="color: #007700">. (</span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       
@@ -3324,13 +3336,14 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Replace
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Replace
 </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">CONST_RESOLVING_TO_NULL</span><span style="color: #007700">) {}
 </span><span style="color: #FF8000">// With
 </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">CONST_RESOLVING_TO_NULL</span><span style="color: #007700">) {}
 </span><span style="color: #FF8000">// Or
 </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">int $arg </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {}
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      
@@ -3418,13 +3431,14 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">new class extends </span><span style="color: #0000BB">ParentClass </span><span style="color: #007700">{};
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">new class extends </span><span style="color: #0000BB">ParentClass </span><span style="color: #007700">{};
 </span><span style="color: #FF8000">// -&gt; ParentClass@anonymous
 </span><span style="color: #007700">new class implements </span><span style="color: #0000BB">FirstInterface</span><span style="color: #007700">, </span><span style="color: #0000BB">SecondInterface </span><span style="color: #007700">{};
 </span><span style="color: #FF8000">// -&gt; FirstInterface@anonymous
 </span><span style="color: #007700">new class {};
 </span><span style="color: #FF8000">// -&gt; class@anonymous
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      
@@ -3439,13 +3453,14 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">X </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">X </span><span style="color: #007700">{
     use </span><span style="color: #0000BB">T1</span><span style="color: #007700">, </span><span style="color: #0000BB">T2 </span><span style="color: #007700">{
         </span><span style="color: #0000BB">func </span><span style="color: #007700">as </span><span style="color: #0000BB">otherFunc</span><span style="color: #007700">;
     }
     function </span><span style="color: #0000BB">func</span><span style="color: #007700">() {}
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      
@@ -3463,7 +3478,8 @@ ArgumentCountError - makeyogurt(): Argument #1 ($container) not passed
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">trait </span><span style="color: #0000BB">MyTrait </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">trait </span><span style="color: #0000BB">MyTrait </span><span style="color: #007700">{
     abstract private function </span><span style="color: #0000BB">neededByTrait</span><span style="color: #007700">(): </span><span style="color: #0000BB">string</span><span style="color: #007700">;
 }
 
@@ -3473,7 +3489,7 @@ class </span><span style="color: #0000BB">MyClass </span><span style="color: #00
     </span><span style="color: #FF8000">// Error, because of return type mismatch.
     </span><span style="color: #007700">private function </span><span style="color: #0000BB">neededByTrait</span><span style="color: #007700">(): </span><span style="color: #0000BB">int </span><span style="color: #007700">{ return </span><span style="color: #0000BB">42</span><span style="color: #007700">; }
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       
@@ -3509,12 +3525,13 @@ class </span><span style="color: #0000BB">MyClass </span><span style="color: #00
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">, </span><span style="color: #DD0000">"de_DE"</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">, </span><span style="color: #DD0000">"de_DE"</span><span style="color: #007700">);
 </span><span style="color: #0000BB">$f </span><span style="color: #007700">= </span><span style="color: #0000BB">3.14</span><span style="color: #007700">;
 echo </span><span style="color: #0000BB">$f</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
 </span><span style="color: #FF8000">// Previously: 3,14
 // Now:        3.14
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      
@@ -3530,13 +3547,14 @@ echo </span><span style="color: #0000BB">$f</span><span style="color: #007700">,
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Instead of:
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Instead of:
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">{</span><span style="color: #0000BB">0</span><span style="color: #007700">};
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">{</span><span style="color: #DD0000">"key"</span><span style="color: #007700">};
 </span><span style="color: #FF8000">// Write:
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"key"</span><span style="color: #007700">];
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       
@@ -4516,9 +4534,10 @@ echo </span><span style="color: #0000BB">$f</span><span style="color: #007700">,
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'protocol_version' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">]]);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$ctx </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">([</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'protocol_version' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">]]);
 echo </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.org'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -4691,16 +4710,16 @@ echo </span><span style="color: #0000BB">file_get_contents</span><span style="co
   </div>
 
   <div class="sect3" id="migration74.incompatible.core.php-tag">
-   <h4 class="title"><code class="literal"><?php </code> tag at end of file</code></h4>
+   <h4 class="title"><code class="literal">&lt;?php</code> tag at end of file</h4>
 
    <p class="para">
-    <code class="literal"><?php </code> at the end of the file (without trailing newline)
+    <code class="literal">&lt;?php</code> at the end of the file (without trailing newline)
     will now be interpreted as an opening PHP tag. Previously it was interpreted
     either as a short opening tag followed by literal <code class="literal">php</code> and
     resulted in a syntax error (with <code class="literal">short_open_tag=1</code>)
-    or was interpreted as a literal <code class="literal"><?php </code> string
+    or was interpreted as a literal <code class="literal">&lt;?php</code> string
     (with <code class="literal">short_open_tag=0</code>).
-   </code></code></p>
+   </p>
   </div>
 
   <div class="sect3" id="migration74.incompatible.core.stream-wrappers">
@@ -4998,10 +5017,12 @@ echo </span><span style="color: #0000BB">file_get_contents</span><span style="co
     may cause syntax errors or change in interpretation. For example in:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $str </span><span style="color: #007700">= &lt;&lt;<foo><span style="color: #DD0000">abcdefg
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$str </span><span style="color: #007700">= &lt;&lt;&lt;FOO
+</span><span style="color: #DD0000">abcdefg
 </span><span style="color: #007700">   FOO
 </span><span style="color: #0000BB">FOO</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></foo></span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -5024,7 +5045,8 @@ echo </span><span style="color: #0000BB">file_get_contents</span><span style="co
     in other languages.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">while (</span><span style="color: #0000BB">$foo</span><span style="color: #007700">) {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">while (</span><span style="color: #0000BB">$foo</span><span style="color: #007700">) {
     switch (</span><span style="color: #0000BB">$bar</span><span style="color: #007700">) {
       case </span><span style="color: #DD0000">"baz"</span><span style="color: #007700">:
          continue;
@@ -5032,7 +5054,7 @@ echo </span><span style="color: #0000BB">file_get_contents</span><span style="co
          //          "break". Did you mean to use "continue 2"?
    </span><span style="color: #007700">}
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -5064,7 +5086,8 @@ echo </span><span style="color: #0000BB">file_get_contents</span><span style="co
     assigning a reference. This loophole has been fixed.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{
     public static </span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;
 }
 class </span><span style="color: #0000BB">Test2 </span><span style="color: #007700">extends </span><span style="color: #0000BB">Test </span><span style="color: #007700">{ }
@@ -5075,7 +5098,7 @@ class </span><span style="color: #0000BB">Test2 </span><span style="color: #0077
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Test</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">, </span><span style="color: #0000BB">Test2</span><span style="color: #007700">::</span><span style="color: #0000BB">$x</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// Previously: int(0), int(1)
 // Now:        int(1), int(1)
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -5091,11 +5114,12 @@ class </span><span style="color: #0000BB">Test2 </span><span style="color: #0077
     reference between the access and the use of the accessed value:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">];
 </span><span style="color: #0000BB">$ref </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] + (</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] = </span><span style="color: #0000BB">2</span><span style="color: #007700">));
 </span><span style="color: #FF8000">// Previously: int(4), Now: int(3)
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -5113,14 +5137,15 @@ class </span><span style="color: #0000BB">Test2 </span><span style="color: #0077
     with non-integer keys. The following code worked in PHP 5.6-7.2 by accident.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">$args</span><span style="color: #007700">) {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">$args</span><span style="color: #007700">) {
     </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">);
 }
 function </span><span style="color: #0000BB">gen</span><span style="color: #007700">() {
     yield </span><span style="color: #0000BB">1.23 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">123</span><span style="color: #007700">;
 }
 </span><span style="color: #0000BB">foo</span><span style="color: #007700">(...</span><span style="color: #0000BB">gen</span><span style="color: #007700">());
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -5162,7 +5187,7 @@ function </span><span style="color: #0000BB">gen</span><span style="color: #0077
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getimagesize.php" class="function">getimagesize()</a></span> and related functions now report the mime
     type of BMP images as <code class="literal">image/bmp</code> instead of
     <code class="literal">image/x-ms-bmp</code>, since the former has been registered with
-    the IANA (see <a target="_blank" href="https://www.php.net/manual/en/https://datatracker.ietf.org/doc/html/rfc7903" class="link external">» RFC 7903</a>).
+    the IANA (see <a target="_blank" href="https://datatracker.ietf.org/doc/html/rfc7903" class="link external">» RFC 7903</a>).
    </p>
 
    <p class="para">
@@ -5302,7 +5327,9 @@ function </span><span style="color: #0000BB">gen</span><span style="color: #0077
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">number_format</span><span style="color: #007700">(-</span><span style="color: #0000BB">0.01</span><span style="color: #007700">)); </span><span style="color: #FF8000">// now outputs string(1) "0" instead of string(2) "-0"</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">number_format</span><span style="color: #007700">(-</span><span style="color: #0000BB">0.01</span><span style="color: #007700">)); </span><span style="color: #FF8000">// now outputs string(1) "0" instead of string(2) "-0"</span></code></pre></div>
    </div>
 
   </div>
@@ -5324,14 +5351,16 @@ function </span><span style="color: #0000BB">gen</span><span style="color: #0077
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// array to object
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #FF8000">// array to object
 </span><span style="color: #0000BB">$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">];
 </span><span style="color: #0000BB">$obj </span><span style="color: #007700">= (object) </span><span style="color: #0000BB">$arr</span><span style="color: #007700">;
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(
     </span><span style="color: #0000BB">$obj</span><span style="color: #007700">,
     </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'0'</span><span style="color: #007700">}, </span><span style="color: #FF8000">// now accessible
     </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} </span><span style="color: #FF8000">// now accessible
-</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5354,7 +5383,9 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// object to array
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #FF8000">// object to array
 </span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new class {
     public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">()
     {
@@ -5366,7 +5397,7 @@ int(1)
     </span><span style="color: #0000BB">$arr</span><span style="color: #007700">,
     </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">], </span><span style="color: #FF8000">// now accessible
     </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">] </span><span style="color: #FF8000">// now accessible
-</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5405,13 +5436,15 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+var_dump</span><span style="color: #007700">(
     </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">), </span><span style="color: #FF8000">// NULL is not countable
     </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">), </span><span style="color: #FF8000">// integers are not countable
     </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">), </span><span style="color: #FF8000">// strings are not countable
     </span><span style="color: #0000BB">count</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">), </span><span style="color: #FF8000">// objects not implementing the Countable interface are not countable
     </span><span style="color: #0000BB">count</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">]) </span><span style="color: #FF8000">// arrays are countable
-</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5646,8 +5679,9 @@ int(2)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">){}
-</span><span style="color: #0000BB">test</span><span style="color: #007700">();</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">){}
+</span><span style="color: #0000BB">test</span><span style="color: #007700">();</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output
@@ -5717,10 +5751,11 @@ Fatal error: Uncaught ArgumentCountError: Too few arguments to function test(), 
    </li>
   </ul><div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">(function () {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">(function () {
     </span><span style="color: #0000BB">$func </span><span style="color: #007700">= </span><span style="color: #DD0000">'func_num_args'</span><span style="color: #007700">;
     </span><span style="color: #0000BB">$func</span><span style="color: #007700">();
-})();</span></span></code></pre></div>
+})();</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5861,10 +5896,11 @@ Warning: Cannot call func_num_args() dynamically in %s on line %d
    an empty array.
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $a </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$a </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">] = </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
     </div>
 
     <p class="simpara">Output of the above example in PHP 7.0:</p>
@@ -5929,11 +5965,12 @@ string(11) "          f"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $array </span><span style="color: #007700">= [];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$array </span><span style="color: #007700">= [];
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 7.0:</p>
@@ -6003,8 +6040,9 @@ array(2) {
    instances will now more likely return <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.false">false</a></code></strong> instead of <strong><code><a target="_blank" href="https://www.php.net/manual/en/reserved.constants.php#constant.true">true</a></code></strong>:
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">() == new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">() == new </span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
     </div>
 
    </div>
@@ -6152,9 +6190,10 @@ array(2) {
 
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">) {};
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">) {};
 </span><span style="color: #0000BB">$f </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$this</span><span style="color: #007700">) {};
-</span><span style="color: #0000BB">$f </span><span style="color: #007700">= function (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) {};</span></span></code></pre></div>
+</span><span style="color: #0000BB">$f </span><span style="color: #007700">= function (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$param</span><span style="color: #007700">) {};</span></code></pre></div>
     </div>
 
    </div>
@@ -6181,7 +6220,8 @@ array(2) {
 
    </p><div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">json_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">([</span><span style="color: #DD0000">'' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">])));</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">json_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">([</span><span style="color: #DD0000">'' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">])));</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output
@@ -6290,7 +6330,8 @@ object(stdClass)#1 (1) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// PHP 5 era code that will break.
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// PHP 5 era code that will break.
 </span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) { </span><span style="color: #FF8000">/* ... */ </span><span style="color: #007700">}
 </span><span style="color: #0000BB">set_exception_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">'handler'</span><span style="color: #007700">);
 
@@ -6299,7 +6340,7 @@ object(stdClass)#1 (1) {
 
 </span><span style="color: #FF8000">// PHP 7 only.
 </span><span style="color: #007700">function </span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">Throwable $e</span><span style="color: #007700">) { </span><span style="color: #FF8000">/* ... */ </span><span style="color: #007700">}
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -6445,14 +6486,15 @@ object(stdClass)#1 (1) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">f</span><span style="color: #007700">() {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">f</span><span style="color: #007700">() {
     </span><span style="color: #FF8000">// Valid in PHP 5 only.
     </span><span style="color: #007700">global $</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">;
 
     </span><span style="color: #FF8000">// Valid in PHP 5 and 7.
     </span><span style="color: #007700">global ${</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">};
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -6475,9 +6517,10 @@ object(stdClass)#1 (1) {
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[]) = [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[], </span><span style="color: #0000BB">$a</span><span style="color: #007700">[]) = [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
     </div>
 
     <p class="simpara">Output of the above example in PHP 5:</p>
@@ -6525,10 +6568,11 @@ array(3) {
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">list() = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">list() = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
 list(,,) = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
 list(</span><span style="color: #0000BB">$x</span><span style="color: #007700">, list(), </span><span style="color: #0000BB">$y</span><span style="color: #007700">) = </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
     </div>
 
    </div>
@@ -6558,11 +6602,12 @@ list(</span><span style="color: #0000BB">$x</span><span style="color: #007700">,
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $array </span><span style="color: #007700">= [];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$array </span><span style="color: #007700">= [];
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];
 </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5:</p>
@@ -6603,7 +6648,8 @@ array(2) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">getArray</span><span style="color: #007700">() {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">getArray</span><span style="color: #007700">() {
     return [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];
 }
 
@@ -6615,7 +6661,7 @@ function </span><span style="color: #0000BB">squareArray</span><span style="colo
 
 </span><span style="color: #FF8000">// Generates a warning in PHP 7.
 </span><span style="color: #0000BB">squareArray</span><span style="color: #007700">((</span><span style="color: #0000BB">getArray</span><span style="color: #007700">()));
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -6653,11 +6699,12 @@ Notice: Only variables should be passed by reference in /tmp/test.php on line 13
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">];
 foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {
     </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">current</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">));
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5:</p>
@@ -6702,12 +6749,13 @@ int(0)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$array </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">];
 foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {
     </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">);
     </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5:</p>
@@ -6767,8 +6815,9 @@ int(1)
   </p>
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">&gt;&gt; -</span><span style="color: #0000BB">1</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">1 </span><span style="color: #007700">&gt;&gt; -</span><span style="color: #0000BB">1</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
     <p class="simpara">Output of the above example in PHP 5:</p>
@@ -6812,10 +6861,11 @@ Stack trace:
   </p>
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">/</span><span style="color: #0000BB">0</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">/</span><span style="color: #0000BB">0</span><span style="color: #007700">);
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">/</span><span style="color: #0000BB">0</span><span style="color: #007700">);
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">%</span><span style="color: #0000BB">0</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5:</p>
@@ -6865,11 +6915,12 @@ PHP Fatal error:  Uncaught DivisionByZeroError: Modulo by zero in %s line %d
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"0x123" </span><span style="color: #007700">== </span><span style="color: #DD0000">"291"</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"0x123" </span><span style="color: #007700">== </span><span style="color: #DD0000">"291"</span><span style="color: #007700">);
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">is_numeric</span><span style="color: #007700">(</span><span style="color: #DD0000">"0x123"</span><span style="color: #007700">));
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"0xe" </span><span style="color: #007700">+ </span><span style="color: #DD0000">"0x1"</span><span style="color: #007700">);
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"0x1"</span><span style="color: #007700">));
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5:</p>
@@ -6902,13 +6953,14 @@ string(3) "foo"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $str </span><span style="color: #007700">= </span><span style="color: #DD0000">"0xffff"</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"0xffff"</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$int </span><span style="color: #007700">= </span><span style="color: #0000BB">filter_var</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_VALIDATE_INT</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_FLAG_ALLOW_HEX</span><span style="color: #007700">);
 if (</span><span style="color: #0000BB">false </span><span style="color: #007700">=== </span><span style="color: #0000BB">$int</span><span style="color: #007700">) {
     throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">"Invalid integer!"</span><span style="color: #007700">);
 }
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$int</span><span style="color: #007700">); </span><span style="color: #FF8000">// int(65535)
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -7150,9 +7202,10 @@ if (</span><span style="color: #0000BB">false </span><span style="color: #007700
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}
 </span><span style="color: #0000BB">$c </span><span style="color: #007700">=&amp; new </span><span style="color: #0000BB">C</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5:</p>
@@ -7234,8 +7287,8 @@ Parse error: syntax error, unexpected 'new' (T_NEW) in /tmp/test.php on line 3
       <td><code class="code">%&gt;</code></td>
      </tr><tr><td><code class="code">&lt;%=</code></td>
       <td><code class="code">%&gt;</code></td>
-     </tr><tr><td><code class="code"><script language="php"></script></code></td>
-      <td><code class="code"></code></td>
+     </tr><tr><td><code class="code">&lt;script language="php"&gt;</code></td>
+      <td><code class="code">&lt;/script&gt;</code></td>
      </tr></tbody></table></div>
 
  <div class="sect3" id="migration70.incompatible.other.incompatible-this">
@@ -7250,7 +7303,8 @@ Parse error: syntax error, unexpected 'new' (T_NEW) in /tmp/test.php on line 3
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">test</span><span style="color: #007700">() { </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">); }
 }
 
@@ -7260,7 +7314,7 @@ Parse error: syntax error, unexpected 'new' (T_NEW) in /tmp/test.php on line 3
 }
 
 (new </span><span style="color: #0000BB">B</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">callNonStaticMethodOfA</span><span style="color: #007700">();
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5.6:</p>
@@ -7295,7 +7349,8 @@ NULL
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">echo yield -</span><span style="color: #0000BB">1</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">echo yield -</span><span style="color: #0000BB">1</span><span style="color: #007700">;
 </span><span style="color: #FF8000">// Was previously interpreted as
 </span><span style="color: #007700">echo (yield) - </span><span style="color: #0000BB">1</span><span style="color: #007700">;
 </span><span style="color: #FF8000">// And is now interpreted as
@@ -7306,7 +7361,7 @@ yield </span><span style="color: #0000BB">$foo </span><span style="color: #00770
 </span><span style="color: #007700">yield (</span><span style="color: #0000BB">$foo </span><span style="color: #007700">or die);
 </span><span style="color: #FF8000">// And is now interpreted as
 </span><span style="color: #007700">(yield </span><span style="color: #0000BB">$foo</span><span style="color: #007700">) or die;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -7327,10 +7382,11 @@ yield </span><span style="color: #0000BB">$foo </span><span style="color: #00770
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">) {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">, </span><span style="color: #0000BB">$unused</span><span style="color: #007700">) {
     </span><span style="color: #FF8000">//
 </span><span style="color: #007700">}
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -7348,11 +7404,12 @@ yield </span><span style="color: #0000BB">$foo </span><span style="color: #00770
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">) {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">) {
     </span><span style="color: #0000BB">$x</span><span style="color: #007700">++;
     </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_arg</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">));
 }
-</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5:</p>
@@ -7381,13 +7438,14 @@ yield </span><span style="color: #0000BB">$foo </span><span style="color: #00770
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">switch (</span><span style="color: #0000BB">1</span><span style="color: #007700">) {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">switch (</span><span style="color: #0000BB">1</span><span style="color: #007700">) {
     default:
     break;
     default:
     break;
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -7529,7 +7587,8 @@ yield </span><span style="color: #0000BB">$foo </span><span style="color: #00770
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{
     const </span><span style="color: #0000BB">ONE </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;
     public </span><span style="color: #0000BB">$array </span><span style="color: #007700">= [
         </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">ONE </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,
@@ -7539,7 +7598,7 @@ yield </span><span style="color: #0000BB">$foo </span><span style="color: #00770
 }
 
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((new </span><span style="color: #0000BB">C</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">array</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">Output of the above example in PHP 5.5:</p>
@@ -7655,7 +7714,7 @@ array(3) {
  </div>
 </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration55.incompatible.php" target="_blank">PHP 5.5</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration55.incompatible.php" target="_blank">PHP 5.5</a></h1>
     </header>
 
     <div id="migration55.incompatible" class="sect1">
@@ -7694,42 +7753,42 @@ array(3) {
   </div>
 
   <div class="sect2" id="migration55.incompatible.pack">
-   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> changes</h3>
+   <h3 class="title"><span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.pack.html" class="function">pack()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.unpack.html" class="function">unpack()</a></span> changes</h3>
 
    <p class="para">
-    Changes were made to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> and
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> to make them more compatible with Perl:
+    Changes were made to <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.pack.html" class="function">pack()</a></span> and
+    <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.unpack.html" class="function">unpack()</a></span> to make them more compatible with Perl:
    </p>
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.pack.html" class="function">pack()</a></span> now supports the "Z" format code, which
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.pack.html" class="function">pack()</a></span> now supports the "Z" format code, which
       behaves identically to "a".
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> now support the "Z" format code for NULL
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.unpack.html" class="function">unpack()</a></span> now support the "Z" format code for NULL
       padded strings, and behaves as "a" did in previous versions: it will
       strip trailing NULL bytes.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> now keeps trailing NULL bytes when the "a"
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.unpack.html" class="function">unpack()</a></span> now keeps trailing NULL bytes when the "a"
       format code is used.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> now strips all trailing ASCII whitespace
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.unpack.html" class="function">unpack()</a></span> now strips all trailing ASCII whitespace
       when the "A" format code is used.
      </span>
     </li>
    </ul><p class="para">
     Writing backward compatible code that uses the "a" format code with
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.unpack.html" class="function">unpack()</a></span> requires the use of
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.version-compare.html" class="function">version_compare()</a></span>, due to the backward compatibility
+    <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.unpack.html" class="function">unpack()</a></span> requires the use of
+    <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.version-compare.html" class="function">version_compare()</a></span>, due to the backward compatibility
     break.
    </p>
    <p class="para">
@@ -7738,7 +7797,7 @@ array(3) {
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #FF8000">// Old code:<br></span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// New code:<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">version_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">, </span><span style="color: #DD0000">'5.5.0-dev'</span><span style="color: #007700">, </span><span style="color: #DD0000">'&gt;='</span><span style="color: #007700">)) {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'Z5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>} else {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// Old code:<br></span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// New code:<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">version_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">, </span><span style="color: #DD0000">'5.5.0-dev'</span><span style="color: #007700">, </span><span style="color: #DD0000">'&gt;='</span><span style="color: #007700">)) {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'Z5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>} else {<br>  </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'a5'</span><span style="color: #007700">, </span><span style="color: #0000BB">$packed</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -7746,12 +7805,12 @@ array(3) {
    </div>
   </div>
   <div class="sect2" id="migration55.incompatible.json">
-   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.html" class="function">json_encode()</a></span> changes</h3>
+   <h3 class="title"><span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.json-encode.html" class="function">json_encode()</a></span> changes</h3>
    <p class="para">
-     When the <code class="parameter">value</code> passed to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-encode.html" class="function">json_encode()</a></span> triggers a JSON encoding error,
+     When the <code class="parameter">value</code> passed to <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.json-encode.html" class="function">json_encode()</a></span> triggers a JSON encoding error,
      <strong><code>FALSE</code></strong> is returned instead of partial output,
      unless <code class="parameter">options</code> contains <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong>.
-     See <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.json-last-error.html" class="function">json_last_error()</a></span> for the full list of reasons that can cause JSON encoding to fail.
+     See <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.json-last-error.html" class="function">json_last_error()</a></span> for the full list of reasons that can cause JSON encoding to fail.
      One of the potential failure reasons is that <code class="parameter">value</code> contains strings containing invalid UTF-8.
    </p>
   </div>
@@ -7761,9 +7820,9 @@ array(3) {
 
    <p class="para">
     Prior to PHP 5.5, cases existed where the
-    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.html" class="link">self</a>,
-    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.html" class="link">parent</a>, and
-    <a target="_blank" href="https://www.php.net/manual/en/language.oop5.late-static-bindings.html" class="link">static</a>
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.paamayim-nekudotayim.html" class="link">self</a>,
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.paamayim-nekudotayim.html" class="link">parent</a>, and
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.late-static-bindings.html" class="link">static</a>
     keywords were treated in a case sensitive fashion. These have now been
     resolved, and these keywords are always handled case insensitively:
     <code class="literal">SELF::CONSTANT</code> is now treated identically to
@@ -7782,7 +7841,7 @@ array(3) {
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.php-logo-guid.html" class="function">php_logo_guid()</a></span>
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.php-logo-guid.html" class="function">php_logo_guid()</a></span>
      </span>
     </li>
     <li class="listitem">
@@ -7797,7 +7856,7 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.zend-logo-guid.html" class="function">zend_logo_guid()</a></span>
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.zend-logo-guid.html" class="function">zend_logo_guid()</a></span>
      </span>
     </li>
    </ul></div>
@@ -7815,12 +7874,12 @@ array(3) {
    <p class="para">
     Most extension authors are unlikely to be affected, but those writing
     extensions that hook deeply into the Zend Engine should read
-    <a target="_blank" href="https://www.php.net/manual/en/migration55.internals.html" class="link">the notes on these changes</a>.
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/migration55.internals.html" class="link">the notes on these changes</a>.
    </p>
   </div>
  </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration54.incompatible.php" target="_blank">PHP 5.4</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration54.incompatible.php" target="_blank">PHP 5.4</a></h1>
     </header>
 
     <div id="migration54.incompatible" class="section">
@@ -7831,43 +7890,43 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/features.safe-mode.html" class="link">Safe mode</a> is no
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/features.safe-mode.html" class="link">Safe mode</a> is no
      longer supported. Any applications that rely on safe mode may need
      adjustment, in terms of security.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/security.magicquotes.html" class="link">Magic quotes</a> has been removed. Applications relying
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/security.magicquotes.html" class="link">Magic quotes</a> has been removed. Applications relying
      on this feature may need to be updated, to avoid security issues.
     </span>
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-gpc.html" class="function">get_magic_quotes_gpc()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-magic-quotes-runtime.html" class="function">get_magic_quotes_runtime()</a></span>
-     now always return <strong><code>FALSE</code></strong>. <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a></span> raises an
-     <strong><code>E_CORE_ERROR</code></strong> level error on trying to enable <a target="_blank" href="https://www.php.net/manual/en/security.magicquotes.html" class="link">Magic quotes</a>.
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.get-magic-quotes-gpc.html" class="function">get_magic_quotes_gpc()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.get-magic-quotes-runtime.html" class="function">get_magic_quotes_runtime()</a></span>
+     now always return <strong><code>FALSE</code></strong>. <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a></span> raises an
+     <strong><code>E_CORE_ERROR</code></strong> level error on trying to enable <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/security.magicquotes.html" class="link">Magic quotes</a>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-globals" class="link">register_globals</a> and
-     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a> <var class="filename">php.ini</var> directives
+     The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.register-globals" class="link">register_globals</a> and
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a> <var class="filename">php.ini</var> directives
      have been removed.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The mbstring.script_encoding directive has been removed. Use <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a> instead.
+     The mbstring.script_encoding directive has been removed. Use <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a> instead.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.references.pass.html" class="link">Call-time pass by reference</a> has been removed.
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.references.pass.html" class="link">Call-time pass by reference</a> has been removed.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/control-structures.break.html" class="link">break</a>
-     and <a target="_blank" href="https://www.php.net/manual/en/control-structures.continue.html" class="link">continue</a>
+     The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.break.html" class="link">break</a>
+     and <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.continue.html" class="link">continue</a>
      statements no longer accept variable arguments (e.g., <code class="literal">break 1 + foo() * $bar;</code>).
      Static arguments still work, such as <code class="literal">break 2;</code>. As a side effect of this change
      <code class="literal">break 0;</code> and <code class="literal">continue 0;</code> are no longer allowed.
@@ -7875,25 +7934,25 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     The default character set for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span> is now <code class="literal">UTF-8</code>,
+     The default character set for <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlentities.html" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span> is now <code class="literal">UTF-8</code>,
      instead of <code class="literal">ISO-8859-1</code>.  Note that changing your output
-     charset via the <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.default-charset" class="link">default_charset</a>
+     charset via the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.default-charset" class="link">default_charset</a>
      configuration setting does not affect htmlspecialchars/htmlentities unless
      you are passing "" (an empty string) as the encoding parameter to your 
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span>/<span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span> calls.
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>/<span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlentities.html" class="function">htmlentities()</a></span>/<span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span> calls.
      Generally we do not recommend doing this because you should be able to
      change your output charset without affecting the runtime charset used by
      these functions. The safest approach is to explicitly set the charset on
-     each call to <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span>.
+     each call to <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlentities.html" class="function">htmlentities()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.html-entity-decode.html" class="function">html_entity_decode()</a></span>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     In the <a target="_blank" href="https://www.php.net/manual/en/book.datetime.html" class="link">date and time extension</a>, the timezone can no longer be
+     In the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.datetime.html" class="link">date and time extension</a>, the timezone can no longer be
      set using the TZ environment variable. Instead you have to specify a timezone using the
-     <a target="_blank" href="https://www.php.net/manual/en/datetime.configuration.html#ini.date.timezone" class="link">date.timezone</a> <var class="filename">php.ini</var> option or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/datetime.configuration.html#ini.date.timezone" class="link">date.timezone</a> <var class="filename">php.ini</var> option or <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span>
      function. PHP will no longer attempt to guess the timezone, and will instead fall back to "UTC" and issue
      a <strong><code>E_WARNING</code></strong>.
     </span>
@@ -7901,7 +7960,7 @@ array(3) {
    <li class="listitem">
     <span class="simpara">
      Non-numeric string offsets - e.g. <code class="literal">$a['foo']</code> where $a is a string - now return
-     false on <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.isset.html" class="function">isset()</a></span> and true on <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.empty.html" class="function">empty()</a></span>, and produce a <strong><code>E_WARNING</code></strong>
+     false on <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.isset.html" class="function">isset()</a></span> and true on <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.empty.html" class="function">empty()</a></span>, and produce a <strong><code>E_WARNING</code></strong>
      if you try to use them. Offsets of types double, bool and null produce a <strong><code>E_NOTICE</code></strong>. Numeric strings
      (e.g. <code class="literal">$a['2']</code>) still work as before. Note that offsets like <code class="literal">'12.3'</code>
      and <code class="literal">'5 foobar'</code> are considered non-numeric and produce a <strong><code>E_WARNING</code></strong>, but are converted
@@ -7934,58 +7993,58 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     The Salsa10 and Salsa20 <a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">hash algorithms</a> have been removed.
+     The Salsa10 and Salsa20 <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.hash.html" class="link">hash algorithms</a> have been removed.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The Tiger <a target="_blank" href="https://www.php.net/manual/en/book.hash.html" class="link">hash algorithm</a> now uses big-endian byte ordering.
-     Please follow <a target="_blank" href="https://www.php.net/manual/en/function.hash.html#function.hash.tiger-bc" class="link">this example</a> to write code that
+     The Tiger <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.hash.html" class="link">hash algorithm</a> now uses big-endian byte ordering.
+     Please follow <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.hash.html#function.hash.tiger-bc" class="link">this example</a> to write code that
      is compatible with both PHP 5.3 and 5.4.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-combine.html" class="function">array_combine()</a></span> now returns <code class="literal">array()</code> instead of <strong><code>FALSE</code></strong>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.array-combine.html" class="function">array_combine()</a></span> now returns <code class="literal">array()</code> instead of <strong><code>FALSE</code></strong>
      when two empty arrays are provided as parameters.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     If you use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlentities.html" class="function">htmlentities()</a></span> with asian character sets, it
-     works like <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> - this has always been the
+     If you use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlentities.html" class="function">htmlentities()</a></span> with asian character sets, it
+     works like <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> - this has always been the
      case in previous versions of PHP, but now an <strong><code>E_STRICT</code></strong>
      level error is emitted.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The third parameter of <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ob-start.html" class="function">ob_start()</a></span> has changed from
-     <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.boolean.html" class="type boolean">boolean</a></span> <code class="parameter">erase</code> to <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.integer.html" class="type integer">integer</a></span>
+     The third parameter of <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.ob-start.html" class="function">ob_start()</a></span> has changed from
+     <span class="type"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.boolean.html" class="type boolean">boolean</a></span> <code class="parameter">erase</code> to <span class="type"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.integer.html" class="type integer">integer</a></span>
      <code class="parameter">flags</code>. Note that code that explicitly set
      <code class="parameter">erase</code> to <strong><code>FALSE</code></strong> will no longer behave as expected
      in PHP 5.4: please follow
-     <a target="_blank" href="https://www.php.net/manual/en/function.ob-start.html#function.ob-start.flags-bc" class="link">this example</a> to write
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.ob-start.html#function.ob-start.flags-bc" class="link">this example</a> to write
      code that is compatible with PHP 5.3 and 5.4.
     </span>
    </li>
   </ul><p class="simpara">
-   The following keywords are now <a target="_blank" href="https://www.php.net/manual/en/reserved.html" class="link">reserved</a>, and may not be used
+   The following keywords are now <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.html" class="link">reserved</a>, and may not be used
    as names by functions, classes, etc.
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.traits.html" class="link">trait</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.traits.html" class="link">trait</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.callable.html" class="link">callable</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.callable.html" class="link">callable</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.traits.html" class="link">insteadof</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.traits.html" class="link">insteadof</a>
     </span>
    </li>
   </ul><p class="simpara">
@@ -7993,32 +8052,32 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.define-syslog-variables.html" class="function">define_syslog_variables()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.define-syslog-variables.html" class="function">define_syslog_variables()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.import-request-variables.html" class="function">import_request_variables()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.import-request-variables.html" class="function">import_request_variables()</a></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-is-registered.html" class="function">session_is_registered()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-register.html" class="function">session_register()</a></span>
-     and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.session-unregister.html" class="function">session_unregister()</a></span>.
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.session-is-registered.html" class="function">session_is_registered()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.session-register.html" class="function">session_register()</a></span>
+     and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.session-unregister.html" class="function">session_unregister()</a></span>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
      The aliases
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-bind-param.html" class="function">mysqli_bind_param()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-bind-result.html" class="function">mysqli_bind_result()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-client-encoding.html" class="function">mysqli_client_encoding()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-fetch.html" class="function">mysqli_fetch()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-param-count.html" class="function">mysqli_param_count()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-get-metadata.html" class="function">mysqli_get_metadata()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysqli-send-long-data.html" class="function">mysqli_send_long_data()</a></span>, mysqli::client_encoding() and mysqli_stmt::stmt().
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysqli-bind-param.html" class="function">mysqli_bind_param()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysqli-bind-result.html" class="function">mysqli_bind_result()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysqli-client-encoding.html" class="function">mysqli_client_encoding()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysqli-fetch.html" class="function">mysqli_fetch()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysqli-param-count.html" class="function">mysqli_param_count()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysqli-get-metadata.html" class="function">mysqli_get_metadata()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysqli-send-long-data.html" class="function">mysqli_send_long_data()</a></span>, mysqli::client_encoding() and mysqli_stmt::stmt().
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration53.incompatible.php" target="_blank">PHP 5.3</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration53.incompatible.php" target="_blank">PHP 5.3</a></h1>
     </header>
 
     <div id="migration53.incompatible" class="section">
@@ -8032,35 +8091,35 @@ array(3) {
      The newer internal parameter parsing API has been applied across all the
      extensions bundled with PHP 5.3.x. This parameter parsing API causes
      functions to return <strong><code>NULL</code></strong> when passed incompatible parameters. There are
-     some exceptions to this rule, such as the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class.html" class="function">get_class()</a></span>
+     some exceptions to this rule, such as the <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.get-class.html" class="function">get_class()</a></span>
      function, which will continue to return <strong><code>FALSE</code></strong> on error.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.clearstatcache.html" class="function">clearstatcache()</a></span> no longer clears the realpath cache by
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.clearstatcache.html" class="function">clearstatcache()</a></span> no longer clears the realpath cache by
      default.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.realpath.html" class="function">realpath()</a></span> is now fully platform-independent.
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.realpath.html" class="function">realpath()</a></span> is now fully platform-independent.
      Consequence of this is that invalid relative paths such as
      <code class="literal">__FILE__ . "/../x"</code> do not work anymore.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.call-user-func.html" class="function">call_user_func()</a></span> family of functions now propagate
+     The <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.call-user-func.html" class="function">call_user_func()</a></span> family of functions now propagate
      <code class="literal">$this</code> even if the callee is a parent class.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The array functions <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.natsort.html" class="function">natsort()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.natcasesort.html" class="function">natcasesort()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.usort.html" class="function">usort()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.uasort.html" class="function">uasort()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.uksort.html" class="function">uksort()</a></span>,
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-flip.html" class="function">array_flip()</a></span>, and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-unique.html" class="function">array_unique()</a></span> no
+     The array functions <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.natsort.html" class="function">natsort()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.natcasesort.html" class="function">natcasesort()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.usort.html" class="function">usort()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.uasort.html" class="function">uasort()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.uksort.html" class="function">uksort()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.array-flip.html" class="function">array_flip()</a></span>, and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.array-unique.html" class="function">array_unique()</a></span> no
      longer accept objects passed as arguments. To apply these functions to an
      object, cast the object to an array first.
     </span>
@@ -8078,7 +8137,7 @@ array(3) {
     <span class="simpara">
      The new mysqlnd library necessitates the use of MySQL 4.1's newer 41-byte
      password format. Continued use of the old 16-byte passwords will cause
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mysql-connect.html" class="function">mysql_connect()</a></span> and similar functions to emit the error,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mysql-connect.html" class="function">mysql_connect()</a></span> and similar functions to emit the error,
      <code class="literal">"mysqlnd cannot connect to MySQL 4.1+ using old
      authentication."</code>
     </span>
@@ -8088,7 +8147,7 @@ array(3) {
      The new mysqlnd library does not read mysql configuration files 
      (my.cnf/my.ini), as the older libmysqlclient library does.  If your code relies on 
      settings in the configuration file, you can load it explicitly with the 
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/mysqli.options.html" class="function">mysqli_options()</a></span> function. Note that this means the 
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/mysqli.options.html" class="function">mysqli_options()</a></span> function. Note that this means the 
      PDO specific constants <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_FILE</code></strong> 
      and <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</code></strong> are not defined 
      if MySQL support in PDO is compiled with mysqlnd.
@@ -8096,39 +8155,39 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     The trailing / has been removed from the <a target="_blank" href="https://www.php.net/manual/en/class.splfileinfo.html" class="classname">SplFileInfo</a>
+     The trailing / has been removed from the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/class.splfileinfo.html" class="classname">SplFileInfo</a>
      class and other related directory classes.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> magic
+     The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> magic
      method can no longer accept arguments.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
      The magic methods 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.get" class="link">__get()</a>, 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.set" class="link">__set()</a>, 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.isset" class="link">__isset()</a>, 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.unset" class="link">__unset()</a>, and
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.call" class="link">__call()</a> must always
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.overloading.html#object.get" class="link">__get()</a>, 
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.overloading.html#object.set" class="link">__set()</a>, 
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.overloading.html#object.isset" class="link">__isset()</a>, 
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.overloading.html#object.unset" class="link">__unset()</a>, and
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.overloading.html#object.call" class="link">__call()</a> must always
      be public and can no longer be static. Method signatures are now enforced.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.call" class="link">__call()</a>
+     The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.overloading.html#object.call" class="link">__call()</a>
      magic method is now invoked on access to private and protected methods.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-arg.html" class="function">func_get_arg()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-get-args.html" class="function">func_get_args()</a></span> and
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.func-num-args.html" class="function">func_num_args()</a></span> can no longer be called from the
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.func-get-arg.html" class="function">func_get_arg()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.func-get-args.html" class="function">func_get_args()</a></span> and
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.func-num-args.html" class="function">func_num_args()</a></span> can no longer be called from the
      outermost scope of a file that has been included by calling
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include.html" class="function">include</a></span> or <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.require.html" class="function">require</a></span> from within
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.include.html" class="function">include</a></span> or <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.require.html" class="function">require</a></span> from within
      a function in the calling file.
     </span>
    </li>
@@ -8146,17 +8205,17 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/control-structures.goto.html" class="link">goto</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.goto.html" class="link">goto</a>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.namespaces.html" class="link">namespace</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.namespaces.html" class="link">namespace</a>
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration52.incompatible.php" target="_blank">PHP 5.2</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration52.incompatible.php" target="_blank">PHP 5.2</a></h1>
     </header>
 
     <div id="migration52.incompatible" class="section">
@@ -8167,19 +8226,19 @@ array(3) {
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.getrusage.html" class="function">getrusage()</a></span> returns <strong><code>NULL</code></strong> when passed
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.getrusage.html" class="function">getrusage()</a></span> returns <strong><code>NULL</code></strong> when passed
      incompatible arguments as of PHP 5.2.1.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcommentname.html" class="function">ZipArchive::setCommentName()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ziparchive.setcommentname.html" class="function">ZipArchive::setCommentName()</a></span>
      returns <strong><code>TRUE</code></strong> on success as of PHP 5.2.1.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/ziparchive.setcommentindex.html" class="function">ZipArchive::setCommentIndex()</a></span>
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ziparchive.setcommentindex.html" class="function">ZipArchive::setCommentIndex()</a></span>
      returns <strong><code>TRUE</code></strong> on success as of PHP 5.2.1.
     </span>
    </li>
@@ -8208,7 +8267,7 @@ array(3) {
      leading to unpredictable behavior if an unexpected configuration file were
      read. This functionality was removed in 5.2.0, and PHP will no longer search
      CWD for the presence of <var class="filename">php.ini</var> or <var class="filename">php-cli.ini</var> files.
-     See also the <a target="_blank" href="https://www.php.net/manual/en/features.commandline.html" class="link">command line</a> section
+     See also the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/features.commandline.html" class="link">command line</a> section
      of the manual.
     </span>
    </li>
@@ -8225,7 +8284,7 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">print </span><span style="color: #0000BB">10 </span><span style="color: #007700">% </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  Division by zero in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">print </span><span style="color: #0000BB">10 </span><span style="color: #007700">% </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  Division by zero in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -8234,11 +8293,11 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     Changed <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> to be called wherever
+     Changed <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> to be called wherever
      applicable.
     </span>
     <span class="simpara">
-     The magic method <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> will now be called
+     The magic method <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> will now be called
      in a string context, that is, anywhere an object is used as a
      string.
     </span>
@@ -8254,27 +8313,27 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>print </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Catchable fatal error:  Object of class foo could<br>   not be converted to string in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{}<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>print </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Catchable fatal error:  Object of class foo could<br>   not be converted to string in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
 
     </div>
     <span class="simpara">
-     Even with <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a>, objects cannot be used as
+     Even with <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a>, objects cannot be used as
      array indices or keys. We may add built-in hash support for this at
      a later date, but as of PHP 5.2.x you will need to either provide your
      own hashing or use the new SPL function
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.spl-object-hash.html" class="function">spl_object_hash()</a></span>.
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.spl-object-hash.html" class="function">spl_object_hash()</a></span>.
     </span>
     <span class="simpara">
      Exceptions can not be thrown from
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> methods.
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.magic.html#object.tostring" class="link">__toString()</a> methods.
     </span>
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">__toString</span><span style="color: #007700">() {<br>        throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">;<br>    }<br>}<br><br>try {<br>    print new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>    </span><span style="color: #FF8000">/* Fatal error:  Method foo::__toString() must<br>       not throw an exception in filename on line n */<br></span><span style="color: #007700">} catch(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">__toString</span><span style="color: #007700">() {<br>        throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">;<br>    }<br>}<br><br>try {<br>    print new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br>    </span><span style="color: #FF8000">/* Fatal error:  Method foo::__toString() must<br>       not throw an exception in filename on line n */<br></span><span style="color: #007700">} catch(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -8292,7 +8351,7 @@ array(3) {
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">abstract class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    abstract static function </span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br>    </span><span style="color: #FF8000">/* Strict Standards:  Static function foo::bar()<br>       should not be abstract in filename on line n */<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">abstract class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br>    abstract static function </span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br>    </span><span style="color: #FF8000">/* Strict Standards:  Static function foo::bar()<br>       should not be abstract in filename on line n */<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -8301,7 +8360,7 @@ array(3) {
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/ref.oci8.html" class="link">Oracle extension</a> requires at least Oracle
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ref.oci8.html" class="link">Oracle extension</a> requires at least Oracle
      10 on Windows.
     </span>
    </li>
@@ -8318,12 +8377,12 @@ array(3) {
      protocol when accessing it.
     </span>
     <span class="simpara">
-     See also <a target="_blank" href="https://www.php.net/manual/en/http://www.faqs.org/rfcs/rfc2397" class="link external">» RFC 2397</a> 
+     See also <a target="_blank" href="http://www.faqs.org/rfcs/rfc2397" class="link external">» RFC 2397</a> 
     </span>
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #FF8000">/* when allow_url_include is OFF (default) */<br></span><span style="color: #007700">include </span><span style="color: #DD0000">"data:;base64,PD9waHAgcGhwaW5mbygpOz8+"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  include(): URL file-access is disabled<br>   in the server configuration in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* when allow_url_include is OFF (default) */<br></span><span style="color: #007700">include </span><span style="color: #DD0000">"data:;base64,PD9waHAgcGhwaW5mbygpOz8+"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">/* Warning:  include(): URL file-access is disabled<br>   in the server configuration in filename on line n */<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -8343,7 +8402,7 @@ array(3) {
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration5.incompatible.php" target="_blank">PHP 5.0</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration5.incompatible.php" target="_blank">PHP 5.0</a></h1>
     </header>
 
     <div id="migration5.incompatible" class="section">
@@ -8354,13 +8413,13 @@ array(3) {
    </p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      There are some <a target="_blank" href="https://www.php.net/manual/en/reserved.keywords.html" class="link">new reserved
+      There are some <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.keywords.html" class="link">new reserved
       keywords</a>.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strrpos.html" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strripos.html" class="function">strripos()</a></span> now use
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.strrpos.html" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.strripos.html" class="function">strripos()</a></span> now use
       the entire string as a needle.
      </span>
     </li>
@@ -8373,7 +8432,7 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.array-merge.html" class="function">array_merge()</a></span> was changed to accept only arrays. If a
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.array-merge.html" class="function">array_merge()</a></span> was changed to accept only arrays. If a
       non-array variable is passed, a <strong><code>E_WARNING</code></strong> will be
       thrown for every such parameter. Be careful because your code may start
       emitting <strong><code>E_WARNING</code></strong> out of the blue.
@@ -8384,8 +8443,8 @@ array(3) {
       <strong><code>PATH_TRANSLATED</code></strong> server variable is no longer set implicitly under
       Apache2 SAPI in contrast to the situation in PHP 4, where it is set to
       the same value as the <strong><code>SCRIPT_FILENAME</code></strong> server variable when it is not
-      populated by Apache. This change was made to comply with the <a target="_blank" href="https://www.php.net/manual/en/http://www.faqs.org/rfcs/rfc3875" class="link external">» CGI/1.1 specification</a>. Please refer to <a target="_blank" href="https://www.php.net/manual/en/https://bugs.php.net/23610" class="link external">» bug #23610</a> for further information,
-      and see also the <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.html" class="classname">$_SERVER['PATH_TRANSLATED']</a></var>
+      populated by Apache. This change was made to comply with the <a target="_blank" href="http://www.faqs.org/rfcs/rfc3875" class="link external">» CGI/1.1 specification</a>. Please refer to <a target="_blank" href="https://bugs.php.net/23610" class="link external">» bug #23610</a> for further information,
+      and see also the <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.server.html" class="classname">$_SERVER['PATH_TRANSLATED']</a></var>
       description in the manual. This issue 
       also affects PHP versions &gt;= 4.3.2.
      </span>
@@ -8393,7 +8452,7 @@ array(3) {
     <li class="listitem">
      <span class="simpara">
       The <strong><code>T_ML_COMMENT</code></strong> constant is no longer defined by
-      the <a target="_blank" href="https://www.php.net/manual/en/ref.tokenizer.html" class="link">Tokenizer</a> extension. If
+      the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ref.tokenizer.html" class="link">Tokenizer</a> extension. If
       error_reporting is set to <strong><code>E_ALL</code></strong>, PHP will
       generate a notice. Although the <strong><code>T_ML_COMMENT</code></strong> was
       never used at all, it was defined in PHP 4. In both PHP 4 and PHP 5
@@ -8404,16 +8463,16 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.html" class="classname">$_SERVER</a></var> should be populated with <var class="varname">argc</var> and
+      <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.server.html" class="classname">$_SERVER</a></var> should be populated with <var class="varname">argc</var> and
       <var class="varname">argv</var> if
-      <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.variables-order" class="link">variables_order</a> includes "S".
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.variables-order" class="link">variables_order</a> includes "S".
       If you have specifically configured your system to not create
-      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.server.html" class="classname">$_SERVER</a></var>, then of course it shouldn't be there.
+      <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.server.html" class="classname">$_SERVER</a></var>, then of course it shouldn't be there.
       The change was to always make <var class="varname">argc</var>
       and <var class="varname">argv</var> available in the CLI version regardless of the
-      <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.variables-order" class="link">variables_order</a> setting.
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.variables-order" class="link">variables_order</a> setting.
       As in, the CLI version will now always populate the global
-      <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argc.html" class="classname">$argc</a></var> and <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.argv.html" class="classname">$argv</a></var> variables.
+      <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.argc.html" class="classname">$argc</a></var> and <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.argv.html" class="classname">$argv</a></var> variables.
      </span>
     </li>
     <li class="listitem">
@@ -8424,23 +8483,23 @@ array(3) {
     <li class="listitem">
      <span class="simpara">
       In some cases classes must be declared before use. It only happens if
-      some of the new features of PHP 5 (such as <a target="_blank" href="https://www.php.net/manual/en/language.oop5.interfaces.html" class="link">interfaces</a>) are used.
+      some of the new features of PHP 5 (such as <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.interfaces.html" class="link">interfaces</a>) are used.
       Otherwise the behaviour is the old.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class.html" class="function">get_class()</a></span>, <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-parent-class.html" class="function">get_parent_class()</a></span>
-      and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.get-class-methods.html" class="function">get_class_methods()</a></span> now return the name of the
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.get-class.html" class="function">get_class()</a></span>, <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.get-parent-class.html" class="function">get_parent_class()</a></span>
+      and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.get-class-methods.html" class="function">get_class_methods()</a></span> now return the name of the
       classes/methods as they were declared (case-sensitive) which may lead to
       problems in older scripts that rely on the previous behaviour (the
       class/method name was always returned lowercased). A possible solution
       is to search for those functions in all your scripts and use
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strtolower.html" class="function">strtolower()</a></span>.
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.strtolower.html" class="function">strtolower()</a></span>.
      </span>
      <span class="simpara">
       This case sensitivity change also applies to the 
-      <a target="_blank" href="https://www.php.net/manual/en/language.constants.predefined.html" class="link">magical predefined 
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.constants.predefined.html" class="link">magical predefined 
       constants</a> <strong><code>__CLASS__</code></strong>, 
       <strong><code>__METHOD__</code></strong>, and <strong><code>__FUNCTION__</code></strong>.
       The values are returned exactly as they're declared (case-sensitive).
@@ -8448,7 +8507,7 @@ array(3) {
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.ip2long.html" class="function">ip2long()</a></span> now returns <strong><code>FALSE</code></strong> when an invalid IP
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.ip2long.html" class="function">ip2long()</a></span> now returns <strong><code>FALSE</code></strong> when an invalid IP
       address is passed as argument to the function, and no longer
       <code class="literal">-1</code>.
      </span>
@@ -8456,17 +8515,17 @@ array(3) {
     <li class="listitem">
      <span class="simpara">
       If there are functions defined in the included file, they can be used in the
-      main file independent if they are before <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.return.html" class="function">return</a></span> or after.
+      main file independent if they are before <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.return.html" class="function">return</a></span> or after.
       If the file is included twice, PHP 5 issues fatal error because functions
       were already declared, while PHP 4 doesn't complain about it.
-      It is recommended to use <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include-once.html" class="function">include_once</a></span> instead of
+      It is recommended to use <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.include-once.html" class="function">include_once</a></span> instead of
       checking if the file was already included and conditionally return inside
       the included file.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.include-once.html" class="function">include_once</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.require-once.html" class="function">require_once</a></span>
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.include-once.html" class="function">include_once</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.require-once.html" class="function">require_once</a></span>
       first normalize the path of included file on Windows so that including
       A.php and a.php include the file just once.
      </span>
@@ -8484,11 +8543,11 @@ array(3) {
     </li>
    </ul><p class="para">
     </p><div class="example" id="example-6941">
-     <p><strong>Example #1 <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strrpos.html" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strripos.html" class="function">strripos()</a></span> now
+     <p><strong>Example #1 <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.strrpos.html" class="function">strrpos()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.strripos.html" class="function">strripos()</a></span> now
       use the entire string as a needle</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DEF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//int(3)<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DAF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//bool(false)<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br>var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DEF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//int(3)<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DAF'</span><span style="color: #007700">)); </span><span style="color: #FF8000">//bool(false)<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -8500,7 +8559,7 @@ array(3) {
      <p><strong>Example #2 An object with no properties is no longer considered "empty"</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">test </span><span style="color: #007700">{ }<br></span><span style="color: #0000BB">$t </span><span style="color: #007700">= new </span><span style="color: #0000BB">test</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$t</span><span style="color: #007700">)); </span><span style="color: #FF8000">// echo bool(false)<br><br></span><span style="color: #007700">if (</span><span style="color: #0000BB">$t</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// Will be executed<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">test </span><span style="color: #007700">{ }<br></span><span style="color: #0000BB">$t </span><span style="color: #007700">= new </span><span style="color: #0000BB">test</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$t</span><span style="color: #007700">)); </span><span style="color: #FF8000">// echo bool(false)<br><br></span><span style="color: #007700">if (</span><span style="color: #0000BB">$t</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// Will be executed<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -8512,7 +8571,7 @@ array(3) {
      <p><strong>Example #3 In some cases classes must be declared before used</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br><br></span><span style="color: #FF8000">//works with no errors:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">a</span><span style="color: #007700">();<br>class </span><span style="color: #0000BB">a </span><span style="color: #007700">{<br>}<br><br><br></span><span style="color: #FF8000">//throws an error:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">b</span><span style="color: #007700">();<br><br>interface </span><span style="color: #0000BB">c</span><span style="color: #007700">{<br>}<br>class </span><span style="color: #0000BB">b </span><span style="color: #007700">implements </span><span style="color: #0000BB">c </span><span style="color: #007700">{<br>} <br><br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">//works with no errors:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">a</span><span style="color: #007700">();<br>class </span><span style="color: #0000BB">a </span><span style="color: #007700">{<br>}<br><br><br></span><span style="color: #FF8000">//throws an error:<br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">b</span><span style="color: #007700">();<br><br>interface </span><span style="color: #0000BB">c</span><span style="color: #007700">{<br>}<br>class </span><span style="color: #0000BB">b </span><span style="color: #007700">implements </span><span style="color: #0000BB">c </span><span style="color: #007700">{<br>} <br><br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>

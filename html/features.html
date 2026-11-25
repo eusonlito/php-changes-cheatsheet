@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="New Features in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
 
+        <link rel="alternate" type="text/markdown" href="features.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="New Features in PHP 8.6, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 7.0, 5.6, 5.5, 5.4, 5.3">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598824" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598824" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -76,13 +78,14 @@
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">Config
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Config
 </span><span style="color: #007700">{
     public readonly </span><span style="color: #0000BB">int $timeout </span><span style="color: #007700">= </span><span style="color: #0000BB">30</span><span style="color: #007700">;
 }
 
 </span><span style="color: #0000BB">$config </span><span style="color: #007700">= new </span><span style="color: #0000BB">Config</span><span style="color: #007700">();
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">timeout</span><span style="color: #007700">); </span><span style="color: #FF8000">// int(30)</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">timeout</span><span style="color: #007700">); </span><span style="color: #FF8000">// int(30)</span></code></pre></div>
     </div>
 
    </div>
@@ -100,7 +103,8 @@
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">();
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">();
 </span><span style="color: #0000BB">$map </span><span style="color: #007700">= new </span><span style="color: #0000BB">WeakMap</span><span style="color: #007700">();
 </span><span style="color: #0000BB">$count </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;
 
@@ -108,7 +112,7 @@
 </span><span style="color: #0000BB">$map</span><span style="color: #007700">[</span><span style="color: #0000BB">$obj</span><span style="color: #007700">] = &amp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$count</span><span style="color: #007700">++;
 
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$map</span><span style="color: #007700">[</span><span style="color: #0000BB">$obj</span><span style="color: #007700">]); </span><span style="color: #FF8000">// int(1)</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$map</span><span style="color: #007700">[</span><span style="color: #0000BB">$obj</span><span style="color: #007700">]); </span><span style="color: #FF8000">// int(1)</span></code></pre></div>
     </div>
 
    </div>
@@ -128,7 +132,8 @@
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">enum </span><span style="color: #0000BB">Suit</span><span style="color: #007700">: </span><span style="color: #0000BB">string
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">enum </span><span style="color: #0000BB">Suit</span><span style="color: #007700">: </span><span style="color: #0000BB">string
 </span><span style="color: #007700">{
     case </span><span style="color: #0000BB">Hearts </span><span style="color: #007700">= </span><span style="color: #DD0000">'H'</span><span style="color: #007700">;
     case </span><span style="color: #0000BB">Spades </span><span style="color: #007700">= </span><span style="color: #DD0000">'S'</span><span style="color: #007700">;
@@ -139,7 +144,7 @@
     }
 }
 
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Suit</span><span style="color: #007700">::</span><span style="color: #0000BB">Hearts</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Suit</span><span style="color: #007700">::</span><span style="color: #0000BB">Hearts</span><span style="color: #007700">);</span></code></pre></div>
     </div>
 
     <p class="simpara">The above example will output:</p>
@@ -170,7 +175,8 @@ enum(Suit::Hearts) (2) {
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">interface </span><span style="color: #0000BB">HasVersion
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">interface </span><span style="color: #0000BB">HasVersion
 </span><span style="color: #007700">{
     const </span><span style="color: #0000BB">VERSION </span><span style="color: #007700">= </span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">;
 }
@@ -184,7 +190,7 @@ class </span><span style="color: #0000BB">Package </span><span style="color: #00
     // but no matching parent constant exists
     // #[\Override]
     // const NAME = 'package';
-</span><span style="color: #007700">}</span></span></code></pre></div>
+</span><span style="color: #007700">}</span></code></pre></div>
     </div>
 
    </div>
@@ -207,7 +213,8 @@ class </span><span style="color: #0000BB">Package </span><span style="color: #00
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">int $a</span><span style="color: #007700">, </span><span style="color: #0000BB">int $b</span><span style="color: #007700">, </span><span style="color: #0000BB">int $c </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">int $a</span><span style="color: #007700">, </span><span style="color: #0000BB">int $b</span><span style="color: #007700">, </span><span style="color: #0000BB">int $c </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">): </span><span style="color: #0000BB">int
 </span><span style="color: #007700">{
     return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b </span><span style="color: #007700">+ </span><span style="color: #0000BB">$c</span><span style="color: #007700">;
 }
@@ -222,7 +229,7 @@ class </span><span style="color: #0000BB">Package </span><span style="color: #00
 
 // Works with any callable, including internal functions
 </span><span style="color: #0000BB">$stripSpaces </span><span style="color: #007700">= </span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">' '</span><span style="color: #007700">, </span><span style="color: #DD0000">''</span><span style="color: #007700">, ?);
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$stripSpaces</span><span style="color: #007700">(</span><span style="color: #DD0000">'a b c'</span><span style="color: #007700">)); </span><span style="color: #FF8000">// string(3) "abc"</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$stripSpaces</span><span style="color: #007700">(</span><span style="color: #DD0000">'a b c'</span><span style="color: #007700">)); </span><span style="color: #FF8000">// string(3) "abc"</span></code></pre></div>
     </div>
 
    </div>
@@ -240,12 +247,13 @@ class </span><span style="color: #0000BB">Package </span><span style="color: #00
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">const </span><span style="color: #0000BB">CONFIG </span><span style="color: #007700">= new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">();
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">const </span><span style="color: #0000BB">CONFIG </span><span style="color: #007700">= new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">();
 
 </span><span style="color: #FF8000">// Previously: "Fatal error: Cannot use temporary expression in write context"
 </span><span style="color: #0000BB">CONFIG</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">debug </span><span style="color: #007700">= </span><span style="color: #0000BB">true</span><span style="color: #007700">;
 
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">CONFIG</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">debug</span><span style="color: #007700">); </span><span style="color: #FF8000">// bool(true)</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">CONFIG</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">debug</span><span style="color: #007700">); </span><span style="color: #FF8000">// bool(true)</span></code></pre></div>
     </div>
 
    </div>
@@ -268,11 +276,12 @@ class </span><span style="color: #0000BB">Package </span><span style="color: #00
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">echo </span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">pack</span><span style="color: #007700">(</span><span style="color: #DD0000">'l&gt;'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">)), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Prints "00000001"
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">echo </span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">pack</span><span style="color: #007700">(</span><span style="color: #DD0000">'l&gt;'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">)), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Prints "00000001"
 </span><span style="color: #007700">echo </span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">pack</span><span style="color: #007700">(</span><span style="color: #DD0000">'l&lt;'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">)), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Prints "01000000"
 </span><span style="color: #007700">echo </span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">pack</span><span style="color: #007700">(</span><span style="color: #DD0000">'f&gt;'</span><span style="color: #007700">, </span><span style="color: #0000BB">1.5</span><span style="color: #007700">)), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">; </span><span style="color: #FF8000">// Prints "3fc00000"
 
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'s&gt;value'</span><span style="color: #007700">, </span><span style="color: #DD0000">"\xff\xfe"</span><span style="color: #007700">)); </span><span style="color: #FF8000">// ["value" =&gt; int(-2)]</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">unpack</span><span style="color: #007700">(</span><span style="color: #DD0000">'s&gt;value'</span><span style="color: #007700">, </span><span style="color: #DD0000">"\xff\xfe"</span><span style="color: #007700">)); </span><span style="color: #FF8000">// ["value" =&gt; int(-2)]</span></code></pre></div>
     </div>
 
    </div>
@@ -349,10 +358,11 @@ class </span><span style="color: #0000BB">Package </span><span style="color: #00
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $timeout </span><span style="color: #007700">= </span><span style="color: #0000BB">\Time\Duration</span><span style="color: #007700">::</span><span style="color: #0000BB">fromSeconds</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">\Time\Duration</span><span style="color: #007700">::</span><span style="color: #0000BB">fromMilliseconds</span><span style="color: #007700">(</span><span style="color: #0000BB">500</span><span style="color: #007700">));
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$timeout </span><span style="color: #007700">= </span><span style="color: #0000BB">\Time\Duration</span><span style="color: #007700">::</span><span style="color: #0000BB">fromSeconds</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">\Time\Duration</span><span style="color: #007700">::</span><span style="color: #0000BB">fromMilliseconds</span><span style="color: #007700">(</span><span style="color: #0000BB">500</span><span style="color: #007700">));
 
 </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d.%09d seconds\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$timeout</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">seconds</span><span style="color: #007700">, </span><span style="color: #0000BB">$timeout</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nanoseconds</span><span style="color: #007700">);
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$timeout </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">\Time\Duration</span><span style="color: #007700">::</span><span style="color: #0000BB">fromSeconds</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">));</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$timeout </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">\Time\Duration</span><span style="color: #007700">::</span><span style="color: #0000BB">fromSeconds</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">));</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -725,8 +735,9 @@ bool(true)
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $result </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hello World" </span><span style="color: #007700">|&gt; </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(...);
-print </span><span style="color: #0000BB">$result </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Prints "11"</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$result </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hello World" </span><span style="color: #007700">|&gt; </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(...);
+print </span><span style="color: #0000BB">$result </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Prints "11"</span></code></pre></div>
     </div>
 
    </div>
@@ -764,7 +775,9 @@ print </span><span style="color: #0000BB">$result </span><span style="color: #00
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">#[</span><span style="color: #0000BB">\NoDiscard</span><span style="color: #007700">]
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">#[</span><span style="color: #0000BB">\NoDiscard</span><span style="color: #007700">]
 function </span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #0000BB">string $a</span><span style="color: #007700">, </span><span style="color: #0000BB">string $b</span><span style="color: #007700">): </span><span style="color: #0000BB">string </span><span style="color: #007700">{
      return </span><span style="color: #0000BB">$a </span><span style="color: #007700">. </span><span style="color: #0000BB">$b</span><span style="color: #007700">;
 }
@@ -777,7 +790,7 @@ function </span><span style="color: #0000BB">concat</span><span style="color: #0
 </span><span style="color: #0000BB">$results </span><span style="color: #007700">= </span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);
 
 </span><span style="color: #FF8000">// No warning, because the (void) cast is used.
-</span><span style="color: #007700">(</span><span style="color: #0000BB">void</span><span style="color: #007700">)</span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #007700">(</span><span style="color: #0000BB">void</span><span style="color: #007700">)</span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);</span></code></pre></div>
     </div>
 
    </div>
@@ -866,8 +879,9 @@ function </span><span style="color: #0000BB">concat</span><span style="color: #0
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">const </span><span style="color: #0000BB">T1 </span><span style="color: #007700">= (int) </span><span style="color: #0000BB">0.3</span><span style="color: #007700">; </span><span style="color: #FF8000">// Previously: "Fatal error: Constant expression contains invalid operations"
-</span><span style="color: #007700">print </span><span style="color: #0000BB">T1 </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Prints "0"</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">const </span><span style="color: #0000BB">T1 </span><span style="color: #007700">= (int) </span><span style="color: #0000BB">0.3</span><span style="color: #007700">; </span><span style="color: #FF8000">// Previously: "Fatal error: Constant expression contains invalid operations"
+</span><span style="color: #007700">print </span><span style="color: #0000BB">T1 </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Prints "0"</span></code></pre></div>
     </div>
 
    </div>
@@ -1195,7 +1209,8 @@ function </span><span style="color: #0000BB">concat</span><span style="color: #0
 
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">Person
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Person
 </span><span style="color: #007700">{
     </span><span style="color: #FF8000">// A "virtual" property. It cannot be set explicitly.
     </span><span style="color: #007700">public </span><span style="color: #0000BB">string $fullName </span><span style="color: #007700">{
@@ -1227,7 +1242,7 @@ print </span><span style="color: #0000BB">$p</span><span style="color: #007700">
 </span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">lastName </span><span style="color: #007700">= </span><span style="color: #DD0000">'Peterson'</span><span style="color: #007700">;
 print </span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fullName</span><span style="color: #007700">; </span><span style="color: #FF8000">// Prints "Peter Peterson"
 
-</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fullName </span><span style="color: #007700">= </span><span style="color: #DD0000">"Peter 'Pete' Peterson"</span><span style="color: #007700">; </span><span style="color: #FF8000">// Throws Error: "Property Person::$fullName is read-only"</span></span></code></pre></div>
+</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fullName </span><span style="color: #007700">= </span><span style="color: #DD0000">"Peter 'Pete' Peterson"</span><span style="color: #007700">; </span><span style="color: #FF8000">// Throws Error: "Property Person::$fullName is read-only"</span></code></pre></div>
     </div>
 
    </div>
@@ -1243,7 +1258,8 @@ print </span><span style="color: #0000BB">$p</span><span style="color: #007700">
    </p>
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">Example
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Example
 </span><span style="color: #007700">{
     </span><span style="color: #FF8000">// The first visibility modifier controls the get-visibility, and the second modifier
     // controls the set-visibility. The get-visibility must not be narrower than set-visibility.
@@ -1253,7 +1269,7 @@ print </span><span style="color: #0000BB">$p</span><span style="color: #007700">
     {
         </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name </span><span style="color: #007700">= </span><span style="color: #0000BB">$name</span><span style="color: #007700">;
     }
-}</span></span></code></pre></div>
+}</span></code></pre></div>
     </div>
 
    </div>
@@ -1269,7 +1285,8 @@ print </span><span style="color: #0000BB">$p</span><span style="color: #007700">
    </p>
    <div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">Example
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Example
 </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(private </span><span style="color: #0000BB">int $data</span><span style="color: #007700">)
     {
@@ -1286,7 +1303,7 @@ print </span><span style="color: #0000BB">$p</span><span style="color: #007700">
 };
 
 </span><span style="color: #0000BB">$reflector </span><span style="color: #007700">= new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Example</span><span style="color: #007700">::class);
-</span><span style="color: #0000BB">$object </span><span style="color: #007700">= </span><span style="color: #0000BB">$reflector</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newLazyGhost</span><span style="color: #007700">(</span><span style="color: #0000BB">$initializer</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #0000BB">$object </span><span style="color: #007700">= </span><span style="color: #0000BB">$reflector</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newLazyGhost</span><span style="color: #007700">(</span><span style="color: #0000BB">$initializer</span><span style="color: #007700">);</span></code></pre></div>
     </div>
 
    </div>
@@ -1827,14 +1844,15 @@ print </span><span style="color: #0000BB">$p</span><span style="color: #007700">
     
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">/*
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/*
 /path/to/user.ini contains the following settings:
 
 listen = localhost:${DRUPAL_FPM_PORT:-9000}
 */
 
 </span><span style="color: #0000BB">$user_ini </span><span style="color: #007700">= </span><span style="color: #0000BB">parse_ini_file</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/user.ini'</span><span style="color: #007700">);
-echo </span><span style="color: #0000BB">$user_ini</span><span style="color: #007700">[</span><span style="color: #DD0000">'listen'</span><span style="color: #007700">]; </span><span style="color: #FF8000">// localhost:9000</span></span></code></pre></div>
+echo </span><span style="color: #0000BB">$user_ini</span><span style="color: #007700">[</span><span style="color: #DD0000">'listen'</span><span style="color: #007700">]; </span><span style="color: #FF8000">// localhost:9000</span></code></pre></div>
      </div>
 
     </div>
@@ -2075,7 +2093,7 @@ echo </span><span style="color: #0000BB">$user_ini</span><span style="color: #00
   <p class="para">
    Added support for the <code class="literal">n</code> (NO_AUTO_CAPTURE) modifier,
    which makes simple <code class="code">(xyz)</code> groups non-capturing.
-   Only named groups like <code class="code">(?<name>xyz)</name></code> are capturing.
+   Only named groups like <code class="code">(?&lt;name&gt;xyz)</code> are capturing.
    This only affects which groups are capturing, it is still possible to use
    numbered subpattern references, and the matches array will still contain
    numbered results.
@@ -2115,9 +2133,10 @@ echo </span><span style="color: #0000BB">$user_ini</span><span style="color: #00
     similarly to binary and hexadecimal integer literals.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php 014</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Non-prefix octal literal
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+014</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Non-prefix octal literal
 </span><span style="color: #0000BB">0o14</span><span style="color: #007700">; </span><span style="color: #FF8000">// Prefixed octal literal
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2132,9 +2151,10 @@ echo </span><span style="color: #0000BB">$user_ini</span><span style="color: #00
     Added support for <a target="_blank" href="https://www.php.net/manual/en/language.types.array.php#language.types.array.unpacking" class="link">array unpacking with strings keys</a>.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $arr1 </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'a' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'b'</span><span style="color: #007700">];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$arr1 </span><span style="color: #007700">= [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'a' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'b'</span><span style="color: #007700">];
 </span><span style="color: #0000BB">$arr2 </span><span style="color: #007700">= [...</span><span style="color: #0000BB">$arr1</span><span style="color: #007700">, </span><span style="color: #DD0000">'c' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'d'</span><span style="color: #007700">]; </span><span style="color: #FF8000">//[1, 'a' =&gt; 'b', 'c' =&gt; 'd']
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2295,9 +2315,10 @@ echo </span><span style="color: #0000BB">$user_ini</span><span style="color: #00
    a file from a <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.php" class="type string">string</a></span> rather than a file:
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $file </span><span style="color: #007700">= new </span><span style="color: #0000BB">CURLStringFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #DD0000">'filename.txt'</span><span style="color: #007700">, </span><span style="color: #DD0000">'text/plain'</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$file </span><span style="color: #007700">= new </span><span style="color: #0000BB">CURLStringFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #DD0000">'filename.txt'</span><span style="color: #007700">, </span><span style="color: #DD0000">'text/plain'</span><span style="color: #007700">);
 </span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$curl</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_POSTFIELDS</span><span style="color: #007700">, [</span><span style="color: #DD0000">'file' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$file</span><span style="color: #007700">]);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
     </div>
 
    </div>
@@ -2363,9 +2384,10 @@ echo </span><span style="color: #0000BB">$user_ini</span><span style="color: #00
 
     </p><div class="informalexample">
      <div class="example-contents">
-      <div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $h </span><span style="color: #007700">= </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">"murmur3f"</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">options</span><span style="color: #007700">: [</span><span style="color: #DD0000">"seed" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">42</span><span style="color: #007700">]);
+      <div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$h </span><span style="color: #007700">= </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">"murmur3f"</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">options</span><span style="color: #007700">: [</span><span style="color: #DD0000">"seed" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">42</span><span style="color: #007700">]);
 echo </span><span style="color: #0000BB">$h</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2401,9 +2423,10 @@ echo </span><span style="color: #0000BB">$h</span><span style="color: #007700">,
 
     </p><div class="informalexample">
      <div class="example-contents">
-      <div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $h </span><span style="color: #007700">= </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">"xxh3"</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">options</span><span style="color: #007700">: [</span><span style="color: #DD0000">"seed" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">42</span><span style="color: #007700">]);
+      <div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$h </span><span style="color: #007700">= </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">"xxh3"</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">options</span><span style="color: #007700">: [</span><span style="color: #DD0000">"seed" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">42</span><span style="color: #007700">]);
 echo </span><span style="color: #0000BB">$h</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2413,9 +2436,10 @@ echo </span><span style="color: #0000BB">$h</span><span style="color: #007700">,
 
     <div class="informalexample">
      <div class="example-contents">
-      <div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $h </span><span style="color: #007700">= </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">"xxh3"</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">options</span><span style="color: #007700">: [</span><span style="color: #DD0000">"secret" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"at least 136 bytes long secret here"</span><span style="color: #007700">]);
+      <div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$h </span><span style="color: #007700">= </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">"xxh3"</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">options</span><span style="color: #007700">: [</span><span style="color: #DD0000">"secret" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"at least 136 bytes long secret here"</span><span style="color: #007700">]);
 echo </span><span style="color: #0000BB">$h</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2452,9 +2476,10 @@ echo </span><span style="color: #0000BB">$h</span><span style="color: #007700">,
     
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'INSERT INTO users(id, name) VALUES(?,?)'</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'INSERT INTO users(id, name) VALUES(?,?)'</span><span style="color: #007700">);
 </span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">$username</span><span style="color: #007700">]);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2472,9 +2497,10 @@ echo </span><span style="color: #0000BB">$h</span><span style="color: #007700">,
     
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $result </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT username FROM users WHERE id = 123'</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$result </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT username FROM users WHERE id = 123'</span><span style="color: #007700">);
 echo </span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_column</span><span style="color: #007700">();
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -2504,8 +2530,9 @@ echo </span><span style="color: #0000BB">$result</span><span style="color: #0077
    This feature is not available if open_basedir is set.
    </p><div class="informalexample">
     <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite:file:path/to/sqlite.db?mode=ro'</span><span style="color: #007700">)
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite:file:path/to/sqlite.db?mode=ro'</span><span style="color: #007700">)
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
     </div>
 
    </div>
@@ -2631,13 +2658,14 @@ echo </span><span style="color: #0000BB">$result</span><span style="color: #0077
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{
      public function </span><span style="color: #0000BB">method</span><span style="color: #007700">(</span><span style="color: #0000BB">int $many</span><span style="color: #007700">, </span><span style="color: #0000BB">string $parameters</span><span style="color: #007700">, </span><span style="color: #0000BB">$here</span><span style="color: #007700">) {}
 }
 class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{
      public function </span><span style="color: #0000BB">method</span><span style="color: #007700">(...</span><span style="color: #0000BB">$everything</span><span style="color: #007700">) {}
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
      
@@ -2648,12 +2676,13 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
      </p>
      <p class="para">
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{
      public function </span><span style="color: #0000BB">create</span><span style="color: #007700">(): static {
           return new static();
      }
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       
@@ -2699,8 +2728,9 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
       <code class="literal">throw</code> can now be used as an expression.
       That allows usages like:
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $fn </span><span style="color: #007700">= fn() =&gt; throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Exception in arrow function'</span><span style="color: #007700">);
-</span><span style="color: #0000BB">$user </span><span style="color: #007700">= </span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user </span><span style="color: #007700">?? throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Must have user'</span><span style="color: #007700">);</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$fn </span><span style="color: #007700">= fn() =&gt; throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Exception in arrow function'</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$user </span><span style="color: #007700">= </span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user </span><span style="color: #007700">?? throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Must have user'</span><span style="color: #007700">);</span></code></pre></div>
       </div>
 
       
@@ -2710,11 +2740,12 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
      <p class="para">
       An optional trailing comma is now allowed in parameter lists.
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">functionWithLongSignature</span><span style="color: #007700">(
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">functionWithLongSignature</span><span style="color: #007700">(
     </span><span style="color: #0000BB">Type1 $parameter1</span><span style="color: #007700">,
     </span><span style="color: #0000BB">Type2 $parameter2</span><span style="color: #007700">, </span><span style="color: #FF8000">// &lt;-- This comma is now allowed.
 </span><span style="color: #007700">) {
-}</span></span></code></pre></div>
+}</span></code></pre></div>
       </div>
 
       
@@ -2739,7 +2770,8 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
       of a child class (with the exception of final private constructors).
       The following example illustrates which restrictions have been removed:
       </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">ParentClass </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">ParentClass </span><span style="color: #007700">{
     private function </span><span style="color: #0000BB">method1</span><span style="color: #007700">() {}
     private function </span><span style="color: #0000BB">method2</span><span style="color: #007700">() {}
     private static function </span><span style="color: #0000BB">method3</span><span style="color: #007700">() {}
@@ -2754,7 +2786,7 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
     public function </span><span style="color: #0000BB">method3</span><span style="color: #007700">() {}
     public function </span><span style="color: #0000BB">method4</span><span style="color: #007700">() {}
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
       </div>
 
       
@@ -2873,7 +2905,7 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
   <h3 class="title">OpenSSL</h3>
 
   <p class="para">
-   Added Cryptographic Message Syntax (CMS) (<a target="_blank" href="https://www.php.net/manual/en/https://datatracker.ietf.org/doc/html/rfc5652" class="link external">» RFC 5652</a>)
+   Added Cryptographic Message Syntax (CMS) (<a target="_blank" href="https://datatracker.ietf.org/doc/html/rfc5652" class="link external">» RFC 5652</a>)
    support composed of functions for encryption, decryption, signing, verifying and reading. The API
    is similar to the API for <abbr title="Public-Key Cryptography Standards">PKCS</abbr> #7 functions with an addition of new encoding constants:
    <strong><code><a target="_blank" href="https://www.php.net/manual/en/openssl.constants.other.php#constant.openssl-encoding-der">OPENSSL_ENCODING_DER</a></code></strong>, <strong><code><a target="_blank" href="https://www.php.net/manual/en/openssl.constants.other.php#constant.openssl-encoding-smime">OPENSSL_ENCODING_SMIME</a></code></strong>
@@ -2981,9 +3013,10 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%.*H"</span><span style="color: #007700">, (int) </span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">"precision"</span><span style="color: #007700">), </span><span style="color: #0000BB">$float</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%.*H"</span><span style="color: #007700">, (int) </span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">"precision"</span><span style="color: #007700">), </span><span style="color: #0000BB">$float</span><span style="color: #007700">);
 </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%.*H"</span><span style="color: #007700">, (int) </span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">"serialize_precision"</span><span style="color: #007700">), </span><span style="color: #0000BB">$float</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -2996,8 +3029,9 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $proc </span><span style="color: #007700">= </span><span style="color: #0000BB">proc_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$command</span><span style="color: #007700">, [[</span><span style="color: #DD0000">'pty'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'pty'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'pty'</span><span style="color: #007700">]], </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$proc </span><span style="color: #007700">= </span><span style="color: #0000BB">proc_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$command</span><span style="color: #007700">, [[</span><span style="color: #DD0000">'pty'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'pty'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'pty'</span><span style="color: #007700">]], </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -3010,8 +3044,9 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $proc </span><span style="color: #007700">= </span><span style="color: #0000BB">proc_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$command</span><span style="color: #007700">, [[</span><span style="color: #DD0000">'socket'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'socket'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'socket'</span><span style="color: #007700">]], </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$proc </span><span style="color: #007700">= </span><span style="color: #0000BB">proc_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$command</span><span style="color: #007700">, [[</span><span style="color: #DD0000">'socket'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'socket'</span><span style="color: #007700">], [</span><span style="color: #DD0000">'socket'</span><span style="color: #007700">]], </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -3035,11 +3070,12 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
     </p>
     <p class="para">
      </p><div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// OK even if $excludes is empty:
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// OK even if $excludes is empty:
 </span><span style="color: #0000BB">array_diff</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$excludes</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// OK even if $arrays only contains a single array:
 </span><span style="color: #0000BB">array_intersect</span><span style="color: #007700">(...</span><span style="color: #0000BB">$arrays</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     
@@ -3151,11 +3187,12 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
     Class properties now support type declarations.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">User </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">User </span><span style="color: #007700">{
     public </span><span style="color: #0000BB">int $id</span><span style="color: #007700">;
     public </span><span style="color: #0000BB">string $name</span><span style="color: #007700">;
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3175,10 +3212,11 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
 
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $factor </span><span style="color: #007700">= </span><span style="color: #0000BB">10</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$factor </span><span style="color: #007700">= </span><span style="color: #0000BB">10</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$nums </span><span style="color: #007700">= </span><span style="color: #0000BB">array_map</span><span style="color: #007700">(fn(</span><span style="color: #0000BB">$n</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$n </span><span style="color: #007700">* </span><span style="color: #0000BB">$factor</span><span style="color: #007700">, [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">]);
 </span><span style="color: #FF8000">// $nums = array(10, 20, 30, 40);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3192,7 +3230,8 @@ class </span><span style="color: #0000BB">ChildClass </span><span style="color: 
     The following code will now work:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{}
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{}
 class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{}
 
 class </span><span style="color: #0000BB">Producer </span><span style="color: #007700">{
@@ -3201,7 +3240,7 @@ class </span><span style="color: #0000BB">Producer </span><span style="color: #0
 class </span><span style="color: #0000BB">ChildProducer </span><span style="color: #007700">extends </span><span style="color: #0000BB">Producer </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">method</span><span style="color: #007700">(): </span><span style="color: #0000BB">B </span><span style="color: #007700">{}
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3210,7 +3249,9 @@ class </span><span style="color: #0000BB">ChildProducer </span><span style="colo
     classes need to be available before they are referenced.
     <div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">/**
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #FF8000">/**
  * These classes satisfy the LSP requirements, because C is a subtype of A.
  * However, at the time class B is declared, class C is not yet available
  */
@@ -3228,7 +3269,7 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
 
 class </span><span style="color: #0000BB">C </span><span style="color: #007700">extends </span><span style="color: #0000BB">B </span><span style="color: #007700">{}
 
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3241,12 +3282,13 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
    <p class="para">
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $array</span><span style="color: #007700">[</span><span style="color: #DD0000">'key'</span><span style="color: #007700">] ??= </span><span style="color: #0000BB">computeDefault</span><span style="color: #007700">();
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$array</span><span style="color: #007700">[</span><span style="color: #DD0000">'key'</span><span style="color: #007700">] ??= </span><span style="color: #0000BB">computeDefault</span><span style="color: #007700">();
 </span><span style="color: #FF8000">// is roughly equivalent to
 </span><span style="color: #007700">if (!isset(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">'key'</span><span style="color: #007700">])) {
     </span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">'key'</span><span style="color: #007700">] = </span><span style="color: #0000BB">computeDefault</span><span style="color: #007700">();
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3259,10 +3301,11 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
    <p class="para">
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $parts </span><span style="color: #007700">= [</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">, </span><span style="color: #DD0000">'pear'</span><span style="color: #007700">];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$parts </span><span style="color: #007700">= [</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">, </span><span style="color: #DD0000">'pear'</span><span style="color: #007700">];
 </span><span style="color: #0000BB">$fruits </span><span style="color: #007700">= [</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">, </span><span style="color: #DD0000">'orange'</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$parts</span><span style="color: #007700">, </span><span style="color: #DD0000">'watermelon'</span><span style="color: #007700">];
 </span><span style="color: #FF8000">// ['banana', 'orange', 'apple', 'pear', 'watermelon'];
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3276,11 +3319,12 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
     Numeric literals can contain underscores between digits.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php 6.674_083e-11</span><span style="color: #007700">; </span><span style="color: #FF8000">// float
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+6.674_083e-11</span><span style="color: #007700">; </span><span style="color: #FF8000">// float
 </span><span style="color: #0000BB">299_792_458</span><span style="color: #007700">;   </span><span style="color: #FF8000">// decimal
 </span><span style="color: #0000BB">0xCAFE_F00D</span><span style="color: #007700">;   </span><span style="color: #FF8000">// hexadecimal
 </span><span style="color: #0000BB">0b0101_1111</span><span style="color: #007700">;   </span><span style="color: #FF8000">// binary
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3447,7 +3491,7 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
    <h4 class="title">strip_tags() with array of tag names</h4>
    <p class="para">
     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.strip-tags.php" class="function">strip_tags()</a></span> now also accepts an array of allowed tags:
-    instead of <code class="literal">strip_tags($str, '<a><p>')</p></a></code>
+    instead of <code class="literal">strip_tags($str, '&lt;a&gt;&lt;p&gt;')</code>
     you can now write <code class="literal">strip_tags($str, ['a', 'p'])</code>.
    </p>
   </div>
@@ -3460,7 +3504,8 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
     and <code class="literal">__unserialize</code>.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Returns array containing all the necessary state of the object.
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Returns array containing all the necessary state of the object.
 </span><span style="color: #007700">public function </span><span style="color: #0000BB">__serialize</span><span style="color: #007700">(): array
 {
 }
@@ -3469,7 +3514,7 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
 </span><span style="color: #007700">public function </span><span style="color: #0000BB">__unserialize</span><span style="color: #007700">(array </span><span style="color: #0000BB">$data</span><span style="color: #007700">): </span><span style="color: #0000BB">void
 </span><span style="color: #007700">{
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3497,8 +3542,9 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
     any necessary argument escaping.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php proc_open</span><span style="color: #007700">([</span><span style="color: #DD0000">'php'</span><span style="color: #007700">, </span><span style="color: #DD0000">'-r'</span><span style="color: #007700">, </span><span style="color: #DD0000">'echo "Hello World\n";'</span><span style="color: #007700">], </span><span style="color: #0000BB">$descriptors</span><span style="color: #007700">, </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+proc_open</span><span style="color: #007700">([</span><span style="color: #DD0000">'php'</span><span style="color: #007700">, </span><span style="color: #DD0000">'-r'</span><span style="color: #007700">, </span><span style="color: #DD0000">'echo "Hello World\n";'</span><span style="color: #007700">], </span><span style="color: #0000BB">$descriptors</span><span style="color: #007700">, </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3508,11 +3554,12 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
     <code class="literal">redirect</code> and <code class="literal">null</code> descriptors.
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Like 2&gt;&amp;1 on the shell
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Like 2&gt;&amp;1 on the shell
 </span><span style="color: #0000BB">proc_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$cmd</span><span style="color: #007700">, [</span><span style="color: #0000BB">1 </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'pipe'</span><span style="color: #007700">, </span><span style="color: #DD0000">'w'</span><span style="color: #007700">], </span><span style="color: #0000BB">2 </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'redirect'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">]], </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// Like 2&gt;/dev/null or 2&gt;nul on the shell
 </span><span style="color: #0000BB">proc_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$cmd</span><span style="color: #007700">, [</span><span style="color: #0000BB">1 </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'pipe'</span><span style="color: #007700">, </span><span style="color: #DD0000">'w'</span><span style="color: #007700">], </span><span style="color: #0000BB">2 </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">'null'</span><span style="color: #007700">]], </span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3697,10 +3744,11 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
     example:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php mb_strtoupper</span><span style="color: #007700">(</span><span style="color: #DD0000">"Straße"</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+mb_strtoupper</span><span style="color: #007700">(</span><span style="color: #DD0000">"Straße"</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// Produces STRAßE on PHP 7.2
 // Produces STRASSE on PHP 7.3
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3809,9 +3857,10 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
     captures both using their group number and their name, similar to PCRE:
     </p><div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php mb_ereg</span><span style="color: #007700">(</span><span style="color: #DD0000">'(?<word>\w+)'</word></span><span style="color: #007700">, </span><span style="color: #DD0000">'国'</span><span style="color: #007700">, </span><span style="color: #0000BB">$matches</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+mb_ereg</span><span style="color: #007700">(</span><span style="color: #DD0000">'(?&lt;word&gt;\w+)'</span><span style="color: #007700">, </span><span style="color: #DD0000">'国'</span><span style="color: #007700">, </span><span style="color: #0000BB">$matches</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// =&gt; [0 =&gt; "国", 1 =&gt; "国", "word" =&gt; "国"];
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3820,9 +3869,10 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
     captures in the replacement string:
     <div class="informalexample">
      <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php mb_ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'\s*(?<word>\w+)\s*'</word></span><span style="color: #007700">, </span><span style="color: #DD0000">"_\k<word>_\k'word'_"</word></span><span style="color: #007700">, </span><span style="color: #DD0000">' foo '</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+mb_ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'\s*(?&lt;word&gt;\w+)\s*'</span><span style="color: #007700">, </span><span style="color: #DD0000">"_\k&lt;word&gt;_\k'word'_"</span><span style="color: #007700">, </span><span style="color: #DD0000">' foo '</span><span style="color: #007700">);
 </span><span style="color: #FF8000">// =&gt; "_foo_foo_"
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
      </div>
 
     </div>
@@ -3863,12 +3913,14 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">object $obj</span><span style="color: #007700">) : </span><span style="color: #0000BB">object
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">object $obj</span><span style="color: #007700">) : </span><span style="color: #0000BB">object
 </span><span style="color: #007700">{
     return new </span><span style="color: #0000BB">SplQueue</span><span style="color: #007700">();
 }
 
-</span><span style="color: #0000BB">test</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">());</span></span></code></pre></div>
+</span><span style="color: #0000BB">test</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">());</span></code></pre></div>
    </div>
 
   </div>
@@ -3895,7 +3947,9 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">abstract class </span><span style="color: #0000BB">A
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">abstract class </span><span style="color: #0000BB">A
 </span><span style="color: #007700">{
     abstract function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">string $s</span><span style="color: #007700">);
 }
@@ -3903,7 +3957,7 @@ abstract class </span><span style="color: #0000BB">B </span><span style="color: 
 </span><span style="color: #007700">{
     </span><span style="color: #FF8000">// overridden - still maintaining contravariance for parameters and covariance for return
     </span><span style="color: #007700">abstract function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">) : </span><span style="color: #0000BB">int</span><span style="color: #007700">;
-}</span></span></code></pre></div>
+}</span></code></pre></div>
    </div>
 
   </div>
@@ -3981,7 +4035,9 @@ abstract class </span><span style="color: #0000BB">B </span><span style="color: 
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #DD0000">'über'</span><span style="color: #007700">, </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR </span><span style="color: #007700">| </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR_NATL</span><span style="color: #007700">);</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #DD0000">'über'</span><span style="color: #007700">, </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR </span><span style="color: #007700">| </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR_NATL</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
   </div>
@@ -4096,7 +4152,9 @@ abstract class </span><span style="color: #0000BB">B </span><span style="color: 
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">interface </span><span style="color: #0000BB">A
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">interface </span><span style="color: #0000BB">A
 </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">Test</span><span style="color: #007700">(array </span><span style="color: #0000BB">$input</span><span style="color: #007700">);
 }
@@ -4104,7 +4162,7 @@ abstract class </span><span style="color: #0000BB">B </span><span style="color: 
 class </span><span style="color: #0000BB">B </span><span style="color: #007700">implements </span><span style="color: #0000BB">A
 </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">Test</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">){} </span><span style="color: #FF8000">// type omitted for $input
-</span><span style="color: #007700">}</span></span></code></pre></div>
+</span><span style="color: #007700">}</span></code></pre></div>
    </div>
 
   </div>
@@ -4120,11 +4178,13 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">use </span><span style="color: #0000BB">Foo\Bar</span><span style="color: #007700">\{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">use </span><span style="color: #0000BB">Foo\Bar</span><span style="color: #007700">\{
     </span><span style="color: #0000BB">Foo</span><span style="color: #007700">,
     </span><span style="color: #0000BB">Bar</span><span style="color: #007700">,
     </span><span style="color: #0000BB">Baz</span><span style="color: #007700">,
-};</span></span></code></pre></div>
+};</span></code></pre></div>
    </div>
 
   </div>
@@ -4284,7 +4344,9 @@ class </span><span style="color: #0000BB">B </span><span style="color: #007700">
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">testReturnA</span><span style="color: #007700">(): ?</span><span style="color: #0000BB">string
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">function </span><span style="color: #0000BB">testReturnA</span><span style="color: #007700">(): ?</span><span style="color: #0000BB">string
 </span><span style="color: #007700">{
     return </span><span style="color: #DD0000">'elePHPant'</span><span style="color: #007700">;
 }
@@ -4305,7 +4367,7 @@ function </span><span style="color: #0000BB">test</span><span style="color: #007
 
 </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #DD0000">'elePHPant'</span><span style="color: #007700">);
 </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);
-</span><span style="color: #0000BB">test</span><span style="color: #007700">();</span></span></code></pre></div>
+</span><span style="color: #0000BB">test</span><span style="color: #007700">();</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4333,7 +4395,8 @@ Fatal error: Uncaught ArgumentCountError: Too few arguments to function test(), 
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">swap</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$left</span><span style="color: #007700">, &amp;</span><span style="color: #0000BB">$right</span><span style="color: #007700">): </span><span style="color: #0000BB">void
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">swap</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$left</span><span style="color: #007700">, &amp;</span><span style="color: #0000BB">$right</span><span style="color: #007700">): </span><span style="color: #0000BB">void
 </span><span style="color: #007700">{
     if (</span><span style="color: #0000BB">$left </span><span style="color: #007700">=== </span><span style="color: #0000BB">$right</span><span style="color: #007700">) {
         return;
@@ -4346,7 +4409,7 @@ Fatal error: Uncaught ArgumentCountError: Too few arguments to function test(), 
 
 </span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">swap</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">), </span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">swap</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">), </span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4378,7 +4441,8 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $data </span><span style="color: #007700">= [
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$data </span><span style="color: #007700">= [
     [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'Tom'</span><span style="color: #007700">],
     [</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">'Fred'</span><span style="color: #007700">],
 ];
@@ -4397,7 +4461,7 @@ int(1)
 </span><span style="color: #FF8000">// [] style
 </span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$data </span><span style="color: #007700">as [</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$name</span><span style="color: #007700">]) {
     </span><span style="color: #FF8000">// logic here with $id and $name
-</span><span style="color: #007700">}</span></span></code></pre></div>
+</span><span style="color: #007700">}</span></code></pre></div>
    </div>
 
   </div>
@@ -4412,13 +4476,14 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">ConstDemo
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">ConstDemo
 </span><span style="color: #007700">{
     const </span><span style="color: #0000BB">PUBLIC_CONST_A </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;
     public const </span><span style="color: #0000BB">PUBLIC_CONST_B </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;
     protected const </span><span style="color: #0000BB">PROTECTED_CONST </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;
     private const </span><span style="color: #0000BB">PRIVATE_CONST </span><span style="color: #007700">= </span><span style="color: #0000BB">4</span><span style="color: #007700">;
-}</span></span></code></pre></div>
+}</span></code></pre></div>
    </div>
 
   </div>
@@ -4440,12 +4505,13 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">iterator</span><span style="color: #007700">(</span><span style="color: #0000BB">iterable $iter</span><span style="color: #007700">)
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">iterator</span><span style="color: #007700">(</span><span style="color: #0000BB">iterable $iter</span><span style="color: #007700">)
 {
     foreach (</span><span style="color: #0000BB">$iter </span><span style="color: #007700">as </span><span style="color: #0000BB">$val</span><span style="color: #007700">) {
         </span><span style="color: #FF8000">//
     </span><span style="color: #007700">}
-}</span></span></code></pre></div>
+}</span></code></pre></div>
    </div>
 
   </div>
@@ -4462,11 +4528,12 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">try {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">try {
     </span><span style="color: #FF8000">// some code
 </span><span style="color: #007700">} catch (</span><span style="color: #0000BB">FirstException </span><span style="color: #007700">| </span><span style="color: #0000BB">SecondException $e</span><span style="color: #007700">) {
     </span><span style="color: #FF8000">// handle first and second exceptions
-</span><span style="color: #007700">}</span></span></code></pre></div>
+</span><span style="color: #007700">}</span></code></pre></div>
    </div>
 
   </div>
@@ -4483,7 +4550,8 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $data </span><span style="color: #007700">= [
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$data </span><span style="color: #007700">= [
     [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Tom'</span><span style="color: #007700">],
     [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Fred'</span><span style="color: #007700">],
 ];
@@ -4502,7 +4570,7 @@ int(1)
 </span><span style="color: #FF8000">// [] style
 </span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$data </span><span style="color: #007700">as [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$name</span><span style="color: #007700">]) {
     </span><span style="color: #FF8000">// logic here with $id and $name
-</span><span style="color: #007700">}</span></span></code></pre></div>
+</span><span style="color: #007700">}</span></code></pre></div>
    </div>
 
   </div>
@@ -4522,8 +4590,9 @@ int(1)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">[-</span><span style="color: #0000BB">2</span><span style="color: #007700">]);
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #DD0000">"aabbcc"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">, -</span><span style="color: #0000BB">3</span><span style="color: #007700">));</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">[-</span><span style="color: #0000BB">2</span><span style="color: #007700">]);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #DD0000">"aabbcc"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">, -</span><span style="color: #0000BB">3</span><span style="color: #007700">));</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4542,9 +4611,10 @@ int(3)
   
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $string </span><span style="color: #007700">= </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$string </span><span style="color: #007700">= </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;
 echo </span><span style="color: #DD0000">"The last character of '</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">' is '</span><span style="color: #0000BB">$string</span><span style="color: #007700">[-</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">'.\n"</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4577,7 +4647,8 @@ The last character of 'bar' is 'r'.
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">Test
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Test
 </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">exposeFunction</span><span style="color: #007700">()
     {
@@ -4591,7 +4662,7 @@ The last character of 'bar' is 'r'.
 }
 
 </span><span style="color: #0000BB">$privFunc </span><span style="color: #007700">= (new </span><span style="color: #0000BB">Test</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">exposeFunction</span><span style="color: #007700">();
-</span><span style="color: #0000BB">$privFunc</span><span style="color: #007700">(</span><span style="color: #DD0000">'some value'</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #0000BB">$privFunc</span><span style="color: #007700">(</span><span style="color: #DD0000">'some value'</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4614,13 +4685,14 @@ string(10) "some value"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php pcntl_async_signals</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">); </span><span style="color: #FF8000">// turn on async signals
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+pcntl_async_signals</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">); </span><span style="color: #FF8000">// turn on async signals
 
 </span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">,  function(</span><span style="color: #0000BB">$sig</span><span style="color: #007700">) {
     echo </span><span style="color: #DD0000">"SIGHUP\n"</span><span style="color: #007700">;
 });
 
-</span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(), </span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">);</span></span></code></pre></div>
+</span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(), </span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4679,13 +4751,14 @@ SIGHUP
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Coercive mode
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Coercive mode
 </span><span style="color: #007700">function </span><span style="color: #0000BB">sumOfInts</span><span style="color: #007700">(</span><span style="color: #0000BB">int </span><span style="color: #007700">...</span><span style="color: #0000BB">$ints</span><span style="color: #007700">)
 {
     return </span><span style="color: #0000BB">array_sum</span><span style="color: #007700">(</span><span style="color: #0000BB">$ints</span><span style="color: #007700">);
 }
 
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">sumOfInts</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">'3'</span><span style="color: #007700">, </span><span style="color: #0000BB">4.1</span><span style="color: #007700">));</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">sumOfInts</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">'3'</span><span style="color: #007700">, </span><span style="color: #0000BB">4.1</span><span style="color: #007700">));</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4731,14 +4804,16 @@ int(9)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">arraysSum</span><span style="color: #007700">(array ...</span><span style="color: #0000BB">$arrays</span><span style="color: #007700">): array
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">function </span><span style="color: #0000BB">arraysSum</span><span style="color: #007700">(array ...</span><span style="color: #0000BB">$arrays</span><span style="color: #007700">): array
 {
     return </span><span style="color: #0000BB">array_map</span><span style="color: #007700">(function(array </span><span style="color: #0000BB">$array</span><span style="color: #007700">): </span><span style="color: #0000BB">int </span><span style="color: #007700">{
         return </span><span style="color: #0000BB">array_sum</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);
     }, </span><span style="color: #0000BB">$arrays</span><span style="color: #007700">);
 }
 
-</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">arraysSum</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #0000BB">3</span><span style="color: #007700">], [</span><span style="color: #0000BB">4</span><span style="color: #007700">,</span><span style="color: #0000BB">5</span><span style="color: #007700">,</span><span style="color: #0000BB">6</span><span style="color: #007700">], [</span><span style="color: #0000BB">7</span><span style="color: #007700">,</span><span style="color: #0000BB">8</span><span style="color: #007700">,</span><span style="color: #0000BB">9</span><span style="color: #007700">]));</span></span></code></pre></div>
+</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">arraysSum</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #0000BB">3</span><span style="color: #007700">], [</span><span style="color: #0000BB">4</span><span style="color: #007700">,</span><span style="color: #0000BB">5</span><span style="color: #007700">,</span><span style="color: #0000BB">6</span><span style="color: #007700">], [</span><span style="color: #0000BB">7</span><span style="color: #007700">,</span><span style="color: #0000BB">8</span><span style="color: #007700">,</span><span style="color: #0000BB">9</span><span style="color: #007700">]));</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4774,7 +4849,8 @@ Array
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Fetches the value of $_GET['user'] and returns 'nobody'
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Fetches the value of $_GET['user'] and returns 'nobody'
 // if it does not exist.
 </span><span style="color: #0000BB">$username </span><span style="color: #007700">= </span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'user'</span><span style="color: #007700">] ?? </span><span style="color: #DD0000">'nobody'</span><span style="color: #007700">;
 </span><span style="color: #FF8000">// This is equivalent to:
@@ -4784,7 +4860,7 @@ Array
 // defined value out of $_GET['user'], $_POST['user'], and
 // 'nobody'.
 </span><span style="color: #0000BB">$username </span><span style="color: #007700">= </span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'user'</span><span style="color: #007700">] ?? </span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'user'</span><span style="color: #007700">] ?? </span><span style="color: #DD0000">'nobody'</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -4802,7 +4878,8 @@ Array
   </p>
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Integers
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Integers
 </span><span style="color: #007700">echo </span><span style="color: #0000BB">1 </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #FF8000">// 0
 </span><span style="color: #007700">echo </span><span style="color: #0000BB">1 </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #0000BB">2</span><span style="color: #007700">; </span><span style="color: #FF8000">// -1
 </span><span style="color: #007700">echo </span><span style="color: #0000BB">2 </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #FF8000">// 1
@@ -4816,7 +4893,7 @@ Array
 </span><span style="color: #007700">echo </span><span style="color: #DD0000">"a" </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #DD0000">"a"</span><span style="color: #007700">; </span><span style="color: #FF8000">// 0
 </span><span style="color: #007700">echo </span><span style="color: #DD0000">"a" </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #DD0000">"b"</span><span style="color: #007700">; </span><span style="color: #FF8000">// -1
 </span><span style="color: #007700">echo </span><span style="color: #DD0000">"b" </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #DD0000">"a"</span><span style="color: #007700">; </span><span style="color: #FF8000">// 1
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -4835,14 +4912,15 @@ Array
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php define</span><span style="color: #007700">(</span><span style="color: #DD0000">'ANIMALS'</span><span style="color: #007700">, [
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+define</span><span style="color: #007700">(</span><span style="color: #DD0000">'ANIMALS'</span><span style="color: #007700">, [
     </span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,
     </span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,
     </span><span style="color: #DD0000">'bird'
 </span><span style="color: #007700">]);
 
 echo </span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]; </span><span style="color: #FF8000">// outputs "cat"
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -4859,7 +4937,8 @@ echo </span><span style="color: #0000BB">ANIMALS</span><span style="color: #0077
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">interface </span><span style="color: #0000BB">Logger </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">interface </span><span style="color: #0000BB">Logger </span><span style="color: #007700">{
     public function </span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #0000BB">string $msg</span><span style="color: #007700">);
 }
 
@@ -4883,7 +4962,7 @@ class </span><span style="color: #0000BB">Application </span><span style="color:
 });
 
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$app</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLogger</span><span style="color: #007700">());
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4912,15 +4991,18 @@ object(class@anonymous)#2 (0) {
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">echo </span><span style="color: #DD0000">"\u{aa}"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">echo </span><span style="color: #DD0000">"\u{aa}"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
 echo </span><span style="color: #DD0000">"\u{0000aa}"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
 
 echo </span><span style="color: #DD0000">"\u{9999}"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
 
-echo &lt;&lt;<eot><span style="color: #DD0000">\u{01f418}
+echo &lt;&lt;&lt;EOT
+</span><span style="color: #DD0000">\u{01f418}
 </span><span style="color: #007700">EOT;
 
-</span><span style="color: #0000BB">?&gt;</span></eot></span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4944,7 +5026,8 @@ echo &lt;&lt;<eot><span style="color: #DD0000">\u{01f418}
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{private </span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;}
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{private </span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;}
 
 </span><span style="color: #FF8000">// Pre PHP 7 code
 </span><span style="color: #0000BB">$getX </span><span style="color: #007700">= function() {return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x</span><span style="color: #007700">;};
@@ -4953,7 +5036,7 @@ echo &lt;&lt;<eot><span style="color: #DD0000">\u{01f418}
 
 </span><span style="color: #FF8000">// PHP 7+ code
 </span><span style="color: #0000BB">$getX </span><span style="color: #007700">= function() {return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x</span><span style="color: #007700">;};
-echo </span><span style="color: #0000BB">$getX</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">(new </span><span style="color: #0000BB">A</span><span style="color: #007700">);</span></span></code></pre></div>
+echo </span><span style="color: #0000BB">$getX</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">(new </span><span style="color: #0000BB">A</span><span style="color: #007700">);</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -4976,14 +5059,16 @@ echo </span><span style="color: #0000BB">$getX</span><span style="color: #007700
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// converts all objects into __PHP_Incomplete_Class object
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #FF8000">// converts all objects into __PHP_Incomplete_Class object
 </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">false</span><span style="color: #007700">]);
 
 </span><span style="color: #FF8000">// converts all objects into __PHP_Incomplete_Class object except those of MyClass and MyClass2
 </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">"MyClass"</span><span style="color: #007700">, </span><span style="color: #DD0000">"MyClass2"</span><span style="color: #007700">]]);
 
 </span><span style="color: #FF8000">// default behaviour (same as omitting the second argument) that accepts all classes
-</span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">]);</span></span></code></pre></div>
+</span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">]);</span></code></pre></div>
    </div>
 
   </div>
@@ -5000,9 +5085,11 @@ echo </span><span style="color: #0000BB">$getX</span><span style="color: #007700
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php printf</span><span style="color: #007700">(</span><span style="color: #DD0000">'%x'</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">CODEPOINT_MAX</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+printf</span><span style="color: #007700">(</span><span style="color: #DD0000">'%x'</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">CODEPOINT_MAX</span><span style="color: #007700">);
 echo </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">charName</span><span style="color: #007700">(</span><span style="color: #DD0000">'@'</span><span style="color: #007700">);
-</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">ispunct</span><span style="color: #007700">(</span><span style="color: #DD0000">'!'</span><span style="color: #007700">));</span></span></code></pre></div>
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">ispunct</span><span style="color: #007700">(</span><span style="color: #DD0000">'!'</span><span style="color: #007700">));</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5039,12 +5126,13 @@ bool(true)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'assert.exception'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'assert.exception'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);
 
 class </span><span style="color: #0000BB">CustomError </span><span style="color: #007700">extends </span><span style="color: #0000BB">AssertionError </span><span style="color: #007700">{}
 
 </span><span style="color: #0000BB">assert</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">, new </span><span style="color: #0000BB">CustomError</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some error message'</span><span style="color: #007700">));
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5072,7 +5160,8 @@ Fatal error: Uncaught CustomError: Some error message
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #FF8000">// Pre PHP 7 code
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Pre PHP 7 code
 </span><span style="color: #007700">use </span><span style="color: #0000BB">some\namespace\ClassA</span><span style="color: #007700">;
 use </span><span style="color: #0000BB">some\namespace\ClassB</span><span style="color: #007700">;
 use </span><span style="color: #0000BB">some\namespace\ClassC </span><span style="color: #007700">as </span><span style="color: #0000BB">C</span><span style="color: #007700">;
@@ -5089,7 +5178,7 @@ use const </span><span style="color: #0000BB">some\namespace\ConstC</span><span 
 </span><span style="color: #007700">use </span><span style="color: #0000BB">some\namespace</span><span style="color: #007700">\{</span><span style="color: #0000BB">ClassA</span><span style="color: #007700">, </span><span style="color: #0000BB">ClassB</span><span style="color: #007700">, </span><span style="color: #0000BB">ClassC </span><span style="color: #007700">as </span><span style="color: #0000BB">C</span><span style="color: #007700">};
 use function </span><span style="color: #0000BB">some\namespace</span><span style="color: #007700">\{</span><span style="color: #0000BB">fn_a</span><span style="color: #007700">, </span><span style="color: #0000BB">fn_b</span><span style="color: #007700">, </span><span style="color: #0000BB">fn_c</span><span style="color: #007700">};
 use const </span><span style="color: #0000BB">some\namespace</span><span style="color: #007700">\{</span><span style="color: #0000BB">ConstA</span><span style="color: #007700">, </span><span style="color: #0000BB">ConstB</span><span style="color: #007700">, </span><span style="color: #0000BB">ConstC</span><span style="color: #007700">};
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -5109,7 +5198,9 @@ use const </span><span style="color: #0000BB">some\namespace</span><span style="
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $gen </span><span style="color: #007700">= (function() {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$gen </span><span style="color: #007700">= (function() {
     yield </span><span style="color: #0000BB">1</span><span style="color: #007700">;
     yield </span><span style="color: #0000BB">2</span><span style="color: #007700">;
 
@@ -5120,7 +5211,7 @@ foreach (</span><span style="color: #0000BB">$gen </span><span style="color: #00
     echo </span><span style="color: #0000BB">$val</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
 }
 
-echo </span><span style="color: #0000BB">$gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getReturn</span><span style="color: #007700">(), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span></span></code></pre></div>
+echo </span><span style="color: #0000BB">$gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getReturn</span><span style="color: #007700">(), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5154,7 +5245,8 @@ echo </span><span style="color: #0000BB">$gen</span><span style="color: #007700"
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">gen</span><span style="color: #007700">()
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">gen</span><span style="color: #007700">()
 {
     yield </span><span style="color: #0000BB">1</span><span style="color: #007700">;
     yield </span><span style="color: #0000BB">2</span><span style="color: #007700">;
@@ -5171,7 +5263,7 @@ foreach (</span><span style="color: #0000BB">gen</span><span style="color: #0077
 {
     echo </span><span style="color: #0000BB">$val</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5196,8 +5288,9 @@ foreach (</span><span style="color: #0000BB">gen</span><span style="color: #0077
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">));
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">));
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5238,11 +5331,12 @@ int(3)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php session_start</span><span style="color: #007700">([
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+session_start</span><span style="color: #007700">([
     </span><span style="color: #DD0000">'cache_limiter' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'private'</span><span style="color: #007700">,
     </span><span style="color: #DD0000">'read_and_close' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">,
 ]);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   </div>
@@ -5318,7 +5412,8 @@ int(3)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">const </span><span style="color: #0000BB">ONE </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">const </span><span style="color: #0000BB">ONE </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;
 const </span><span style="color: #0000BB">TWO </span><span style="color: #007700">= </span><span style="color: #0000BB">ONE </span><span style="color: #007700">* </span><span style="color: #0000BB">2</span><span style="color: #007700">;
 
 class </span><span style="color: #0000BB">C </span><span style="color: #007700">{
@@ -5333,7 +5428,7 @@ class </span><span style="color: #0000BB">C </span><span style="color: #007700">
 
 echo (new </span><span style="color: #0000BB">C</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">f</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
 echo </span><span style="color: #0000BB">C</span><span style="color: #007700">::</span><span style="color: #0000BB">SENTENCE</span><span style="color: #007700">;
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5352,10 +5447,11 @@ The value of THREE is 3
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">const </span><span style="color: #0000BB">ARR </span><span style="color: #007700">= [</span><span style="color: #DD0000">'a'</span><span style="color: #007700">, </span><span style="color: #DD0000">'b'</span><span style="color: #007700">];
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">const </span><span style="color: #0000BB">ARR </span><span style="color: #007700">= [</span><span style="color: #DD0000">'a'</span><span style="color: #007700">, </span><span style="color: #DD0000">'b'</span><span style="color: #007700">];
 
 echo </span><span style="color: #0000BB">ARR</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5378,7 +5474,8 @@ a
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">, </span><span style="color: #0000BB">$opt </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$params</span><span style="color: #007700">) {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">, </span><span style="color: #0000BB">$opt </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$params</span><span style="color: #007700">) {
     </span><span style="color: #FF8000">// $params is an array containing the remaining arguments.
     </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">'$req: %d; $opt: %d; number of params: %d'</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">,
            </span><span style="color: #0000BB">$req</span><span style="color: #007700">, </span><span style="color: #0000BB">$opt</span><span style="color: #007700">, </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$params</span><span style="color: #007700">));
@@ -5389,7 +5486,7 @@ a
 </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">);
 </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">);
 </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5418,13 +5515,14 @@ $req: 1; $opt: 2; number of params: 3
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">function </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$c</span><span style="color: #007700">) {
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$c</span><span style="color: #007700">) {
     return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b </span><span style="color: #007700">+ </span><span style="color: #0000BB">$c</span><span style="color: #007700">;
 }
 
 </span><span style="color: #0000BB">$operators </span><span style="color: #007700">= [</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];
 echo </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$operators</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5447,13 +5545,14 @@ echo </span><span style="color: #0000BB">add</span><span style="color: #007700">
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"2 ** 3 ==      %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">** </span><span style="color: #0000BB">3</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"2 ** 3 ==      %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">** </span><span style="color: #0000BB">3</span><span style="color: #007700">);
 </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"2 ** 3 ** 2 == %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">** </span><span style="color: #0000BB">3 </span><span style="color: #007700">** </span><span style="color: #0000BB">2</span><span style="color: #007700">);
 
 </span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;
 </span><span style="color: #0000BB">$a </span><span style="color: #007700">**= </span><span style="color: #0000BB">3</span><span style="color: #007700">;
 </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"a ==           %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$a</span><span style="color: #007700">);
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
   <p class="simpara">The above example will output:</p>
@@ -5481,7 +5580,8 @@ a ==           8
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">namespace </span><span style="color: #0000BB">Name\Space </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">namespace </span><span style="color: #0000BB">Name\Space </span><span style="color: #007700">{
     const </span><span style="color: #0000BB">FOO </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;
     function </span><span style="color: #0000BB">f</span><span style="color: #007700">() { echo </span><span style="color: #0000BB">__FUNCTION__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">; }
 }
@@ -5493,7 +5593,7 @@ namespace {
     echo </span><span style="color: #0000BB">FOO</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
     </span><span style="color: #0000BB">f</span><span style="color: #007700">();
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5564,7 +5664,8 @@ Name\Space\f
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $a </span><span style="color: #007700">= </span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$a </span><span style="color: #007700">= </span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">);
 </span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #0000BB">17</span><span style="color: #007700">);
 
 if (</span><span style="color: #0000BB">version_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">, </span><span style="color: #DD0000">'5.6'</span><span style="color: #007700">, </span><span style="color: #DD0000">'&lt;'</span><span style="color: #007700">)) {
@@ -5576,7 +5677,7 @@ if (</span><span style="color: #0000BB">version_compare</span><span style="color
     echo </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">17</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
     echo </span><span style="color: #0000BB">42 </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
 }
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5605,13 +5706,14 @@ if (</span><span style="color: #0000BB">version_compare</span><span style="color
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php $expected  </span><span style="color: #007700">= </span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'12345'</span><span style="color: #007700">, </span><span style="color: #DD0000">'$2a$07$usesomesillystringforsalt$'</span><span style="color: #007700">);
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$expected  </span><span style="color: #007700">= </span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'12345'</span><span style="color: #007700">, </span><span style="color: #DD0000">'$2a$07$usesomesillystringforsalt$'</span><span style="color: #007700">);
 </span><span style="color: #0000BB">$correct   </span><span style="color: #007700">= </span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'12345'</span><span style="color: #007700">, </span><span style="color: #DD0000">'$2a$07$usesomesillystringforsalt$'</span><span style="color: #007700">);
 </span><span style="color: #0000BB">$incorrect </span><span style="color: #007700">= </span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'1234'</span><span style="color: #007700">,  </span><span style="color: #DD0000">'$2a$07$usesomesillystringforsalt$'</span><span style="color: #007700">);
 
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">hash_equals</span><span style="color: #007700">(</span><span style="color: #0000BB">$expected</span><span style="color: #007700">, </span><span style="color: #0000BB">$correct</span><span style="color: #007700">));
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">hash_equals</span><span style="color: #007700">(</span><span style="color: #0000BB">$expected</span><span style="color: #007700">, </span><span style="color: #0000BB">$incorrect</span><span style="color: #007700">));
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5636,7 +5738,8 @@ bool(false)
 
   <div class="informalexample">
    <div class="example-contents">
-<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB"><?php </span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{
     private </span><span style="color: #0000BB">$prop</span><span style="color: #007700">;
 
     public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {
@@ -5651,7 +5754,7 @@ bool(false)
 }
 
 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new </span><span style="color: #0000BB">C</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">));
-</span><span style="color: #0000BB">?&gt;</span></span></code></pre></div>
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
    </div>
 
    <p class="simpara">The above example will output:</p>
@@ -5673,7 +5776,7 @@ object(C)#1 (1) {
    The <code class="literal">gost-crypto</code> hash algorithm has been added. This
    implements the GOST hash function using the CryptoPro S-box tables as
    specified by
-   <a target="_blank" href="https://www.php.net/manual/en/https://datatracker.ietf.org/doc/html/rfc4357" class="link external">» RFC 4357, section 11.2</a>.
+   <a target="_blank" href="https://datatracker.ietf.org/doc/html/rfc4357" class="link external">» RFC 4357, section 11.2</a>.
   </p>
  </div>
 
@@ -5714,25 +5817,25 @@ object(C)#1 (1) {
  </div>
 </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration55.new-features.php" target="_blank">PHP 5.5</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration55.new-features.php" target="_blank">PHP 5.5</a></h1>
     </header>
 
     <div id="migration55.new-features" class="sect1">
   <h2 class="title">New features</h2>
 
   <div class="sect2" id="migration55.new-features.generators">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/language.generators.html" class="link">Generators</a> added</h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.generators.html" class="link">Generators</a> added</h3>
 
    <p class="para">
-    Support for <a target="_blank" href="https://www.php.net/manual/en/language.generators.html" class="link">generators</a> has been
+    Support for <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.generators.html" class="link">generators</a> has been
     added via the <strong class="command">yield</strong> keyword. Generators provide an easy
     way to implement simple iterators without the overhead or complexity of
-    implementing a class that implements the <a target="_blank" href="https://www.php.net/manual/en/class.iterator.html" class="classname">Iterator</a>
+    implementing a class that implements the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/class.iterator.html" class="classname">Iterator</a>
     interface.
    </p>
 
    <p class="para">
-    A simple example that reimplements the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.range.html" class="function">range()</a></span>
+    A simple example that reimplements the <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.range.html" class="function">range()</a></span>
     function as a generator (at least for positive <code class="literal">step</code>
     values):
    </p>
@@ -5740,7 +5843,7 @@ object(C)#1 (1) {
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">function </span><span style="color: #0000BB">xrange</span><span style="color: #007700">(</span><span style="color: #0000BB">$start</span><span style="color: #007700">, </span><span style="color: #0000BB">$limit</span><span style="color: #007700">, </span><span style="color: #0000BB">$step </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br>    for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">$start</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">$limit</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">+= </span><span style="color: #0000BB">$step</span><span style="color: #007700">) {<br>        yield </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br>    }<br>}<br><br>echo </span><span style="color: #DD0000">'Single digit odd numbers: '</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">/*<br> * Note that an array is never created or returned,<br> * which saves memory.<br> */<br></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">xrange</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">9</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">) as </span><span style="color: #0000BB">$number</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$number</span><span style="color: #DD0000"> "</span><span style="color: #007700">;<br>}<br><br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">xrange</span><span style="color: #007700">(</span><span style="color: #0000BB">$start</span><span style="color: #007700">, </span><span style="color: #0000BB">$limit</span><span style="color: #007700">, </span><span style="color: #0000BB">$step </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br>    for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">$start</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">$limit</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">+= </span><span style="color: #0000BB">$step</span><span style="color: #007700">) {<br>        yield </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br>    }<br>}<br><br>echo </span><span style="color: #DD0000">'Single digit odd numbers: '</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">/*<br> * Note that an array is never created or returned,<br> * which saves memory.<br> */<br></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">xrange</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">9</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">) as </span><span style="color: #0000BB">$number</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$number</span><span style="color: #DD0000"> "</span><span style="color: #007700">;<br>}<br><br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -5755,10 +5858,10 @@ Single digit odd numbers: 1 3 5 7 9
   </div>
 
   <div class="sect2" id="migration55.new-features.finally">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/language.exceptions.html#language.exceptions.finally" class="link"><code class="literal">finally</code></a> keyword added</h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.exceptions.html#language.exceptions.finally" class="link"><code class="literal">finally</code></a> keyword added</h3>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/language.exceptions.html" class="link"><code class="literal">try</code></a>-<a target="_blank" href="https://www.php.net/manual/en/language.exceptions.html#language.exceptions.catch" class="link"><code class="literal">catch</code></a> blocks now support a <a target="_blank" href="https://www.php.net/manual/en/language.exceptions.html#language.exceptions.finally" class="link"><code class="literal">finally</code></a> block for code that should be
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.exceptions.html" class="link"><code class="literal">try</code></a>-<a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.exceptions.html#language.exceptions.catch" class="link"><code class="literal">catch</code></a> blocks now support a <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.exceptions.html#language.exceptions.finally" class="link"><code class="literal">finally</code></a> block for code that should be
     run regardless of whether an exception has been thrown or not.
    </p>
   </div>
@@ -5767,26 +5870,26 @@ Single digit odd numbers: 1 3 5 7 9
    <h3 class="title">New password hashing API</h3>
 
    <p class="para">
-    A <a target="_blank" href="https://www.php.net/manual/en/book.password.html" class="link">new password hashing API</a> that makes
+    A <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.password.html" class="link">new password hashing API</a> that makes
     it easier to securely hash and manage passwords using the same underlying
-    library as <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.crypt.html" class="function">crypt()</a></span> in PHP has been added. See the
-    documentation for <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.password-hash.html" class="function">password_hash()</a></span> for more detail.
+    library as <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.crypt.html" class="function">crypt()</a></span> in PHP has been added. See the
+    documentation for <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.password-hash.html" class="function">password_hash()</a></span> for more detail.
    </p>
   </div>
 
   <div class="sect2" id="migration55.new-features.foreach-list">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> now supports <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.list.html" class="function">list()</a></span></h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> now supports <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.list.html" class="function">list()</a></span></h3>
 
    <p class="para">
-    The <a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.html" class="link">foreach</a> control
+    The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.foreach.html" class="link">foreach</a> control
     structure now supports unpacking nested arrays into separate variables via
-    the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.list.html" class="function">list()</a></span> construct. For example:
+    the <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.list.html" class="function">list()</a></span> construct. For example:
    </p>
 
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br>$array </span><span style="color: #007700">= [<br>    [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">],<br>    [</span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">],<br>];<br><br>foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #DD0000">"A: </span><span style="color: #0000BB">$a</span><span style="color: #DD0000">; B: </span><span style="color: #0000BB">$b</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br>$array </span><span style="color: #007700">= [<br>    [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">],<br>    [</span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">],<br>];<br><br>foreach (</span><span style="color: #0000BB">$array </span><span style="color: #007700">as list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #DD0000">"A: </span><span style="color: #0000BB">$a</span><span style="color: #DD0000">; B: </span><span style="color: #0000BB">$b</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -5802,23 +5905,23 @@ A: 3; B: 4
 
    <p class="para">
     Further documentation is available on the
-    <a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.html#control-structures.foreach.list" class="link">foreach</a> manual
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.foreach.html#control-structures.foreach.list" class="link">foreach</a> manual
     page.
    </p>
   </div>
 
   <div class="sect2" id="migration55.new-features.empty">
-   <h3 class="title"><span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.empty.html" class="function">empty()</a></span> supports arbitrary expressions</h3>
+   <h3 class="title"><span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.empty.html" class="function">empty()</a></span> supports arbitrary expressions</h3>
 
    <p class="para">
     Passing an arbitrary expression instead of a variable to
-    <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.empty.html" class="function">empty()</a></span> is now supported. For example:
+    <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.empty.html" class="function">empty()</a></span> is now supported. For example:
    </p>
 
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">function </span><span style="color: #0000BB">always_false</span><span style="color: #007700">() {<br>    return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>}<br><br>if (empty(</span><span style="color: #0000BB">always_false</span><span style="color: #007700">())) {<br>    echo </span><span style="color: #DD0000">"This will be printed.\n"</span><span style="color: #007700">;<br>}<br><br>if (empty(</span><span style="color: #0000BB">true</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #DD0000">"This will not be printed.\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">function </span><span style="color: #0000BB">always_false</span><span style="color: #007700">() {<br>    return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>}<br><br>if (empty(</span><span style="color: #0000BB">always_false</span><span style="color: #007700">())) {<br>    echo </span><span style="color: #DD0000">"This will be printed.\n"</span><span style="color: #007700">;<br>}<br><br>if (empty(</span><span style="color: #0000BB">true</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #DD0000">"This will not be printed.\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -5833,16 +5936,16 @@ This will be printed.
   </div>
 
   <div class="sect2" id="migration55.new-features.const-dereferencing">
-   <h3 class="title"><span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.html" class="type array">array</a></span> and <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.html" class="type string">string</a></span> literal dereferencing</h3>
+   <h3 class="title"><span class="type"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.array.html" class="type array">array</a></span> and <span class="type"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.string.html" class="type string">string</a></span> literal dereferencing</h3>
 
    <p class="para">
-    <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.array.html" class="type Array">Array</a></span> and <span class="type"><a target="_blank" href="https://www.php.net/manual/en/language.types.string.html" class="type string">string</a></span> literals can now be
+    <span class="type"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.array.html" class="type Array">Array</a></span> and <span class="type"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.string.html" class="type string">string</a></span> literals can now be
     dereferenced directly to access individual elements and characters:
 
     </p><div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">echo </span><span style="color: #DD0000">'Array dereferencing: '</span><span style="color: #007700">;<br>echo [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br><br>echo </span><span style="color: #DD0000">'String dereferencing: '</span><span style="color: #007700">;<br>echo </span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">echo </span><span style="color: #DD0000">'Array dereferencing: '</span><span style="color: #007700">;<br>echo [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br><br>echo </span><span style="color: #DD0000">'String dereferencing: '</span><span style="color: #007700">;<br>echo </span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5859,7 +5962,7 @@ String dereferencing: P
   </div>
 
   <div class="sect2" id="migration55.new-features.class-name">
-   <h3 class="title">Class name resolution via <a target="_blank" href="https://www.php.net/manual/en/language.oop5.basic.html#language.oop5.basic.class.class" class="link">::class</a></h3>
+   <h3 class="title">Class name resolution via <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.basic.html#language.oop5.basic.class.class" class="link">::class</a></h3>
 
    <p class="para">
     It is possible to use <code class="literal">ClassName::class</code> to get a fully
@@ -5868,7 +5971,7 @@ String dereferencing: P
     </p><div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">namespace </span><span style="color: #0000BB">Name</span><span style="color: #007700">\</span><span style="color: #0000BB">Space</span><span style="color: #007700">;<br>class </span><span style="color: #0000BB">ClassName </span><span style="color: #007700">{}<br><br>echo </span><span style="color: #0000BB">ClassName</span><span style="color: #007700">::class;<br><br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">namespace </span><span style="color: #0000BB">Name</span><span style="color: #007700">\</span><span style="color: #0000BB">Space</span><span style="color: #007700">;<br>class </span><span style="color: #0000BB">ClassName </span><span style="color: #007700">{}<br><br>echo </span><span style="color: #0000BB">ClassName</span><span style="color: #007700">::class;<br><br>echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -5884,26 +5987,26 @@ Name\Space\ClassName
   </div>
 
   <div class="sect2" id="migration55.new-features.opcache">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/book.opcache.html" class="link">OPcache</a> extension added</h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.opcache.html" class="link">OPcache</a> extension added</h3>
 
    <p class="para">
     The Zend Optimiser+ opcode cache has been added to PHP as the new
-    <a target="_blank" href="https://www.php.net/manual/en/book.opcache.html" class="link">OPcache extension</a>.
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/book.opcache.html" class="link">OPcache extension</a>.
     OPcache improves PHP performance by storing precompiled script bytecode in
     shared memory, thereby removing the need for PHP to load and parse scripts
     on each request. See
-    <a target="_blank" href="https://www.php.net/manual/en/opcache.installation.html" class="link">the installation instructions</a>
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/opcache.installation.html" class="link">the installation instructions</a>
     for more detail on enabling and using OPcache.
    </p>
   </div>
 
   <div class="sect2" id="migration55.new-features.non-scalar-iterator-keys">
-   <h3 class="title"><a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> now supports non-scalar keys</h3>
+   <h3 class="title"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> now supports non-scalar keys</h3>
 
    <p class="para">
-    <a target="_blank" href="https://www.php.net/manual/en/control-structures.foreach.html" class="link">foreach</a> now supports
+    <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.foreach.html" class="link">foreach</a> now supports
     keys of any type. While non-scalar keys cannot occur in native PHP arrays,
-    it is possible for <span class="methodname"><a target="_blank" href="https://www.php.net/manual/en/iterator.key.html" class="methodname">Iterator::key()</a></span> to return a
+    it is possible for <span class="methodname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/iterator.key.html" class="methodname">Iterator::key()</a></span> to return a
     value of any type, and this will now be handled correctly.
    </p>
   </div>
@@ -5925,20 +6028,20 @@ Name\Space\ClassName
 
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      Flipping support using the new <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imageflip.html" class="function">imageflip()</a></span> 
+      Flipping support using the new <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.imageflip.html" class="function">imageflip()</a></span> 
       function.
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      Advanced cropping support using the <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecrop.html" class="function">imagecrop()</a></span> &amp; 
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecropauto.html" class="function">imagecropauto()</a></span> functions.
+      Advanced cropping support using the <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.imagecrop.html" class="function">imagecrop()</a></span> &amp; 
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.imagecropauto.html" class="function">imagecropauto()</a></span> functions.
      </span>
     </li>
    </ul></div>
  </div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration54.new-features.php" target="_blank">PHP 5.4</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration54.new-features.php" target="_blank">PHP 5.4</a></h1>
     </header>
 
     <div id="migration54.new-features" class="section">
@@ -5948,7 +6051,7 @@ Name\Space\ClassName
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     Support for <a target="_blank" href="https://www.php.net/manual/en/language.oop5.traits.html" class="link">traits</a> has been added.
+     Support for <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.traits.html" class="link">traits</a> has been added.
     </span>
    </li>
    <li class="listitem">
@@ -5964,13 +6067,13 @@ Name\Space\ClassName
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/functions.anonymous.html" class="link">Closures</a> now support <code class="literal">$this</code>.
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/functions.anonymous.html" class="link">Closures</a> now support <code class="literal">$this</code>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <code class="literal">=</code> is now always available, regardless of the
-     <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.short-open-tag" class="link">short_open_tag</a> <var class="filename">php.ini</var> option.
+     <code class="literal">&lt;?=</code> is now always available, regardless of the
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.short-open-tag" class="link">short_open_tag</a> <var class="filename">php.ini</var> option.
     </span>
    </li>
    <li class="listitem">
@@ -5996,24 +6099,24 @@ Name\Space\ClassName
    </li>
    <li class="listitem">
     <span class="simpara">
-     The session extension can now track the <a target="_blank" href="https://www.php.net/manual/en/session.upload-progress.html" class="link">upload progress</a> of files.
+     The session extension can now track the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/session.upload-progress.html" class="link">upload progress</a> of files.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     Built-in development <a target="_blank" href="https://www.php.net/manual/en/features.commandline.webserver.html" class="link">web server in CLI mode</a>.
+     Built-in development <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/features.commandline.webserver.html" class="link">web server in CLI mode</a>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
      The GD extension now supports reading and writing of WebP images via
-     <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagecreatefromwebp.html" class="function">imagecreatefromwebp()</a></span> and <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.imagewebp.html" class="function">imagewebp()</a></span>,
+     <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.imagecreatefromwebp.html" class="function">imagecreatefromwebp()</a></span> and <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.imagewebp.html" class="function">imagewebp()</a></span>,
      respectively.
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration53.new-features.php" target="_blank">PHP 5.3</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration53.new-features.php" target="_blank">PHP 5.3</a></h1>
     </header>
 
     <div id="migration53.new-features" class="section">
@@ -6023,66 +6126,66 @@ Name\Space\ClassName
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     Support for <a target="_blank" href="https://www.php.net/manual/en/language.namespaces.html" class="link">namespaces</a> has been 
+     Support for <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.namespaces.html" class="link">namespaces</a> has been 
      added.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     Support for <a target="_blank" href="https://www.php.net/manual/en/language.oop5.late-static-bindings.html" class="link">Late Static
+     Support for <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.late-static-bindings.html" class="link">Late Static
      Bindings</a> has been added.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     Support for <a target="_blank" href="https://www.php.net/manual/en/control-structures.goto.html" class="link">jump labels</a>
+     Support for <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/control-structures.goto.html" class="link">jump labels</a>
      (limited goto) has been added.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     Support for native <a target="_blank" href="https://www.php.net/manual/en/functions.anonymous.html" class="link">Closures</a> 
+     Support for native <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/functions.anonymous.html" class="link">Closures</a> 
      (Lambda/Anonymous functions) has been added.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
      There are two new magic methods,
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.overloading.html#object.callstatic" class="link">__callStatic()</a> and 
-     <a target="_blank" href="https://www.php.net/manual/en/language.oop5.magic.html#object.invoke" class="link">__invoke()</a>.
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.overloading.html#object.callstatic" class="link">__callStatic()</a> and 
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.oop5.magic.html#object.invoke" class="link">__invoke()</a>.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.string.html#language.types.string.syntax.nowdoc" class="link">Nowdoc</a> syntax is
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.string.html#language.types.string.syntax.nowdoc" class="link">Nowdoc</a> syntax is
      now supported, similar to
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.string.html#language.types.string.syntax.heredoc" class="link">Heredoc</a> syntax,
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.string.html#language.types.string.syntax.heredoc" class="link">Heredoc</a> syntax,
      but with single quotes.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
      It is now possible to use
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.string.html#language.types.string.syntax.heredoc" class="link">Heredoc</a>s to
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.string.html#language.types.string.syntax.heredoc" class="link">Heredoc</a>s to
      initialize static variables and class properties/constants.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.string.html#language.types.string.syntax.heredoc" class="link">Heredoc</a>s may
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.string.html#language.types.string.syntax.heredoc" class="link">Heredoc</a>s may
      now be declared using double quotes, complementing the
-     <a target="_blank" href="https://www.php.net/manual/en/language.types.string.html#language.types.string.syntax.nowdoc" class="link">Nowdoc</a> syntax.
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.types.string.html#language.types.string.syntax.nowdoc" class="link">Nowdoc</a> syntax.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.constants.syntax.html" class="link">Constants</a> can now be
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.constants.syntax.html" class="link">Constants</a> can now be
      declared outside a class using the <code class="literal">const</code> keyword.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <a target="_blank" href="https://www.php.net/manual/en/language.operators.comparison.html#language.operators.comparison.ternary" class="link">ternary</a>
+     The <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.operators.comparison.html#language.operators.comparison.ternary" class="link">ternary</a>
      operator now has a shorthand form: <code class="literal">?:</code>.
     </span>
    </li>
@@ -6099,7 +6202,7 @@ Name\Space\ClassName
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br>   public static </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">123</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #DD0000">"C"</span><span style="color: #007700">;<br>echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">::</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br>   public static </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">123</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #DD0000">"C"</span><span style="color: #007700">;<br>echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">::</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -6114,12 +6217,12 @@ Name\Space\ClassName
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/language.exceptions.html" class="link">Exceptions</a> can now be nested:
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.exceptions.html" class="link">Exceptions</a> can now be nested:
     </span>
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB"><?php <br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyCustomException </span><span style="color: #007700">extends </span><span style="color: #0000BB">Exception </span><span style="color: #007700">{}<br><br>try {<br>    throw new </span><span style="color: #0000BB">MyCustomException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Exceptional"</span><span style="color: #007700">, </span><span style="color: #0000BB">112</span><span style="color: #007700">);<br>} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">/* Note the use of the third parameter to pass $e<br>     * into the RuntimeException. */<br>    </span><span style="color: #007700">throw new </span><span style="color: #0000BB">RuntimeException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Rethrowing"</span><span style="color: #007700">, </span><span style="color: #0000BB">911</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyCustomException </span><span style="color: #007700">extends </span><span style="color: #0000BB">Exception </span><span style="color: #007700">{}<br><br>try {<br>    throw new </span><span style="color: #0000BB">MyCustomException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Exceptional"</span><span style="color: #007700">, </span><span style="color: #0000BB">112</span><span style="color: #007700">);<br>} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">/* Note the use of the third parameter to pass $e<br>     * into the RuntimeException. */<br>    </span><span style="color: #007700">throw new </span><span style="color: #0000BB">RuntimeException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Rethrowing"</span><span style="color: #007700">, </span><span style="color: #0000BB">911</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -6128,14 +6231,14 @@ Name\Space\ClassName
    </li>
    <li class="listitem">
     <span class="simpara">
-     A <a target="_blank" href="https://www.php.net/manual/en/features.gc.html" class="link">garbage collector</a> for circular
+     A <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/features.gc.html" class="link">garbage collector</a> for circular
      references has been added, and is enabled by default.
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     The <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mail.html" class="function">mail()</a></span> function now supports logging of sent email
-     via the <a target="_blank" href="https://www.php.net/manual/en/mail.configuration.html#ini.mail.log" class="link">mail.log</a> configuration
+     The <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mail.html" class="function">mail()</a></span> function now supports logging of sent email
+     via the <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/mail.configuration.html#ini.mail.log" class="link">mail.log</a> configuration
      directive. (Note: This only applies to email sent through this function.)
     </span>
    </li>

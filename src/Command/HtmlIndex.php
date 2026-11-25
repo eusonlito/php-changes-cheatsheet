@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Console\Message as MessageConsole;
+use App\View\Page;
 use App\Filesystem\Directory as DirectoryFilesystem;
 use App\View\Template as TemplateView;
 
@@ -15,7 +15,7 @@ class HtmlIndex extends CommandAbstract
      */
     public function handle(): void
     {
-        $this->store($this->html($this->list($this->files())));
+        Page::write($this->path('index'), 'PHP changes cheatsheet', $this->htmlIndex($this->list($this->files())));
     }
 
     /**
@@ -140,48 +140,10 @@ class HtmlIndex extends CommandAbstract
      *
      * @return string
      */
-    protected function html(array $files): string
-    {
-        return $this->htmlLayout($this->htmlIndex($files));
-    }
-
-    /**
-     * @param array $files
-     *
-     * @return string
-     */
     protected function htmlIndex(array $files): string
     {
         return TemplateView::get('index', [
             'groups' => $files
         ]);
-    }
-
-    /**
-     * @param string $html
-     *
-     * @return string
-     */
-    protected function htmlLayout(string $html): string
-    {
-        return TemplateView::get('layout', [
-            'class' => 'index',
-            'title' => 'PHP changes cheatsheet',
-            'content' => $html
-        ]);
-    }
-
-    /**
-     * @param string $html
-     *
-     * @return void
-     */
-    protected function store(string $html): void
-    {
-        $target = $this->path('index').'.html';
-
-        MessageConsole::echo(sprintf("Generating <color:green>%s</color> HTML page\n", $this->removePathBase($target)));
-
-        $this->fileWrite($target, $html);
     }
 }

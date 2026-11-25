@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="New INI Configuration Directives in PHP 5.2, 5.0">
 
+        <link rel="alternate" type="text/markdown" href="newconf.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="New INI Configuration Directives in PHP 5.2, 5.0">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598823" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598823" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -52,7 +54,7 @@
     <main class="info-main">
         <article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration52.newconf.php" target="_blank">PHP 5.2</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration52.newconf.php" target="_blank">PHP 5.2</a></h1>
     </header>
 
     <div id="migration52.newconf" class="section">
@@ -62,7 +64,7 @@
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/filesystem.configuration.html#ini.allow-url-include" class="link">allow_url_include</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/filesystem.configuration.html#ini.allow-url-include" class="link">allow_url_include</a>
     </span>
     <span class="simpara">
      This useful option makes it possible to differentiate between
@@ -76,7 +78,7 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/pcre.configuration.html#ini.pcre.backtrack-limit" class="link">pcre.backtrack_limit</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/pcre.configuration.html#ini.pcre.backtrack-limit" class="link">pcre.backtrack_limit</a>
     </span>
     <span class="simpara">
      PCRE's backtracking limit.
@@ -84,7 +86,7 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/pcre.configuration.html#ini.pcre.recursion-limit" class="link">pcre.recursion_limit</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/pcre.configuration.html#ini.pcre.recursion-limit" class="link">pcre.recursion_limit</a>
     </span>
     <span class="simpara">
      PCRE's recursion limit. Please note that if you set this value to a high
@@ -95,7 +97,7 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.cookie-httponly" class="link">session.cookie_httponly</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/session.configuration.html#ini.session.cookie-httponly" class="link">session.cookie_httponly</a>
     </span>
     <span class="simpara">
      Marks the cookie as accessible only through the HTTP protocol. This means
@@ -109,16 +111,16 @@
   </p>
   <ul class="itemizedlist"><li class="listitem">
     <span class="simpara">
-     <a target="_blank" href="https://www.php.net/manual/en/info.configuration.html#ini.max-input-nesting-level" class="link">max_input_nesting_level</a>
+     <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/info.configuration.html#ini.max-input-nesting-level" class="link">max_input_nesting_level</a>
     </span>
     <span class="simpara">
-     Limits how deep <a target="_blank" href="https://www.php.net/manual/en/language.variables.external.html" class="link">input
+     Limits how deep <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/language.variables.external.html" class="link">input
      variables</a> can be nested, default is 64.
     </span>
    </li>
   </ul></div></article><article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration5.newconf.php" target="_blank">PHP 5.0</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration5.newconf.php" target="_blank">PHP 5.0</a></h1>
     </header>
 
     <div id="migration5.newconf" class="section">
@@ -129,35 +131,35 @@
    </p>
    <ul class="itemizedlist"><li class="listitem">
      <span class="simpara">
-      <a target="_blank" href="https://www.php.net/manual/en/mail.configuration.html#ini.mail.force_extra_parameters" class="link">mail.force_extra_parameters</a> -
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/mail.configuration.html#ini.mail.force_extra_parameters" class="link">mail.force_extra_parameters</a> -
       Force the addition of the specified
       parameters to be passed as extra parameters to the sendmail binary.
       These parameters will always replace the value of the 5th parameter to
-      <span class="function"><a target="_blank" href="https://www.php.net/manual/en/function.mail.html" class="function">mail()</a></span>, even in safe mode
+      <span class="function"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/function.mail.html" class="function">mail()</a></span>, even in safe mode
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a> -
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a> -
       allow/disallow PHP to register the deprecated long <var class="varname">$HTTP_*_VARS</var>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.hash-function" class="link">session.hash_function</a> -
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/session.configuration.html#ini.session.hash-function" class="link">session.hash_function</a> -
       select a hash function (MD5 or SHA-1)
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <a target="_blank" href="https://www.php.net/manual/en/session.configuration.html#ini.session.hash-bits-per-character" class="link">session.hash_bits_per_character</a>
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/session.configuration.html#ini.session.hash-bits-per-character" class="link">session.hash_bits_per_character</a>
       - define how many bits are stored in each character when converting the
       binary hash data to something readable (from 4 to 6)
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <a target="_blank" href="https://www.php.net/manual/en/ini.core.html#ini.zend.ze1-compatibility-mode" class="link">zend.ze1_compatibility_mode</a> 
+      <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/ini.core.html#ini.zend.ze1-compatibility-mode" class="link">zend.ze1_compatibility_mode</a> 
       - Enable compatibility mode with Zend Engine 1 (PHP 4) 
      </span>
     </li>

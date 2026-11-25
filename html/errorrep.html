@@ -11,6 +11,8 @@
         <meta name="author" content="Lito && Óscar Otero">
         <meta name="title" content="Error Reporting in PHP 5.2">
 
+        <link rel="alternate" type="text/markdown" href="errorrep.md" title="Markdown">
+
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://eusonlito.github.io/php-changes-cheatsheet/">
         <meta property="og:title" content="Error Reporting in PHP 5.2">
@@ -31,8 +33,8 @@
 
         <link href="//fonts.googleapis.com/css?family=Fira+Sans|Droid+Sans|Source+Sans+Pro" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="./phpnet.css?1795188870" type="text/css" media="screen">
-        <link rel="stylesheet" href="./styles.css?1795188870" type="text/css" media="screen">
+        <link rel="stylesheet" href="./phpnet.css?1795598823" type="text/css" media="screen">
+        <link rel="stylesheet" href="./styles.css?1795598823" type="text/css" media="screen">
 
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
@@ -52,7 +54,7 @@
     <main class="info-main">
         <article id="layout-content" class="info-version">
     <header class="info-version-header">
-        <h1><a href="https://www.php.net/manual/en/migration52.errorrep.php" target="_blank">PHP 5.2</a></h1>
+        <h1><a href="https://php-legacy-docs.zend.com/manual/php5/en/migration52.errorrep.php" target="_blank">PHP 5.2</a></h1>
     </header>
 
     <div id="migration52.errorrep" class="section">
@@ -60,29 +62,29 @@
   <p class="para">
    Some of the existing <strong><code>E_ERROR</code></strong> conditions have been
    converted to something that can be caught with a user-defined error
-   handler.  If an <a target="_blank" href="https://www.php.net/manual/en/errorfunc.constants.html" class="link"><strong><code>E_RECOVERABLE_ERROR</code></strong></a>
+   handler.  If an <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/errorfunc.constants.html" class="link"><strong><code>E_RECOVERABLE_ERROR</code></strong></a>
    is not handled, it will behave in the same way as
    <strong><code>E_ERROR</code></strong> behaves in all versions of PHP.  Errors of
    this type are logged as <code class="literal">Catchable fatal error</code>.
   </p>
   <p class="para">
    This change means that the value of the <strong><code>E_ALL</code></strong>
-   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> constant is 
+   <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> constant is 
    now 6143, where the previous value was 2047. Because PHP constants have 
    no meaning outside of PHP, in some cases the integer value is used 
    instead so these will need to be adjusted. So for example by
    setting the error_reporting mode from either the
-   <a target="_blank" href="https://www.php.net/manual/en/apache.configuration.html" class="link">httpd.conf</a> or the
+   <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/apache.configuration.html" class="link">httpd.conf</a> or the
    <var class="filename">.htaccess</var> files, the value has to be changed
    accordingly.  The same applies when the numeric values are used
    rather than the constants in PHP scripts.
   </p>
   <p class="para">
    As a side-effect of a change made to prevent duplicate error messages when
-   <a target="_blank" href="https://www.php.net/manual/en/errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> is
+   <a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> is
    <code class="literal">On</code>, it is now necessary to return <strong><code>FALSE</code></strong> from
    user defined error handlers in order to populate
-   <var class="varname"><a target="_blank" href="https://www.php.net/manual/en/reserved.variables.phperrormsg.html" class="classname">$php_errormsg</a></var>.  This
+   <var class="varname"><a target="_blank" href="https://php-legacy-docs.zend.com/manual/php5/en/reserved.variables.phperrormsg.html" class="classname">$php_errormsg</a></var>.  This
    provides a fine-grain control over the levels of messages stored.
   </p>
  </div></article>    </main>

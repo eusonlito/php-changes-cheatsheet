@@ -8,7 +8,7 @@
         <li>
             <a href="<?= $group['link']; ?>">
                 <?= $group['title']; ?>
-                <div class="versions"><span><?= implode('</span><span>', $group['versions']); ?></span></div>
+                <div class="versions"><span><?= implode('</span> <span>', $group['versions']); ?></span></div>
             </a>
         </li>
         <?php } ?>

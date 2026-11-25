@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Console\Message as MessageConsole;
+use App\View\Page;
 use App\Filesystem\Directory as DirectoryFilesystem;
 use App\View\Template as TemplateView;
 
@@ -34,7 +34,8 @@ class HtmlGroup extends CommandAbstract
         $this->files = $this->files();
         $this->title = $this->title();
 
-        $this->store($this->html());
+        $content = TemplateView::get('info', ['title' => $this->title, 'content' => $this->htmlInfoVersion()]);
+        Page::write($this->path($this->name), $this->title, $content);
     }
 
     /**
@@ -54,7 +55,8 @@ class HtmlGroup extends CommandAbstract
      */
     protected function url(string $path = ''): string
     {
-        return static::URL_DOCS.'/'.$path;
+        $docs = preg_match('/^migration5[1-5]?\./', $path) ? static::URL_LEGACY_DOCS : static::URL_DOCS;
+        return $docs.'/'.$path;
     }
 
     /**
@@ -109,14 +111,6 @@ class HtmlGroup extends CommandAbstract
     /**
      * @return string
      */
-    protected function html(): string
-    {
-        return $this->htmlLayout($this->htmlInfo($this->htmlInfoVersion($this->files)));
-    }
-
-    /**
-     * @return string
-     */
     protected function htmlInfoVersion(): string
     {
         $html = '';
@@ -139,48 +133,17 @@ class HtmlGroup extends CommandAbstract
      */
     protected function htmlInfoVersionContent(string $file): string
     {
-        return str_replace('href="', 'target="_blank" href="'.$this->url(), file_get_contents($file));
-    }
-
-    /**
-     * @param string $html
-     *
-     * @return string
-     */
-    protected function htmlInfo(string $html): string
-    {
-        return TemplateView::get('info', [
-            'title' => $this->title,
-            'versions' => array_keys($this->files),
-            'content' => $html
-        ]);
-    }
-
-    /**
-     * @param string $html
-     *
-     * @return string
-     */
-    protected function htmlLayout(string $html): string
-    {
-        return TemplateView::get('layout', [
-            'class' => 'docs',
-            'title' => $this->title,
-            'content' => $html
-        ]);
-    }
-
-    /**
-     * @param string $html
-     *
-     * @return void
-     */
-    protected function store(string $html): void
-    {
-        $target = $this->path($this->name).'.html';
-
-        MessageConsole::echo(sprintf("Generating <color:green>%s</color> HTML page\n", $this->removePathBase($target)));
-
-        $this->fileWrite($target, $html);
+        $base = $this->url(basename($file));
+        return preg_replace_callback('/(<a\s+[^>]*?)href="([^"]*)"/i', static function ($match) use ($base) {
+            $href = $match[2];
+            if (strpos($href, '//') === 0) {
+                $href = 'https:'.$href;
+            } elseif (strpos($href, '/') === 0) {
+                $href = 'https://'.parse_url($base, PHP_URL_HOST).$href;
+            } elseif (!preg_match('~^[a-z][a-z0-9+.-]*:~i', $href)) {
+                $href = strpos($href, '#') === 0 ? $base.$href : dirname($base).'/'.$href;
+            }
+            return $match[1].'target="_blank" href="'.$href.'"';
+        }, file_get_contents($file));
     }
 }

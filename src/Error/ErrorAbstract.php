@@ -14,7 +14,8 @@ abstract class ErrorAbstract
      */
     protected static function error(int $errno, string $errstr, string $errfile, int $errline): void
     {
-        die(static::message($errno, $errstr, $errfile, $errline));
+        fwrite(STDERR, static::message($errno, $errstr, $errfile, $errline));
+        exit(1);
     }
 
     /**
